@@ -11,17 +11,9 @@
     font-size: 14px;
     flex: 1 1 100%;
     position: relative;
-    p {
-        position: relative;
-        padding-left: 20px;
-    }
-    p::after {
-        position: absolute;
-        left: 0;
-        transform: translateY(-50%);
-        top: 50%;
-        content: url("/assets/icons/world.webp")
-    }
+    display: flex;
+    align-items: center;
+    gap:4px;
 }
 
 .right {
@@ -36,4 +28,11 @@
     justify-content: center;
     width: 24px;
     height: 24px;
+    transition: all 0.3s ease 0s;
+    @media(hover:hover) {
+        &:hover {
+            cursor: pointer;
+            color:var(--green);
+        }
+    }
 }

@@ -14,12 +14,12 @@ interface MatchInfoProps {
 const MatchInfo = ({games} : MatchInfoProps) => {
     const [show, setShow] = useState(true);
     const [block] = useAutoAnimate()
-    const {country_id, name } = games;
+    const {country_id, name, id } = games;
     
     
     return (
         <div ref={block} style={{border: '1px solid var(--border)'}} className="item-event">
-            <EventHeader name={name} show={show} cb={() => setShow(prev => !prev)}/>
+            <EventHeader leagueId={id} name={name} show={show} cb={() => setShow(prev => !prev)}/>
             {
                 show && (<div style={{borderTop: show ? "1px solid var(--border)" : "none"}}  className="item-event__content">
                             {
