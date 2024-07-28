@@ -3,10 +3,14 @@ import styles from "./main-header-block.module.scss";
 import Links from "./links/Links";
 import { useFilter } from "@/contexts/FilterContext";
 import { usePathname } from "next/navigation";
+import "./active.scss";
 
 const MainHeaderBlock = () => {
-    const { showLiveGames, setShowLiveGames } = useFilter();
-    const pathname = usePathname()
+    const { showLiveGames, setShowLiveGames, coefficient, handleCoefficient } = useFilter();
+
+    const pathname = usePathname();
+
+    
     return (
         <div className={styles.mainHeader__block}>
             <div className={`${styles['main-content__header']} ${styles['content-header']}`}>
@@ -34,7 +38,7 @@ const MainHeaderBlock = () => {
                         
                     </div>
                     <div className={styles['botton-header__buttons']}>
-                        <button className={styles['button-green']}>
+                        <button onClick={() => handleCoefficient()} className={`green-cuotas ${!coefficient ? "active" : ""}` }>
                             CUOTAS
                         </button>
                         <button className={`${styles['button-green']} ${styles['button-off']} ${styles['active']}`}>

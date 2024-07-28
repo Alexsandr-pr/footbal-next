@@ -25,7 +25,7 @@ const EventGols = ({
                             <span className="green">
                                 {item.time_to_display}
                             </span>
-                            <p>{item.player_sname}</p>
+                            <p>{item.player_sname};</p>
                         </span>
                     ))
                 }
