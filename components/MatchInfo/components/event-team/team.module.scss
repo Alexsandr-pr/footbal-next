@@ -1,17 +1,16 @@
 .team {
-    padding: 4px 0px ;
+    padding: 4px;
     display: flex;
     gap: 4px;
     align-items: center;
     justify-content: center;
     @media(max-width:487.98px){
-        padding: 8px 0px;
+        padding: 8px 2px;
     }
 }
 .block {
     flex: 0 1 40%;
 }
-
 
 .right {
     text-align: left;

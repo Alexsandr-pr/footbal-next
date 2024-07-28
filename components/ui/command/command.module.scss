@@ -8,9 +8,14 @@
     @media(max-width:767.98px){
         gap: 8px;
     }
+    @media(max-width:367.98px){
+        gap: 6px;
+    }
 }
 
 .title {
+    word-wrap: break-word;
+    word-break: break-all;
     color: var(--white);
     text-overflow: ellipsis;
     font-size: 14px;
@@ -18,6 +23,9 @@
     line-height: 120%; /* 16.8px */
     @media(max-width:767.98px){
         font-size: 11px;
+    }
+    @media(max-width:405.98px){
+        font-size: 10px;
     }
 }
 
