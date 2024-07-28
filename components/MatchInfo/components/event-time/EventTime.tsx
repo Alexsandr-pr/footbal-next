@@ -8,9 +8,10 @@ interface EventTimeProps {
         name:string;
     };
     startTime: string;
+    gameTimeToDisplay:string;
 }
 
-const EventTime = ({status, startTime} : EventTimeProps) => {
+const EventTime = ({status, startTime, gameTimeToDisplay} : EventTimeProps) => {
 
     function extractTime(datetime: string): string {
         const dateTimeParts = datetime.split(' ');
@@ -30,7 +31,11 @@ const EventTime = ({status, startTime} : EventTimeProps) => {
     return (
         <div className={styles.block}>
             <img height={24} width={24} src="https://www.sports-stats.net/images/team/ihb/4" alt="" />
+            {
+                gameTimeToDisplay ? <div style={{color:"var(--live)"}} className={styles.live}> {gameTimeToDisplay}</div> : 
+            
             <p className={styles.time}>{extractTime(startTime)}</p>
+}
         </div>
     )
 }

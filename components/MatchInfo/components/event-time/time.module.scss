@@ -13,7 +13,7 @@
     @media(max-width:767.98px){
         width: 80px;
     }
-    gap: 2px;
+    gap: 8px;
 }
 
 .time {
@@ -37,3 +37,9 @@
 // .canal__time-red {
 //     color:#FF4848 !important;
 // }
+
+.live {
+    color: var(--live);
+    text-align: center;
+    font-size: 12px;
+}

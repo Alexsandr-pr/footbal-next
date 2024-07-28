@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:700&display=swap);
-@import url(https://fonts.googleapis.com/css?family=Roboto:regular,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Roboto:regular,500,700&display=swap);
 :root {
     --white: #fff;
     --black: #000;
@@ -145,4 +145,12 @@ table, td, th, tr {
     align-items: center;
     justify-content: center;
     flex: 0 1 20%;
+}
+
+.loading {
+    height: 600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

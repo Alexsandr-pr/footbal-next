@@ -11,22 +11,27 @@ interface EventItemProps {
     country_id: string;
     name: string;
     game: Game;
+    isInternationl:boolean;
 }
 
 const EventItem = ({
     teams, 
     country_id, 
     name, 
-    game
+    game,
+    isInternationl
 } : EventItemProps) => {
     const { main_odds} = game;
-    const scores = game?.scores;
+    //const scores = game?.scores;
     const startTime = game.start_time;
     const status = game?.status;
+
+    
 
     const goalsTeam1 = teams[0]?.goals;
     const goalsTeam2 = teams[1]?.goals;
 
+    
     // btw, didnt told you but the enum here:
     // 1=pre game
     // 2=live game
@@ -40,13 +45,13 @@ const EventItem = ({
 
     return (
         <div className={styles.item}>
-            <div className={styles.top}>
+            {/* <div className={styles.top}>
                 {name}
-            </div>
+            </div> */}
             <div className={styles.body}>
-                <EventTime startTime={startTime} status={status}/>
+                <EventTime gameTimeToDisplay={game.game_time_to_display} startTime={startTime} status={status}/>
                 <div className={styles.content}>
-                    <EventTeam status={status} scores={scores} country_id={country_id} teams={teams} />
+                    <EventTeam isInternationl={isInternationl}  status={status} scores={game?.scores} country_id={country_id} teams={teams} />
                         {
                             status.enum === 1 ? null : (
                                 (goalsTeam1 || goalsTeam2) && (

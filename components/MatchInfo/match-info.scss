@@ -112,11 +112,11 @@
     .team-span__number {
         color:#fff !important;
         span {
-            color:#FF4848 !important;
+            color:var(--live) !important;
         }
     }
     .team-span__block {
-        color:#FF4848 !important;
+        color:var(--live) !important;
     }
 }
 

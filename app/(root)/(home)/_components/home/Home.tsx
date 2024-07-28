@@ -1,11 +1,13 @@
 import MatchInfo from '@/components/MatchInfo/MatchInfo';
 import { League } from '@/types/home';
-import "./home.scss";
 
 
-const Home = ({leagues} : {
+const Home = ({
+    leagues,
+} : {
     leagues: League[];
 }) => {
+
     return (
         <>
             <div className="flex-12">

@@ -53,6 +53,7 @@ export interface League {
   id: string;
   url_name: string;
   country_id: string;
+  is_international:boolean;
 }
 
 export interface LeaguesResponse {

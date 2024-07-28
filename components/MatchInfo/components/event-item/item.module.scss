@@ -2,7 +2,7 @@
 
 .item {
     &:not(:last-child) {
-        border-bottom:1px solid #60756C;
+        border-bottom:1px solid var(--border);
     }
 }
 
@@ -27,5 +27,4 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    //border-left: #60756C 1px solid;
 }
