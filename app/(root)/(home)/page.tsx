@@ -26,7 +26,7 @@ export default async function Home() {
             <div className="flex-12">
                 {
                     leagues.map(games => {
-                        return  <MatchInfo  games={games}/>
+                        return  <MatchInfo key={games.id} games={games}/>
                     })
                 }
             </div>

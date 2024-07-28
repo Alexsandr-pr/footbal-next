@@ -27,7 +27,7 @@ const MatchInfo = ({games} : MatchInfoProps) => {
                                 games.games.map(game => {
                                     
                                     return ( 
-                                        <EventItem game={game} country_id={country_id} name={name} teams={game.teams}/>
+                                        <EventItem key={game.id} game={game} country_id={country_id} name={name} teams={game.teams}/>
                                     )
                                 })
                             }
