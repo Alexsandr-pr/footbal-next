@@ -31,28 +31,8 @@
 
     &__bottom {
         padding: 7px 10px;
-        border-top: 1px solid #60756C;
         display: flex;
         justify-content: center;
-    }
-
-    // .item-event__bottom-button
-
-    &__bottom-button {
-        color:  #FFF;
-        font-family: "Roboto Condensed";
-        text-decoration-line: underline;
-        text-transform: uppercase;
-        transition: all 0.3s ease 0s;
-        @media(hover:hover) {
-            &:hover {
-                cursor: pointer;
-                color:#6FAA54;
-            }
-        }
-        @media(max-width:640.98px){
-            font-size: 12px;
-        }
     }
 }
 
@@ -121,23 +101,7 @@
 
 
 /*******************************/
-.cof-team {
-    border-top: #60756C 1px solid;
-    padding: 5px 12px;
-    display: flex;
-    font-family: Roboto;
-    gap: 10px;
-    font-weight: 400;
-    font-size: 12px;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(17, 94, 42, 0.35);
-    span, div {
-        gap: 4px;
-        flex: 0 1 33.333%;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
-}
+
 /*******************************/
 
 

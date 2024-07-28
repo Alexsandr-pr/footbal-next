@@ -21,7 +21,7 @@ const EventItem = ({
 } : EventItemProps) => {
     const { main_odds} = game;
     const scores = game?.scores;
-
+    const startTime = game.start_time;
     const status = game?.status;
 
     const goalsTeam1 = teams[0]?.goals;
@@ -44,7 +44,7 @@ const EventItem = ({
                 {name}
             </div>
             <div className={styles.body}>
-                <EventTime status={status}/>
+                <EventTime startTime={startTime} status={status}/>
                 <div className={styles.content}>
                     <EventTeam status={status} scores={scores} country_id={country_id} teams={teams} />
                         {

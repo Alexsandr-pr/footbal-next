@@ -16,10 +16,13 @@
         }
         }
     
+        &__top {
+            align-items: center;
+        }
         &__top,
         &__bottom {
-        display: flex;
-        justify-content: space-between;
+            display: flex;
+            justify-content: space-between;
         }
     
         padding: 0px 12px;
@@ -76,17 +79,7 @@
             display: none;
             }
         }
-        path {
-            transition: all 0.3s ease 0s;
-        }
-        @media (hover: hover) {
-            &:hover {
-            color: #ff4848;
-            path {
-                fill: #ff4848;
-            }
-            }
-        }
+        
         }
     
         &__block {

@@ -1,9 +1,9 @@
 
-import Home from "./_components/home/Home";
 import { LeaguesResponse } from '@/types/home';
+import Home from '../_components/home/Home';
 
 async function getData(): Promise<LeaguesResponse> {
-    const res = await fetch('https://www.sports-stats.net/games/today');
+    const res = await fetch('https://www.sports-stats.net/games/yesterday');
 
     if (!res.ok) {
         throw new Error('Failed to fetch data');
@@ -12,8 +12,7 @@ async function getData(): Promise<LeaguesResponse> {
 }
 
 
-export default async function Page() {
-
+async function Yesterday() {
     const { leagues }: LeaguesResponse = await getData();
     
     return (
@@ -21,5 +20,4 @@ export default async function Page() {
     );
 }
 
-
-
+export default Yesterday

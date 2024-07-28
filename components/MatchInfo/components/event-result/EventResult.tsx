@@ -5,9 +5,18 @@ interface EventResultProps {
     status: {
         enum: number;
     };
+    redCards1: number;
+    redCards2: number;
+    agg?:number[];
 }
 
-const EventResult: React.FC<EventResultProps> = ({ scores, status }) => {
+const EventResult = ({ 
+    scores,
+    status,
+    redCards1,
+    redCards2,
+    agg
+}: EventResultProps) => {
 
     const renderGoals = (count: number) => {
         return Array.from({ length: count }).map((_, index) => (
@@ -31,26 +40,30 @@ const EventResult: React.FC<EventResultProps> = ({ scores, status }) => {
         return <div className="status-span">-</div>;
     }
 
+    const colorStyle = { color: status.enum === 2 ? "var(--live)" : "var(--white)" };
+
     return (
         <div className={styles.span}>
             <div className={styles.block}>
                 <div className={styles.number}>
-                    <div style={getGridStyle(scores[0])} className={styles.gol}>
-                        {renderGoals(scores[0])}
+                    <div style={getGridStyle(redCards1)} className={styles.gol}>
+                        {renderGoals(redCards1)}
                     </div>
-                    <span className={styles.score}>(1)</span> <span className={styles.scores}>{scores[0]}</span>
+                    <span style={colorStyle} className={styles.score}></span> <span style={colorStyle} className={styles.scores}>{scores[0]}</span>
                 </div>
-                <div className={styles.tire}>-</div>
+                <div style={colorStyle} className={styles.tire}>-</div>
                 <div className={styles.number}>
-                    <span className={styles.scores}>{scores[1]}</span> <span className={styles.score}>(1)</span>
-                    <div style={getGridStyle(scores[1])} className={styles.gol}>
-                        {renderGoals(scores[1])}
+                    <span style={colorStyle} className={styles.scores}>{scores[1]}</span> <span style={colorStyle} className={styles.score}></span>
+                    <div style={getGridStyle(redCards2)} className={styles.gol}>
+                        {renderGoals(redCards2)}
                     </div>
                 </div>
             </div>
-            <div className={styles.text}>
-                Global 1-3
-            </div>
+            {
+                agg && (<div className={styles.text}>
+                    Global 1-3
+                </div>)
+            }
         </div>
     );
     

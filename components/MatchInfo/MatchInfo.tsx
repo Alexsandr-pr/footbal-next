@@ -17,7 +17,6 @@ const MatchInfo = ({games} : MatchInfoProps) => {
     const {country_id, name } = games;
     
     
-
     return (
         <div ref={block} style={{border: '1px solid var(--border)'}} className="item-event">
             <EventHeader name={name} show={show} cb={() => setShow(prev => !prev)}/>
