@@ -1,0 +1,138 @@
+.aside {
+
+    // .aside__image-top
+
+    &__image-top {
+        @media(max-width:767.98px){
+            display: none;
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+
+    // .aside__select
+
+    &__select {
+        padding: 20px 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        @media(max-width:767.98px){
+            border-top: 1px solid var(--grey-20);
+        }
+    }
+
+    // .aside__links
+
+    &__links {
+        padding: 16px 0px;
+    }
+
+    // .aside__bottom
+
+    &__bottom {
+        font-size: 14px;
+        padding: 16px 0px;
+    }
+}
+.aside__select,
+.aside__links {
+    border-bottom: 1px solid var(--white);
+}
+
+
+.aside__bottom,
+.select__button,
+.links-aside__button {
+    font-family: "Roboto Condensed";
+    text-transform: uppercase;
+}
+
+.select {
+
+
+    // .select__button
+
+    &__button {
+        gap: 10px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        svg {
+            transition: all 0.3s ease 0s;
+        }
+        path {
+            transition: all 0.3s ease 0s;
+        }
+        @media(hover:hover) {
+            &:hover {
+                color:var(--green);
+                path {
+                    stroke:var(--green);
+                }
+            }
+        }
+        @media(max-width:767.98px){
+            border-bottom: 1px dashed  var(--grey-20);
+        }
+    }
+
+    // .select__list
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap:16px;
+    }
+    &__item {
+        transition: all 0.3s ease 0s;
+        font-size: 14px;
+        font-weight: 400;
+        @media(hover:hover) {
+            &:hover {
+                cursor: pointer;
+                color:var(--green);
+            }
+        }
+    }
+}
+.select__list {
+    padding: 16px 12px 0px 12px;
+}
+.select__block.active {
+    .select__button {
+        color:var(--green);
+        svg {
+            transform: rotateX(180deg);
+        }
+        path {
+            stroke:var(--green);
+        }
+        @media(max-width:767.98px){
+            border-bottom: 1px dashed  var(--green);
+        }
+    }
+    
+}
+
+.links-aside {
+
+    // .links-aside__button
+
+    &__button {
+        padding: 8px 0px;
+        font-size: 20px;
+        transition: all 0.3s ease 0s;
+        @media(hover:hover) {
+            &:hover {
+                cursor: pointer;
+                color:var(--green-hover);
+            }
+        }
+        &.active {
+            color:var(--green-hover);
+        }
+    }
+}

@@ -1,0 +1,204 @@
+    .main-content__header {
+        &:not(:last-child) {
+        margin-bottom: 12px;
+        @media (max-width: 487.98px) {
+            margin-bottom: 8px;
+        }
+        }
+    }
+    
+    .content-header {
+        &__bottom {
+        padding: 8px 0px;
+        gap: 8px;
+        @media (max-width: 640.98px) {
+            padding: 6px 0px;
+        }
+        }
+    
+        &__top,
+        &__bottom {
+        display: flex;
+        justify-content: space-between;
+        }
+    
+        padding: 0px 12px;
+        border-radius: 8px;
+        background: #0a2b1d;
+    }
+    
+    .top-header {
+        padding: 12px 0px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        @media (max-width: 640.98px) {
+        padding: 10px 0px;
+        }
+    
+        &__button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        @media (max-width: 640.98px) {
+            font-size: 14px;
+        }
+    
+        path {
+            transition: all 0.3s ease 0s;
+        }
+        @media (hover: hover) {
+            &:hover {
+            cursor: pointer;
+            color: #6faa54;
+            path {
+                stroke: #6faa54;
+            }
+            }
+        }
+        }
+    }
+    
+    .top-header__button,
+    .header-select__button,
+    .header-select__option {
+        font-family: "Roboto Condensed";
+        text-transform: uppercase;
+        position: relative;
+    }
+    
+    .header-select {
+        position: relative;
+    
+        &__button {
+        font-size: 20px;
+        @media (max-width: 640.98px) {
+            font-size: 14px;
+            span {
+            display: none;
+            }
+        }
+        path {
+            transition: all 0.3s ease 0s;
+        }
+        @media (hover: hover) {
+            &:hover {
+            color: #ff4848;
+            path {
+                fill: #ff4848;
+            }
+            }
+        }
+        }
+    
+        &__block {
+        margin-top: 3px;
+        max-width: max-content;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 12px;
+        background-color: #0a2b1d;
+        position: absolute;
+        border-radius: 6px;
+        visibility: hidden;
+        opacity: 0;
+        z-index: -1;
+        box-shadow: 3px 3px 3px #57724b, -3px -3px 3px #57724b;
+        @media (max-width: 640.98px) {
+            width: 60px;
+            right: 0;
+        }
+        }
+    
+        &__option {
+        white-space: nowrap;
+        font-size: 18px;
+        @media (max-width: 640.98px) {
+            font-size: 14px;
+            span {
+            display: none;
+            }
+        }
+        transition: all 0.3s ease 0s;
+        @media (hover: hover) {
+            &:hover {
+            cursor: pointer;
+            color: #ff4848;
+            }
+        }
+        }
+    }
+    
+    .header-select.active {
+        .header-select__block {
+        visibility: visible;
+        opacity: 1;
+        z-index: 30;
+        }
+        .header-select__button {
+        color: #ff4848;
+        path {
+            fill: #ff4848;
+        }
+        }
+    }
+    
+    .botton-header {
+        &__buttons {
+        display: flex;
+        &:not(:first-child) {
+            gap: 8px;
+        }
+        }
+    }
+    
+    .button-border {
+        text-transform: uppercase;
+        padding: 10px 12px;
+        border-bottom: 1px solid transparent;
+        @media (max-width: 640.98px) {
+        font-size: 11px;
+        }
+    }
+    
+    .button-gr.active {
+        &.active {
+        color: #6faa54;
+        border-bottom: 1px solid #6faa54;
+        }
+    }
+    .button-red.active {
+        &.active {
+        color: #ff4848;
+        border-bottom: 1px solid #ff4848;
+        }
+    }
+    
+    .button-off {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+    }
+    
+    .button-green.active {
+        opacity: 1;
+    }
+    .button-green {
+        opacity: 0.7;
+        border-radius: 8px;
+        font-size: 14px;
+        background: #115e2a;
+        padding: 6.5px 12px;
+        @media (max-width: 640.98px) {
+        font-size: 11px;
+        padding: 2px 12px;
+        }
+    }
+
+    .breadcrumbs {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+        @media (max-width: 487.98px) {
+        font-size: 11px;
+        }
+    }

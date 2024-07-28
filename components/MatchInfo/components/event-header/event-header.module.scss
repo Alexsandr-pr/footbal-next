@@ -1,0 +1,39 @@
+.button {
+    padding: 4px 12px;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    gap: 6px;
+    //border-bottom: 1px solid var(--border);
+}
+
+.left {
+    font-size: 14px;
+    flex: 1 1 100%;
+    position: relative;
+    p {
+        position: relative;
+        padding-left: 20px;
+    }
+    p::after {
+        position: absolute;
+        left: 0;
+        transform: translateY(-50%);
+        top: 50%;
+        content: url("/assets/icons/world.webp")
+    }
+}
+
+.right {
+    display: flex;
+    gap: 16px;
+}
+
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}

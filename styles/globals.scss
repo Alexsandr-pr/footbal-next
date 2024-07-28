@@ -1,0 +1,148 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Roboto:regular,700&display=swap);
+:root {
+    --white: #fff;
+    --black: #000;
+    --black-50: rgba(0, 0, 0, 0.50);
+
+    --green: #6FAA54;
+    --green-hover: #018000;
+    --green-dark: #115E2A;
+
+    --brown: #292929;
+    --dark: #1A1A1A;
+    --dark-14: #141414;
+    --dark-26: #262626;
+    --border: #60756C;
+    --background: #0A2B1D;
+
+    --linear: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(17, 94, 42, 0.35);
+
+    --grey-70: rgba(255, 255, 255, 0.70);
+    --grey-50: rgba(255, 255, 255, 0.50);
+    --grey-20: rgba(255, 255, 255, 0.20);
+    --grey-05: rgba(255, 255, 255, 0.05);
+
+    --calendario-border: rgba(96, 117, 108, 1);
+    --teams-list-border: rgba(255, 255, 255, 0.20);
+    //status
+    --yellow: #FFC61A;
+    --yellow-light: #EEFFA5;
+
+    --live: #FF4848;
+
+    --violet: rgb(101, 101, 250);
+    --green-background-even: #163629;
+    --green-background-odd: #234134;
+}
+
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    user-select: none;
+}
+ul,
+ol,
+li {
+    list-style: none;
+}
+img {
+    vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit; 
+}
+html,
+body {
+    height: 100%;
+    line-height: 1; 
+    color:  var(--white);
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Roboto';
+    background-color: var(--green-dark);
+    background-size:cover;
+    @media(min-width:991.98px){
+        background-image: url("/assets/main/bg.webp");
+    }
+    @media(max-width:991.98px){
+        background-image: url("/assets/main/bg-mobile.webp");
+    }
+    &::-webkit-scrollbar {
+        width: 16px;
+        background-color: var(--white);
+        height: 100%;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: var(--green);
+    }
+}
+button,
+input {
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    font-family: inherit;
+}
+button {
+    user-select: none;
+    cursor: pointer;
+    background-color: inherit;
+    transition: all 0.3s ease 0s;
+    @media(hover:hover) {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+table, td, th, tr {
+    border:none;
+    border-collapse:collapse;
+}
+
+
+[class*=_container] {
+    overflow: hidden;
+	max-width: 1192px;
+	margin: 0px auto;
+	height: 100%;
+	padding: 0px 24px;
+    @media(max-width:487.98px){
+        padding: 0px 16px;
+    }
+}
+
+.flex-12 {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.green {
+    
+    color: var(--green);
+    
+}
+.status-span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 0 1 20%;
+}

@@ -1,0 +1,31 @@
+
+
+.item {
+    &:not(:last-child) {
+        border-bottom:1px solid #60756C;
+    }
+}
+
+
+.top {
+    border-bottom:1px solid var(--border);
+    background: rgba(17, 94, 42, 0.15);
+    padding: 4px 10px;
+    color:  var(--white);
+    font-weight: 400;
+    height: 24px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.2; /* 14.4px */
+}
+
+.body {
+    display: flex;
+}
+.content {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    //border-left: #60756C 1px solid;
+}

@@ -1,0 +1,27 @@
+
+
+
+.body {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    @media(max-width:767.98px){
+        gap: 8px;
+    }
+}
+
+.title {
+    color: var(--white);
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 120%; /* 16.8px */
+    @media(max-width:767.98px){
+        font-size: 11px;
+    }
+}
+
+.command {
+    position: relative;
+    display: inline-flex;
+}

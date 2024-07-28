@@ -1,0 +1,27 @@
+.team {
+    padding: 4px 0px ;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    @media(max-width:487.98px){
+        padding: 8px 0px;
+    }
+}
+.block {
+    flex: 0 1 40%;
+}
+
+
+.right {
+    text-align: left;
+    display: flex;
+    justify-content: start;
+    flex: 0 1 40%;
+}
+.left {
+    display: flex;
+    text-align: right;
+    justify-content: end;
+    flex: 0 1 40%;
+}

@@ -1,0 +1,60 @@
+// home.ts
+export interface Goal {
+  id: number;
+  time_to_display: string;
+  player_sname: string;
+}
+
+export interface Team {
+  name: string;
+  url_name: string;
+  id: string;
+  red_cards: number;
+  goals?: Goal[];
+}
+
+export interface GameStatus {
+  enum: number;
+  name: string;
+  short_name: string;
+  symbol_name: string;
+}
+
+export interface TVNetwork {
+  id: string;
+  name: string;
+}
+
+export interface OddsOption {
+  name: string;
+  value: number;
+  trend: number;
+}
+
+export interface MainOdds {
+  options: OddsOption[];
+}
+
+export interface Game {
+  id: string;
+  teams: [Team, Team];
+  scores: [number, number];
+  status: GameStatus;
+  start_time: string;
+  game_time: number;
+  game_time_to_display: string;
+  TVNetworks?: TVNetwork[];
+  main_odds?: MainOdds;
+}
+
+export interface League {
+  games: Game[];
+  name: string;
+  id: string;
+  url_name: string;
+  country_id: string;
+}
+
+export interface LeaguesResponse {
+  leagues: League[];
+}
