@@ -17,16 +17,18 @@ export const FilterProvider = ({ children }: { children: ReactNode }) => {
 
     // Восстановление состояния из куки только на клиенте
     useEffect(() => {
-        const savedCoefficient = Cookies.get('coefficient');
-        if (savedCoefficient !== undefined) {
-            setCoefficient(JSON.parse(savedCoefficient));
+        if (typeof window !== 'undefined') {
+            const savedCoefficient = Cookies.get('coefficient');
+            if (savedCoefficient !== undefined) {
+                setCoefficient(JSON.parse(savedCoefficient));
+            }
         }
     }, []);
 
     const handleCoefficient = () => {
         setCoefficient(prev => {
             const newValue = !prev;
-            Cookies.set('coefficient', JSON.stringify(newValue));
+            Cookies.set('coefficient', JSON.stringify(newValue), { expires: 7, sameSite: 'strict' }); // настройки куки
             return newValue;
         });
     };

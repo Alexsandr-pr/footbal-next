@@ -48,12 +48,20 @@
     }
     
     .button-border {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        height: 40px;
         text-transform: uppercase;
         padding: 10px 12px;
         border-bottom: 1px solid transparent;
-        @media (max-width: 640.98px) {
-        font-size: 11px;
+        @media (max-width: 767.98px) {
+            height: 32px;
+            font-size: 11px;
+            padding: 9.5px 12px;
         }
+
     }
     
     .button-gr.active {
@@ -96,5 +104,16 @@
         font-size: 14px;
         @media (max-width: 487.98px) {
         font-size: 11px;
+        }
+    }
+
+
+    .grid {
+        @media(max-width:767.98px){
+            gap: 12px;
+        }
+        @media(min-width:767.98px){
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
         }
     }

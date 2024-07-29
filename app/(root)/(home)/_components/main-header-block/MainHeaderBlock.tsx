@@ -9,7 +9,6 @@ const MainHeaderBlock = () => {
     const { showLiveGames, setShowLiveGames, coefficient, handleCoefficient } = useFilter();
 
     const pathname = usePathname();
-
     
     return (
         <div className={styles.mainHeader__block}>
@@ -18,7 +17,7 @@ const MainHeaderBlock = () => {
                     <Links />
                 </div>
                 <div className={`${styles['content-header__bottom']} ${styles['botton-header']}`}>
-                    <div className={styles['botton-header__buttons']}>
+                    <div  className={`${styles['botton-header__buttons']} ${styles.grid}`}>
                         <button
                             onClick={() => setShowLiveGames(false)}
                             className={`${styles['button-border']} ${styles['button-gr']} ${!showLiveGames ? styles['active'] : ''}`}
@@ -31,7 +30,7 @@ const MainHeaderBlock = () => {
                                 onClick={() => setShowLiveGames(true)}
                                 className={`${styles['button-border']} ${styles['button-red']} ${showLiveGames ? styles['active'] : ''}`}
                             >
-                                VIVO (12)
+                                VIVO (124)
                             </button>
                             )
                         }
