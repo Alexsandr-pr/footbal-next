@@ -1,5 +1,6 @@
-"use client"
+"use client";
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 interface FilterContextType {
     showLiveGames: boolean;
@@ -12,25 +13,23 @@ const FilterContext = createContext<FilterContextType | undefined>(undefined);
 
 export const FilterProvider = ({ children }: { children: ReactNode }) => {
     const [showLiveGames, setShowLiveGames] = useState<boolean>(false);
-    const [coefficient, setCoefficient] = useState<boolean>(() => {
-        const savedCoefficient = localStorage.getItem('coefficient');
-        return savedCoefficient ? JSON.parse(savedCoefficient) : true;
-    });
+    const [coefficient, setCoefficient] = useState<boolean>(true);
+
+    // Восстановление состояния из куки только на клиенте
+    useEffect(() => {
+        const savedCoefficient = Cookies.get('coefficient');
+        if (savedCoefficient !== undefined) {
+            setCoefficient(JSON.parse(savedCoefficient));
+        }
+    }, []);
 
     const handleCoefficient = () => {
         setCoefficient(prev => {
             const newValue = !prev;
-            localStorage.setItem('coefficient', JSON.stringify(newValue));
+            Cookies.set('coefficient', JSON.stringify(newValue));
             return newValue;
         });
     };
-
-    useEffect(() => {
-        const savedCoefficient = localStorage.getItem('coefficient');
-        if (savedCoefficient !== null) {
-            setCoefficient(JSON.parse(savedCoefficient));
-        }
-    }, []);
 
     return (
         <FilterContext.Provider value={{ showLiveGames, setShowLiveGames, coefficient, handleCoefficient }}>
