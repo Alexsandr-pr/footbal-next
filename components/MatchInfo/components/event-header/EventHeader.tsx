@@ -39,7 +39,7 @@ const EventHeader = ({
                 )}
                 </button>
                 <button onClick={cb} className={styles.icon}>
-                <ChevronDown style={{ transform: `${show ? "rotate(180deg)" : ""}` }} />
+                    <ChevronDown  style={{ transform: `${show ? "rotate(180deg)" : ""}` }} />
                 </button>
             </div>
         </div>

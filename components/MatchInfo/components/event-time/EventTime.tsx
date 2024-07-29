@@ -24,7 +24,9 @@ const EventTime = ({status, startTime, gameTimeToDisplay} : EventTimeProps) => {
     if(status.enum === 3) {
         return (
             <div className={styles.block}>
-                {status.name}
+                <div className={styles.status}>
+                    {status.name}
+                </div>
             </div>
         )
     }

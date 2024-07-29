@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 0 1 20%;
+    flex: 0 1 14.342105%; /* 109/760 */
 }
 
 .block {
@@ -22,7 +22,6 @@
 
 .number {
     display: flex;
-    gap: 2.5px;
     align-items: center;
     
 }
@@ -40,8 +39,8 @@
 
 }
 .ball {
-    width: 4px;
-    height: 4px;
+    width: 3.9px;
+    height: 3.9px;
     display: block;
     background:var(--live);
 }

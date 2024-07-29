@@ -118,7 +118,7 @@ table, td, th, tr {
 
 [class*=_container] {
     overflow: hidden;
-	max-width: 1192px;
+	max-width: 1204px;
 	margin: 0px auto;
 	height: 100%;
 	padding: 0px 24px;
@@ -144,7 +144,7 @@ table, td, th, tr {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 0 1 20%;
+    flex: 0 1 14.342105%; /* 109/760 */
 }
 
 .loading {

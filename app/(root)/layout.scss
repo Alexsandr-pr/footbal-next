@@ -17,18 +17,19 @@
     }
     // .main-block__aside
     &__aside {
-        flex: 0 1 22.398601%; /* 302/1144 */
-        @media(max-width:1100.98px){
-            flex: 0 1 18.398601%;
-        }
-        @media(min-width:991.98px){
-            padding-right: 24px;
-        }
-        @media(max-width:991.98px){
-            @media(min-width:767.98px){
-                padding-right: 12px;
-            }
-        }
+        padding-right: 24px;
+        flex: 0 1 23.442907%; /* 271/1156 */
+        // @media(max-width:1100.98px){
+        //     flex: 0 1 18.398601%;
+        // }
+        // @media(min-width:991.98px){
+        //     padding-right: 24px;
+        // }
+        // @media(max-width:991.98px){
+        //     @media(min-width:767.98px){
+        //         padding-right: 12px;
+        //     }
+        // }
         @media(max-width:767.98px){
             position: fixed;
             width: 100%;
@@ -46,27 +47,27 @@
         }
     }
 
-    .aside__menu {
-        @media(max-width:767.98px){
-            width: 100%;
-            padding: 67px 34px 20px 24px;
-            overflow: auto;
-            background-image: url("/assets/main/bg.webp") ;
-            height: 100%;
-            background-size: cover;
-            &::-webkit-scrollbar {
-                width: 5px;
-                background-color: var(--white);
-                height: 100%;
-            }
+    // .aside__menu {
+    //     @media(max-width:767.98px){
+    //         width: 100%;
+    //         padding: 67px 34px 20px 24px;
+    //         overflow: auto;
+    //         background-image: url("/assets/main/bg.webp") ;
+    //         height: 100%;
+    //         background-size: cover;
+    //         &::-webkit-scrollbar {
+    //             width: 5px;
+    //             background-color: var(--white);
+    //             height: 100%;
+    //         }
             
-            &::-webkit-scrollbar-thumb {
-                background: var(--green-light);
-                border-radius: 5px;
-            }
-        }
+    //         &::-webkit-scrollbar-thumb {
+    //             background: var(--green-light);
+    //             border-radius: 5px;
+    //         }
+    //     }
         
-    }
+    // }
     // .main-block__content
 
     &__content {
@@ -75,7 +76,7 @@
         flex-direction: column;
         gap: 24px;
         @media(min-width:767.98px){
-            flex: 0 1 76.202797%; /* 826/1144 */
+            flex: 0 1 74.394464%; /* 860/1156 */
         }
         @media(max-width:767.98px){
             width: 100%;

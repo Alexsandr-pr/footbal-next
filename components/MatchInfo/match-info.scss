@@ -30,9 +30,15 @@
     // .item-event__bottom
 
     &__bottom {
+        height: 32px;
         padding: 7px 10px;
+        align-items: center;
         display: flex;
         justify-content: center;
+        @media(max-width:767.98px){
+            height: 26px;
+            padding: 3px 10px;
+        }
     }
 }
 

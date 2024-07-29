@@ -1,6 +1,7 @@
 
 
 .item {
+    min-height: 48px;
     &:not(:last-child) {
         border-bottom:1px solid var(--border);
     }
@@ -14,9 +15,17 @@
     color:  var(--white);
     font-weight: 400;
     height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-size: 12px;
-    line-height: 1.2; /* 14.4px */
+    @media(max-width:767.98px){
+        height: 16px;
+        font-size: 10px;
+        padding: 2px 6px;
+        line-height: 1.5;
+    }
 }
 
 .body {

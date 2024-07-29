@@ -1,8 +1,9 @@
 .cof-team {
-    border-top: #60756C 1px solid;
-    padding: 5px 12px;
+    height: 24px;
+    border-top: var(--border) 1px solid;
+    padding: 4px 12px;
     display: flex;
-    font-family: Roboto;
+    align-items: center;
     gap: 10px;
     font-weight: 400;
     font-size: 12px;
@@ -12,6 +13,11 @@
         flex: 0 1 33.333%;
         align-items: center;
         display: flex;
+        line-height: 1.5;
         justify-content: center;
+    }
+    @media(max-width:767.98px){
+        height: 16px;
+        font-size: 10px;
     }
 }

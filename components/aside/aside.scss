@@ -14,7 +14,7 @@
     // .aside__select
 
     &__select {
-        padding: 20px 0px;
+        padding: 16px 0px;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -55,6 +55,9 @@
     // .select__button
 
     &__button {
+        color: var(--green);
+        font-size: 14px;
+        text-transform: uppercase;
         gap: 10px;
         width: 100%;
         display: flex;
@@ -123,7 +126,9 @@
 
     &__button {
         padding: 8px 0px;
-        font-size: 20px;
+        color: var(--white);
+        font-size: 18px;
+        text-transform: uppercase;
         transition: all 0.3s ease 0s;
         @media(hover:hover) {
             &:hover {

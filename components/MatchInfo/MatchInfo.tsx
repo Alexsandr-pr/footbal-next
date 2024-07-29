@@ -18,7 +18,7 @@ const MatchInfo = ({games} : MatchInfoProps) => {
     const isInternationl = games?.is_international;
 
     return (
-        <div ref={block} style={{border: '1px solid var(--border)'}} className="item-event">
+        <div ref={block}  className="item-event">
             <EventHeader leagueId={id} name={name} show={show} cb={() => setShow(prev => !prev)}/>
             {
                 show && (<div style={{borderTop: show ? "1px solid var(--border)" : "none"}}  className="item-event__content">
