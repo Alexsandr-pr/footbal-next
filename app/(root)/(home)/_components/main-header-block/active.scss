@@ -2,7 +2,7 @@
 
 .green-cuotas {
     padding: 12px;
-    height: 41px;
+    height: 40px;
     color: var(--white);
     font-size: 14px;
     border-radius:  4px;
@@ -12,5 +12,13 @@
     }
     @media(max-width:767.98px){
         font-size: 11px;
+    }
+}
+.button-off {
+    background: var(--green-hover);
+    color:var(--border);
+    &.active {
+        background: var(--green-dark);
+        color:var(--white);
     }
 }

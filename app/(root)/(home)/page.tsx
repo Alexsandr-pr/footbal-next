@@ -14,7 +14,7 @@ async function getData(): Promise<LeaguesResponse> {
 }
 
 export default function Page() {
-    const { showLiveGames } = useFilter();
+    const { showLiveGames, setLiveGamesCount } = useFilter();
     const [leagues, setLeagues] = useState<League[]>([]);
     const [filteredLeagues, setFilteredLeagues] = useState<League[]>([]);
 
@@ -33,17 +33,22 @@ export default function Page() {
     }, []);
 
     useEffect(() => {
+        const countLiveGames = (leagues: League[]) => 
+            leagues.reduce((count, league) => count + league.games.filter(game => game.status.enum === 2).length, 0);
+
         if (showLiveGames) {
             const filtered = leagues.map(league => ({
                 ...league,
                 games: league.games.filter(game => game.status.enum === 2) // Живые игры
             })).filter(league => league.games.length > 0); // Исключение пустых лиг
 
+            setLiveGamesCount(countLiveGames(filtered));
             setFilteredLeagues(filtered);
         } else {
+            setLiveGamesCount(countLiveGames(leagues));
             setFilteredLeagues(leagues);
         }
-    }, [showLiveGames, leagues]);
+    }, [showLiveGames, leagues, setLiveGamesCount]);
 
     return <Home leagues={filteredLeagues} />;
 }

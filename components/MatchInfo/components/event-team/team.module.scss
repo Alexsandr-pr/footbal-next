@@ -21,6 +21,6 @@
 .left {
     display: flex;
     text-align: right;
-    justify-content: end;
+    justify-content: flex-end; // на эту строку
     flex: 0 1 43%;
 }

@@ -8,6 +8,7 @@ import "../styles/globals.scss";
 export const metadata: Metadata = {
     title: "PROMIEDOS - Futbol Argentino - Promedios, Fixture, Posiciones, Copas",
     description: "",
+    icons: "/favicon.png"
 };
 
 export default function RootLayout({

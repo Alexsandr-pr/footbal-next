@@ -7,6 +7,8 @@ interface FilterContextType {
     setShowLiveGames: (value: boolean) => void;
     coefficient: boolean;
     handleCoefficient: () => void;
+    liveGamesCount: number;
+    setLiveGamesCount: (count: number) => void;
 }
 
 const FilterContext = createContext<FilterContextType | undefined>(undefined);
@@ -14,8 +16,8 @@ const FilterContext = createContext<FilterContextType | undefined>(undefined);
 export const FilterProvider = ({ children }: { children: ReactNode }) => {
     const [showLiveGames, setShowLiveGames] = useState<boolean>(false);
     const [coefficient, setCoefficient] = useState<boolean>(true);
+    const [liveGamesCount, setLiveGamesCount] = useState<number>(0);
 
-    // Восстановление состояния из куки только на клиенте
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const savedCoefficient = Cookies.get('coefficient');
@@ -34,7 +36,7 @@ export const FilterProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <FilterContext.Provider value={{ showLiveGames, setShowLiveGames, coefficient, handleCoefficient }}>
+        <FilterContext.Provider value={{ showLiveGames, setShowLiveGames, coefficient, handleCoefficient, liveGamesCount, setLiveGamesCount }}>
             {children}
         </FilterContext.Provider>
     );
