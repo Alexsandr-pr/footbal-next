@@ -10,6 +10,9 @@
 }
 .block {
     flex: 0 1 43%;
+    @media(max-width:767.98px){
+        flex: 0 1 33.333333%; /* 88/264 */
+    }
 }
 
 .right {
@@ -17,10 +20,16 @@
     display: flex;
     justify-content: start;
     flex: 0 1 43%;
+    @media(max-width:767.98px){
+        flex: 0 1 33.333333%; /* 88/264 */
+    }
 }
 .left {
     display: flex;
     text-align: right;
     justify-content: flex-end; // на эту строку
     flex: 0 1 43%;
+    @media(max-width:767.98px){
+        flex: 0 1 33.333333%; /* 88/264 */
+    }
 }

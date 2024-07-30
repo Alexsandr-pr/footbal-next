@@ -4,6 +4,9 @@
     align-items: center;
     justify-content: center;
     flex: 0 1 14.342105%; /* 109/760 */
+    @media(max-width:767.98px){
+        flex: 0 1 27.272727%; /* 72/264 */
+    }
 }
 
 .block {
@@ -23,20 +26,15 @@
 .number {
     display: flex;
     align-items: center;
-    
 }
 
 .text {
     font-size: 12px;
-    font-family: Roboto;
-    // .team-span__block
     font-weight: 400;
     color: var(--grey-70);
-    font-weight: 400;
     @media(max-width:767.98px){
         font-size: 10px;
     }
-
 }
 .ball {
     width: 3.9px;
@@ -52,19 +50,20 @@
 }
 
 .tire {
-    padding: 0px 3px;
+    padding: 0px 2px;
     color: var(--white);
     text-align: center;
     font-size: 16px;
+    font-weight: 700;
 }
 
 .scores {
-    display: inline-flex;
+    display: flex;
     color: var(--white);
-    text-align: center;
     font-size: 18px;
     @media(max-width:767.98px){
         font-size: 16px;
+        line-height: normal;
     }
 }
 .score {
@@ -75,5 +74,6 @@
     font-weight: 400;
     @media(max-width:767.98px){
         font-size: 11px;
+        line-height: 1;
     }
 }

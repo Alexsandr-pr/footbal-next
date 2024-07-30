@@ -21,7 +21,7 @@ const EventResult = ({
 
 
     if (!scores || status.enum === 1) {
-        return <div style={colorStyle} className="status-span">-</div>;
+        return <div style={colorStyle} className={styles.span}>-</div>;
     }
 
     return (
