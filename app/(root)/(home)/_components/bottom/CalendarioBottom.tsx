@@ -21,7 +21,9 @@ const CalendarioBottom: React.FC<CalendarioBottomProps> = ({ calendar }) => {
                     <p className="bottom-info__label">Anniversaries</p>
                     {calendar.clubs.map(club => (
                         <div key={club.id} className="info-item__block">
-                            <img width={32} src={`https://www.sports-stats.net/images/team/${club?.id}/4`} alt={club.name} />
+                            <div className="info-item__block-image">
+                                <img  src={`https://www.sports-stats.net/images/team/${club?.id}/4`} alt={club.name} />
+                            </div>
                             <div className="info-item__body">
                                 <p className="info-item__title">{club.name}</p>
                                 <div className="info-item__text">{club.text}</div>
