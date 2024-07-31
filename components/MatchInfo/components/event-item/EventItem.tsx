@@ -45,9 +45,9 @@ const EventItem = ({
     const {coefficient } = useFilter();
     return (
         <div className={styles.item}>
-            <div className={styles.top}>
+            {/* <div className={styles.top}>
                 {name}
-            </div>
+            </div> */}
             <div ref={block} className={styles.body}>
                 <EventTime gameTimeToDisplay={game.game_time_to_display} startTime={startTime} status={status}/>
                 <div  className={styles.content}>

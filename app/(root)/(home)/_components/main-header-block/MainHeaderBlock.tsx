@@ -20,19 +20,23 @@ const MainHeaderBlock = () => {
                 </div>
                 <div className={`${styles['content-header__bottom']} ${styles['botton-header']}`}>
                     <div  className={`${styles['botton-header__buttons']} ${styles.grid}`}>
-                        <button
-                            onClick={() => setShowLiveGames(false)}
-                            className={`${styles['button-border']} ${styles['button-gr']} ${!showLiveGames ? styles['active'] : ''}`}
-                        >
-                            TODOS
-                        </button>
-                        
+                        {
+                            pathname === "/" ? (<>
                                 <button
-                                onClick={() => setShowLiveGames(true)}
-                                className={`${styles['button-border']} ${styles['button-red']} ${showLiveGames ? styles['active'] : ''}`}
-                            >
-                                VIVO ({liveGamesCount})
-                            </button>
+                                    onClick={() => setShowLiveGames(false)}
+                                    className={`${styles['button-border']} ${styles['button-gr']} ${!showLiveGames ? styles['active'] : ''}`}
+                                >
+                                    TODOS
+                                </button>
+                                
+                                        <button
+                                        onClick={() => setShowLiveGames(true)}
+                                        className={`${styles['button-border']} ${styles['button-red']} ${showLiveGames ? styles['active'] : ''}`}
+                                    >
+                                        VIVO ({liveGamesCount})
+                                    </button>
+                            </>) : null
+                        }
                             
                         
                         
@@ -43,9 +47,9 @@ const MainHeaderBlock = () => {
                         </button>
                         <button onClick={() => setState(prev => !prev)} className={`${styles['button-green']} button-off ${state ? "active" : ""}`}>
                                 {state ? (
-                                <Bell color="var(--green)" width={16} height={18} strokeWidth={2} />
+                                <Bell color="var(--white)" width={16} height={18} strokeWidth={2} />
                                 ) : (
-                                    <BellOff color="var(--white)" width={16} height={18} strokeWidth={2} />
+                                    <BellOff color="var(--green)" width={16} height={18} strokeWidth={2} />
                                 )}
                         </button>
                     </div>

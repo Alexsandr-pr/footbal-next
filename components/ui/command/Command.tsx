@@ -74,7 +74,7 @@ const Command = ({
                 {
                     isInternationl && <img style={flagStyle} src={`https://www.sports-stats.net/images/country/${country_id}/4`} alt="flag" className="country"/>
                 }
-                <div className="">
+                <div className="comand-imageteam">
                     <img src={`https://www.sports-stats.net/images/team/${team?.id}/4`} className="team"/>
                 </div>
             </div>

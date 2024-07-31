@@ -3,23 +3,27 @@ import { useState, useEffect } from 'react';
 
 interface FallbackImageProps {
     src: string;
-    fallbackSrc: string;
     alt: string;
     width: number;
     height: number;
 }
 
-const FallbackImage: React.FC<FallbackImageProps> = ({ src, fallbackSrc, alt, width, height }) => {
-    const [imgSrc, setImgSrc] = useState(src);
+const FallbackImage: React.FC<FallbackImageProps> = ({ src, alt, width, height }) => {
+    const [imgSrc, setImgSrc] = useState<string | null>(src);
+    const [imageExists, setImageExists] = useState(true);
 
     useEffect(() => {
         const img = new Image();
         img.src = src;
         img.onload = () => setImgSrc(src);
-        img.onerror = () => setImgSrc(fallbackSrc);
-    }, [src, fallbackSrc]);
+        img.onerror = () => setImageExists(false);
+    }, [src]);
 
-    return <img width={width} height={height} src={imgSrc} alt={alt} />;
+    if (!imageExists) {
+        return null;
+    }
+
+    return imgSrc ? <img width={width} height={height} src={imgSrc} alt={alt} /> : null;
 };
 
 export default FallbackImage;

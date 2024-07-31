@@ -1,11 +1,15 @@
+"use client";
 import Link from "next/link";
 import AsideSpoller from "./spoller/AsideSpoller";
 import { asideLinks } from "@/consts/asideLinks";
 
 import "./aside.scss";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 
 function Aside() {
+    const header = useSelector((state:RootState) => state.counter.header);
 
     const data: Array<{ text: string }> = [
         { text: "Copa de la Liga" },
@@ -19,7 +23,7 @@ function Aside() {
     ];
 
     return (
-        <aside className="main-block__aside aside">
+        <aside style={{right: header ? "0%" : "-120%"}} className="main-block__aside aside">
             <div className="aside__image-top">
                 <img src="/assets/aside/image-top.png" alt=""/>
             </div>

@@ -18,7 +18,7 @@
 .right {
     text-align: left;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex: 0 1 43%;
     @media(max-width:767.98px){
         flex: 0 1 33.333333%; /* 88/264 */

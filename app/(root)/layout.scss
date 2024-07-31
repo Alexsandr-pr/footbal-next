@@ -5,8 +5,12 @@
 }
 
 .main {
+    padding-top: 32px;
     flex: 1 1 auto;
     padding-bottom: 50px;
+    @media(max-width:767.98px){
+        padding-top: 0px;
+    }
 }
 
 .main-block {
@@ -17,58 +21,33 @@
     }
     // .main-block__aside
     &__aside {
-        padding-right: 24px;
-        flex: 0 1 23.442907%; /* 271/1156 */
-        // @media(max-width:1100.98px){
-        //     flex: 0 1 18.398601%;
-        // }
-        // @media(min-width:991.98px){
-        //     padding-right: 24px;
-        // }
-        // @media(max-width:991.98px){
-        //     @media(min-width:767.98px){
-        //         padding-right: 12px;
-        //     }
-        // }
+        @media(min-width:991.98px){
+            padding-right: 24px;
+        }
+        @media(min-width:767.98px){
+            flex: 0 1 23.442907%; /* 271/1156 */
+        }
         @media(max-width:767.98px){
             position: fixed;
+            transition: all 0.3s ease 0s;
             width: 100%;
+            padding: 24px;
+            background: url("/assets/main/bg-mobile.webp");
+            height: 100%;
             top: 0px;
             right: -120%;
-            transition: all 0.3s ease 0s;
-            height: 100%;
             z-index: 50;
-            display: flex;
-            justify-content: end;
-            background-color: var(--black-50);
-            &._active {
-                right: 0;
+            overflow-y: auto;
+            &::-webkit-scrollbar {
+                width: 0px;
+                display: none;
             }
+            
+        }
+        @media(max-width:487.98px){
+            padding: 16px;
         }
     }
-
-    // .aside__menu {
-    //     @media(max-width:767.98px){
-    //         width: 100%;
-    //         padding: 67px 34px 20px 24px;
-    //         overflow: auto;
-    //         background-image: url("/assets/main/bg.webp") ;
-    //         height: 100%;
-    //         background-size: cover;
-    //         &::-webkit-scrollbar {
-    //             width: 5px;
-    //             background-color: var(--white);
-    //             height: 100%;
-    //         }
-            
-    //         &::-webkit-scrollbar-thumb {
-    //             background: var(--green-light);
-    //             border-radius: 5px;
-    //         }
-    //     }
-        
-    // }
-    // .main-block__content
 
     &__content {
         overflow: hidden;

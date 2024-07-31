@@ -1,13 +1,21 @@
+import Link from "next/link";
 import "./header.scss";
+import BurgerButton from "./BurgerButton";
 
 const Header = () => {
+
+
+
+
+    
+
     return (
         <header className="header">
             <div className="header__container">
                 <div className="header__logo">
-                    <a href="#">
+                    <Link href="#">
                         <img src="/assets/header/logo_white.webp" alt="Logo"/>
-                    </a>
+                    </Link>
                 </div>
                 <div className="header__form">
                     <svg className="ham ham3 active" viewBox="0 0 100 100" width="40" >
@@ -21,43 +29,9 @@ const Header = () => {
                             className="line bottom"
                             d="m 70,67 h -40 c 0,0 -3.680675,0.737051 -3.660714,-3.517857 0.02541,-5.415597 3.391687,-10.357143 10.982142,-10.357143 4.048418,0 17.88928,0.178572 23.482143,0.178572 0,2.563604 2.451177,3.403635 4.642857,3.392857 2.19168,-0.01078 4.373905,-1.369814 4.375,-3.392857 0.0011,-2.023043 -1.924401,-2.589191 -4.553571,-4.107143 -2.62917,-1.517952 -4.196429,-1.799562 -4.196429,-3.660714 0,-1.861153 2.442181,-3.118811 4.196429,-3.035715 1.754248,0.0831 4.375,0.890841 4.375,3.125 2.628634,0 6.160714,0.267857 6.160714,0.267857 l -0.178571,-2.946428 10.178571,0 -10.178571,0 v 6.696428 l 8.928571,0 -8.928571,0 v 7.142858 l 10.178571,0 -10.178571,0" />
                     </svg>
-                    <form  action="#">
-                        <label className="header__search" htmlFor="search">
-                            <img width="24" height="24" className="header__image-search" src="/assets/header/search.webp" alt="search"/>
-                            <input autoComplete="off" className="header__search-input" id="search" type="search" placeholder="Search"/>
-                        </label>
-                    </form>
-                    <div className="header__search-block">
-                        <p className="header__search-title">Solicitudes recientes</p>
-                        <ul  className="search__list">
-                            <li className="search__item">
-                                <p>Copa de la Liga</p>
-                            </li>
-                            <li className="search__item">
-                                <p>Prim. B Nacional</p>
-                            </li>
-                            
-                        </ul>
-                    </div>
                 </div>
-
                 <div className="header__buttons">
-                    <button className="header__button-search">
-                        <img width="24" height="24" src="/assets/header/search.webp" alt="search"/>
-                    </button>
-                    <button className="header__button-menu icon-menu">
-                        <svg className="ham hamRotate ham7" viewBox="0 0 100 100" width="40" >
-                            <path
-                                className="line top"
-                                d="m 70,33 h -40 c 0,0 -6,1.368796 -6,8.5 0,7.131204 6,8.5013 6,8.5013 l 20,-0.0013" />
-                            <path
-                                className="line middle"
-                                d="m 70,50 h -40" />
-                            <path
-                                className="line bottom"
-                                d="m 69.575405,67.073826 h -40 c -5.592752,0 -6.873604,-9.348582 1.371031,-9.348582 8.244634,0 19.053564,21.797129 19.053564,12.274756 l 0,-40" />
-                        </svg>
-                    </button>
+                    <BurgerButton/>
                 </div>
             </div>
         </header>

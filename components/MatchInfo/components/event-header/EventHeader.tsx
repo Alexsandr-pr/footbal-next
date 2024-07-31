@@ -16,14 +16,13 @@ const EventHeader = ({
     name: string;
 }) => {
     const [state, setState] = useState(false);
-    const defaultImage = '/assets/icons/world.webp';
+    
 
     return (
         <div className={styles.button}>
             <div className={styles.left}>
                 <FallbackImage 
                     src={`https://www.sports-stats.net/images/league/${leagueId}/1`} 
-                    fallbackSrc={defaultImage} 
                     alt={name} 
                     width={14.7} 
                     height={14.7} 

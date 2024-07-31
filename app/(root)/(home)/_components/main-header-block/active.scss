@@ -17,10 +17,11 @@
     }
 }
 .button-off {
-    background: var(--green-hover);
+    transition: all 0.3s ease 0s;
+    background: var(--green-dark);
     color:var(--border);
     &.active {
-        background: var(--green-dark);
+        background: var(--green-hover);
         color:var(--white);
     }
 }

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Home from "./_components/home/Home";
-import { League, LeaguesResponse } from '@/types/home';
+import { Calendar, League, LeaguesResponse } from '@/types/home';
 import { useFilter } from '@/contexts/FilterContext';
 
 async function getData(): Promise<LeaguesResponse> {
@@ -16,13 +16,15 @@ async function getData(): Promise<LeaguesResponse> {
 export default function Page() {
     const { showLiveGames, setLiveGamesCount } = useFilter();
     const [leagues, setLeagues] = useState<League[]>([]);
+    const [calendar, setCalendar] = useState<Calendar | null>(null);
     const [filteredLeagues, setFilteredLeagues] = useState<League[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { leagues } = await getData();
+                const { leagues, calendar } = await getData();
                 setLeagues(leagues);
+                setCalendar(calendar);
                 setFilteredLeagues(leagues);
             } catch (error) {
                 console.error(error);
@@ -50,5 +52,5 @@ export default function Page() {
         }
     }, [showLiveGames, leagues, setLiveGamesCount]);
 
-    return <Home leagues={filteredLeagues} />;
+    return <Home calendar={calendar} leagues={filteredLeagues} />;
 }

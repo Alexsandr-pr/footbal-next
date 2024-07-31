@@ -20,12 +20,12 @@ const EventGols = ({
         <div className={styles.foot}>
             <div className={styles.item}>
                 {
-                    goalsTeam1?.map(item => (
+                    goalsTeam1?.map((item, index) => (
                         <span className={styles.block} key={item.id}>
                             <span className="green">
                                 {item.time_to_display}
                             </span>
-                            <p>{item.player_sname};</p>
+                            <p>{item.player_sname}{ (index < goalsTeam1.length - 1) ? ";" : null }</p>
                         </span>
                     ))
                 }
@@ -35,12 +35,12 @@ const EventGols = ({
             </div>
             <div className={styles.item}>
                 {
-                    goalsTeam2?.map(item => (
+                    goalsTeam2?.map((item, index) => (
                         <span className={styles.block} key={item.id}>
                             <span className="green">
                                 {item.time_to_display}
                             </span>
-                            <p>{item.player_sname}</p>
+                            <p>{item.player_sname}{ (index < goalsTeam2.length - 1) ? ";" : null }</p>
                         </span>
                     ))
                 }

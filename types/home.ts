@@ -56,6 +56,25 @@ export interface League {
   is_international:boolean;
 }
 
+export interface Club {
+  name: string;
+  text: string;
+  id: string;
+}
+
+export interface Player {
+  name: string;
+  team: string;
+  text: string;
+}
+
+export interface Calendar {
+  title: string;
+  clubs: Club[];
+  players: Player[];
+}
+
 export interface LeaguesResponse {
   leagues: League[];
+  calendar: Calendar;
 }

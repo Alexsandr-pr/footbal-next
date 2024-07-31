@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 // import { Roboto, Roboto_Condensed } from "next/font/google";
 import "../styles/globals.scss";
+import StoreProvider from "@/store/StoreProvider";
 
 // const roboto = Roboto({ subsets: ["cyrillic"], weight: ["400", "700"] });
 // const robotoCondensed = Roboto_Condensed({ subsets: ["cyrillic"], weight: ["700"] });
@@ -16,9 +17,12 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    
     return (
-        <html lang="en">
-            <body >{children}</body>
-        </html>
+        <StoreProvider>
+            <html lang="en">
+                <body >{children}</body>
+            </html>
+        </StoreProvider>
     );
 }

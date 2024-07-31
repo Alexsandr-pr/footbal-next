@@ -1,12 +1,17 @@
 .header {
 
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: url("/assets/main/bg.webp");
+    z-index: 100;
     // .header__container
-    padding: 16px 0px 40px 0px;
+    padding: 16px 0px;
     @media(max-width:991.98px){
         padding: 16px 0px 24px 0px;
     }
     @media(max-width:487.98px){
-        padding: 16px 0px;
+        padding: 24px 0px ;
     }
     &__container {
         display: flex;
@@ -239,4 +244,8 @@ stroke-dashoffset: -86px;
             
         }
     }
+}
+
+.header__logo {
+    z-index: 51;
 }

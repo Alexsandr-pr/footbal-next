@@ -1,13 +1,15 @@
 .aside {
-
+    
+    
     // .aside__image-top
 
     &__image-top {
-        @media(max-width:767.98px){
-            display: none;
-        }
+        
         img {
             max-width: 100%;
+        }
+        @media(max-width:767.98px){
+            display: none;
         }
     }
 
@@ -101,6 +103,13 @@
         }
     }
 }
+
+@media(max-width:767.98px){
+    .aside__menu {
+        padding-top: 65px;
+    }
+}
+
 .select__list {
     padding: 16px 12px 0px 12px;
 }

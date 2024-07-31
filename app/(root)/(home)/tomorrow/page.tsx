@@ -12,10 +12,10 @@ async function getData(): Promise<LeaguesResponse> {
 }
 
 async function Tomorrow() {
-    const { leagues }: LeaguesResponse = await getData();
+    const { leagues, calendar }: LeaguesResponse = await getData();
     
     return (
-        <Home leagues={leagues}/>
+        <Home calendar={calendar}  leagues={leagues}/>
     );
 }
 
