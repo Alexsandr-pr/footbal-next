@@ -1,5 +1,5 @@
 import { Calendar } from "@/types/home";
-import "./calendario-bottom.scss";
+import styles from "./calendario-bottom.module.scss";
 
 interface CalendarioBottomProps {
     calendar: Calendar | null;
@@ -11,42 +11,48 @@ const CalendarioBottom: React.FC<CalendarioBottomProps> = ({ calendar }) => {
     }
 
     return (
-        <div className="main-content__bottom-info bottom-info">
-            <div className="bottom-info__title">
+        <div className={styles.calendar}>
+            <div className={styles.title}>
                 <h3>{calendar.title}</h3>
             </div>
             
-            <div className="bottom-info__items">
-                <div className="bottom-info__item info-item">
-                    <p className="bottom-info__label">Anniversaries</p>
-                    {calendar.clubs.map(club => (
-                        <div key={club.id} className="info-item__block">
-                            <div className="info-item__block-image">
-                                <img  src={`https://www.sports-stats.net/images/team/${club?.id}/4`} alt={club.name} />
+            <div className={styles.items}>
+                <div className={styles.item}>
+                    <p className={styles.label}>Anniversaries</p>
+                    <div className={styles.blockitems}>
+                        {calendar.clubs.map(club => (
+                            <div key={club.id} className={styles.block}>
+                                <div className={styles.images}>
+                                    <img className={styles.image} src={`https://www.sports-stats.net/images/team/${club?.id}/4`} alt={club.name} />
+                                </div>
+                                <div className={styles.blockbody}>
+                                    <p className={styles.name}>{club.name}</p>
+                                    <div className={styles.text}>{club.text}</div>
+                                </div>
                             </div>
-                            <div className="info-item__body">
-                                <p className="info-item__title">{club.name}</p>
-                                <div className="info-item__text">{club.text}</div>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
                 
-                <div className="bottom-info__item info-item">
-                    <p className="bottom-info__label">Cumpleaños</p>
+                <div className={styles.item}>
+                    <p className={styles.label}>Cumpleaños</p>
+                    <div className={styles.blockitems}>
                     {calendar.players.map((player, index) => (
-                        <div key={index} className="info-item__block">
-                            <div className="info-item__body">
-                                <p className="info-item__title">{player.name}</p>
-                                <div className="info-item__text">({player.team}) {player.text}</div>
+
+                        <div key={index} className={styles.block}>
+                            <div className={styles.blockbody}>
+                                <p className={styles.name}>{player.name}</p>
+                                <div className={styles.text}>({player.team}) {player.text}</div>
                             </div>
                         </div>
                     ))}
+                    </div>
+                    
                 </div>
             </div>
             
-            <div className="bottom-info__buttons">
-                <button className="bottom-info__button">Calendario Extendido</button>
+            <div className={styles.buttons}>
+                <button className={styles.button}>Calendario Extendido</button>
             </div>
         </div>
     );

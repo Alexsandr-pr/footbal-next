@@ -57,7 +57,8 @@
     // .select__button
 
     &__button {
-        color: var(--green);
+        //color: var(--green);
+        transition: all 0.3s ease 0s;
         font-size: 14px;
         text-transform: uppercase;
         gap: 10px;
@@ -65,15 +66,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        svg {
-            transition: all 0.3s ease 0s;
-        }
-        path {
-            transition: all 0.3s ease 0s;
-        }
+        
         @media(hover:hover) {
             &:hover {
-                color:var(--green);
+                color:var(--green) !important;
                 path {
                     stroke:var(--green);
                 }

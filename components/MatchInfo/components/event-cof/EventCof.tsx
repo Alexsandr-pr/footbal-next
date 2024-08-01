@@ -14,7 +14,8 @@ const EventCof = ({
             {options.map((option, index) => {
                 return (
                     <span key={index}>
-                        {option.name}. {option.value}
+                        {option.name}. {option.value.toFixed(1)}
+                        
                         {
                             GetTrendIcon(option.trend)
                         }

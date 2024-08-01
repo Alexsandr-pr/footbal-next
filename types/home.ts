@@ -45,6 +45,7 @@ export interface Game {
   game_time_to_display: string;
   TVNetworks?: TVNetwork[];
   main_odds?: MainOdds;
+  penalties?: [number, number];
 }
 
 export interface League {

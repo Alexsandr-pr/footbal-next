@@ -20,7 +20,7 @@ const AsideSpoller = ({
 
     return (
         <div ref={animationParent} className="select__block">
-            <button onClick={() => setState(prev => !prev)} className="select__button">
+            <button style={{color: state ? "var(--green)" : "var(--white)"}} onClick={() => setState(prev => !prev)} className="select__button">
                 {title}
                 <ChevronDown style={{transform: `rotate(${state ? "180deg" : "0deg"})` }} height={24} width={24}/>
             </button>

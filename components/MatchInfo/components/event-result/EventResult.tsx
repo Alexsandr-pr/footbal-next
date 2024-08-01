@@ -6,21 +6,23 @@ interface EventResultProps {
     status: {
         enum: number;
     };
-    redCards1:number;
-    redCards2:number;
+    redCards1: number;
+    redCards2: number;
+    penalties?: [number, number] | [];
 }
 
-const EventResult = ({ 
+const EventResult = ({
     redCards2,
     redCards1,
     scores,
     status,
+    penalties
 }: EventResultProps) => {
 
     const colorStyle = { color: status.enum === 2 ? "var(--live)" : "var(--white)" };
 
-
-    if (!scores || status.enum === 1) {
+    
+    if (!scores || scores.length < 2 || status.enum === 1) {
         return <div style={colorStyle} className={styles.span}>-</div>;
     }
 
@@ -31,24 +33,24 @@ const EventResult = ({
                     <div style={getGridStyle(redCards1)} className={styles.gol}>
                         {RenderGoals(redCards1)}
                     </div>
-                    <span  className={styles.score}>(1)</span> <span style={colorStyle} className={styles.scores}>{scores[0]}</span>
+                    {penalties && penalties.length > 0 && penalties[0] !== undefined && (
+                        <span className={styles.score}>({penalties[0]})</span>
+                    )}
+                    <span style={colorStyle} className={styles.scores}>{scores[0]}</span>
                 </div>
                 <div style={colorStyle} className={styles.tire}>-</div>
                 <div className={styles.number}>
-                    <span style={colorStyle} className={styles.scores}>{scores[1]}</span> <span  className={styles.score}>(1)</span>
+                    <span style={colorStyle} className={styles.scores}>{scores[1]}</span>
+                    {penalties && penalties.length > 1 && penalties[1] !== undefined && (
+                        <span className={styles.score}>({penalties[1]})</span>
+                    )}
                     <div style={getGridStyle(redCards2)} className={styles.gol}>
                         {RenderGoals(redCards2)}
                     </div>
                 </div>
             </div>
-            {/* {
-                gameTimeToDisplay && (<div className={styles.text}>
-                    {gameTimeToDisplay}
-                </div>)
-            } */}
         </div>
     );
-    
 }
 
 const RenderGoals = (count: number) => {
