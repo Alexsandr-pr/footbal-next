@@ -4,7 +4,9 @@ import AsideSpoller from "./spoller/AsideSpoller";
 import Parent from "./Parent";
 import { MenuResponse } from "@/types/menu";
 
+
 import "./aside.scss";
+import AsideLinks from "./AsideLinks";
 
 async function getData(): Promise<MenuResponse> {
     const res = await fetch('https://sports-stats.net/menu/');
@@ -15,9 +17,9 @@ async function getData(): Promise<MenuResponse> {
     return res.json();
 }
 
-
 async function Aside() {
     
+   
     const { categories, general } = await getData();
     
     return (
@@ -29,21 +31,11 @@ async function Aside() {
                 <div className="aside__select select">
                     {
                         categories.map(({name, items}) => {
-                            return <AsideSpoller name={name} items={items}/>
+                            return <AsideSpoller key={name} name={name} items={items}/>
                         })
                     }
                 </div>
-                <ul className="aside__links links-aside">
-                    {
-                        general.map(({name, link}, index) => (
-                            <li key={index} className="links-aside__item">
-                                <Link href={link} className="links-aside__button">
-                                    {name}
-                                </Link>
-                            </li>
-                        ))
-                    } 
-                </ul>
+                <AsideLinks general={general}/> 
                 <div className="aside__bottom">
                     <Link href="/">Legal - Privacidad</Link>
                 </div>

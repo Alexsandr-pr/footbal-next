@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface CounterState {
     header:boolean;
+    calendar: boolean;
 }
 
 
 const initialState: CounterState = {
     header: false,
+    calendar: false,
 }
 
 
@@ -18,8 +20,14 @@ export const counterSlice = createSlice({
         toggleHeader: (state) => {
             state.header = !state.header;
         },
+        openCalendar: (state) => {
+            state.calendar = true;
+        },
+        closeCalendar: (state) => {
+            state.calendar = false;
+        }
     }
 })
 
-export const { toggleHeader} = counterSlice.actions;
+export const { toggleHeader, closeCalendar, openCalendar } = counterSlice.actions;
 export default counterSlice.reducer;

@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import StoreProvider from "@/store/StoreProvider";
 
 import "./layout.scss";
+import Calendar from "@/components/ui/calendar/Calendar";
 
 function Layout({
     children
@@ -24,6 +25,7 @@ function Layout({
                         </div>
                     </div>
                 </main>
+                <Calendar/>
             </div>
         </StoreProvider>
         

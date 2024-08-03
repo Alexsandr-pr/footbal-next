@@ -154,3 +154,37 @@ table, td, th, tr {
     align-items: center;
     justify-content: center;
 }
+
+
+.error-body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 40px 0px;
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    button {
+        height: 40px;
+        padding: 11.5px 12px;
+        border-radius: 4px;
+        color: var(--green-hover);
+        background-color: var(--white);
+        font-family: "Roboto Condensed";
+        font-size: 14px;
+        transition: all 0.3s ease 0s;
+        text-transform: uppercase;
+        @media(max-width:767.98px){
+            width: 100%;
+        }
+        @media(hover:hover) {
+            &:hover {
+                cursor: pointer;
+                color:var(--white);
+                background-color:var(--green-hover);
+            }
+        }
+    }
+}
