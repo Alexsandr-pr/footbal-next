@@ -130,6 +130,7 @@
     // .links-aside__button
 
     &__button {
+        display: flex;
         padding: 8px 0px;
         color: var(--white);
         font-size: 18px;

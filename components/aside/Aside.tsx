@@ -1,47 +1,45 @@
-"use client";
+
 import Link from "next/link";
 import AsideSpoller from "./spoller/AsideSpoller";
-import { asideLinks } from "@/consts/asideLinks";
+import Parent from "./Parent";
+import { MenuResponse } from "@/types/menu";
 
 import "./aside.scss";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+
+async function getData(): Promise<MenuResponse> {
+    const res = await fetch('https://sports-stats.net/menu/');
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data');
+    }
+    return res.json();
+}
 
 
-function Aside() {
-    const header = useSelector((state:RootState) => state.counter.header);
-
-    const data: Array<{ text: string }> = [
-        { text: "Copa de la Liga" },
-        { text: "Prim. B Nacional" },
-        { text: "Copa Argentina" },
-        { text: "Libertadores" },
-        { text: "Champions" },
-        { text: "Elim. Conmebol" },
-        { text: "Ranking Titulos" },
-        { text: "Ranking Copas Int" }
-    ];
-
+async function Aside() {
+    
+    const { categories, general } = await getData();
+    
     return (
-        <aside style={{right: header ? "0%" : "-120%"}} className="main-block__aside aside">
+        <Parent>
             <div className="aside__image-top">
                 <img src="/assets/aside/image-top.png" alt=""/>
             </div>
             <div className="aside__menu">
                 <div className="aside__select select">
-                    <AsideSpoller title={"Destacado"} data={data}/>
-                    <AsideSpoller title={"Argentina"} data={data}/>
-                    <AsideSpoller title={"Copas Int."} data={data}/>
-                    <AsideSpoller title={"Ligas"} data={data}/>
-                    <AsideSpoller title={"Selecciones"} data={data}/>
+                    {
+                        categories.map(({name, items}) => {
+                            return <AsideSpoller name={name} items={items}/>
+                        })
+                    }
                 </div>
                 <ul className="aside__links links-aside">
                     {
-                        asideLinks.map(({label}, index) => (
+                        general.map(({name, link}, index) => (
                             <li key={index} className="links-aside__item">
-                                <button className="links-aside__button">
-                                    {label}
-                                </button>
+                                <Link href={link} className="links-aside__button">
+                                    {name}
+                                </Link>
                             </li>
                         ))
                     } 
@@ -50,9 +48,7 @@ function Aside() {
                     <Link href="/">Legal - Privacidad</Link>
                 </div>
             </div>
-            
-            
-        </aside>
+        </Parent>
     );
 }
 
