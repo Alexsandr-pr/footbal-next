@@ -1,7 +1,7 @@
 
 
 .item {
-    min-height: 48px;
+    //min-height: 48px;
     &:not(:last-child) {
         border-bottom:1px solid var(--border);
     }
@@ -31,6 +31,7 @@
 .body {
     display: flex;
 }
+
 .content {
     justify-content: center;
     width: 100%;

@@ -27,7 +27,8 @@ const EventItem = ({
     
     const scores = game?.scores ?? [];
     const penalties = game?.penalties;
-    
+    const description = game?.description;
+
     const startTime = game.start_time;
     const status = game?.status;
     const goalsTeam1 = teams[0]?.goals;
@@ -36,12 +37,21 @@ const EventItem = ({
     const [block] = useAutoAnimate()
 
     const { coefficient } = useFilter();
+    
     return (
         <div className={styles.item}>
             <div ref={block} className={styles.body}>
                 <EventTime gameTimeToDisplay={game.game_time_to_display} startTime={startTime} status={status} />
                 <div className={styles.content}>
-                    <EventTeam isInternationl={isInternationl} penalties={penalties} status={status} scores={scores} country_id={country_id} teams={teams} />
+                    <EventTeam 
+                        isInternationl={isInternationl} 
+                        penalties={penalties} 
+                        status={status} 
+                        scores={scores} 
+                        country_id={country_id}
+                        teams={teams} 
+                        description={description}
+                    />
                     {
                         status.enum === 1 ? null : (
                             (goalsTeam1 || goalsTeam2) && (

@@ -77,3 +77,21 @@
         line-height: 1;
     }
 }
+
+.description {
+    color: var(--grey-70);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    @media(max-width:767.98px){
+        font-size: 10px;
+    }
+}
+
+.marginL {
+    margin-left: 3px;
+}
+
+.marginR {
+    margin-right: 3px;
+}

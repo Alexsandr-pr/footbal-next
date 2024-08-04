@@ -14,6 +14,7 @@ interface EventItemProps {
     scores: number[];
     country_id: string;
     penalties?: [number, number] | [];
+    description?:string;
 }
 
 const EventTeam = ({
@@ -22,7 +23,8 @@ const EventTeam = ({
     scores,
     status,
     isInternationl,
-    penalties
+    penalties,
+    description
 }: EventItemProps) => {
 
     const redCards1 = teams[0]?.red_cards ?? 0;
@@ -39,6 +41,7 @@ const EventTeam = ({
                 redCards2={redCards2}
                 status={status}
                 scores={scores}
+                description={description}
             />
             <div className={`${styles.block} ${styles.right}`}>
                 <Command isInternationl={isInternationl} country_id={country_id} team={teams[1]} reverse imagesStyles="command-home" position='left' />
