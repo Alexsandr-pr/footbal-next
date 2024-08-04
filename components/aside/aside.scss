@@ -58,7 +58,7 @@
 
     &__button {
         //color: var(--green);
-        transition: all 0.3s ease 0s;
+        //transition: all 0.3s ease 0s;
         font-size: 14px;
         text-transform: uppercase;
         gap: 10px;
@@ -107,8 +107,21 @@
 }
 
 .select__list {
-    padding: 16px 12px 0px 12px;
+    padding: 0px 12px;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: height 0.3s ease 0s;
+    transition: padding 0.3s ease 0s;
+    &.active {
+        visibility: visible;
+        padding: 16px 12px 0px 12px;
+        height: auto;
+        opacity: 1;
+    }
 }
+
+
 .select__block.active {
     .select__button {
         color:var(--green);

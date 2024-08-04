@@ -41,23 +41,20 @@ export default function Page() {
             }
         };
 
-        // Fetch data initially
         fetchData();
 
-        // Set up polling based on the TTL
         if (intervalRef.current) {
             clearInterval(intervalRef.current);
         }
 
         intervalRef.current = setInterval(fetchData, ttl * 1000);
 
-        // Clear the interval when the component unmounts or TTL changes
         return () => {
             if (intervalRef.current) {
                 clearInterval(intervalRef.current);
             }
         };
-    }, [ttl]); // Depend on ttl to reset interval when it changes
+    }, [ttl]);
 
     useEffect(() => {
         const countLiveGames = (leagues: League[]) =>
@@ -66,8 +63,8 @@ export default function Page() {
         if (showLiveGames) {
             const filtered = leagues.map(league => ({
                 ...league,
-                games: league.games.filter(game => game.status.enum === 2) // Live games
-            })).filter(league => league.games.length > 0); // Exclude empty leagues
+                games: league.games.filter(game => game.status.enum === 2)
+            })).filter(league => league.games.length > 0);
 
             setLiveGamesCount(countLiveGames(filtered));
             setFilteredLeagues(filtered);

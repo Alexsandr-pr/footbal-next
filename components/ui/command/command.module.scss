@@ -15,7 +15,7 @@
 
 .title {
     word-wrap: break-word;
-    word-break: break-all;
+    
     color: var(--white);
     text-overflow: ellipsis;
     font-size: 14px;
@@ -24,8 +24,10 @@
     @media(max-width:767.98px){
         font-size: 11px;
     }
+
     @media(max-width:405.98px){
         font-size: 10px;
+        word-break: break-all;
     }
 }
 

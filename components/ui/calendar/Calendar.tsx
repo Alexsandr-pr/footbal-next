@@ -88,9 +88,18 @@ const Calendar = () => {
         dispatch(closeCalendar());
     }
     
+    const handleWrapperClick = () => {
+        dispatch(closeCalendar());
+    };
+    
+    const handleInnerClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+    };
+
+
     return (
-        <div className={`calendar-wrapper ${calendar ? "active" : ""}`}>
-            <div className="calendar-container">
+        <div onClick={handleWrapperClick} className={`calendar-wrapper ${calendar ? "active" : ""}`}>
+            <div onClick={handleInnerClick} className="calendar-container">
                 <div className="calendar-header">
                     <button className="calendar-nav-button" onClick={prevMonth}>
                         <ChevronLeft height={16} className="calendar-icon" />

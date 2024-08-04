@@ -17,6 +17,8 @@
 
 
 .calendar-container {
+    z-index: 200;
+    position: relative;
     transition: all 0.3s ease 0s;
     transform: translateY(-120%);
     border:1px solid var(--border);

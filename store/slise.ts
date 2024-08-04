@@ -21,6 +21,9 @@ export const counterSlice = createSlice({
             state.header = !state.header;
         },
         openCalendar: (state) => {
+            if(state.header) {
+                state.header = false;
+            }
             state.calendar = true;
         },
         closeCalendar: (state) => {

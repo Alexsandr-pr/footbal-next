@@ -31,7 +31,7 @@ const EventResult = ({
         <div className={styles.span}>
             <div className={styles.block}>
                 <div className={styles.number}>
-                    <div style={getGridStyle(redCards1)} className={`${styles.gol} ${penalties && penalties.length > 0 && penalties[0] !== undefined && styles.marginR}`}>
+                    <div style={getGridStyle(redCards1)} className={`${styles.gol} ${styles.marginR}`}>
                         {RenderGoals(redCards1)}
                     </div>
                     {penalties && penalties.length > 0 && penalties[0] !== undefined && (
@@ -45,7 +45,7 @@ const EventResult = ({
                     {penalties && penalties.length > 1 && penalties[1] !== undefined && (
                         <span className={styles.score}>({penalties[1]})</span>
                     )}
-                    <div style={getGridStyle(redCards2)} className={`${styles.gol} ${penalties && penalties.length > 1 && penalties[1] !== undefined && styles.marginL}`}>
+                    <div style={getGridStyle(redCards2)} className={`${styles.gol} ${styles.marginL}`}>
                         {RenderGoals(redCards2)} 
                     </div>
                 </div>

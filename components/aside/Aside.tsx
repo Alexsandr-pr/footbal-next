@@ -18,8 +18,6 @@ async function getData(): Promise<MenuResponse> {
 }
 
 async function Aside() {
-    
-   
     const { categories, general } = await getData();
     
     return (
