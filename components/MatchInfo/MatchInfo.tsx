@@ -16,7 +16,7 @@ const MatchInfo = ({games} : MatchInfoProps) => {
     const [block] = useAutoAnimate()
     const {country_id, name, id } = games;
     const isInternationl = games?.is_international;
-
+    const show_country_flags = games?.show_country_flags;
     return (
         <div ref={block}  className="item-event">
             <EventHeader leagueId={id} name={name} show={show} cb={() => setShow(prev => !prev)}/>
@@ -25,7 +25,7 @@ const MatchInfo = ({games} : MatchInfoProps) => {
                             {
                                 games.games.map(game => {
                                     return ( 
-                                        <EventItem isInternationl={isInternationl} key={game.id} game={game} country_id={country_id} name={name} teams={game.teams}/>
+                                        <EventItem show_country_flags={show_country_flags} isInternationl={isInternationl} key={game.id} game={game} country_id={country_id} name={name} teams={game.teams}/>
                                     )
                                 })
                             }

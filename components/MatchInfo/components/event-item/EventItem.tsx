@@ -14,6 +14,7 @@ interface EventItemProps {
     name: string;
     game: Game;
     isInternationl: boolean;
+    show_country_flags: boolean;
 }
 
 const EventItem = ({
@@ -21,7 +22,8 @@ const EventItem = ({
     country_id,
     name,
     game,
-    isInternationl
+    isInternationl,
+    show_country_flags
 }: EventItemProps) => {
     const { main_odds } = game;
     
@@ -44,6 +46,7 @@ const EventItem = ({
                 <EventTime gameTimeToDisplay={game.game_time_to_display} startTime={startTime} status={status} />
                 <div className={styles.content}>
                     <EventTeam 
+                        show_country_flags={show_country_flags}
                         isInternationl={isInternationl} 
                         penalties={penalties} 
                         status={status} 

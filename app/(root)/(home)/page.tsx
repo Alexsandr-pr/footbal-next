@@ -23,7 +23,7 @@ export default function Page() {
     const [leagues, setLeagues] = useState<League[]>([]);
     const [calendar, setCalendar] = useState<Calendar | null>(null);
     const [filteredLeagues, setFilteredLeagues] = useState<League[]>([]);
-    const [ttl, setTTL] = useState<number>(10); // Default to 10 seconds
+    const [ttl, setTTL] = useState<number>(10); 
 
     
     const intervalRef = useRef<NodeJS.Timeout | null>(null);

@@ -11,6 +11,7 @@ export interface Team {
   id: string;
   red_cards: number;
   goals?: Goal[];
+  country_id: string;
 }
 
 export interface GameStatus {
@@ -56,6 +57,7 @@ export interface League {
   url_name: string;
   country_id: string;
   is_international:boolean;
+  show_country_flags:boolean;
 }
 
 export interface Club {

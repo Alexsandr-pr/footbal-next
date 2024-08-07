@@ -15,6 +15,7 @@ interface EventItemProps {
     country_id: string;
     penalties?: [number, number] | [];
     description?:string;
+    show_country_flags?:boolean;
 }
 
 const EventTeam = ({
@@ -24,7 +25,8 @@ const EventTeam = ({
     status,
     isInternationl,
     penalties,
-    description
+    description,
+    show_country_flags
 }: EventItemProps) => {
 
     const redCards1 = teams[0]?.red_cards ?? 0;
@@ -33,7 +35,7 @@ const EventTeam = ({
     return (
         <div className={`${styles.team} `}>
             <div className={`${styles.block} ${styles.left}`}>
-                <Command isInternationl={isInternationl} country_id={country_id} team={teams[0]} imagesStyles="command-home" position='right' />
+                <Command show_country_flags={show_country_flags} isInternationl={isInternationl}  team={teams[0]} imagesStyles="command-home" position='right' />
             </div>
             <EventResult
                 penalties={penalties}
@@ -44,7 +46,7 @@ const EventTeam = ({
                 description={description}
             />
             <div className={`${styles.block} ${styles.right}`}>
-                <Command isInternationl={isInternationl} country_id={country_id} team={teams[1]} reverse imagesStyles="command-home" position='left' />
+                <Command show_country_flags={show_country_flags} isInternationl={isInternationl}  team={teams[1]} reverse imagesStyles="command-home" position='left' />
             </div>
         </div>
     )
