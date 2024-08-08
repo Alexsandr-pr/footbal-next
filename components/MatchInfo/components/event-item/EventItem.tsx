@@ -5,8 +5,9 @@ import EventCof from '../event-cof/EventCof';
 import styles from "./item.module.scss";
 import { Game, Team } from '@/types/home';
 import EventGols from '../event-gols/EventGols';
-import { useFilter } from '@/contexts/FilterContext';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
 
 interface EventItemProps {
     teams: Team[];
@@ -15,6 +16,7 @@ interface EventItemProps {
     game: Game;
     isInternationl: boolean;
     show_country_flags: boolean;
+    soundLocal: boolean;
 }
 
 const EventItem = ({
@@ -23,7 +25,8 @@ const EventItem = ({
     name,
     game,
     isInternationl,
-    show_country_flags
+    show_country_flags,
+    soundLocal
 }: EventItemProps) => {
     const { main_odds } = game;
     
@@ -38,7 +41,7 @@ const EventItem = ({
     
     const [block] = useAutoAnimate()
 
-    const { coefficient } = useFilter();
+    const coefficient = useSelector((state : RootState) => state.filter.coefficient);
     
     return (
         <div className={styles.item}>
@@ -46,6 +49,7 @@ const EventItem = ({
                 <EventTime gameTimeToDisplay={game.game_time_to_display} startTime={startTime} status={status} />
                 <div className={styles.content}>
                     <EventTeam 
+                        soundLocal={soundLocal}
                         show_country_flags={show_country_flags}
                         isInternationl={isInternationl} 
                         penalties={penalties} 

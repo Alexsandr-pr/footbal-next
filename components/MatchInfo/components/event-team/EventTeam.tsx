@@ -16,6 +16,7 @@ interface EventItemProps {
     penalties?: [number, number] | [];
     description?:string;
     show_country_flags?:boolean;
+    soundLocal:boolean;
 }
 
 const EventTeam = ({
@@ -26,7 +27,8 @@ const EventTeam = ({
     isInternationl,
     penalties,
     description,
-    show_country_flags
+    show_country_flags,
+    soundLocal
 }: EventItemProps) => {
 
     const redCards1 = teams[0]?.red_cards ?? 0;
@@ -38,6 +40,7 @@ const EventTeam = ({
                 <Command show_country_flags={show_country_flags} isInternationl={isInternationl}  team={teams[0]} imagesStyles="command-home" position='right' />
             </div>
             <EventResult
+                soundLocal={soundLocal}
                 penalties={penalties}
                 redCards1={redCards1}
                 redCards2={redCards2}
