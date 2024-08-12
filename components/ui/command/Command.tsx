@@ -1,17 +1,11 @@
 import React from "react";
-import Link from "next/link";
 import styles from "./command.module.scss";
-import "./command.scss";
-import { Team } from "@/types/home";
+import Image from "next/image";
 
-interface CommandProps {
-    isInternationl: boolean;
-    team: Team;
-    position: "left" | "right";
-    imagesStyles?: "command-home" | "commandGameCenter" | "commandGameCenterHeader";
-    reverse?: boolean;
-    show_country_flags?: boolean;
-}
+import { CommandProps } from "@/types/home";
+
+import "./command.scss";
+import { SERVER_API } from "@/config/consts";
 
 const Command = ({
     team,
@@ -19,36 +13,47 @@ const Command = ({
     imagesStyles,
     reverse,
     isInternationl,
-    show_country_flags
+    show_country_flags,
+    classes,
+    distanseOffset,
+    textAlign
 }: CommandProps) => {
-    const flagStyle = position === "right" ? { right: "-4px" } : { left: "-4px" };
+    const flagStyle = position === "right" ? { right: distanseOffset ? distanseOffset : "-4px" } : { left: distanseOffset ? distanseOffset : "-4px"  };
 
     return (
-        <Link href="#" className={styles.body}>
+        <div className={`${styles.body} ${classes}`}>
             {!reverse && (
-                <span style={{ textAlign: position }} className={styles.title}>
+                <span style={{ textAlign:  textAlign ? textAlign : position  }} className={`${styles.title} comand-name__title`}>
                     {team?.name}
                 </span>
             )}
             <div className={`${imagesStyles} ${styles.command}`}>
                 {show_country_flags && (
-                    <img
+                    <Image  
+                        src={`${SERVER_API}/images/country/${team.country_id}/1`}
+                        height={32}
+                        width={32}
                         style={flagStyle}
-                        src={`https://www.sports-stats.net/images/country/${team.country_id}/1`}
-                        alt="flag"
+                        alt="country flag"
                         className="country"
                     />
                 )}
                 <div className="comand-imageteam">
-                    <img src={`https://www.sports-stats.net/images/team/${team?.id}/4`} className="team" />
+                    <Image
+                        height={64}
+                        width={64}
+                        src={`${SERVER_API}/images/team/${team?.id}/4`} 
+                        className="team" 
+                        alt={team?.name}
+                    />
                 </div>
             </div>
             {reverse && (
-                <span style={{ textAlign: position }} className={styles.title}>
+                <span style={{ textAlign: textAlign ? textAlign : position }} className={`${styles.title} comand-name__title`}>
                     {team?.name}
                 </span>
             )}
-        </Link>
+        </div>
     );
 };
 

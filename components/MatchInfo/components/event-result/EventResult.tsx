@@ -1,21 +1,15 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { getGridStyle } from "@/lib/utils";
-import styles from "./result.module.scss";
+import { formatDateString, getGridStyle } from "@/lib/utils";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 
-interface EventResultProps {
-    scores?: number[];
-    status: {
-        enum: number;
-    };
-    redCards1: number;
-    redCards2: number;
-    penalties?: [number, number] | [];
-    description?: string;
-    soundLocal: boolean;
-}
+
+import { EventResultProps } from "@/types/home";
+
+import styles from "./result.module.scss";
+import PreGameGC from "./_components/pre-game/PreGameGC";
+
 
 const EventResult = ({
     redCards2,
@@ -25,6 +19,9 @@ const EventResult = ({
     penalties,
     description,
     soundLocal,
+    type,
+    startTime,
+    gameTime
 }: EventResultProps) => {
     const previousScoresRef = useRef<number[]>(scores || []);
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -32,11 +29,8 @@ const EventResult = ({
     const sound = useSelector((state: RootState) => state.filter.sound);
 
     useEffect(() => {
-        
         audioRef.current = new Audio("/assets/sound/sound.mp3");
-
         return () => {
-            
             if (audioRef.current) {
                 audioRef.current.pause();
                 audioRef.current = null;
@@ -46,31 +40,54 @@ const EventResult = ({
 
     useEffect(() => {
         if (scores && previousScoresRef.current) {
-            
             const scoresChanged = scores.some(
                 (score, index) => score !== previousScoresRef.current[index]
             );
-
             if (scoresChanged && audioRef.current && sound && soundLocal) {
                 audioRef.current.play();
             }
         }
-
-        
         previousScoresRef.current = scores || [];
     }, [scores, sound, soundLocal]); 
 
-    const colorStyle = { color: status.enum === 2 ? "var(--live)" : "var(--white)" };
+    const colorStyle = { 
+        color: status.enum === 2 ? "var(--live)" : "var(--white)", 
+    };
+    const colorStyleGameCenter = {
+        color: "var(--white)",
+    }
+
+    const maxRedCards = Math.max(redCards1, redCards2);
+
+    // btw, didnt told you but the enum here:
+    // 1=pre game
+    // 2=live game
+    // 3=post game
+
+    if(type === "gamecenter" && status.enum === 1){
+        return (
+            <div className={styles.span}>
+                <PreGameGC 
+                    statusName={status?.name}
+                    startTime={startTime}
+                    description={description}
+                />
+            </div>
+        ) 
+    } 
 
     if (!scores || scores.length < 2 || status.enum === 1) {
         return <div style={colorStyle} className={styles.span}>-</div>;
     }
 
-    const maxRedCards = Math.max(redCards1, redCards2);
-    const maxPenalties = penalties ? Math.max(penalties[0] || 0, penalties[1] || 0) : 0;
-
     return (
         <div className={styles.span}>
+            {
+                status?.enum === 3  && 
+                    <div  className={styles.startTime}>
+                        {formatDateString(startTime)}
+                    </div>
+            }
             <div className={styles.block}>
                 <div className={styles.number}>
                     <div
@@ -82,17 +99,18 @@ const EventResult = ({
                     {penalties && penalties.length > 0 && penalties[0] !== undefined && (
                         <span className={styles.score}>({penalties[0]})</span>
                     )}
-                    <span style={colorStyle} className={styles.scores}>
+                    <span style={type === "gamecenter" ? colorStyleGameCenter : colorStyle}  className={styles.scores}>
                         {scores[0]}
                     </span>
                 </div>
 
                 <div style={colorStyle} className={styles.tire}>
-                    -
+                    {
+                        type === "gamecenter" && status.enum === 2 ? <>{ gameTime }</> : "-"
+                    }
                 </div>
-
                 <div className={styles.number}>
-                    <span style={colorStyle} className={styles.scores}>
+                    <span style={type === "gamecenter" ? colorStyleGameCenter : colorStyle} className={styles.scores}>
                         {scores[1]}
                     </span>
                     {penalties && penalties.length > 1 && penalties[1] !== undefined && (
@@ -106,10 +124,12 @@ const EventResult = ({
                     </div>
                 </div>
             </div>
-
             {description && <div className={styles.description}>{description}</div>}
+            {status?.name && <div className={styles.statusName}>{status?.name}</div>}
         </div>
     );
+    
+    
 };
 
 const RenderGoals = (count: number, maxCount: number) => {
@@ -120,6 +140,9 @@ const RenderGoals = (count: number, maxCount: number) => {
         ></span>
     ));
 };
+
+
+
 
 const arePropsEqual = (
     prevProps: EventResultProps,
@@ -139,7 +162,8 @@ const arePropsEqual = (
         prevProps.redCards2 === nextProps.redCards2 &&
         prevProps.status.enum === nextProps.status.enum &&
         prevProps.description === nextProps.description &&
-        prevProps.soundLocal === nextProps.soundLocal // добавляем сравнение soundLocal
+        prevProps.soundLocal === nextProps.soundLocal && // добавляем сравнение soundLocal
+        prevProps.type === nextProps.type // добавляем сравнение soundLocal
     );
 };
 

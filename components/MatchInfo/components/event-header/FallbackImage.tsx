@@ -1,14 +1,9 @@
 "use client"
+import { FallbackImageProps } from '@/types/home';
 import { useState, useEffect } from 'react';
 
-interface FallbackImageProps {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-}
 
-const FallbackImage: React.FC<FallbackImageProps> = ({ src, alt, width, height }) => {
+const FallbackImage = ({ src, alt, width, height } : FallbackImageProps) => {
     const [imgSrc, setImgSrc] = useState<string | null>(src);
     const [imageExists, setImageExists] = useState(true);
 

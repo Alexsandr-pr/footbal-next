@@ -50,7 +50,7 @@
     @media(hover:hover) {
         &:hover {
             cursor: pointer;
-            color:#81c2a6;
+            color:#81c2a6 !important;
             border-bottom:1px solid #81c2a6;
         }
     }

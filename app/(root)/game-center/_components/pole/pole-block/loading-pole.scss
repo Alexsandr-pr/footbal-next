@@ -1,0 +1,9 @@
+.loading-pole {
+    min-height: 476px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media(max-width:991.98px){
+        min-height: 700px;
+    }
+}

@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from "./slise";
 import filterReducer from "./filterSlice";
+import gameCenterSlice  from './gameCenterSlice';
 
 export const makeStore = () => {
     return configureStore({
         reducer: {
             counter: counterReducer,
-            filter:filterReducer
+            filter:filterReducer,
+            gameCenter: gameCenterSlice
         }
     })
 }

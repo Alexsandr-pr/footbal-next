@@ -1,16 +1,15 @@
 "use client";
 
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { useState, useEffect } from "react";
+
 import EventHeader from "./components/event-header/EventHeader";
 import EventItem from "./components/event-item/EventItem";
 import Button from "../ui/buttons/Button";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
-import "./match-info.scss";
-import { League } from "@/types/home";
-import { useState, useEffect } from "react";
 
-interface MatchInfoProps {
-    games: League;
-}
+import { MatchInfoProps } from "@/types/home";
+
+import "./match-info.scss";
 
 const MatchInfo = ({ games }: MatchInfoProps) => {
     const [show, setShow] = useState(true);
@@ -55,24 +54,25 @@ const MatchInfo = ({ games }: MatchInfoProps) => {
                     style={{
                         borderTop: show ? "1px solid var(--border)" : "none",
                     }}
-                    className="item-event__content"
-                >
-                    {games.games.map(game => {
-                        return (
-                            <EventItem
-                                soundLocal={soundLocal}
-                                show_country_flags={show_country_flags}
-                                isInternationl={isInternationl}
-                                key={game.id}
-                                game={game}
-                                country_id={country_id}
-                                name={name}
-                                teams={game.teams}
-                            />
-                        );
-                    })}
+                    className="item-event__content">
+                        {
+                            games.games.map(game => {
+                                return (
+                                    <EventItem
+                                        soundLocal={soundLocal}
+                                        show_country_flags={show_country_flags}
+                                        isInternationl={isInternationl}
+                                        key={game.id}
+                                        game={game}
+                                        country_id={country_id}
+                                        name={name}
+                                        teams={game.teams}
+                                    />
+                                );
+                            })
+                        }
                     <div className="item-event__bottom">
-                        <Button />
+                        <Button text="Sección de Europa League" />
                     </div>
                 </div>
             )}

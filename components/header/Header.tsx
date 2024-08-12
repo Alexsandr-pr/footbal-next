@@ -4,16 +4,11 @@ import BurgerButton from "./BurgerButton";
 
 const Header = () => {
 
-
-
-
-    
-
     return (
         <header className="header">
             <div className="header__container">
                 <div className="header__logo">
-                    <Link href="#">
+                    <Link href="/">
                         <img src="/assets/header/logo_white.webp" alt="Logo"/>
                     </Link>
                 </div>

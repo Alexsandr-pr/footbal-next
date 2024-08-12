@@ -1,5 +1,6 @@
 import { Calendar } from "@/types/home";
 import styles from "./calendario-bottom.module.scss";
+import Image from "next/image";
 
 interface CalendarioBottomProps {
     calendar: Calendar | null;
@@ -23,7 +24,13 @@ const CalendarioBottom: React.FC<CalendarioBottomProps> = ({ calendar }) => {
                         {calendar.clubs.map(club => (
                             <div key={club.id} className={styles.block}>
                                 <div className={styles.images}>
-                                    <img className={styles.image} src={`https://www.sports-stats.net/images/team/${club?.id}/4`} alt={club.name} />
+                                    <Image 
+                                        height={32}
+                                        width={32}
+                                        className={styles.image} 
+                                        src={`https://www.sports-stats.net/images/team/${club?.id}/4`} 
+                                        alt={club.name} 
+                                    />
                                 </div>
                                 <div className={styles.blockbody}>
                                     <p className={styles.name}>{club.name}</p>

@@ -2,6 +2,7 @@
 export interface Goal {
   id: number;
   time_to_display: string;
+  time?: number;
   player_sname: string;
 }
 
@@ -82,3 +83,92 @@ export interface LeaguesResponse {
   leagues: League[];
   calendar: Calendar;
 }
+
+/*******PROPS Match info********************** */
+
+
+export interface EventTeamProps {
+  isInternationl: boolean;
+  status: {
+      enum: number;
+  };
+  teams: Team[];
+  scores: number[];
+  penalties?: [number, number] | [];
+  description?:string;
+  show_country_flags?:boolean;
+  soundLocal?:boolean;
+}
+
+export interface EventItemProps {
+  teams: Team[];
+  country_id: string;
+  name: string;
+  game: Game;
+  isInternationl: boolean;
+  show_country_flags: boolean;
+  soundLocal: boolean;
+}
+
+
+export interface MatchInfoProps {
+  games: League;
+}
+
+export interface EventTimeProps {
+  status: {
+      enum: number;
+      name: string;
+  };
+  startTime: string;
+  gameTimeToDisplay: string;
+}
+
+export interface EventResultProps {
+  scores?: number[];
+  status: {
+      enum: number;
+      name?: string;
+  };
+  redCards1: number;
+  redCards2: number;
+  penalties?: [number, number] | [];
+  description?: string;
+  soundLocal?: boolean;
+  type?: "gamecenter";
+  startTime?: string;
+  gameTime?: number;
+}
+export interface EventHeaderProps {
+    cb: () => void;
+    show: boolean;
+    name: string;
+    leagueId: string;
+    toggleSoundLocal: () => void;
+    soundLocal:boolean;
+}
+export interface FallbackImageProps {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+export interface EventGolsProps {
+  goalsTeam1?: Goal[];
+  goalsTeam2?: Goal[];
+}
+
+
+export interface CommandProps {
+  isInternationl?: boolean;
+  team: Team;
+  position?: "left" | "right";
+  imagesStyles?: "command-home" | "commandGameCenter" | "commandGameCenterHeader";
+  reverse?: boolean;
+  show_country_flags?: boolean;
+  classes?: string;
+  distanseOffset?: string;
+  textAlign?: "left" | "right" | "center" ;
+}
+

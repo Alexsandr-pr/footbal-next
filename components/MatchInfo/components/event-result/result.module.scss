@@ -18,9 +18,11 @@
     gap: 4px;
   
     &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+    @media(max-width:991.98px){
       margin-bottom: 4px;
     }
-  
     &.red {
       color: var(--live) !important;
     }
@@ -65,12 +67,7 @@
   .scores {
     display: flex;
     color: var(--white);
-    font-size: 18px;
-  
-    @media(max-width: 767.98px) {
-      font-size: 16px;
-      line-height: normal;
-    }
+    font-size: 24px;
   }
   
   .score {
@@ -91,7 +88,6 @@
     text-align: center;
     font-size: 12px;
     font-weight: 400;
-  
     @media(max-width: 767.98px) {
       font-size: 10px;
     }
@@ -112,4 +108,23 @@
   .hidden {
     opacity: 0;
   }
-  
+  .statusName {
+    text-align: center;
+    color:var(--white);
+    font-weight: 400;
+    font-size: 14px;
+    @media(max-width:991.98px){
+      font-size: 11px;
+    }
+  }
+  .startTime {
+    color: var(--white);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    @media(max-width:991.98px){
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+  }

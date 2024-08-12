@@ -1,16 +1,8 @@
 import React from "react";
+
+import { EventGolsProps } from "@/types/home";
+
 import styles from "./gols.module.scss";
-
-interface Goal {
-    id: number;
-    time_to_display: string;
-    player_sname: string;
-}
-
-interface EventGolsProps {
-    goalsTeam1?: Goal[];
-    goalsTeam2?: Goal[];
-}
 
 const EventGols = ({
     goalsTeam1,
@@ -20,7 +12,7 @@ const EventGols = ({
         <div className={styles.foot}>
             <div className={styles.item}>
                 {goalsTeam1?.map((item, index) => (
-                    <span className={styles.block} key={item.id}>
+                    <span className={styles.block} key={item.id + index + item.player_sname}>
                         <span className="green">
                             {item.time_to_display}
                         </span>

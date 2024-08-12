@@ -4,10 +4,16 @@ import "./button.scss";
 
 
 
-const Button = () => {
+const Button = ({
+    text
+} : {
+    text: string
+}) => {
     return (
         <button className="button">
-            Sección de Europa League
+            {
+                text
+            }
             <ChevronRight height={16} width={16}/>
         </button>
     )

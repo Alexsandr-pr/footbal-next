@@ -1,20 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Bell, BellOff, ChevronDown } from "lucide-react";
-import styles from "./event-header.module.scss";
-import FallbackImage from './FallbackImage';
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 
 
-interface EventHeaderProps {
-    cb: () => void;
-    show: boolean;
-    name: string;
-    leagueId: string;
-    toggleSoundLocal: () => void;
-    soundLocal:boolean;
-}
+import FallbackImage from './FallbackImage';
+
+import { EventHeaderProps } from "@/types/home";
+
+import styles from "./event-header.module.scss";
+import { SERVER_API } from "@/config/consts";
+
 
 const EventHeader = ({
     cb,
@@ -33,7 +30,7 @@ const EventHeader = ({
         <div className={styles.button}>
             <div className={styles.left}>
                 <FallbackImage 
-                    src={`https://www.sports-stats.net/images/league/${leagueId}/1`} 
+                    src={`${SERVER_API}/images/league/${leagueId}/1`} 
                     alt={name} 
                     width={14.7} 
                     height={14.7} 

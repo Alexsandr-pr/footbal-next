@@ -1,0 +1,117 @@
+.player {
+    z-index: 5;
+    // .player__name
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    width:78px;
+    height:50px;
+    &__name {
+        text-align: center;
+        font-size: 10px;
+        font-weight: 400;
+        white-space: nowrap;
+        &:not(:last-child){
+            margin-bottom:2px;
+        }
+    }
+
+    // .player__block
+
+    &__block {
+        position: relative;
+    }
+
+    // .player__number
+
+    &__number {
+        font-size: 10px;
+        text-align: center;
+        bottom: 9px;
+        transform: translate(-50%);
+        left: 50%;
+    }
+
+    // .player__border
+
+    &__border {
+
+    }
+
+    // .player__bg
+
+    &__bg {
+        
+    }
+
+    // .player__minute
+
+    &__minute { 
+        width: 14px;
+        font-size: 7px;
+        bottom: 2px;
+        color: var(--white);
+        right: -14px;
+        font-size: 7px;
+        height: 14px;
+        border: 1.5px solid  var(--white);
+        border-radius: 50%;
+        background:  var(--background);
+    }
+}
+.player__card {
+    position: absolute;
+    width: 7.5px;
+    right: -11px;
+    border-radius:  2px;
+    background:  #FFC61A;
+    height: 10px;
+}
+
+.player__gol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:   var(--white);
+    gap: 2px;
+    text-align: center;
+    font-size: 9px;
+    font-style: normal;
+    bottom:2px;
+    font-weight: 900;
+    position: absolute;
+    left: -14px;
+}
+
+.player__capitan {
+    position: absolute;
+    bottom: -13px;
+}
+
+.player__number,
+.player__minute {
+    position: absolute;
+}
+
+
+.player.top {
+    // .player__bg
+    &__bg {
+        fill: #115E2A;
+    }
+}
+
+.player.bottom {
+    // .player__bg
+    &__bg {
+        fill:  var(--live);
+    }
+}
+
+.player-block {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}

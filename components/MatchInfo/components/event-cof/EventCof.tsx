@@ -1,13 +1,12 @@
 
 import React from "react";
-import { OddsOption } from "@/types/home";
+
+import { MainOdds } from "@/types/home";
+
 import "./cof.scss";
 
-interface EventCofProps {
-    options: OddsOption[];
-}
 
-const EventCof = ({ options }: EventCofProps) => {
+const EventCof = ({ options }: MainOdds) => {
 
     return (
         <div className="match-block__cof cof-team">
@@ -37,7 +36,7 @@ const GetTrendIcon = (trend: number) => {
     );
 }
 
-const arePropsEqual = (prevProps: EventCofProps, nextProps: EventCofProps) => {
+const arePropsEqual = (prevProps: MainOdds, nextProps: MainOdds) => {
     
     if (prevProps.options.length !== nextProps.options.length) {
         return false;

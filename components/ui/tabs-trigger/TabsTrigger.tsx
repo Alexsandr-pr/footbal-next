@@ -1,35 +1,45 @@
+"use client"
 
-import Link from "next/link";
+import { useSelector } from "react-redux";
 import styles from "./tabs-trigger.module.scss";
+import { RootState } from "@/store/store";
 
 interface Trigger {
     label: string;
-    isActive:boolean;
     route: string;
+    cb: () => void;
 }
-
 
 interface TabsTriggerProps {
     data: Trigger[];
 }
 
 const TabsTrigger = ({ data } : TabsTriggerProps) => {
+    const { tabsButtonParams } = useSelector((state:RootState) => state.gameCenter);
+
+    // Находим индекс активной кнопки
+    const activeIndex = data.findIndex(trigger => trigger.route === tabsButtonParams);
+
+    const styleSpan = {
+        width: `calc(100% / ${data.length})`,
+        left: `calc(100% / ${data.length} * ${activeIndex})`, // Вычисляем позицию left
+    }
+
     return (
         <div className={styles.triggers}>
             {
-                data.map(({label, isActive, route}) => {
+                data.map(({label, route, cb}) => {
                     return (
-                        <Link key={route}
-                            href={route}  
-                            style={{color: isActive ?  "var(--green)" : "var(--white)"}} 
+                        <button onClick={cb} key={route}
+                            style={{color: tabsButtonParams === route ?  "var(--green)" : "var(--white)"}} 
                             className={styles.button}>{label}
-                        </Link>
+                        </button>
                     )
                 })
             }
-            <span style={{width: "50%", left: 0}} className={styles.span}></span>
+            <span style={styleSpan} className={styles.span}></span>
         </div> 
     )
 }
 
-export default TabsTrigger
+export default TabsTrigger;

@@ -6,13 +6,14 @@ import { Calendar, League } from "@/types/home";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store/store";
 import { setLiveGamesCount } from "@/store/filterSlice";
+import { SERVER_API } from "@/config/consts";
 
 async function getData(): Promise<{
     leagues: League[];
     calendar: Calendar | null;
     ttl: number;
 }> {
-    const res = await fetch("https://www.sports-stats.net/games/today", {
+    const res = await fetch(`${SERVER_API}/games/today`, {
         cache: "no-store",
     });
 

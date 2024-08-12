@@ -1,27 +1,12 @@
 import Command from '@/components/ui/command/Command';
 import EventResult from '../event-result/EventResult';
 
-import { Team } from '@/types/home';
+import { EventTeamProps } from '@/types/home';
 
 import styles from "./team.module.scss";
 
-interface EventItemProps {
-    isInternationl: boolean;
-    status: {
-        enum: number;
-    };
-    teams: Team[];
-    scores: number[];
-    country_id: string;
-    penalties?: [number, number] | [];
-    description?:string;
-    show_country_flags?:boolean;
-    soundLocal:boolean;
-}
-
 const EventTeam = ({
     teams,
-    country_id,
     scores,
     status,
     isInternationl,
@@ -29,7 +14,7 @@ const EventTeam = ({
     description,
     show_country_flags,
     soundLocal
-}: EventItemProps) => {
+}: EventTeamProps) => {
 
     const redCards1 = teams[0]?.red_cards ?? 0;
     const redCards2 = teams[1]?.red_cards ?? 0;

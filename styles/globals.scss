@@ -132,12 +132,14 @@ table, td, th, tr {
     flex-direction: column;
     gap: 12px;
 }
-
+.flex-16 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 
 .green {
-    
     color: var(--green);
-    
 }
 .status-span {
     display: flex;
