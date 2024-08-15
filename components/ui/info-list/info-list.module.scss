@@ -1,0 +1,37 @@
+
+.list {
+        padding: 12px;
+        border-radius:  8px;
+        background: var(--background);
+}
+
+.item {
+    gap: 10px;
+    display: grid;
+    grid-template-columns:repeat(2, 1fr) ;
+    justify-content: space-between;
+    align-items: start;
+    padding: 8px 0px;
+    &:nth-child(1) {
+        padding: 0px 0px 8px 0px;
+    }
+    &:last-child {
+        padding: 8px 0px 0px 0px;
+    }
+    &:not(:last-child){
+        border-bottom: 1px solid var(--grey-20);
+    }
+    @media(max-width:767.98px){
+        font-size: 14px;
+    }
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+    font-weight: 400;
+}
+

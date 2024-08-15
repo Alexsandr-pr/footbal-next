@@ -35,3 +35,7 @@ export interface TeamLineups {
     starting: Player[];
     bench: Bench[];
 }
+export interface GameInfo {
+    key: string;
+    value: string;
+}
