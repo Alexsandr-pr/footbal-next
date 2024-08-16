@@ -13,7 +13,7 @@ const InfoList = ({
                 {
                     gameInfo?.map(({name, value}) => {
                         return (
-                            <li className={styles.item}>
+                            <li key={name + value} className={styles.item}>
                                 <div className={styles.left}>{name}</div>
                                 <div className={styles.right}>{value}</div>
                             </li>
