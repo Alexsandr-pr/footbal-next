@@ -11,28 +11,29 @@ const EventGols = ({
 }: EventGolsProps) => {
     return (
         <div className={styles.foot}>
-            <div className={styles.item}>
-                {goalsTeam1?.map((item, index) => (
-                    <span className={styles.block} key={item.id + index + item.player_sname}>
-                        <span className="green">
-                            {item.time_to_display}
+            <div className={styles.itemLeft}>
+                <div  className={`${styles.item} `}>
+                    {goalsTeam1?.map((item, index) => (
+                        <span className={styles.block} key={item.id + index + item.player_sname}>
+                            <span className="green">
+                                {item.time_to_display}
+                            </span>
+                            <p>{item.player_sname}{index < goalsTeam1.length - 1 ? ";" : null}</p>
                         </span>
-                        <p>{item.player_sname}{index < goalsTeam1.length - 1 ? ";" : null}</p>
-                    </span>
-                ))}
+                    ))}
+                </div>
             </div>
-            <div className={styles.span}>
-                <div className=""></div>
-            </div>
-            <div className={styles.item}>
-                {goalsTeam2?.map((item, index) => (
-                    <span className={styles.block} key={item.id}>
-                        <span className="green">
-                            {item.time_to_display}
+            <div className={styles.itemRight}>
+                <div className={`${styles.item}`}>
+                    {goalsTeam2?.map((item, index) => (
+                        <span className={styles.block} key={item.id}>
+                            <span className="green">
+                                {item.time_to_display}
+                            </span>
+                            <p>{item.player_sname}{index < goalsTeam2.length - 1 ? ";" : null}</p>
                         </span>
-                        <p>{item.player_sname}{index < goalsTeam2.length - 1 ? ";" : null}</p>
-                    </span>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     );
