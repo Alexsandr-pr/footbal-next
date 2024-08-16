@@ -2,6 +2,7 @@ import EventResult from "@/components/MatchInfo/components/event-result/EventRes
 import "./header.scss";
 import Command from "@/components/ui/command/Command";
 import { Team } from "@/types/game-center";
+import { Status } from "@/types";
 
 
 
@@ -15,9 +16,7 @@ const Header = ({
     description
 } : {
     teamsHeader: Team[];
-    status: {
-        enum: number
-    },
+    status: Status,
     startTime?: string;
     gameTime?: string;
     penalties?: [number, number] | [];
