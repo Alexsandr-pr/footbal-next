@@ -66,7 +66,6 @@ const MatchInfo = ({ games }: MatchInfoProps) => {
                                         game={game}
                                         country_id={country_id}
                                         name={name}
-                                        teams={game.teams}
                                     />
                                 );
                             })

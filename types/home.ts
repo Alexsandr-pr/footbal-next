@@ -45,7 +45,7 @@ export interface Game {
   start_time: string;
   game_time: number;
   game_time_to_display: string;
-  TVNetworks?: TVNetwork[];
+  tv_networks?: TVNetwork[];
   main_odds?: MainOdds;
   penalties?: [number, number];
   description?: string;
@@ -101,7 +101,6 @@ export interface EventTeamProps {
 }
 
 export interface EventItemProps {
-  teams: Team[];
   country_id: string;
   name: string;
   game: Game;
@@ -122,6 +121,7 @@ export interface EventTimeProps {
   };
   startTime: string;
   gameTimeToDisplay: string;
+  tv_networks?: TVNetwork[];
 }
 
 export interface EventResultProps {
@@ -133,11 +133,11 @@ export interface EventResultProps {
   redCards1: number;
   redCards2: number;
   penalties?: [number, number] | [];
-  description?: string;
+  description?: string ;
   soundLocal?: boolean;
   type?: "gamecenter";
   startTime?: string;
-  gameTime?: number;
+  gameTime?: string;
 }
 export interface EventHeaderProps {
     cb: () => void;

@@ -1,16 +1,18 @@
+
 import React from "react";
-
 import { EventTimeProps } from "@/types/home";
-
 import styles from "./time.module.scss";
 
-import { SERVER_API } from "@/config/consts";
 import { extractTime } from "@/lib/utils";
+import ImageBlock from "./Image";
 
 
-const EventTime = ({ status, startTime, gameTimeToDisplay }: EventTimeProps) => {
-
-    
+const EventTime = ({ 
+    status, 
+    startTime, 
+    gameTimeToDisplay, 
+    tv_networks
+}: EventTimeProps) => {
 
     if (status.enum === 3) {
         return (
@@ -21,10 +23,9 @@ const EventTime = ({ status, startTime, gameTimeToDisplay }: EventTimeProps) => 
             </div>
         );
     }
-
     return (
-        <div className={styles.block}>
-            <img height={24} width={24} src={`${SERVER_API}/images/team/ihb/4`} alt="" />
+        <div  className={styles.block}>
+            {tv_networks ? <ImageBlock tv_networks={tv_networks}/> : null}
             {gameTimeToDisplay ? (
                 <div style={{ color: "var(--live)" }} className={styles.live}>
                     {gameTimeToDisplay}
