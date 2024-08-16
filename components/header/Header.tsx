@@ -1,6 +1,7 @@
 import Link from "next/link";
 import "./header.scss";
 import BurgerButton from "./BurgerButton";
+import Image from "next/image";
 
 const Header = () => {
 
@@ -9,7 +10,12 @@ const Header = () => {
             <div className="header__container">
                 <div className="header__logo">
                     <Link href="/">
-                        <img src="/assets/header/logo_white.webp" alt="Logo"/>
+                        <Image
+                            width={184}
+                            src="/assets/header/logo_white.webp"
+                            height={25}
+                            alt="Logo"
+                        />
                     </Link>
                 </div>
                 <div className="header__form">

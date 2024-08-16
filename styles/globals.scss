@@ -190,3 +190,22 @@ table, td, th, tr {
         }
     }
 }
+
+.bottom-calendario {
+    .bottom-image-36-block {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        img {
+            display: inline-flex;
+            max-height: 100%;
+            max-width: 100%;
+            height: auto;
+            width: auto;
+            object-fit: contain; 
+        }
+    }
+}

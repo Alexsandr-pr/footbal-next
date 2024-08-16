@@ -3,11 +3,13 @@ import Link from "next/link";
 import AsideSpoller from "./spoller/AsideSpoller";
 import Parent from "./Parent";
 
+
 import AsideLinks from "./AsideLinks";
 
 import { MenuResponse } from "@/types/response";
 
 import "./aside.scss";
+import Image from "next/image";
 
 
 async function getData(): Promise<MenuResponse> {
@@ -25,7 +27,12 @@ async function Aside() {
     return (
         <Parent>
             <div className="aside__image-top">
-                <img src="/assets/aside/image-top.png" alt=""/>
+                <Image
+                    width={247}
+                    height={254}
+                    alt={"Image"}
+                    src="/assets/aside/image-top.png"
+                />
             </div>
             <div className="aside__menu">
                 <div className="aside__select select">
