@@ -3,19 +3,17 @@
 import ContentBlock from '@/components/content-block/ContentBlock'
 import React, { useEffect, useState } from 'react'
 import PoleDesctop from '../desctop/Pole'
-import { Team } from '@/types/home'
+
 import PoleMobile from '../mobile/Pole'
-import { TeamLineups } from '@/types/game-center'
+
 
 import "./loading-pole.scss"
+import { PoleProps } from '@/types/game-center';
 
 const PoleBlock = ({ 
     teams,
     teamsLineups
-}: {
-    teamsLineups: TeamLineups[];
-    teams: Team[]; 
-}) => {
+}: PoleProps) => {
     const [isMobile, setIsMobile] = useState(false);
     const [loading, setLoading] = useState(true);
 

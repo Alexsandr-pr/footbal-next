@@ -1,18 +1,17 @@
 "use client";
 import PoleCommand from "../pole-block-comand/PoleCommand";
-import { Team } from "@/types/home";
+
 import "./pole.scss";
 import { useEffect, useRef } from "react";
-import { TeamLineups } from "@/types/game-center";
+
 import Player from "../player/Player";
+import { PoleProps } from "@/types/game-center";
 
 const PoleDesctop = ({
     teams,
     teamsLineups
-} : {
-    teamsLineups: TeamLineups[];
-    teams: Team[];
-}) => {
+} : PoleProps ) => {
+    
     const elementTop = useRef<HTMLDivElement | null>(null);
     const elementBottom = useRef<HTMLDivElement | null>(null);
 

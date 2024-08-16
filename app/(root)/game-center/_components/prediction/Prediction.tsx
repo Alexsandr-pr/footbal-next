@@ -1,7 +1,12 @@
+import { Prediction } from "@/types/game-center"
 import "./prediction.scss"
 
-const Prediction = ({prediction}) => {
-    console.log(prediction)
+const Prediction = ({
+    prediction
+}: {
+    prediction?: Prediction;
+}) => {
+
     return (
         
         <div className="content-block">

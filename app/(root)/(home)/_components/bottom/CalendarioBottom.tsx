@@ -1,3 +1,4 @@
+
 import { Calendar } from "@/types/home";
 import styles from "./calendario-bottom.module.scss";
 import Image from "next/image";

@@ -6,7 +6,7 @@ const Player = ({
     styles,
     top
 }: {
-    jersey_num: string;
+    jersey_num: number;
     player_short_name: string;
     styles: React.CSSProperties;
     top?: boolean;

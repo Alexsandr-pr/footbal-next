@@ -47,7 +47,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 async function GameCenter({params} : Props) {
     const { game, TTL } = await getData(params.id);
     //"ebiajfb"
-    console.log(game.teams)
+    console.log(game.players.lineups.teams)
     return (
         <div className="flex-16">
             <Breadcrumbs 
@@ -64,7 +64,7 @@ async function GameCenter({params} : Props) {
                 description={game?.description}
                 />
             <TabsTriggerBlock/>
-            <Prediction prediction={game.prediction}/>
+            <Prediction prediction={game?.prediction}/>
             {
                 game?.players?.lineups && 
                 <PoleBlock teamsLineups={game.players.lineups.teams} teams={game.teams}/>

@@ -1,6 +1,7 @@
 import MatchInfo from '@/components/MatchInfo/MatchInfo';
-import { Calendar, League } from '@/types/home';
+
 import CalendarioBottom from '../bottom/CalendarioBottom';
+import { Calendar, League } from '@/types/home';
 
 const Home = ({
     leagues,

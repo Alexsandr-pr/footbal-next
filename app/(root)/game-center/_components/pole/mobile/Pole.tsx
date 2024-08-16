@@ -1,18 +1,17 @@
-import { Team } from "@/types/home"
+
 import PoleCommand from "../pole-block-comand/PoleCommand"
 
 import "./pole.scss"
-import { TeamLineups } from "@/types/game-center";
+
 import Player from "../player/Player";
+import { PoleProps } from "@/types/game-center";
 
 const PoleMobile = ({
     teams,
     teamsLineups
-} : {
-    teams: Team[];
-    teamsLineups: TeamLineups[];
-}) => {
-    console.log(teamsLineups[0])
+} : PoleProps) => {
+
+    
     return (
         <>
             <div className="pole__content">

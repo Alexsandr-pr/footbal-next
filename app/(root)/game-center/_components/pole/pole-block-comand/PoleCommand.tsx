@@ -1,6 +1,7 @@
 import Command from "@/components/ui/command/Command"
-import { Team } from "@/types/home"
+
 import "./pole-block-comand.scss"
+import { Team } from "@/types/game-center";
 
 const PoleCommand = ({
     team,
@@ -11,6 +12,7 @@ const PoleCommand = ({
     distanseOffset?: string;
     formation: string;
 }) => {
+    
     return (
         <div className="pole__block-comand ">
             <Command

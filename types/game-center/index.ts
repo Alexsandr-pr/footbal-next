@@ -17,7 +17,7 @@ interface Options {
     options: Option[];
 }
 
-interface Prediction {
+export interface Prediction {
     bookie_id: string,
     cta_link: string,
     options: Options,
@@ -167,6 +167,12 @@ export interface Game {
         }[];
     };
 }
+
+export interface PoleProps {
+    teamsLineups: Lineup[];
+    teams: Team[];
+}
+
 
 
 
