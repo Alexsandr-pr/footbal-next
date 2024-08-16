@@ -1,11 +1,7 @@
-import { Prediction } from "@/types/game-center"
+
 import "./prediction.scss"
 
-const Prediction = ({
-    prediction
-}: {
-    prediction?: Prediction;
-}) => {
+const Prediction = () => {
 
     return (
         
