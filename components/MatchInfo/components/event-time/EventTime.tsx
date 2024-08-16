@@ -3,11 +3,13 @@ import React from "react";
 
 
 import { extractTime } from "@/lib/utils";
-import ImageBlock from "./Image";
+
 
 import { EventTimeProps } from "@/types/props/match";
 
 import styles from "./time.module.scss";
+import { _SERVER_API } from "@/config/consts";
+import FallbackImage from "../event-header/FallbackImage";
 
 
 const EventTime = ({ 
@@ -26,9 +28,15 @@ const EventTime = ({
             </div>
         );
     }
+    
     return (
-        <div  className={styles.block}>
-            {tv_networks ? <ImageBlock tv_networks={tv_networks}/> : null}
+        <div className={styles.block}>
+            {tv_networks ? <FallbackImage
+                    height={24}
+                    width={24}
+                    src={`${_SERVER_API}/images/tvnetworks/${tv_networks[0].id}`}
+                    alt={tv_networks[0].name}
+                /> : null}
             {gameTimeToDisplay ? (
                 <div style={{ color: "var(--live)" }} className={styles.live}>
                     {gameTimeToDisplay}
