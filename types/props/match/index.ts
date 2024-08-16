@@ -43,6 +43,7 @@ export interface FallbackImageProps {
     alt: string;
     width: number;
     height: number;
+    spinnerSize:number;
 }
 
 export interface EventItemProps {

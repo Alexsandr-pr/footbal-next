@@ -5,7 +5,7 @@ import Home from "./_components/home/Home";
 
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store/store";
-import { setLiveGamesCount } from "@/store/filterSlice";
+import { setLiveGamesCount, setLoadingOnLiveGame } from "@/store/filterSlice";
 import { _SERVER_API } from "@/config/consts";
 
 import { LeaguesResponse } from "@/types/response";
@@ -21,7 +21,7 @@ async function getData(): Promise<LeaguesResponse> {
     }
     const data = await res.json();
 
-    const ttl = data.ttl || 10; 
+    const ttl = data.TTL || 10; 
 
     return { leagues: data.leagues, calendar: data.calendar, ttl };
 }
@@ -40,15 +40,15 @@ export default function Page() {
 
     useEffect(() => {
         const fetchData = async () => {
-        try {
-            const { leagues, calendar, ttl } = await getData();
-            setLeagues(leagues);
-            setCalendar(calendar);
-            setFilteredLeagues(leagues);
-            setTTL(ttl);
-        } catch (error) {
-            console.error(error);
-        }
+            try {
+                const { leagues, calendar, ttl } = await getData();
+                setLeagues(leagues);
+                setCalendar(calendar);
+                setFilteredLeagues(leagues);
+                setTTL(ttl);
+            } catch (error) {
+                console.error(error);
+            }
         };
 
         fetchData();
@@ -64,29 +64,32 @@ export default function Page() {
                 clearInterval(intervalRef.current);
             }
         };
+        
     }, [ttl]);
 
     useEffect(() => {
+        dispatch(setLoadingOnLiveGame())
         const countLiveGames = (leagues: League[]) =>
-        leagues.reduce(
-            (count, league) =>
-            count + league.games.filter((game) => game.status.enum === 2).length,
-            0
-        );
+            leagues.reduce(
+                (count, league) =>
+                count + league.games.filter((game) => game.status.enum === 2).length,
+                0
+            );
 
         if (showLiveGames) {
-        const filtered = leagues
-            .map((league) => ({
-            ...league,
-            games: league.games.filter((game) => game.status.enum === 2),
-            }))
-            .filter((league) => league.games.length > 0);
+            const filtered = leagues
+                .map((league) => ({
+                ...league,
+                games: league.games.filter((game) => game.status.enum === 2),
+                }))
+                .filter((league) => league.games.length > 0);
 
-        dispatch(setLiveGamesCount(countLiveGames(filtered)));
-        setFilteredLeagues(filtered);
+            dispatch(setLiveGamesCount(countLiveGames(filtered)));
+            
+            setFilteredLeagues(filtered);
         } else {
-        dispatch(setLiveGamesCount(countLiveGames(leagues)));
-        setFilteredLeagues(leagues);
+            dispatch(setLiveGamesCount(countLiveGames(leagues)));
+            setFilteredLeagues(leagues);
         }
     }, [showLiveGames, leagues, dispatch]);
 

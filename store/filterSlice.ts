@@ -6,6 +6,7 @@ interface FilterState {
     coefficient: boolean;
     liveGamesCount: number;
     sound: boolean;
+    loadingShowLiveGames: boolean;
 }
 
 const initialState: FilterState = {
@@ -13,12 +14,17 @@ const initialState: FilterState = {
     coefficient: true,
     liveGamesCount: 0,
     sound: true,
+    loadingShowLiveGames: true
 };
 
 const filterSlice = createSlice({
     name: "filter",
     initialState,
     reducers: {
+        setLoadingOnLiveGame: (state) => {
+
+            state.loadingShowLiveGames = true;
+        },
         setShowLiveGames: (state, action: PayloadAction<boolean>) => {
             state.showLiveGames = action.payload;
         },
@@ -31,6 +37,7 @@ const filterSlice = createSlice({
         },
         setLiveGamesCount: (state, action: PayloadAction<number>) => {
             state.liveGamesCount = action.payload;
+            state.loadingShowLiveGames = false;
         },
         loadCoefficientFromCookies: (state) => {
             const savedCoefficient = Cookies.get("coefficient");
@@ -61,6 +68,7 @@ export const {
     loadCoefficientFromCookies,
     toggleSound,
     loadSoundFromCookies,
+    setLoadingOnLiveGame
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

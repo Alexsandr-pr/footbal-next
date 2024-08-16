@@ -28,10 +28,11 @@ const EventTime = ({
             </div>
         );
     }
-    
+
     return (
         <div className={styles.block}>
             {tv_networks ? <FallbackImage
+                    spinnerSize={12}
                     height={24}
                     width={24}
                     src={`${_SERVER_API}/images/tvnetworks/${tv_networks[0].id}`}

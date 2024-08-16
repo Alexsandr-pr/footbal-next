@@ -4,7 +4,7 @@ import { Bell, BellOff } from "lucide-react";
 import { loadSoundFromCookies, toggleSound } from "@/store/filterSlice";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import styles from "./main-header-block.module.scss";
+import styles from "../main-header-block.module.scss";
 import { RootState } from "@/store/store";
 import Image from "next/image";
 

@@ -18,18 +18,27 @@ import { closeCalendar } from "@/store/slise";
 
 const Calendar = () => {
 
-    const calendar = useSelector((state:RootState) => state.counter.calendar);
+    const calendar = useSelector((state: RootState) => state.counter.calendar);
 
     const daysOfWeek = ["Mn", "Tu", "We", "Th", "Fr", "St", "Su"];
     const [currentDate, setCurrentDate] = useState<Date | null>(null);
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const router = useRouter();
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
-        setCurrentDate(new Date());
+        const currentPath = window.location.pathname;
+        const dateMatch = currentPath.match(/\/games\/(\d{2}-\d{2}-\d{4})/);
+
+        if (dateMatch) {
+            setSelectedDate(new Date(dateMatch[1].split('-').reverse().join('-')));
+            setCurrentDate(new Date(dateMatch[1].split('-').reverse().join('-')));
+        } else {
+            setCurrentDate(new Date());
+        }
     }, []);
 
-    if (!currentDate) return null; 
+    if (!currentDate) return null;
 
     const startOfCurrentMonth = startOfMonth(currentDate);
     const endOfCurrentMonth = endOfMonth(currentDate);
@@ -83,10 +92,16 @@ const Calendar = () => {
         return day === 0 || day === 6; 
     };
 
+    const isSelectedDate = (date: Date): boolean => {
+        return selectedDate !== null && date.toDateString() === selectedDate.toDateString();
+    };
+    
+
     const handleDayClick = (date: Date) => {
+        setSelectedDate(date);
         router.push(`/games/${format(date, "dd-MM-yyyy")}`);
         dispatch(closeCalendar());
-    }
+    };
     
     const handleWrapperClick = () => {
         dispatch(closeCalendar());
@@ -95,7 +110,6 @@ const Calendar = () => {
     const handleInnerClick = (e: React.MouseEvent) => {
         e.stopPropagation();
     };
-
 
     return (
         <div onClick={handleWrapperClick} className={`calendar-wrapper ${calendar ? "active" : ""}`}>
@@ -119,10 +133,7 @@ const Calendar = () => {
                 <div className="calendar-days">
                     {calendarDays.map((day, index) => (
                         <div className="calendar-day-wrapper" key={index}>
-                            <button
-                                className={`calendar-day ${isToday(day) ? "today" : ""} ${
-                                    !isCurrentMonth(day) ? "other-month" : ""
-                                } ${isWeekend(day) ? "weekend" : ""}`}
+                            <button className={`calendar-day ${isToday(day) ? "today" : ""} ${!isCurrentMonth(day) ? "other-month" : "" } ${isWeekend(day) ? "weekend" : ""} ${isSelectedDate(day) ? "selected" : "" }`}
                                 onClick={() => handleDayClick(day)}
                                 >
                                 <span>{format(day, "d")}</span>

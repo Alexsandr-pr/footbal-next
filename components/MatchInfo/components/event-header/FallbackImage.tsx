@@ -4,7 +4,7 @@ import { FallbackImageProps } from '@/types/props/match';
 import ImageS from 'next/image';
 import { useState, useEffect } from 'react';
 
-const FallbackImage = ({ src, alt, width, height } : FallbackImageProps) => {
+const FallbackImage = ({ src, alt, width, height, spinnerSize } : FallbackImageProps) => {
     const [imgSrc, setImgSrc] = useState<string | null>(null);
     const [imageExists, setImageExists] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
@@ -26,8 +26,8 @@ const FallbackImage = ({ src, alt, width, height } : FallbackImageProps) => {
         return (
             <ImageS
                 src="/assets/loading/loading.gif" 
-                height={10}
-                width={10}
+                height={spinnerSize}
+                width={spinnerSize}
                 alt="Loading"
             />
         );

@@ -128,3 +128,7 @@
         transform: translateY(0);
     }
 }
+.calendar-day.selected {
+    background-color: #ffeb3b;
+    color: #000;
+}

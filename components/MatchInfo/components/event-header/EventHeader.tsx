@@ -30,6 +30,7 @@ const EventHeader = ({
         <div className={styles.button}>
             <div className={styles.left}>
                 <FallbackImage 
+                    spinnerSize={14.7}
                     src={`${_SERVER_API}/images/league/${leagueId}/1`} 
                     alt={name} 
                     width={14.7} 

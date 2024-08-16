@@ -89,7 +89,7 @@ const EventResult = ({
                         {formatDateString(startTime)}
                     </div>
             }
-            <div className={styles.block}>
+            <div style={{marginBottom: type === "gamecenter" ? "8px" : "4px"}} className={styles.block}>
                 <div className={styles.number}>
                     <div
                         style={getGridStyle(maxRedCards)}
@@ -125,8 +125,9 @@ const EventResult = ({
                     </div>
                 </div>
             </div>
-            {description && <div className={styles.description}>{description}</div>}
-            {status?.name && <div className={styles.statusName}>{status?.name}</div>}
+            {description && <div style={{marginBottom: type === "gamecenter" ? "8px" : "4px"}} className={styles.description}>{description}</div>}
+            
+            {type === "gamecenter" && status?.name && <div className={styles.statusName}>{status?.name}</div>}
         </div>
     );
     
