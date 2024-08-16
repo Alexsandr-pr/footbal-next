@@ -2,10 +2,10 @@
 
 
 export interface Status {
-    enum: number;
-    name: string;
-    short_name: string;
-    symbol_name:string;
+    enum?: number;
+    name?: string;
+    short_name?: string;
+    symbol_name?:string;
 }
 
 export interface Goal {
