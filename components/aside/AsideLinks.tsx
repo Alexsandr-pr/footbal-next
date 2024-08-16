@@ -1,4 +1,4 @@
-import { MenuItem } from "@/types/menu";
+import { MenuItem } from "@/types/props/menu/menu";
 import Link from "next/link";
 import ButtonAside from "./ButtonAsideCalendario";
 

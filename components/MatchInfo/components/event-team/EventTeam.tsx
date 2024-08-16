@@ -1,9 +1,10 @@
 import Command from '@/components/ui/command/Command';
 import EventResult from '../event-result/EventResult';
 
-import { EventTeamProps } from '@/types/home';
+import { EventTeamProps } from '@/types/props/match';
 
 import styles from "./team.module.scss";
+
 
 const EventTeam = ({
     teams,

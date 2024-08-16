@@ -6,14 +6,15 @@ import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
 import TabsTriggerBlock from "../_components/tabs-trigger/TabsTrigger";
 import InfoList from "@/components/ui/info-list/InfoList";
 import Prediction from "../_components/prediction/Prediction";
-import { GameCenterResponse } from "@/types/game-center";
+import { GameCenterResponse } from "@/types/response";
+import { Metadata } from "next";
+
 
 type Props = {
     params: {
         id: string
     }
 }
-
 
 async function getData(id: string): Promise<GameCenterResponse> {
     const res = await fetch(`https://sports-stats.net/gamecenter/${id}`, {
@@ -25,6 +26,21 @@ async function getData(id: string): Promise<GameCenterResponse> {
     }
     return res.json();
 }
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+    
+    const { game } = await getData(params.id);
+
+    const title = `${game.teams[0].name} vs ${game.teams[1].name} - Match Details`;
+    const description = `Details about the match between ${game.teams[0].name} and ${game.teams[1].name}.`;
+
+    return {
+        title,
+        description,
+        icons: '/favicon.png',
+    };
+};
+
 
 /******************************************** */
 
@@ -53,7 +69,6 @@ async function GameCenter({params} : Props) {
                 game?.players?.lineups && 
                 <PoleBlock teamsLineups={game.players.lineups.teams} teams={game.teams}/>
             }
-
             {
                 game?.game_info && <InfoList gameInfo={game?.game_info}/>
             }

@@ -1,17 +1,15 @@
 
 import { extractTime, formatDateString } from "@/lib/utils";
-import styles from "./pre.module.scss";
 
+import { PreGameProps } from "@/types/props/match";
+
+import styles from "./pre.module.scss";
 
 const PreGameGC = ({
     description,
     startTime,
     statusName
-} : {
-    description?: string;
-    startTime?: string | "";
-    statusName?: string;
-}) => {
+} : PreGameProps) => {
     return (
         <div className={styles.body}>
             <div className={styles.time}>

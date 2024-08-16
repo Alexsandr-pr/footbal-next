@@ -1,19 +1,9 @@
-import { OddsOption } from "./home";
+import { Goal, MainOdds, OddsOption, Status, TVNetwork } from "..";
+
 
 export interface GameInfo {
     name: string;
     value:string;
-}
-
-
-interface Status {
-    enum: number;
-    name: string;
-    short_name: string;
-    symbol_name:string;
-}
-interface Players {
-
 }
 
 interface Option {
@@ -22,6 +12,7 @@ interface Option {
     percentage: number;
     vote_url: string;
 }
+
 interface Options {
     options: Option[];
 }
@@ -42,9 +33,11 @@ interface PlayerEvent {
     player_jersey_num: number;
 }
 
-interface Player {
+export interface Player {
     jersey_num: number;
     name: string;
+    team: string;
+    text: string;
     player_short_name: string;
     position: string;
     formation_position: string;
@@ -80,19 +73,8 @@ export interface Team {
     id: string;
     country_id: string;
     red_cards: number;
-    goals: {
-        player_name: string;
-        player_sname: string;
-        time?: number;
-        time_to_display: string;
-        id: number;
-    }[];
-    status: {
-        enum: number;
-        name: string;
-        short_name: string;
-        symbol_name: string;
-    };
+    goals: Goal[];
+    status: Status;
 }
 
 interface Lineup {
@@ -109,7 +91,7 @@ interface Players {
     };
 }
 
-interface Game {
+export interface Game {
     id: string;
     winner: number;
     teams: Team[];
@@ -123,6 +105,8 @@ interface Game {
     players: Players;
     prediction?: Prediction;
     game_info: GameInfo[];
+    tv_networks?: TVNetwork[];
+    main_odds?: MainOdds;
     penalties?: [number, number];
     events: {
         name: string;
@@ -152,13 +136,7 @@ interface Game {
             description: string;
             status: Status;
             start_time: string;
-            main_odds: {
-                options: {
-                    name: string;
-                    value: number;
-                    trend: number;
-                }[];
-            };
+            main_odds: MainOdds;
         }[];
     };
     recent_form: {
@@ -190,9 +168,6 @@ interface Game {
     };
 }
 
-export interface GameCenterResponse {
-    TTL: number;
-    game: Game;
-}
+
 
 

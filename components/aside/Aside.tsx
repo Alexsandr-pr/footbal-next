@@ -2,11 +2,13 @@
 import Link from "next/link";
 import AsideSpoller from "./spoller/AsideSpoller";
 import Parent from "./Parent";
-import { MenuResponse } from "@/types/menu";
 
+import AsideLinks from "./AsideLinks";
+
+import { MenuResponse } from "@/types/response";
 
 import "./aside.scss";
-import AsideLinks from "./AsideLinks";
+
 
 async function getData(): Promise<MenuResponse> {
     const res = await fetch('https://sports-stats.net/menu/');

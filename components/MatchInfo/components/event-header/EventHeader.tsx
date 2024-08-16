@@ -7,10 +7,10 @@ import { RootState } from "@/store/store";
 
 import FallbackImage from './FallbackImage';
 
-import { EventHeaderProps } from "@/types/home";
+import { EventHeaderProps } from "@/types/props/match";
 
 import styles from "./event-header.module.scss";
-import { SERVER_API } from "@/config/consts";
+import { _SERVER_API } from "@/config/consts";
 
 
 const EventHeader = ({
@@ -30,7 +30,7 @@ const EventHeader = ({
         <div className={styles.button}>
             <div className={styles.left}>
                 <FallbackImage 
-                    src={`${SERVER_API}/images/league/${leagueId}/1`} 
+                    src={`${_SERVER_API}/images/league/${leagueId}/1`} 
                     alt={name} 
                     width={14.7} 
                     height={14.7} 

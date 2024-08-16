@@ -17,12 +17,11 @@ interface TabsTriggerProps {
 const TabsTrigger = ({ data } : TabsTriggerProps) => {
     const { tabsButtonParams } = useSelector((state:RootState) => state.gameCenter);
 
-    // Находим индекс активной кнопки
     const activeIndex = data.findIndex(trigger => trigger.route === tabsButtonParams);
 
     const styleSpan = {
         width: `calc(100% / ${data.length})`,
-        left: `calc(100% / ${data.length} * ${activeIndex})`, // Вычисляем позицию left
+        left: `calc(100% / ${data.length} * ${activeIndex})`,
     }
 
     return (

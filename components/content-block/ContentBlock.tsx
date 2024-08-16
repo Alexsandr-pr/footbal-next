@@ -1,17 +1,15 @@
 
-import { ReactNode } from "react";
 import Button from "../ui/buttons/Button";
+
+import { ContentBlockProps } from "@/types/props";
+
 import "./content-block.scss";
 
 const ContentBlock = ({
     title, 
     buttonText,
     children
-} : {
-    title: string; 
-    buttonText: string;
-    children: ReactNode;
-}) => {
+} : ContentBlockProps) => {
     return (
         <div className="content-block">
             <div className="content-block__header">

@@ -1,13 +1,13 @@
 
 import { Suspense } from "react";
-import { LeaguesResponse } from "@/types/home"; 
 import Home from "../../_components/home/Home";
 import Loading from "../../loading";
-import { SERVER_API } from "@/config/consts";
+import { _SERVER_API } from "@/config/consts";
+import { LeaguesResponse } from "@/types/response";
 
 
 async function getData(paramsId: string): Promise<LeaguesResponse> {
-    const res = await fetch(`${SERVER_API}/games/${paramsId}`, {cache:"no-cache"});
+    const res = await fetch(`${_SERVER_API}/games/${paramsId}`, {cache:"no-cache"});
 
     if (!res.ok) {
         throw new Error('Failed to fetch data');

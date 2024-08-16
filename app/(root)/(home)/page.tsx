@@ -2,18 +2,17 @@
 
 import { useState, useEffect, useRef } from "react";
 import Home from "./_components/home/Home";
-import { Calendar, League } from "@/types/home";
+
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store/store";
 import { setLiveGamesCount } from "@/store/filterSlice";
-import { SERVER_API } from "@/config/consts";
+import { _SERVER_API } from "@/config/consts";
 
-async function getData(): Promise<{
-    leagues: League[];
-    calendar: Calendar | null;
-    ttl: number;
-}> {
-    const res = await fetch(`${SERVER_API}/games/today`, {
+import { LeaguesResponse } from "@/types/response";
+import { Calendar, League } from "@/types/home";
+
+async function getData(): Promise<LeaguesResponse> {
+    const res = await fetch(`${_SERVER_API}/games/today`, {
         cache: "no-store",
     });
 
@@ -22,7 +21,7 @@ async function getData(): Promise<{
     }
     const data = await res.json();
 
-    const ttl = data.ttl || 10; // Default to 10 seconds if TTL is not provided
+    const ttl = data.ttl || 10; 
 
     return { leagues: data.leagues, calendar: data.calendar, ttl };
 }
@@ -55,15 +54,15 @@ export default function Page() {
         fetchData();
 
         if (intervalRef.current) {
-        clearInterval(intervalRef.current);
+            clearInterval(intervalRef.current);
         }
 
         intervalRef.current = setInterval(fetchData, ttl * 1000);
 
         return () => {
-        if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-        }
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
         };
     }, [ttl]);
 

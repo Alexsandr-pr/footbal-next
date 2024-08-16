@@ -12,9 +12,10 @@ import EventCof from '../event-cof/EventCof';
 import EventGols from '../event-gols/EventGols';
 
 
-import { EventItemProps } from '@/types/home';
+import { EventItemProps } from '@/types/props/match';
 
 import styles from "./item.module.scss";
+
 
 const EventItem = ({
     country_id,

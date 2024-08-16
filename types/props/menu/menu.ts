@@ -3,13 +3,9 @@ export interface MenuItem {
     link: string;
 }
 
-interface Category {
+export interface Category {
     name: string; 
     items: MenuItem[];
 }
 
-export interface MenuResponse {
-    categories: Category[];
-    general: MenuItem[]; 
-}
 

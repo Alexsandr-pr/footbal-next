@@ -5,10 +5,11 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 
 
-import { EventResultProps } from "@/types/home";
+import { EventResultProps } from "@/types/props/match";
 
 import styles from "./result.module.scss";
 import PreGameGC from "./_components/pre-game/PreGameGC";
+
 
 
 const EventResult = ({

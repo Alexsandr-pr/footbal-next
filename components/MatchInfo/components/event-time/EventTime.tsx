@@ -1,10 +1,13 @@
 
 import React from "react";
-import { EventTimeProps } from "@/types/home";
-import styles from "./time.module.scss";
+
 
 import { extractTime } from "@/lib/utils";
 import ImageBlock from "./Image";
+
+import { EventTimeProps } from "@/types/props/match";
+
+import styles from "./time.module.scss";
 
 
 const EventTime = ({ 

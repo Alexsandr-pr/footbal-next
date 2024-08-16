@@ -1,5 +1,5 @@
 "use client"
-import { MenuItem } from '@/types/menu';
+import { MenuItem } from '@/types/props/menu/menu';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';

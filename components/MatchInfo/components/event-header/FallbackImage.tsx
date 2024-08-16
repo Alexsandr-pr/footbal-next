@@ -1,5 +1,6 @@
 "use client"
-import { FallbackImageProps } from '@/types/home';
+
+import { FallbackImageProps } from '@/types/props/match';
 import { useState, useEffect } from 'react';
 
 

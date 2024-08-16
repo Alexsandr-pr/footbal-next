@@ -1,8 +1,9 @@
 "use client"
 import React, { useState } from 'react';
-import { SERVER_API } from '@/config/consts';
-import { TVNetwork } from '@/types/home';
+import { _SERVER_API } from '@/config/consts';
+
 import Image from 'next/image';
+import { TVNetwork } from '@/types';
 
 
 const ImageBlock = ({
@@ -43,7 +44,7 @@ const ImageBlock = ({
                 <img
                     height={24}
                     width={24}
-                    src={`${SERVER_API}/images/tvnetworks/${tv_networks[currentIndex].id}`}
+                    src={`${_SERVER_API}/images/tvnetworks/${tv_networks[currentIndex].id}`}
                     alt={tv_networks[currentIndex].name}
                     onError={handleError}
                     onLoad={handleLoad}

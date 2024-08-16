@@ -1,8 +1,9 @@
 import React from "react";
 
-import { EventGolsProps } from "@/types/home";
+import { EventGolsProps } from "@/types/props/match";
 
 import styles from "./gols.module.scss";
+
 
 const EventGols = ({
     goalsTeam1,

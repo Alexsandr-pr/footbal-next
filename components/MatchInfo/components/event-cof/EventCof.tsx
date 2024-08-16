@@ -1,10 +1,10 @@
 
 import React from "react";
 
-import { MainOdds } from "@/types/home";
+
 
 import "./cof.scss";
-
+import { MainOdds } from "@/types";
 
 const EventCof = ({ options }: MainOdds) => {
 

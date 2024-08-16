@@ -7,9 +7,10 @@ import EventHeader from "./components/event-header/EventHeader";
 import EventItem from "./components/event-item/EventItem";
 import Button from "../ui/buttons/Button";
 
-import { MatchInfoProps } from "@/types/home";
+import { MatchInfoProps } from "@/types/props/match";
 
 import "./match-info.scss";
+
 
 const MatchInfo = ({ games }: MatchInfoProps) => {
     const [show, setShow] = useState(true);

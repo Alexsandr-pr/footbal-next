@@ -2,10 +2,11 @@ import React from "react";
 import styles from "./command.module.scss";
 import Image from "next/image";
 
-import { CommandProps } from "@/types/home";
+
 
 import "./command.scss";
-import { SERVER_API } from "@/config/consts";
+import { _SERVER_API } from "@/config/consts";
+import { CommandProps } from "@/types/props/match";
 
 const Command = ({
     team,
@@ -30,7 +31,7 @@ const Command = ({
             <div className={`${imagesStyles} ${styles.command}`}>
                 {show_country_flags && (
                     <Image  
-                        src={`${SERVER_API}/images/country/${team.country_id}/1`}
+                        src={`${_SERVER_API}/images/country/${team.country_id}/1`}
                         height={32}
                         width={32}
                         style={flagStyle}
@@ -42,7 +43,7 @@ const Command = ({
                     <Image
                         height={64}
                         width={64}
-                        src={`${SERVER_API}/images/team/${team?.id}/4`} 
+                        src={`${_SERVER_API}/images/team/${team?.id}/4`} 
                         className="team" 
                         alt={team?.name}
                     />
