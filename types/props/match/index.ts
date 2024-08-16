@@ -43,7 +43,6 @@ export interface FallbackImageProps {
     alt: string;
     width: number;
     height: number;
-    handleLoading?: () => void;
 }
 
 export interface EventItemProps {
