@@ -26,7 +26,6 @@ const Prediction = ({
                         src={`${_SERVER_API}/images/bookies/${prediction.bookie_id}`}
                         width={62} 
                         height={27}
-                        height={27}
                         alt="bookies"
                     />
                 </Link>
@@ -48,11 +47,11 @@ const Prediction = ({
                     <div className="static-game__content static-content">
                         <div className="static-content__top static-block ">
                             {  
-                                prediction.options.map(option => {
+                                prediction.options.map(({name, percentage, vote_url}) => {
                                     return (
-                                        <div style={{width: state ? `${ option.percentage}%` : "auto"}} onClick={() => setState(true)} className="static-block__item">
-                                            <span>{option.name}</span>
-                                            <span>{option.percentage.toFixed(1)}%</span>
+                                        <div key={vote_url} style={{width: state ? `${percentage}%` : "auto"}} onClick={() => setState(true)} className="static-block__item">
+                                            <span>{name}</span>
+                                            <span>{percentage.toFixed(1)}%</span>
                                         </div>
                                     )
                                 }) 
@@ -60,11 +59,11 @@ const Prediction = ({
                         </div>
                         <div className="static-content__bottom">
                             {
-                                prediction.odds.map(option => {
+                                prediction.odds.map(({name, trend, value}) => {
                                     return (
-                                        <div className="static-content__item">
-                                            {option.name}. {option.value.toFixed(1)}
-                                            <GetTrendIcon trend={option.trend}/>
+                                        <div key={value + trend + name} className="static-content__item">
+                                            {name}. {value.toFixed(1)}
+                                            <GetTrendIcon trend={trend}/>
                                         </div>
                                     )
                                 })
