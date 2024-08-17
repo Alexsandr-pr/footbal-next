@@ -62,7 +62,7 @@ const Player = ({
                     </>
                 }
                 {
-                    substitution?.player &&  <span className="player__minute">{substitution.player}</span>
+                    substitution?.player ?  <span className="player__minute">{substitution.player}</span> : null
                 }   
                 {
                     events?.goals?.goals ? 

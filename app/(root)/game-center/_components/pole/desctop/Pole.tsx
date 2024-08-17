@@ -42,6 +42,7 @@ const PoleDesctop = ({
                     <div ref={elementTop} className="pole-body__top-content">
                         <div data-pole className="pole-body__top">
                             <Formation
+                                stylesOption={1}
                                 type={teamsLineups[0].team_num}
                                 startingPlayers={teamsLineups[0].starting}
                             />
@@ -51,34 +52,11 @@ const PoleDesctop = ({
                     </div>
                     <div ref={elementBottom} className="pole-body__bottom-content">
                         <div data-pole className="pole-body__bottom">
-                            {
-                                teamsLineups[1].starting.map(player => {
-                                    const {
-                                        player_short_name, 
-                                        pitch_location, 
-                                        jersey_num, 
-                                        substitution, 
-                                        events,
-                                        position,
-                                        name
-                                    } = player;
-                                    return (
-                                        <Player 
-                                            position={position}
-                                            events={events}
-                                            substitution={substitution}
-                                            key={name}
-                                            
-                                            jersey_num={jersey_num}
-                                            styles={{
-                                                right: `calc(${pitch_location.x}% - ${pitch_location.x === 0 ? "10px" : "70px"})`,
-                                                top: `calc(${pitch_location.y}% - 25px)`
-                                            }} 
-                                            player_short_name={player_short_name}
-                                            />
-                                        )
-                                })
-                            }
+                            <Formation
+                                stylesOption={2}
+                                type={teamsLineups[1].team_num}
+                                startingPlayers={teamsLineups[1].starting}
+                            />
                             <div className="pole-ds-right__block-1"></div>
                             <div className="pole-ds-right__block-2"></div>
                         </div>
