@@ -9,7 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { _SERVER_API } from "@/config/consts";
 
-const Prediction = ({
+const PredictionBlock = ({
     prediction
 } : {
     prediction: Prediction;
@@ -79,4 +79,4 @@ const Prediction = ({
     )
 }
 
-export default Prediction
+export default PredictionBlock
