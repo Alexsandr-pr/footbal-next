@@ -8,7 +8,7 @@ import "./content-block.scss";
 const ContentBlock = ({
     title, 
     buttonText,
-    children
+    children, 
 } : ContentBlockProps) => {
     return (
         <div className="content-block">
@@ -20,9 +20,11 @@ const ContentBlock = ({
                     children
                 }
             </div>
-            <div className="content-block__bottom">
+            {
+                buttonText &&  <div className="content-block__bottom">
                 <Button text={buttonText}/>
             </div>
+            }
         </div>
     )
 }

@@ -1,0 +1,31 @@
+.command-history-result {
+    display: flex;
+    gap: 4px;
+}
+
+.command-history-result__block {
+    width: 24px;
+    display: flex;
+    padding: 2px 4px;
+    justify-content: center;
+    align-items: center;
+    border-radius:2px;
+    gap: 10px;
+    height: 24px;
+    color: var(--background);
+    text-align: center;
+    font-size: 11px;
+    &.draw {
+        background-color: var(--yellow);
+    }
+    &.win {
+        background-color: var(--green);
+    }
+    &.loss {
+        background-color: var(--live);
+    }
+    @media(max-width:767.98px){
+        width: 20px;
+        height: 20px;
+    }
+}

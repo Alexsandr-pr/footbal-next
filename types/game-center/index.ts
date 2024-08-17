@@ -87,6 +87,11 @@ interface Players {
         teams: Lineup[];
     };
 }
+export interface RecentForm {
+    home: number[];
+    away: number[];
+}
+
 
 export interface Game {
     id: string;
@@ -136,10 +141,7 @@ export interface Game {
             main_odds: MainOdds;
         }[];
     };
-    recent_form: {
-        home: number[];
-        away: number[];
-    };
+    recent_form: RecentForm;
     standings: {
         columns: {
             key: string;

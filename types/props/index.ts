@@ -3,6 +3,6 @@
 
 export interface ContentBlockProps {
     title: string; 
-    buttonText: string;
+    buttonText?: string;
     children: React.ReactNode;
 }
