@@ -2,15 +2,12 @@
 import Link from "next/link";
 import AsideSpoller from "./spoller/AsideSpoller";
 import Parent from "./Parent";
-
-
 import AsideLinks from "./AsideLinks";
+import Image from "next/image";
 
 import { MenuResponse } from "@/types/response";
 
 import "./aside.scss";
-import Image from "next/image";
-
 
 async function getData(): Promise<MenuResponse> {
     const res = await fetch('https://sports-stats.net/menu/');

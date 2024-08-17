@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: column-reverse;
     position: absolute;
     width:78px;
     height:50px;
@@ -27,11 +27,15 @@
     // .player__number
 
     &__number {
+        display: inline-flex;
+        width: max-content;
         font-size: 10px;
         text-align: center;
         bottom: 9px;
         transform: translate(-50%);
         left: 50%;
+        color: var(--white);
+        font-weight: 700;
     }
 
     // .player__border
@@ -55,18 +59,22 @@
         color: var(--white);
         right: -14px;
         font-size: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 14px;
-        border: 1.5px solid  var(--white);
-        border-radius: 50%;
-        background:  var(--background);
+        font-weight: 900;
+        border-radius:50%;
+        border: 1px solid var(--white);
+        background: var(--background);
     }
 }
 .player__card {
     position: absolute;
-    width: 7.5px;
+    top: -2px;
     right: -11px;
-    border-radius:  2px;
-    background:  #FFC61A;
+    width: 7.5px;
+    z-index: 30;
     height: 10px;
 }
 
@@ -74,11 +82,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color:   var(--white);
+    color: var(--white);
     gap: 2px;
     text-align: center;
-    font-size: 9px;
-    font-style: normal;
+    font-size: 7px;
     bottom:2px;
     font-weight: 900;
     position: absolute;
@@ -99,7 +106,7 @@
 .player.top {
     // .player__bg
     &__bg {
-        fill: #115E2A;
+        fill: var(--green-dark);
     }
 }
 

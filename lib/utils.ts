@@ -37,3 +37,15 @@ export function formatDateString(input?: string): string | undefined {
     return `${day}/${month}`;
 }
 
+
+export function abbreviatePlayerName(fullName: string): string {
+    const nameParts = fullName.split(' ');
+    if (nameParts.length === 1) {
+        return fullName;
+    }
+
+    const firstNameInitial = nameParts[0].charAt(0) + '.';
+    const lastName = nameParts[nameParts.length - 1];
+
+    return `${firstNameInitial} ${lastName}`;
+}

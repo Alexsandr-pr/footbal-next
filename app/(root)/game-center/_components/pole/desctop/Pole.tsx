@@ -43,9 +43,11 @@ const PoleDesctop = ({
                         <div data-pole className="pole-body__top">
                             {
                                 teamsLineups[0].starting.map(player => {
-                                    const {player_short_name, pitch_location, jersey_num} = player;
+                                    const {player_short_name, pitch_location, jersey_num, substitution, events} = player;
                                     return (
                                         <Player 
+                                            events={events}
+                                            substitution={substitution}
                                             key={player.name}
                                             top={true}
                                             jersey_num={jersey_num}

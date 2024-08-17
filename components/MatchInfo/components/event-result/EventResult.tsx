@@ -3,14 +3,11 @@ import React, { useEffect, useRef } from "react";
 import { formatDateString, getGridStyle } from "@/lib/utils";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-
+import PreGameGC from "./_components/pre-game/PreGameGC";
 
 import { EventResultProps } from "@/types/props/match";
 
 import styles from "./result.module.scss";
-import PreGameGC from "./_components/pre-game/PreGameGC";
-
-
 
 const EventResult = ({
     redCards2,
@@ -82,13 +79,14 @@ const EventResult = ({
     }
 
     return (
-        <div className={styles.span}>
+        <div className={`${styles.span} ${type === "gamecenter" && "span-game-center"}`}>
             {
-                status?.enum === 3  && 
+                status?.enum === 3  && type === "gamecenter" &&
                     <div  className={styles.startTime}>
                         {formatDateString(startTime)}
                     </div>
             }
+
             <div style={{marginBottom: type === "gamecenter" ? "8px" : "4px"}} className={styles.block}>
                 <div className={styles.number}>
                     <div
@@ -104,7 +102,6 @@ const EventResult = ({
                         {scores[0]}
                     </span>
                 </div>
-
                 <div style={colorStyle} className={styles.tire}>
                     {
                         type === "gamecenter" && status.enum === 2 ? <>{ gameTime }</> : "-"
