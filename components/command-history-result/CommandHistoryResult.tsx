@@ -8,9 +8,9 @@ const CommandHistoryResult = ({
     return (
         <ul className="command-history-result">
             {
-                data.map(item => {
+                data.map((item, index) => {
                     return (
-                        <li className={`command-history-result__block 
+                        <li key={item + index} className={`command-history-result__block 
                             ${ item === 0 ? "draw" : null}
                             ${ item === 1 ? "win" : null}
                             ${ item === 2 ? "loss" : null}
