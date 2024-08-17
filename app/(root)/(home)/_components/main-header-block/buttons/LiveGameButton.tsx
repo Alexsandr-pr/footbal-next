@@ -6,7 +6,7 @@ import { setShowLiveGames } from "@/store/filterSlice";
 import { usePathname } from "next/navigation";
 
 import styles from "../main-header-block.module.scss";
-import Image from "next/image";
+import Loading from "@/components/ui/loading/Loading";
 
 const LiveGameButton = () => {
 
@@ -43,11 +43,7 @@ const LiveGameButton = () => {
                             className={`${styles["button-border"]} ${styles["button-red"]} ${showLiveGames ? styles["active"] : ""}`}
                         >
                         VIVO ({
-                            loadingShowLiveGames ? <Image 
-                                width={10}
-                                height={10}
-                                alt="loading"
-                                src={"/assets/loading/loading.gif"}/> : liveGamesCount
+                            loadingShowLiveGames ? <Loading  size={10}/> : liveGamesCount
                         })
                         </button>
                     </> ) : null

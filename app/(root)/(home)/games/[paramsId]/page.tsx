@@ -1,9 +1,10 @@
 
 import { Suspense } from "react";
 import Home from "../../_components/home/Home";
-import Loading from "../../loading";
+
 import { _SERVER_API } from "@/config/consts";
 import { LeaguesResponse } from "@/types/response";
+import Loading from "@/components/ui/loading/Loading";
 
 
 async function getData(paramsId: string): Promise<LeaguesResponse> {
@@ -28,7 +29,7 @@ const GamePage = async ({ params }: PageProps) => {
     const { leagues, calendar } = await getData(paramsId);
 
     return (
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<Loading size={32} clazz="loading" />}>
             <Home calendar={calendar} leagues={leagues} />
         </Suspense>
         

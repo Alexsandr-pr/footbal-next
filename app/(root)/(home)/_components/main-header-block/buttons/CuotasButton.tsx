@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadCoefficientFromCookies, toggleCoefficient } from "@/store/filterSlice";
 import { RootState } from "@/store/store";
-import Image from "next/image";
+import Loading from "@/components/ui/loading/Loading";
 
 const CuotasButton = () => {
     const dispatch = useDispatch();
@@ -31,14 +31,7 @@ const CuotasButton = () => {
             className={`green-cuotas ${!coefficient ? "active" : ""}`}
             disabled={loading}
         >
-            {loading ? 
-            <Image
-                src="/assets/loading/loading.gif" 
-                height={16}
-                width={16}
-                alt="Loading"
-            />
-            : "CUOTAS"}
+            {loading ? <Loading size={16}/> : "CUOTAS"}
         </button>
     );
 }

@@ -2,8 +2,7 @@
 import { ReactNode, Suspense } from "react";
 import MainHeaderBlock from "./_components/main-header-block/MainHeaderBlock";
 import Reclama from "./_components/reclama/Reclama";
-import Loading from "./loading";
-
+import Loading from "@/components/ui/loading/Loading";
 
 
 function Layout({ children }: { children: ReactNode }) {
@@ -12,7 +11,7 @@ function Layout({ children }: { children: ReactNode }) {
         <>
             <MainHeaderBlock/>
             <Reclama />
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<Loading size={32} clazz="loading" />}>
                 {children}
             </Suspense>
         </>

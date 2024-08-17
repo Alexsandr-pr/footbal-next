@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "../main-header-block.module.scss";
 import { RootState } from "@/store/store";
-import Image from "next/image";
+import Loading from "@/components/ui/loading/Loading";
+
 
 const NotificationButton = () => {
     const dispatch = useDispatch();
@@ -29,16 +30,7 @@ const NotificationButton = () => {
             className={`${styles["button-green"]} button-off ${sound ? "active" : ""}`}
             disabled={loading}
         >
-            {loading ? (
-                
-                    <Image
-                        src="/assets/loading/loading.gif" 
-                        height={16}
-                        width={16}
-                        alt="Loading"
-                    />
-                
-            ) : sound ? (
+            {loading ? <Loading size={16}/> : sound ? (
                 <Bell
                     color="var(--white)"
                     width={16}

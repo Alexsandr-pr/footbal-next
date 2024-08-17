@@ -1,7 +1,7 @@
 "use client"
 
+import Loading from '@/components/ui/loading/Loading';
 import { FallbackImageProps } from '@/types/props/match';
-import ImageS from 'next/image';
 import { useState, useEffect } from 'react';
 
 const FallbackImage = ({ src, alt, width, height, spinnerSize } : FallbackImageProps) => {
@@ -22,21 +22,10 @@ const FallbackImage = ({ src, alt, width, height, spinnerSize } : FallbackImageP
         };
     }, [src]);
 
-    if (isLoading) {
-        return (
-            <ImageS
-                src="/assets/loading/loading.gif" 
-                height={spinnerSize}
-                width={spinnerSize}
-                alt="Loading"
-            />
-        );
-    }
+    if (isLoading) return <Loading size={spinnerSize} />
 
-    if (!imageExists) {
-        return null;
-    }
-
+    if (!imageExists) return null;
+    
     return imgSrc ? <img width={width} height={height} src={imgSrc} alt={alt} /> : null;
 };
 

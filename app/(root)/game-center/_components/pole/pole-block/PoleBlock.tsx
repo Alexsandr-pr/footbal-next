@@ -9,6 +9,7 @@ import PoleMobile from '../mobile/Pole'
 
 import "./loading-pole.scss"
 import { PoleProps } from '@/types/game-center';
+import Loading from '@/components/ui/loading/Loading'
 
 const PoleBlock = ({ 
     teams,
@@ -20,10 +21,10 @@ const PoleBlock = ({
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 991.98);
-            setLoading(false);  // Убираем загрузку после определения размера окна
+            setLoading(false); 
         };
         
-        handleResize(); // Инициализация при монтировании
+        handleResize(); 
         window.addEventListener('resize', handleResize);
 
         return () => {
@@ -36,7 +37,7 @@ const PoleBlock = ({
     return (
         <ContentBlock buttonText="see full lineup" title="LINEUPs" >
             {loading ? (
-                <div className='loading-pole'>Loading...</div>  
+                <Loading size={32} clazz='loading-pole'/>
             ) : isMobile ? (
                 <PoleMobile teamsLineups={teamsLineups} teams={teams}/>
             ) : (
