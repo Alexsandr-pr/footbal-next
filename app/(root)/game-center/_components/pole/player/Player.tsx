@@ -48,17 +48,10 @@ const Player = ({
                     position === "Goalkeeper" ? <IconGolkeeper top={top}/> : <IconPlayer top={top}/>
                 }
                 { 
-                    (events?.cards?.red && events?.cards?.yellow) 
-                    ? 
-                        <Card type="red"/>
-                    : 
+                    (events?.cards?.red && events?.cards?.yellow) ? <Card type="red"/> : 
                     <>
-                        {
-                            events?.cards?.red && <Card type="red"/>
-                        }
-                        {
-                            events?.cards?.yellow && <Card/>
-                        }
+                        { events?.cards?.red && <Card type="red"/> }
+                        { events?.cards?.yellow && <Card/> }
                     </>
                 }
                 {
@@ -92,24 +85,13 @@ const Card = ({
 } : {
     type?: "red" 
 }) => {
-    if(type === "red") {
-        return (
-            <Image 
-                height={10}
-                width={7.5}
-                className="player__card" 
-                src="/assets/icons/red-card-min.svg" 
-                alt="red-card" 
-            />
-        )
-    }
     return (
         <Image 
             height={10}
             width={7.5} 
             className="player__card" 
-            src="/assets/icons/yellow-card-min.svg"
-            alt="yellow-card" 
+            src={`/assets/icons/${type === "red" ? "red" : "yellow"}-card-min.svg`}
+            alt={`${type === "red" ? "red" : "yellow"}-card`}
         />
     )
 }

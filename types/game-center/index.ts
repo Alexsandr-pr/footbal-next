@@ -13,14 +13,10 @@ interface Option {
     vote_url: string;
 }
 
-interface Options {
-    options: Option[];
-}
-
 export interface Prediction {
     bookie_id: string,
     cta_link: string,
-    options: Options,
+    options: Option[],
     total_votes: number,
     odds: OddsOption[];
 }
