@@ -31,7 +31,7 @@ const PoleBlock = ({
         };
     }, []);
 
-
+    
     
     return (
         <ContentBlock buttonText="see full lineup" title="LINEUPs" >

@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 
 import Player from "../player/Player";
 import { PoleProps } from "@/types/game-center";
+import Formation from "../formation/Formation";
 
 const PoleDesctop = ({
     teams,
@@ -34,41 +35,16 @@ const PoleDesctop = ({
         createLine(elementTop.current);
         createLine(elementBottom.current);
     }, []);
-
     return (
         <>
             <>
                 <div className="pole__body pole-body">
                     <div ref={elementTop} className="pole-body__top-content">
                         <div data-pole className="pole-body__top">
-                            {
-                                teamsLineups[0].starting.map(player => {
-                                    const {
-                                        player_short_name, 
-                                        pitch_location, 
-                                        jersey_num, 
-                                        substitution, 
-                                        events,
-                                        position,
-                                        name
-                                    } = player;
-                                    return (
-                                        <Player 
-                                            position={position}
-                                            events={events}
-                                            substitution={substitution}
-                                            key={name}
-                                            top={true}
-                                            jersey_num={jersey_num}
-                                            styles={{
-                                                left: `calc(${pitch_location.x}% - ${pitch_location.x === 0 ? "10px" : "70px"})`,
-                                                top: `calc(${pitch_location.y}% - 25px)`
-                                            }} 
-                                            player_short_name={player_short_name}
-                                        />
-                                    )
-                                })
-                            }
+                            <Formation
+                                type={teamsLineups[0].team_num}
+                                startingPlayers={teamsLineups[0].starting}
+                            />
                             <div className="pole-ds-left__block-1"></div>
                             <div className="pole-ds-left__block-2"></div>
                         </div>
