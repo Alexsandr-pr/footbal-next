@@ -91,7 +91,14 @@
     position: absolute;
     left: -14px;
 }
-
+.player__goalkeeper {
+    position: absolute;
+    width:  12px;
+    height: 4px;
+    bottom: 5px;
+    left: 4px;
+    background:var(--white);
+}
 .player__capitan {
     position: absolute;
     bottom: -13px;

@@ -43,12 +43,21 @@ const PoleDesctop = ({
                         <div data-pole className="pole-body__top">
                             {
                                 teamsLineups[0].starting.map(player => {
-                                    const {player_short_name, pitch_location, jersey_num, substitution, events} = player;
+                                    const {
+                                        player_short_name, 
+                                        pitch_location, 
+                                        jersey_num, 
+                                        substitution, 
+                                        events,
+                                        position,
+                                        name
+                                    } = player;
                                     return (
                                         <Player 
+                                            position={position}
                                             events={events}
                                             substitution={substitution}
-                                            key={player.name}
+                                            key={name}
                                             top={true}
                                             jersey_num={jersey_num}
                                             styles={{
@@ -67,11 +76,23 @@ const PoleDesctop = ({
                     <div ref={elementBottom} className="pole-body__bottom-content">
                         <div data-pole className="pole-body__bottom">
                             {
-                                teamsLineups[0].starting.map(player => {
-                                    const {player_short_name, pitch_location, jersey_num} = player;
+                                teamsLineups[1].starting.map(player => {
+                                    const {
+                                        player_short_name, 
+                                        pitch_location, 
+                                        jersey_num, 
+                                        substitution, 
+                                        events,
+                                        position,
+                                        name
+                                    } = player;
                                     return (
                                         <Player 
-                                            key={player.name}
+                                            position={position}
+                                            events={events}
+                                            substitution={substitution}
+                                            key={name}
+                                            
                                             jersey_num={jersey_num}
                                             styles={{
                                                 right: `calc(${pitch_location.x}% - ${pitch_location.x === 0 ? "10px" : "70px"})`,

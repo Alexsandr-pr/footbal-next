@@ -64,7 +64,7 @@ async function GameCenter({params} : Props) {
                 description={game?.description}
                 />
             <TabsTriggerBlock/>
-            <Prediction prediction={game?.prediction}/>
+            <Prediction />
             {
                 game?.players?.lineups && 
                 <PoleBlock teamsLineups={game.players.lineups.teams} teams={game.teams}/>
