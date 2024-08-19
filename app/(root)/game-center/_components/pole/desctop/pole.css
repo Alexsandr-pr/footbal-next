@@ -1,0 +1,166 @@
+@media (max-width: 991.98px) {
+  .pole-ds__content {
+    display: none;
+  }
+}
+@media (min-width: 991.98px) {
+  .pole-ds__content {
+    display: grid;
+  }
+}
+
+.pole-ds-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0px 12px 12px 12px;
+}
+.pole-ds-content .pole__block-comand {
+  width: 70%;
+  height: 30px;
+}
+.pole-ds-content .comand-image__comand {
+  width: 16px;
+  height: 16px;
+}
+.pole-ds-content .comand-image__flag {
+  width: 8px;
+  top: -2px;
+  height: 8px;
+  right: -2px;
+}
+.pole-ds-content .comand-name__title {
+  font-size: 12px;
+}
+.pole-ds-content .pole__disposition {
+  font-size: 14px;
+}
+
+.pole-ds-content__command-left {
+  display: flex;
+  justify-content: start;
+}
+
+.pole-ds-content__command-right {
+  display: flex;
+  justify-content: end;
+}
+
+@media (min-width: 991.98px) {
+  .pole__body {
+    display: flex;
+    border-radius: 8px;
+    margin: 14px;
+    border: 2px solid var(--border);
+    position: relative;
+    height: 320px;
+  }
+  .pole__body::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: url("/assets/game-center/pole-ellipsis.svg");
+  }
+}
+
+@media (min-width: 991.98px) {
+  .pole-body__top,
+  .pole-body__bottom {
+    width: 100%;
+    position: relative;
+    height: 70%;
+    margin: auto 0px;
+  }
+}
+@media (min-width: 991.98px) {
+  .pole-body__top-content .span.active-1 {
+    border-radius: 8px 0px 0px 8px;
+  }
+  .pole-body__bottom-content {
+    border-left: var(--border) 1px solid;
+  }
+  .pole-body__bottom-content .span:last-child {
+    border-radius: 0px 8px 8px 0px;
+  }
+  .pole-body__bottom-content,
+  .pole-body__top-content {
+    flex: 0 1 50%;
+    position: relative;
+    display: flex;
+  }
+  .pole-body__bottom-content .span,
+  .pole-body__top-content .span {
+    position: absolute;
+    display: block;
+    width: 10%;
+    height: 100%;
+  }
+  .pole-body__bottom-content .span:nth-child(even),
+  .pole-body__top-content .span:nth-child(even) {
+    background: #163629;
+  }
+  .pole-body__bottom-content .span:nth-child(odd),
+  .pole-body__top-content .span:nth-child(odd) {
+    background: #234134;
+  }
+}
+.pole-ds-left__block-2 {
+  z-index: 4;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100px;
+  width: calc(10% + 1px);
+  left: -1px;
+  border: 1px solid var(--border);
+}
+
+.pole-ds-left__block-1 {
+  z-index: 4;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 221px;
+  width: calc(30% + 1px);
+  left: -1px;
+  border: 1px solid var(--border);
+}
+
+.pole-ds-right__block-1 {
+  z-index: 4;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 221px;
+  width: calc(30% + 1px);
+  right: -1px;
+  border: 1px solid var(--border);
+}
+
+.pole-ds-right__block-2 {
+  z-index: 4;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100px;
+  width: calc(10% + 1px);
+  right: -1px;
+  border: 1px solid var(--border);
+}
+
+@media (min-width: 991.98px) {
+  .pole-ds-left__block-1,
+  .pole-ds-left__block-2,
+  .pole-ds-right__block-1,
+  .pole-ds-right__block-2 {
+    display: block;
+  }
+}
+.pole__content {
+  position: relative;
+}
+
+.pole__block {
+  border-radius: 8px;
+  background-color: var(--background);
+}/*# sourceMappingURL=pole.css.map */

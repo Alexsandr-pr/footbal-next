@@ -20,7 +20,7 @@ const TeamMatchHistory = ({
                         <Command 
                             classes="team-match-history-column"
                             show_country_flags 
-                            imagesStyles="command-home" 
+                            imagesStyles="recent-form" 
                             reverse 
                             team={teams[0]}
                         />
@@ -31,10 +31,9 @@ const TeamMatchHistory = ({
                     <CommandHistoryResult data={resentForm.away}/>
                     <div className="team-match-history__block-item">
                         <Command 
-                            position="right"
                             classes="team-match-history-column-reverse"
                             show_country_flags 
-                            imagesStyles="command-home" 
+                            imagesStyles="recent-form" 
                             team={teams[1]}
                             />
                     </div>

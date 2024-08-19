@@ -1,0 +1,25 @@
+.cof-team {
+  height: 24px;
+  border-top: var(--border) 1px solid;
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(17, 94, 42, 0.35);
+}
+.cof-team span, .cof-team div {
+  gap: 4px;
+  flex: 0 1 33.333%;
+  align-items: center;
+  display: flex;
+  line-height: 1.5;
+  justify-content: center;
+}
+@media (max-width: 767.98px) {
+  .cof-team {
+    height: 16px;
+    font-size: 10px;
+  }
+}/*# sourceMappingURL=cof.css.map */

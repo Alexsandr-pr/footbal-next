@@ -15,9 +15,9 @@ const CommandHistoryResult = ({
                             ${ item === 1 ? "win" : null}
                             ${ item === 2 ? "loss" : null}
                         `}>
-                            { item === 0 ? "E" : null}
-                            { item === 1 ? "V" : null}
-                            { item === 2 ? "D" : null}
+                            { item === 0 ? <div className="">E</div> : null}
+                            { item === 1 ? <div className="">V</div> : null}
+                            { item === 2 ? <div className="">D</div> : null}
                         </li>
                     )
                 })

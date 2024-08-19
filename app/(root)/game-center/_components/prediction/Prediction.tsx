@@ -15,7 +15,7 @@ const PredictionBlock = ({
     prediction: Prediction;
 }) => {
     const [state, setState] = useState(false);
-
+    console.log(prediction)
     return (
         
         <div className="content-block">

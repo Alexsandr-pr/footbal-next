@@ -5,16 +5,19 @@
 
 .command-history-result__block {
     width: 24px;
-    display: flex;
+    height: 24px;
+    display: inline-flex;
     padding: 2px 4px;
     justify-content: center;
     align-items: center;
     border-radius:2px;
     gap: 10px;
-    height: 24px;
+    font-weight: 700;
+    align-self: center;
     color: var(--background);
     text-align: center;
     font-size: 11px;
+    line-height: 1.2;
     &.draw {
         background-color: var(--yellow);
     }

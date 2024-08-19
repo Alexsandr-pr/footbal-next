@@ -8,11 +8,17 @@
     width: auto;
     object-fit: contain; 
 }
-
+.comand-imageteam {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.country {
+    position: absolute;
+}
 .command-home {
     .country {
         top: -2px;
-        position: absolute;
         max-width: 16px;
         max-height: 16px;
         @media(max-width:767.98px){
@@ -23,9 +29,6 @@
     .comand-imageteam {
         width: 32px;
         height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         @media(max-width:767.98px){
             width: 24px;
             height: 24px;
@@ -44,7 +47,6 @@
 .commandGameCenter {
     .country {
         top: -1px;
-        position: absolute;
         max-width: 8px;
         max-height: 8px;
         @media(max-width:991.98px){
@@ -56,9 +58,6 @@
     .comand-imageteam {
         width: 16px;
         height: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         @media(max-width:991.98px){
             width: 24px;
             height: 24px;
@@ -69,7 +68,6 @@
 .commandGameCenterHeader {
     .country {
         top: -4px;
-        position: absolute;
         max-width: 32px;
         max-height: 32px;
         @media(max-width:991.98px){
@@ -81,12 +79,29 @@
     .comand-imageteam {
         width: 64px;
         height: 64px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         @media(max-width:991.98px){
             width: 36.7px;
             height: 36.7px;
+        }
+    }
+}
+
+.recent-form {
+    .country {
+        top: -2px;
+        max-width: 16px;
+        max-height: 16px;
+        @media(max-width:767.98px){
+            max-width: 12px;
+            max-height: 12px;
+        }
+    }
+    .comand-imageteam {
+        width: 32px;
+        height: 32px;
+        @media(max-width:767.98px){
+            width: 22px;
+            height: 22px;
         }
     }
 }

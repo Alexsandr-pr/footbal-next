@@ -75,7 +75,7 @@ export interface CommandProps {
     isInternationl?: boolean;
     team: Team;
     position?: "left" | "right";
-    imagesStyles?: "command-home" | "commandGameCenter" | "commandGameCenterHeader";
+    imagesStyles?: "command-home" | "commandGameCenter" | "commandGameCenterHeader" | "recent-form";
     reverse?: boolean;
     show_country_flags?: boolean;
     classes?: string;

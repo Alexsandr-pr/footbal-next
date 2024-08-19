@@ -1,0 +1,10 @@
+.breadcrumbs {
+  overflow: hidden;
+  color: var(--green);
+  text-overflow: ellipsis;
+}
+@media (max-width: 767.98px) {
+  .breadcrumbs {
+    font-size: 11px;
+  }
+}/*# sourceMappingURL=breadcrumbs.css.map */

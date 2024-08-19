@@ -1,0 +1,12 @@
+.white-button {
+  color: var(--green-hover);
+  font-family: "Roboto Condensed";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 16.8px */
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background: var(--white);
+}/*# sourceMappingURL=white-button.css.map */

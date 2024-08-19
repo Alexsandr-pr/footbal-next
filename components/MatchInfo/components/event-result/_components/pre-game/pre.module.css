@@ -1,0 +1,57 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+@media (max-width: 991.98px) {
+  .body {
+    gap: 4px;
+  }
+}
+
+.time {
+  color: var(--grey-70);
+  font-size: 14px;
+  font-weight: 400;
+}
+@media (max-width: 991.98px) {
+  .time {
+    font-size: 11px;
+  }
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date {
+  color: var(--white);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.description {
+  color: var(--grey-70);
+  font-size: 12px;
+  font-weight: 400;
+}
+@media (max-width: 991.98px) {
+  .description {
+    font-size: 10px;
+  }
+}
+
+.text {
+  font-size: 14px;
+  color: var(--white);
+  font-weight: 400;
+}
+@media (max-width: 991.98px) {
+  .text {
+    font-size: 11px;
+  }
+}/*# sourceMappingURL=pre.module.css.map */
