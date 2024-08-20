@@ -64,7 +64,7 @@ export interface EventTeamProps {
     isInternationl: boolean;
     status: Status;
     teams: Team[];
-    scores: number[];
+    scores?: [number, number] | [];
     penalties?: [number, number] | [];
     description?: string;
     show_country_flags?:boolean;
