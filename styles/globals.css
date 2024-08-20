@@ -222,4 +222,19 @@ table, td, th, tr {
   width: auto;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.mr-75 {
+  margin-right: 3px;
+}
+
+.ml-75 {
+  margin-left: 3px;
+}
+
+.live-minute-result-event {
+  color: var(--live);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
 }/*# sourceMappingURL=globals.css.map */

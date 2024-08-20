@@ -1,0 +1,17 @@
+.date {
+  color: var(--white);
+  font-weight: 700;
+}
+.date.pre {
+  font-size: 24px;
+}
+.date.post {
+  font-weight: 400;
+  font-size: 14px;
+}
+@media (max-width: 767.98px) {
+  .date.post {
+    color: var(--grey-70) !important;
+    font-size: 11px;
+  }
+}/*# sourceMappingURL=date.css.map */

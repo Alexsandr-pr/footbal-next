@@ -1,0 +1,8 @@
+.time {
+    color: var(--grey-70);
+    font-size: 14px;
+    font-weight: 400;
+    @media(max-width:991.98px){
+        font-size: 11px;
+    }
+}
