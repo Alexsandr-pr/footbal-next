@@ -9,9 +9,12 @@ const ContentBlock = ({
     title, 
     buttonText,
     children, 
+    cb,
+    rotate
 } : ContentBlockProps) => {
+
     return (
-        <div className="content-block">
+        <div  className="content-block">
             <div className="content-block__header">
                 {title}
             </div>
@@ -22,8 +25,8 @@ const ContentBlock = ({
             </div>
             {
                 buttonText &&  <div className="content-block__bottom">
-                <Button text={buttonText}/>
-            </div>
+                <Button cb={cb} rotate={rotate} text={buttonText}/>
+                </div>
             }
         </div>
     )

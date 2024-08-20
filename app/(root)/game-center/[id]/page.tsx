@@ -79,7 +79,9 @@ async function GameCenter({params} : Props) {
             {
                 game?.game_info && <InfoList gameInfo={game?.game_info}/>
             }
-            <Stats statistics={game?.statistics}/>
+            {
+                game?.statistics && <Stats statistics={game?.statistics}/>
+            }
         </div>
     );
 }

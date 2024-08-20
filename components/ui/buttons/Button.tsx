@@ -1,20 +1,23 @@
+"use client"
 import { ChevronRight } from "lucide-react"
 import "./button.scss";
 
 
-
-
 const Button = ({
-    text
+    text,
+    cb,
+    rotate
 } : {
-    text: string
+    cb?:() => void;
+    text: string;
+    rotate?: string;
 }) => {
     return (
-        <button className="button">
+        <button onClick={cb} className="button">
             {
                 text
             }
-            <ChevronRight height={16} width={16}/>
+            <ChevronRight style={{transform: rotate ? `rotate(${rotate})` : `rotate(0deg)`, transition: "all .3s easy "}} height={16} width={16}/>
         </button>
     )
 }
