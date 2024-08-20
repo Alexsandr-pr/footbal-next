@@ -9,6 +9,7 @@ import Prediction from "../_components/prediction/Prediction";
 import { GameCenterResponse } from "@/types/response";
 import { Metadata } from "next";
 import TeamMatchHistory from "../_components/team-match-history/TeamMatchHistory";
+import Stats from "../_components/stats/Stats";
 
 
 type Props = {
@@ -78,7 +79,7 @@ async function GameCenter({params} : Props) {
             {
                 game?.game_info && <InfoList gameInfo={game?.game_info}/>
             }
-            
+            <Stats statistics={game?.statistics}/>
         </div>
     );
 }

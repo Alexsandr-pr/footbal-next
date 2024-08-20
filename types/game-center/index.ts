@@ -120,11 +120,7 @@ export interface Game {
             events: PlayerEvent[];
         }[];
     }[];
-    statistics: {
-        name: string;
-        values: [string, string];
-        percentages: [number, number];
-    }[];
+    statistics: Statistic[];
     head_to_head: {
         home_wins: number;
         away_wins: number;
@@ -170,6 +166,11 @@ export interface Game {
 export interface PoleProps {
     teamsLineups: Lineup[];
     teams: Team[];
+}
+export interface Statistic {
+    name: string;
+    values: [string, string];
+    percentages: [number, number];
 }
 
 
