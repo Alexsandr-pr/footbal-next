@@ -21,7 +21,7 @@ const Stats = ({
     const [block] = useAutoAnimate();
     return (
         <ContentBlock 
-            rotate={expanded ? "90deg" : "-90deg"}
+            rotate={expanded ? "-90deg" : "90deg"}
             cb={statistics && statistics.length > displayQuantity ? handleToggle : undefined} 
             title="ESTADÍSTICAS DEL PARTIDO" 
             buttonText={expanded ? "VER MENOS" : "VER MÁS"}
