@@ -1,12 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store/store';
+
 import "./scores.scss";
 
 const Scores = ({
     scores,
     statusEnum,
-    soundLocal,
     type
 } : {
     scores?: number;
@@ -14,28 +11,6 @@ const Scores = ({
     soundLocal?: boolean;
     type?: "gc";
 }) => {
-    const previousScoresRef = useRef<number | null | undefined>(null);
-    const audioRef = useRef<HTMLAudioElement | null>(null);
-    const sound = useSelector((state: RootState) => state.filter.sound);
-
-    useEffect(() => {
-        audioRef.current = new Audio("/assets/sound/sound.mp3");
-        return () => {
-            if (audioRef.current) {
-                audioRef.current.pause();
-                audioRef.current = null;
-            }
-        };
-    }, []);
-
-    useEffect(() => {
-        if (previousScoresRef.current !== undefined && scores !== previousScoresRef.current) {
-            if (audioRef.current && sound && soundLocal) {
-                audioRef.current.play();
-            }
-        }
-        previousScoresRef.current = scores;
-    }, [scores, sound, soundLocal]);
 
     if (scores === undefined) {
         return null;

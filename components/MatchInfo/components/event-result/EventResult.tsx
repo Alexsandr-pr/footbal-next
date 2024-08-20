@@ -1,30 +1,56 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { EventResultProps } from "@/types/props/match";
 import Parent from "./_components/ui/parent/Parent";
 import ResultHome from "./_components/home/ResultHome";
 import ResultGameCenter from "./_components/gc/ResultGameCenter";
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
 
 const EventResult = (props: EventResultProps) => { 
-    const {type, status} = props;
+    const { type, status, scores, soundLocal } = props;
 
-    if(type === "gamecenter" ){
+    const previousScoresRef = useRef<number[]>(scores || []);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+
+    const sound = useSelector((state: RootState) => state.filter.sound);
+
+    useEffect(() => {
+        audioRef.current = new Audio("/assets/sound/sound.mp3");
+        return () => {
+            if (audioRef.current) {
+                audioRef.current.pause();
+                audioRef.current = null;
+            }
+        };
+    }, []);
+
+    useEffect(() => {
+        if (scores && previousScoresRef.current) {
+            const scoresChanged = scores.some(
+                (score, index) => score !== previousScoresRef.current[index]
+            );
+            if (scoresChanged && audioRef.current && sound && soundLocal) {
+                audioRef.current.play();
+            }
+        }
+        previousScoresRef.current = scores || [];
+    }, [scores, sound, soundLocal]); 
+
+    if (type === "gamecenter") {
         return (
-            <ResultGameCenter {...props}/>
-        )
+            <ResultGameCenter {...props} />
+        );
     } 
 
-    if (props?.scores === undefined || props.scores.length < 2 || status.enum === 1) {
+    if (scores === undefined || scores.length < 2 || status.enum === 1) {
         return <Parent type="home"><div style={{color: status.enum === 2 ? "var(--live)" : "var(--white)"}}>-</div></Parent>;
     }
-    
 
     return (
-        <ResultHome {...props}/>
+        <ResultHome {...props} />
     );
 };
-
-
 
 const arePropsEqual = (
     prevProps: EventResultProps,
