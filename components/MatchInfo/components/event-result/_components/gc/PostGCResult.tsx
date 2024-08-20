@@ -7,7 +7,7 @@ import { Status } from "@/types";
 import Date from "../ui/date/Date";
 
 const PostGCResult = (props: {
-    scores: number[];
+    scores?: [number, number] | [];
     status?: Status;
     redCards1: number;
     redCards2: number;

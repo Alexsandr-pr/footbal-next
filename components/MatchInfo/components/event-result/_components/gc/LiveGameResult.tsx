@@ -6,7 +6,7 @@ import Description from "../ui/description/Description";
 import Block from "../ui/block/Block";
 
 const LiveGameResult = (props: {
-    scores: number[];
+    scores?: [number, number] | [];
     status?: Status;
     redCards1: number;
     redCards2: number;

@@ -7,7 +7,7 @@ import { Status } from '@/types';
 const ResultGameCenter = (props: {
     startTime?: string;
     description?: string;
-    scores: number[];
+    scores?: [number, number] | [];
     status: Status;
     redCards1: number;
     redCards2: number;

@@ -6,24 +6,21 @@ import ResultHome from "./_components/home/ResultHome";
 import ResultGameCenter from "./_components/gc/ResultGameCenter";
 
 const EventResult = (props: EventResultProps) => { 
-    const {type, status, scores} = props;
+    const {type, status} = props;
 
     if(type === "gamecenter" ){
         return (
-            <ResultGameCenter
-                {...props}
-            />
+            <ResultGameCenter {...props}/>
         )
     } 
 
-    if (!scores || scores.length < 2 || status.enum === 1) {
+    if (props?.scores === undefined || props.scores.length < 2 || status.enum === 1) {
         return <Parent type="home"><div style={{color: status.enum === 2 ? "var(--live)" : "var(--white)"}}>-</div></Parent>;
     }
+    
 
     return (
-        <ResultHome 
-            {...props}
-        />
+        <ResultHome {...props}/>
     );
 };
 

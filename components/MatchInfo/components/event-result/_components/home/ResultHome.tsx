@@ -10,7 +10,7 @@ const ResultHome = (props : {
     penalties?: [number, number] | [];
     description?: string ;
     soundLocal?: boolean;
-    scores: number[] ;
+    scores?: [number, number] | [];
     status: Status;
 }) => {
     return (

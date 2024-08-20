@@ -9,12 +9,12 @@ const Scores = ({
     soundLocal,
     type
 } : {
-    scores: number;
+    scores?: number;
     statusEnum?: number;
     soundLocal?: boolean;
     type?: "gc";
 }) => {
-    const previousScoresRef = useRef<number | null>(null);
+    const previousScoresRef = useRef<number | null | undefined>(null);
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const sound = useSelector((state: RootState) => state.filter.sound);
 
@@ -29,13 +29,17 @@ const Scores = ({
     }, []);
 
     useEffect(() => {
-        if (previousScoresRef.current !== null && scores !== previousScoresRef.current) {
+        if (previousScoresRef.current !== undefined && scores !== previousScoresRef.current) {
             if (audioRef.current && sound && soundLocal) {
                 audioRef.current.play();
             }
         }
         previousScoresRef.current = scores;
     }, [scores, sound, soundLocal]);
+
+    if (scores === undefined) {
+        return null;
+    }
 
     const colorStyle = { 
         color: statusEnum === 2 ? "var(--live)" : "var(--white)", 

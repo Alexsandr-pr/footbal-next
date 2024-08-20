@@ -17,7 +17,7 @@ export interface EventTimeProps {
 }
 
 export interface EventResultProps {
-    scores: number[];
+    scores?: [number, number] | [];
     status: Status;
     redCards1: number;
     redCards2: number;
