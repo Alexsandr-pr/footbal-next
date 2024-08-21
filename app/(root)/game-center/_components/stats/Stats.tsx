@@ -9,7 +9,7 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 const Stats = ({
     statistics
 }: {
-    statistics?: Statistic[];
+    statistics: Statistic[];
 }) => {
     const displayQuantity = 4;
     const [expanded, setExpanded] = useState(false);
@@ -26,7 +26,7 @@ const Stats = ({
             rotate={expanded ? "-90deg" : "90deg"}
             cb={statistics && statistics.length > displayQuantity ? handleToggle : undefined} 
             title="ESTADÍSTICAS DEL PARTIDO" 
-            buttonText={expanded ? "VER MENOS" : "VER MÁS"}
+            buttonText={statistics?.length <= 4 ? "" : expanded ? "VER MENOS" : "VER MÁS"}
             buttonColor={"white"}
         >
             <div ref={block} className={styles.items}>

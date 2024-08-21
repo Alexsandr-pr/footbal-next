@@ -28,9 +28,11 @@ const TabsTrigger = ({ data } : TabsTriggerProps) => {
         <div className={styles.triggers}>
             {
                 data.map(({label, route, cb}) => {
+                    const isActive = tabsButtonParams === route;
                     return (
                         <button onClick={cb} key={route}
-                            style={{color: tabsButtonParams === route ?  "var(--green)" : "var(--white)"}} 
+                            
+                            style={{color: isActive ?  "var(--green)" : "var(--white)"}} 
                             className={styles.button}>{label}
                         </button>
                     )

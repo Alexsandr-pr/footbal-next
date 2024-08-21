@@ -12,6 +12,9 @@ import TeamMatchHistory from "../_components/team-match-history/TeamMatchHistory
 import Stats from "../_components/stats/Stats";
 import Blockh2h from "../_components/h2h/Blockh2h";
 import MissingPlayers from "../_components/missing-players/MissingPlayers";
+import SecondTab from "../_components/tabs/SecondTab";
+import TabsFirst from "../_components/tabs/TabsFirst";
+import TabsBlockConstructor from "../_components/tabs-trigger/TabsBlockConstructor";
 
 
 type Props = {
@@ -50,13 +53,13 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
 async function GameCenter({params} : Props) {
     const { game, TTL } = await getData(params.id);
-    
+
     return (
         <div className="flex-16">
             <Breadcrumbs 
                 commandSecond={game.teams[1].name} 
                 commandFirst={game.teams[0].name}
-                />
+            />
             <Header 
                 scores={game?.scores}
                 penalties={game?.penalties}
@@ -65,31 +68,26 @@ async function GameCenter({params} : Props) {
                 status={game.status} 
                 teamsHeader={game.teams}
                 description={game?.description}
-                />
-            {
-                game?.players?.missing_players && <MissingPlayers missingPlayers={game?.players?.missing_players[0]}/>
-            }
-            {
-                game?.players?.missing_players && <MissingPlayers missingPlayers={game?.players?.missing_players[1]}/>
-            }
+            />
+            
             <TabsTriggerBlock/>
             {
                 game?.prediction &&  <Prediction prediction={game.prediction}/>
             }
+
             {
-                game?.players?.lineups && 
-                <PoleBlock teamsLineups={game.players.lineups.teams} teams={game.teams}/>
+                game?.players?.lineups && <PoleBlock teamsLineups={game.players.lineups.teams} teams={game.teams}/>
             }
-            <TeamMatchHistory resentForm={game.recent_form} teams={game.teams}/>
-            {
-                game?.game_info && <InfoList gameInfo={game?.game_info}/>
-            }
-            {
-                game?.statistics && <Stats statistics={game?.statistics}/>
-            }
-            {
-                game?.head_to_head && <Blockh2h teams={game.teams} headToHead={game?.head_to_head}/>
-            }
+
+            <TabsBlockConstructor 
+                statistics={game?.statistics}
+                recentForm={game?.recent_form}
+                teams={game?.teams}
+                headToHead={game?.head_to_head}
+                gameInfo={game?.game_info}
+                missingPlayers={game?.players?.missing_players}
+            />
+
         </div>
     );
 }

@@ -1,13 +1,15 @@
 "use client";
 import { useState } from "react";
-
-import "./prediction.scss"
 import WhiteButton from "@/components/ui/buttons/button-white/WhiteButton";
 import { Prediction } from "@/types/game-center";
 import GetTrendIcon from "@/components/ui/trend-icon/GetTrendIcon";
 import Link from "next/link";
 import Image from "next/image";
 import { _SERVER_API } from "@/config/consts";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import "./prediction.scss";
+
 
 const PredictionBlock = ({
     prediction
@@ -15,6 +17,10 @@ const PredictionBlock = ({
     prediction: Prediction;
 }) => {
     const [state, setState] = useState(false);
+    const tabsButtonParams = useSelector((state:RootState) => state.gameCenter.tabsButtonParams);
+
+    if(tabsButtonParams === "second") return null;
+
     return (
         
         <div className="content-block">
