@@ -3,6 +3,7 @@ import H2hItem from './H2hItem';
 import { HeadToHead, Team } from '@/types/game-center';
 import Text from './Text';
 import { formatDateStringSecond } from '@/lib/utils';
+import Image from 'next/image';
 
 type Blockh2hProps = {
     headToHead: HeadToHead;
@@ -36,7 +37,13 @@ const HeadContent = ({headToHead, teamsTop} : Blockh2hProps) => {
                                         <div className={`h2h-number ${firstScore < secondScore || winner === -1 ? 'opacity' : null}`}>
                                             <span>{firstScore}</span>
                                         </div>
-                                        <img className={`h2h-image ${winner === -1 ? 'opacity' : null}`} src="/assets/icons/tire.svg" alt="tire" />
+                                        <Image
+                                            src="/assets/icons/tire.svg"
+                                            className={`h2h-image ${winner === -1 ? 'opacity' : null}`}
+                                            width={11}
+                                            height={19}
+                                            alt="tire"
+                                        />
                                         <div className={`h2h-number ${secondScore < firstScore || winner === -1 ? 'opacity' : null}`}>
                                             <span>{secondScore}</span>
                                         </div>

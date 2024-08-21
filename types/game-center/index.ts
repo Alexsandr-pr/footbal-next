@@ -86,10 +86,29 @@ interface Players {
     lineups: {
         teams: Lineup[];
     };
+    missing_players?: [MissingPlayer[], MissingPlayer[]];
 }
+
 export interface RecentForm {
     home: number[];
     away: number[];
+}
+
+export interface MissingPlayerDetails {
+    type: number,
+    reason: string,
+    will_play_status: number,
+    will_play: string
+}
+
+
+export interface MissingPlayer {
+    jersey_num: number,
+    name: string,
+    player_short_name: string,
+    position: string,
+    formation_position: string,
+    missing_details: MissingPlayerDetails
 }
 
 

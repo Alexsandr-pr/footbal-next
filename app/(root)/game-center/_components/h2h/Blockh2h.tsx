@@ -3,7 +3,6 @@
 import "./block.scss";
 import ContentBlock from "@/components/content-block/ContentBlock"
 import CommandImage from "@/components/ui/command/CommandImage"
-import { formatDateStringSecond } from "@/lib/utils";
 import { HeadToHead, Team } from "@/types/game-center"
 import { useState } from "react";
 import H2hItem from "./_components/H2hItem";
@@ -22,7 +21,8 @@ const Blockh2h = ({headToHead, teams} : Blockh2hProps) => {
     const handleToggle = () => {
         setExpanded(!expanded);
     };
-    const [block] = useAutoAnimate()
+    const [block] = useAutoAnimate();
+
     return (
         <ContentBlock
             cb={() => handleToggle()}

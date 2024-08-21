@@ -11,6 +11,7 @@ import { Metadata } from "next";
 import TeamMatchHistory from "../_components/team-match-history/TeamMatchHistory";
 import Stats from "../_components/stats/Stats";
 import Blockh2h from "../_components/h2h/Blockh2h";
+import MissingPlayers from "../_components/missing-players/MissingPlayers";
 
 
 type Props = {
@@ -49,8 +50,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
 async function GameCenter({params} : Props) {
     const { game, TTL } = await getData(params.id);
-    //"ebiajfb"
-
+    
     return (
         <div className="flex-16">
             <Breadcrumbs 
@@ -66,6 +66,12 @@ async function GameCenter({params} : Props) {
                 teamsHeader={game.teams}
                 description={game?.description}
                 />
+            {
+                game?.players?.missing_players && <MissingPlayers missingPlayers={game?.players?.missing_players[0]}/>
+            }
+            {
+                game?.players?.missing_players && <MissingPlayers missingPlayers={game?.players?.missing_players[1]}/>
+            }
             <TabsTriggerBlock/>
             {
                 game?.prediction &&  <Prediction prediction={game.prediction}/>
@@ -84,7 +90,6 @@ async function GameCenter({params} : Props) {
             {
                 game?.head_to_head && <Blockh2h teams={game.teams} headToHead={game?.head_to_head}/>
             }
-            
         </div>
     );
 }
