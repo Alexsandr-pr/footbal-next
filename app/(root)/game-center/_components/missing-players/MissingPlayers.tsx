@@ -21,7 +21,7 @@ const MissingPlayers = ({
                 {
                     missingPlayers.map(({name, missing_details, jersey_num}) => {
                         return (
-                            <li className={styles.item}>
+                            <li key={name} className={styles.item}>
                                 <Player 
                                     name={name}
                                     willPlayStatus={missing_details?.will_play_status}
