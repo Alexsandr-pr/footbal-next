@@ -4,7 +4,6 @@ import PoleCommand from "../pole-block-comand/PoleCommand";
 import "./pole.scss";
 import { useEffect, useRef } from "react";
 
-import Player from "../player/Player";
 import { PoleProps } from "@/types/game-center";
 import Formation from "../formation/Formation";
 

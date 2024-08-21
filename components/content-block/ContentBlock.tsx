@@ -10,7 +10,8 @@ const ContentBlock = ({
     buttonText,
     children, 
     cb,
-    rotate
+    rotate,
+    buttonColor
 } : ContentBlockProps) => {
 
     return (
@@ -25,7 +26,7 @@ const ContentBlock = ({
             </div>
             {
                 buttonText &&  <div className="content-block__bottom">
-                <Button cb={cb} rotate={rotate} text={buttonText}/>
+                <Button buttonColor={buttonColor} cb={cb} rotate={rotate} text={buttonText}/>
                 </div>
             }
         </div>

@@ -6,14 +6,16 @@ import "./button.scss";
 const Button = ({
     text,
     cb,
-    rotate
+    rotate,
+    buttonColor
 } : {
     cb?:() => void;
     text: string;
     rotate?: string;
+    buttonColor?: string;
 }) => {
     return (
-        <button onClick={cb} className="button">
+        <button onClick={cb} className={`button ${buttonColor}`}>
             {
                 text
             }

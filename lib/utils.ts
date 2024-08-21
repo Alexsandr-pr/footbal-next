@@ -37,6 +37,12 @@ export function formatDateString(input?: string): string | undefined {
     return `${day}/${month}`;
 }
 
+export function formatDateStringSecond(startTime: string): string {
+    const [datePart] = startTime.split(' '); 
+    const [day, month, year] = datePart.split('-'); 
+
+    return `${day}/${month}/${year}`;
+}
 
 export function abbreviatePlayerName(fullName: string): string {
     const nameParts = fullName.split(' ');

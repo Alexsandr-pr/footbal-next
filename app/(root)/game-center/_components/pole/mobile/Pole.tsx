@@ -2,8 +2,6 @@
 import PoleCommand from "../pole-block-comand/PoleCommand"
 
 import "./pole.scss"
-
-import Player from "../player/Player";
 import { PoleProps } from "@/types/game-center";
 import Formation from "../formation/Formation";
 

@@ -121,22 +121,7 @@ export interface Game {
         }[];
     }[];
     statistics: Statistic[];
-    head_to_head: {
-        home_wins: number;
-        away_wins: number;
-        draws: number;
-        games: {
-            id: string;
-            winner: number;
-            teams: Team[];
-            scores: [number, number];
-            agg_scores?: [number, number];
-            description: string;
-            status: Status;
-            start_time: string;
-            main_odds: MainOdds;
-        }[];
-    };
+    head_to_head: HeadToHead;
     recent_form: RecentForm;
     standings: {
         columns: {
@@ -163,10 +148,30 @@ export interface Game {
     };
 }
 
+export interface HeadToHead {
+    home_wins: number;
+    away_wins: number;
+    draws: number;
+    games: {
+        id: string;
+        winner: number;
+        teams: Team[];
+        scores: [number, number];
+        agg_scores?: [number, number];
+        description: string;
+        status: Status;
+        start_time: string;
+        main_odds: MainOdds;
+    }[];
+}
+
+
 export interface PoleProps {
     teamsLineups: Lineup[];
     teams: Team[];
 }
+
+
 export interface Statistic {
     name: string;
     values: [string, string];

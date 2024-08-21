@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useState } from "react";
 import ContentBlock from "@/components/content-block/ContentBlock";
@@ -19,12 +20,14 @@ const Stats = ({
 
     const visibleStatistics = expanded ? statistics : statistics?.slice(0, displayQuantity);
     const [block] = useAutoAnimate();
+
     return (
         <ContentBlock 
             rotate={expanded ? "-90deg" : "90deg"}
             cb={statistics && statistics.length > displayQuantity ? handleToggle : undefined} 
             title="ESTADÍSTICAS DEL PARTIDO" 
             buttonText={expanded ? "VER MENOS" : "VER MÁS"}
+            buttonColor={"white"}
         >
             <div ref={block} className={styles.items}>
                 {

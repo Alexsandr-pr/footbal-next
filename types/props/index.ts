@@ -7,4 +7,5 @@ export interface ContentBlockProps {
     children: React.ReactNode;
     cb?:() => void;
     rotate?:string;
+    buttonColor?:string;
 }
