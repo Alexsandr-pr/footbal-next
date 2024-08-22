@@ -1,25 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface GameCenter {
-    tabsButtonParams: string;
+    leagueName: string;
 }
 
 const initialState: GameCenter = {
-    tabsButtonParams: "first"
+    leagueName: ""
 };
 
 export const gameCenterSlice = createSlice({
     name: "gameCenter",
     initialState,
     reducers: {
-        openFirstTab: (state) => {
-            state.tabsButtonParams = "first";
-        },
-        openSecondTab: (state) => {
-            state.tabsButtonParams = "second";
+        changeLeagueName: (state, action: PayloadAction<string>) => {
+            state.leagueName = action.payload;
         },
     }
-})
+});
 
-export const { openFirstTab, openSecondTab } = gameCenterSlice.actions;
+export const { changeLeagueName } = gameCenterSlice.actions;
 export default gameCenterSlice.reducer;

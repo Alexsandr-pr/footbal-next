@@ -4,7 +4,25 @@
     overflow: hidden;
     color: var(--green);
     text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     @media(max-width:767.98px){
         font-size: 11px;
     }
 }
+.breadcrumbs__item {
+    position: relative;
+    max-width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    &:nth-child(1) {
+        color: var(--white);
+    }
+    &:not(:last-child) {
+        &::after {
+            content: url("/assets/icons/chevron-2.svg");
+        }
+    }
+}   

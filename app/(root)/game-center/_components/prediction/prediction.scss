@@ -34,18 +34,23 @@
     // .static-game__title
 
     &__title {
+        height: 24px;
+        font-family: Roboto;
+        font-size: 16px;
         font-weight: 700;
         &:not(:last-child){
-        margin-bottom:4px;
+            margin-bottom:4px;
         }
         @media(max-width:767.98px){
             font-size: 14px;
+            height: 14px;
         }
     }
 
     // .static-game__label
 
     &__label {
+        font-family: Roboto;
         font-weight: 400;
         font-size: 14px;
         @media(max-width:767.98px){
@@ -57,6 +62,21 @@
 
     &__content {
         
+    }
+}
+.static-game__block-link {
+    max-height: 32px;
+    max-width: auto;
+    @media(max-width:767.98px){
+        max-height: 16px;
+    }
+    img {
+        object-fit: cover;
+        width: auto;
+        height: auto;
+        @media(max-width:767.98px){
+            max-height: 16px;
+        }
     }
 }
 .static-content {
@@ -84,6 +104,7 @@
     // .static-content__item
 
     &__item {
+        height: 24px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -93,6 +114,9 @@
         font-size: 12px;
         font-weight: 400;
         background: var(--white);
+        @media(max-width:767.98px){
+            height: 17px;
+        }
     }
 
 }
@@ -101,8 +125,9 @@
     // .static-block__item
 
     &__item {
+        height: 32px;
         transition: all 0.6s ease 0s;
-        padding: 10.5px;
+        padding: 10.5px 8px;
         display: flex;
         font-size: 11px;
         align-items: center;
@@ -128,25 +153,17 @@
         }
         &:nth-child(1) {
             background:  var(--green);
-            @media(max-width:487.98px){
-                padding: 10px 2px 10px 8px;
-            }
         }
         &:nth-child(2) {
             background: var(--green-dark);
-            @media(max-width:487.98px){
-                padding: 10px 2px ;
-            }
         }
         &:nth-child(3) {
             background:  var(--green-hover);
-            @media(max-width:487.98px){
-                padding: 10px 8px 10px 2px;
-            }
         }
         
     }
 }
+
 
 .static-block-left {
     background:  var(--green);
@@ -164,7 +181,11 @@
         display: flex ;
         width: 100%;
     }
-    
+    .static-block__item-span {
+        display: flex !important;
+        align-items: center;
+        gap: 2px;
+    }
     .bottom-info__button {
         margin-top: 16px;
         height: max-content;
@@ -186,7 +207,8 @@
             display: block;
         }
         &:nth-child(1) {
-            border-radius: 8px 0px 0px 8px
+            border-radius: 8px 0px 0px 8px;
+            color: #EEFFA5;
         }
         &:nth-child(3) {
             border-radius: 0px 8px 8px 0px;

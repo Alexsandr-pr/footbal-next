@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import "./prediction.scss";
 
-
 const PredictionBlock = ({
     prediction
 } : {
@@ -19,18 +18,18 @@ const PredictionBlock = ({
     const [state, setState] = useState(false);
     const tabsButtonParams = useSelector((state:RootState) => state.gameCenter.tabsButtonParams);
 
-    if(tabsButtonParams === "second") return null;
+    if (tabsButtonParams === "second") return null;
 
     return (
-        
         <div className="content-block">
             <div className="content-block__header">
                 <p>PRONÓSTICOS PREVIOS AL PARTIDO</p>
-                <Link target="_blank" href={prediction.cta_link}>
+                <Link className="static-game__block-link" target="_blank" href={prediction.cta_link}>
                     <Image
+                        
                         src={`${_SERVER_API}/images/bookies/${prediction.bookie_id}`}
-                        width={62} 
-                        height={27}
+                        width={70} 
+                        height={32}
                         alt="bookies"
                     />
                 </Link>
@@ -39,49 +38,47 @@ const PredictionBlock = ({
                 <div className={`static-game__block ${state ? "_active" : null}`}>
                     <div className="static-game__body">
                         <h2 className="static-game__title">
-                            {
-                                state ? "Total de voces 2000" : "Quién ganará el partido?"
-                            }
+                            {state ? "Total de voces 2000" : "Quién ganará el partido?"}
                         </h2>
                         <div className="static-game__label">
-                            {
-                                state ? "Your voice for 1 was accapted!" : "Seleccione una de las opciones para comprobar su predicción."
-                            }
+                            {state ? "Your voice for 1 was accepted!" : "Seleccione una de las opciones para comprobar su predicción."}
                         </div>
                     </div>
                     <div className="static-game__content static-content">
-                        <div className="static-content__top static-block ">
+                        <div className="static-content__top static-block">
                             {  
-                                prediction.options.map(({name, percentage, vote_url}) => {
-                                    return (
-                                        <div key={vote_url} style={{width: state ? `${percentage}%` : "auto"}} onClick={() => setState(true)} className="static-block__item">
-                                            <span>{name}</span>
-                                            <span>{percentage.toFixed(1)}%</span>
-                                        </div>
-                                    )
-                                }) 
+                                prediction.options.map(({name, percentage, vote_url}, index) => (
+                                    <div 
+                                        key={vote_url} 
+                                        style={{width: state ? `${percentage}%` : "auto"}} 
+                                        onClick={() => setState(true)} 
+                                        className="static-block__item"
+                                    >
+                                        <span>{name}</span>
+                                        <span className={`${index === 0 && "static-block__item-span"}`}>
+                                            {index === 0 ? <img src="/assets/icons/check.svg" alt="" /> : null}
+                                            <p>{percentage.toFixed(1)}%</p>
+                                        </span>
+                                    </div>
+                                ))
                             }
                         </div>
                         <div className="static-content__bottom">
                             {
-                                prediction.odds.map(({name, trend, value}) => {
-                                    return (
-                                        <div key={value + trend + name} className="static-content__item">
-                                            {name}. {value.toFixed(1)}
-                                            <GetTrendIcon trend={trend}/>
-                                        </div>
-                                    )
-                                })
+                                prediction.odds.map(({name, trend, value}) => (
+                                    <div key={value + trend + name} className="static-content__item">
+                                        {name}. {value.toFixed(1)}
+                                        <GetTrendIcon trend={trend}/>
+                                    </div>
+                                ))
                             } 
                         </div>
                     </div>
-                    <WhiteButton clazz={"bottom-info__button"} text="Apostar ahora" cb={() => setState(false)}/>
+                    <WhiteButton clazz={"bottom-info__button"} text="Apostar ahora" cb={() => setState(false)} />
                 </div>
             </div>
         </div>
-        
-        
-    )
+    );
 }
 
-export default PredictionBlock
+export default PredictionBlock;

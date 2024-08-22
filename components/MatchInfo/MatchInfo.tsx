@@ -15,7 +15,7 @@ import "./match-info.scss";
 const MatchInfo = ({ games }: MatchInfoProps) => {
     const [show, setShow] = useState(true);
     const [block] = useAutoAnimate();
-    const { country_id, name, id } = games;
+    const { country_id, name, id} = games;
     const isInternationl = games?.is_international;
     const show_country_flags = games?.show_country_flags;
 
@@ -60,6 +60,7 @@ const MatchInfo = ({ games }: MatchInfoProps) => {
                             games.games.map(game => {
                                 return (
                                     <EventItem
+                                        
                                         soundLocal={soundLocal}
                                         show_country_flags={show_country_flags}
                                         isInternationl={isInternationl}
