@@ -6,8 +6,6 @@ import GetTrendIcon from "@/components/ui/trend-icon/GetTrendIcon";
 import Link from "next/link";
 import Image from "next/image";
 import { _SERVER_API } from "@/config/consts";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
 import "./prediction.scss";
 
 const PredictionBlock = ({
@@ -15,10 +13,7 @@ const PredictionBlock = ({
 } : {
     prediction: Prediction;
 }) => {
-    const [state, setState] = useState(false);
-    const tabsButtonParams = useSelector((state:RootState) => state.gameCenter.tabsButtonParams);
-
-    if (tabsButtonParams === "second") return null;
+    const [state, setState] = useState(false)
 
     return (
         <div className="content-block">
