@@ -2,8 +2,9 @@ import ContentBlock from '@/components/content-block/ContentBlock'
 import { MissingPlayer } from '@/types/game-center'
 import React from 'react'
 import styles from "./missing-player.module.scss";
-import Player from './ui/player/Player';
+
 import { _SERVER_API } from '@/config/consts';
+import Player from '../player/Player';
 
 const MissingPlayers = ({
     missingPlayers
@@ -22,9 +23,9 @@ const MissingPlayers = ({
                     missingPlayers.map(({name, missing_details, jersey_num}) => {
                         return (
                             <li key={name} className={styles.item}>
-                                <Player 
+                                <Player
                                     name={name}
-                                    willPlayStatus={missing_details?.will_play_status}
+                                    willPlayColor={missing_details?.will_play_status === 2 ? "--live" : "--yellow"}
                                     willPlay={missing_details?.will_play} 
                                     number={jersey_num}
                                 />

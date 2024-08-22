@@ -5,7 +5,7 @@ import { _SERVER_API } from '@/config/consts';
 import Image from 'next/image';
 
 interface CommandImageProps {
-    imagesStyles?: "command-home" | "commandGameCenter" | "commandGameCenterHeader" | "recent-form" | "h2h";
+    imagesStyles?: "command-home" | "commandGameCenter" | "commandGameCenterHeader" | "recent-form" | "h2h" | "lineupsTab";
     showCountryFlags?: boolean;
     countryId?:string;
     teamId?:string;

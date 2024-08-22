@@ -125,3 +125,23 @@
         }
     }
 }
+
+.lineupsTab {
+    .country {
+        top: -4px;
+        max-width: 16px;
+        max-height: 16px;
+        @media(max-width:767.98px){
+            max-width: 14px;
+            max-height: 14px;
+        }
+    }
+    .comand-imageteam {
+        width: 32px;
+        height: 32px;
+        @media(max-width:767.98px){
+            width: 24px;
+            height: 24px;
+        }
+    }
+}

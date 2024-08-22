@@ -3,18 +3,10 @@ import "../game-center.scss";
 import Header from "../_components/header/Header";
 import PoleBlock from "../_components/pole/pole-block/PoleBlock";
 import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
-import TabsTriggerBlock from "../_components/tabs-trigger/TabsTrigger";
-import InfoList from "@/components/ui/info-list/InfoList";
 import Prediction from "../_components/prediction/Prediction";
 import { GameCenterResponse } from "@/types/response";
 import { Metadata } from "next";
-import TeamMatchHistory from "../_components/team-match-history/TeamMatchHistory";
-import Stats from "../_components/stats/Stats";
-import Blockh2h from "../_components/h2h/Blockh2h";
-import MissingPlayers from "../_components/missing-players/MissingPlayers";
-import SecondTab from "../_components/tabs/SecondTab";
-import TabsFirst from "../_components/tabs/TabsFirst";
-import TabsBlockConstructor from "../_components/tabs-trigger/TabsBlockConstructor";
+import TabsBlockConstructor from "../_components/TabsBlockConstructor";
 
 
 type Props = {
@@ -69,25 +61,19 @@ async function GameCenter({params} : Props) {
                 teamsHeader={game.teams}
                 description={game?.description}
             />
-            
-            <TabsTriggerBlock/>
+        
             {
                 game?.prediction &&  <Prediction prediction={game.prediction}/>
             }
 
-            {
-                game?.players?.lineups && <PoleBlock teamsLineups={game.players.lineups.teams} teams={game.teams}/>
-            }
-
             <TabsBlockConstructor 
+                players={game?.players}
                 statistics={game?.statistics}
                 recentForm={game?.recent_form}
                 teams={game?.teams}
                 headToHead={game?.head_to_head}
                 gameInfo={game?.game_info}
-                missingPlayers={game?.players?.missing_players}
             />
-
         </div>
     );
 }

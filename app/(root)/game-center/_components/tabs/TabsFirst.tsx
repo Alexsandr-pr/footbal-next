@@ -11,7 +11,6 @@ const TabsFirst = ({
     teams,
     recentForm,
     statistics,
-    
 } : {
     headToHead: HeadToHead;
     gameInfo: GameInfo[];

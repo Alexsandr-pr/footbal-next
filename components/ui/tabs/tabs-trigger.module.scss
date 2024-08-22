@@ -1,6 +1,6 @@
 .triggers {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    
     position: relative;
     @media(max-width:330.98px){
         overflow-x: auto;

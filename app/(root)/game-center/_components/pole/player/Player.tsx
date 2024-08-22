@@ -2,6 +2,7 @@ import React from 'react'
 import "./player.scss"
 import { abbreviatePlayerName } from '@/lib/utils';
 import Image from 'next/image';
+import { Events, Subctitution } from '@/types/game-center';
 
 const Player = ({
     player_short_name,
@@ -16,26 +17,8 @@ const Player = ({
     player_short_name: string;
     styles: React.CSSProperties;
     top?: boolean;
-    substitution?: {
-        time: number;
-        player: number;
-        type: number;
-    };
-    events?: {
-        goals?: {
-            goals?: number;
-            own_goals: number;
-        };
-        cards?: {
-            yellow: boolean;
-            red: boolean;
-            red_type: number;
-        };
-        substitution?: {
-            has_substitution: boolean;
-            time: number;
-        };
-    };
+    substitution?: Subctitution;
+    events?: Events;
     position?: string;
 }) => {
 

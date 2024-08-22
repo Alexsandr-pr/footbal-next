@@ -29,6 +29,27 @@ interface PlayerEvent {
     player_jersey_num: number;
 }
 
+export interface Events {
+    goals?: {
+        goals: number;
+        own_goals: number;
+    };
+    cards?: {
+        yellow: boolean;
+        red: boolean;
+        red_type: number;
+    };
+    substitution?: {
+        has_substitution: boolean;
+        time: number;
+    };
+}
+
+export interface Subctitution {
+    time: number;
+    player: number;
+    type: number;
+}
 
 export interface Player {
     jersey_num: number;
@@ -42,26 +63,8 @@ export interface Player {
         x: number;
         y: number;
     };
-    substitution?: {
-        time: number;
-        player: number;
-        type: number;
-    };
-    events?: {
-        goals?: {
-            goals: number;
-            own_goals: number;
-        };
-        cards?: {
-            yellow: boolean;
-            red: boolean;
-            red_type: number;
-        };
-        substitution?: {
-            has_substitution: boolean;
-            time: number;
-        };
-    };
+    substitution?: Subctitution;
+    events?: Events;
 }
 
 export interface Team {
@@ -74,7 +77,7 @@ export interface Team {
     status: Status;
 }
 
-interface Lineup {
+export interface Lineup {
     status: string;
     formation: string;
     team_num: number;
@@ -82,7 +85,11 @@ interface Lineup {
     bench: Player[];
 }
 
-interface Players {
+export interface Bench {
+    bench: Player[];
+}
+
+export interface Players {
     lineups: {
         teams: Lineup[];
     };
