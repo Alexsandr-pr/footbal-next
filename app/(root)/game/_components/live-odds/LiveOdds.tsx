@@ -5,7 +5,7 @@ import { LiveOdds, Team } from "@/types/game-center"
 
 
 
-const LiveOdds = ({
+const LiveOddsBlock = ({
     teams,
     showCountryFlags,
     liveOdds
@@ -50,4 +50,4 @@ const LiveOdds = ({
     )
 }
 
-export default LiveOdds
+export default LiveOddsBlock
