@@ -46,10 +46,11 @@
     line-height: 120%; /* 19.2px */
     @media(max-width:767.98px){
         font-size: 14px;
+        gap: 8px;
     }
-
 }
 .calendario-events__items {
+    gap: 2px;
     min-height: 44px;
     position: relative;
     display: flex;
@@ -60,12 +61,23 @@
         border-bottom: 1px solid var(--border);
     }
 }
-
+.calendario-events__item-image {
+    @media(max-width:767.98px){
+        width: 16px;
+        height: 16px;
+    }
+}
 .calendario-events__item-span {
     position: absolute;
     top: 50%;
     left: 50%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     transform: translate(-50%, -50%);
+    @media(max-width:767.98px){
+        gap: 8px;
+    }
 }
 
 .calendario-events__item-none {
@@ -92,5 +104,48 @@
     color: #EEFFA5;
     @media(max-width:767.98px){
         font-size: 11px;
+    }
+}
+.calendario-events__item-num {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 2;
+    @media(max-width:767.98px){
+        width: 24px;
+        height: 24px;
+        font-size: 11px;
+    }
+}
+.calendario-events__items-penalties-rows {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0px;
+    gap: 8px;
+}
+
+.calendario-events__items-penalties {
+    min-height: 32px;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 90px 1fr;
+    @media(max-width:767.98px){
+        padding: 0px 12px;
+        min-height: 24px;
+        grid-template-columns: 1fr 60px 1fr;
+    }
+    .calendario-events__item-span {
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        
     }
 }
