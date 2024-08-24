@@ -1,11 +1,14 @@
+import { GameCenterResponse } from "@/types/response";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface GameCenter {
     leagueName: string;
+    game: GameCenterResponse | null; 
 }
 
 const initialState: GameCenter = {
-    leagueName: ""
+    leagueName: "",
+    game: null, // Изначально null
 };
 
 export const gameCenterSlice = createSlice({
@@ -15,8 +18,11 @@ export const gameCenterSlice = createSlice({
         changeLeagueName: (state, action: PayloadAction<string>) => {
             state.leagueName = action.payload;
         },
+        setGameData: (state, action: PayloadAction<GameCenterResponse>) => {
+            state.game = action.payload;
+        },
     }
 });
 
-export const { changeLeagueName } = gameCenterSlice.actions;
+export const { changeLeagueName, setGameData } = gameCenterSlice.actions;
 export default gameCenterSlice.reducer;

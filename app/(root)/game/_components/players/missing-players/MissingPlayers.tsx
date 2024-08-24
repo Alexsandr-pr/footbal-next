@@ -31,7 +31,7 @@ const MissingPlayers = ({
                                 />
                                 <div className={styles.right}>
                                     <p className={styles.text}>{missing_details?.reason}</p>
-                                    <img width={14} height={14} src={`${_SERVER_API}/images/games/lineups/missing/${missing_details.type}`}  alt="" />
+                                    <img width={14} height={14} src={`${_SERVER_API}/images/games/lineups/missing/${missing_details.type}`}  alt="missing_details" />
                                 </div>
                             </li>
                         )

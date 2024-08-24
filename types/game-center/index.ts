@@ -195,6 +195,11 @@ export interface HeadToHead {
 export interface PoleProps {
     teamsLineups: Lineup[];
     teams: Team[];
+    cb?:() => void;
+    activeTab?:string;
+    params?: {
+        id: string
+    }
 }
 
 

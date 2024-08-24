@@ -7,7 +7,8 @@ const TabsBlock = ({
     data,
     activeTab,
     dataImage,
-    type
+    type,
+    childrenTop
 } : {
     children: ReactNode;
     data?: {
@@ -23,10 +24,12 @@ const TabsBlock = ({
         cb:() => void;
     }[];
     type?: "image" | "text";
+    childrenTop?: ReactNode;
 }) => {
 
     return (
-        <>
+        <>  
+            {childrenTop}
             <TabsTrigger type={type} dataImage={dataImage} activeTab={activeTab} dataText={data}/>
             {children}
         </>

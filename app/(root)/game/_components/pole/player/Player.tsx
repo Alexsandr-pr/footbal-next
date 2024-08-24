@@ -44,7 +44,7 @@ const Player = ({
                     events?.goals?.goals ? 
                     <>
                         {
-                            events?.goals?.goals !== 0  ?
+                            events?.goals?.goals > 1  ?
                                 <div className="player__gol">
                                     {events?.goals?.goals}
                                         <Image

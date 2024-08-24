@@ -35,7 +35,7 @@ const LineupsInfo = ({
                 }
             </li>
             <li style={{color: "var(--white)"}} className={styles.item}>
-                {events?.goals?.goals !== 0 ? events?.goals?.goals : null}
+                {events?.goals?.goals && events?.goals?.goals > 1 ? events.goals.goals : null}
             </li>
             <li className={styles.item}>
                 {events?.goals?.own_goals && events?.goals?.own_goals > 0 ? (

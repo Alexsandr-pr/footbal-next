@@ -1,4 +1,4 @@
-
+"use client"
 import { Lineup, MissingPlayer, Player, Team } from "@/types/game-center"
 
 import { useState } from "react";
@@ -31,8 +31,6 @@ const SecondTab = ({
             cb:() => setTab("second")
         }
     ]
-    console.log(`teamsLineups[0]`, teamsLineups[1].bench);
-    console.log(`teamsLineups[1]`, teamsLineups[1].bench);
 
     return (
         <div className="flex-16">
@@ -40,13 +38,12 @@ const SecondTab = ({
 
                 {
                     tab === "first" ? <>
-                        {<Bench title={"TITULARES"} bench={teamsLineups[0].starting}/>}
                         { teamsLineups[0].bench ?  <Bench title={"SUPLENTES"}  bench={teamsLineups[0].bench}/> : null}
                         {
                             missingPlayers?.[0] && <MissingPlayers missingPlayers={missingPlayers[0]}/>
                         }
                     </> : <>
-                        {   <Bench title={"TITULARES"}  bench={teamsLineups[1].starting}/>}
+                        
                         {   teamsLineups[1].bench ? <Bench title={"SUPLENTES"}  bench={teamsLineups[1].bench}/> : null}
                         
                         {

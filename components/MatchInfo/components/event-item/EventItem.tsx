@@ -41,13 +41,13 @@ const EventItem = ({
     } = game;
 
     const onSetId = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault(); // Останавливаем обычное поведение ссылки
-        dispatch(changeLeagueName(name)); // Изменяем имя лиги
-        router.push(`/game-center/${game.id}`); // Перенаправляем пользователя на нужный маршрут
+        e.preventDefault();
+        dispatch(changeLeagueName(name)); 
+        router.push(`/game/${game.id}`);
     };
 
     return (
-        <Link href={`/game-center/${game.id}`} onClick={onSetId} className={styles.item}>
+        <Link href={`/game/${game.id}`} onClick={onSetId} className={styles.item}>
             <div ref={block} className={styles.body}>
                 <EventTime tv_networks={game?.tv_networks} gameTimeToDisplay={game_time_to_display} startTime={start_time} status={status} />
                 <div className={styles.content}>

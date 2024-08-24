@@ -11,23 +11,41 @@ import "./prediction.scss";
 const PredictionBlock = ({
     prediction
 } : {
-    prediction: Prediction;
+    prediction?: Prediction;
 }) => {
-    const [state, setState] = useState(false)
 
+    const [state, setState] = useState(false);
+
+    const handleVote = async (vote_url: string) => {
+        try {
+            const response = await fetch(vote_url, {
+                method: 'GET',
+            });
+            if (response.ok) {
+                setState(true);
+            } else {
+                console.error("Failed to send vote");
+            }
+        } catch (error) {
+            console.error("Error sending vote:", error);
+        }
+    };
+    
     return (
-        <div className="content-block">
+        <div  className="content-block">
             <div className="content-block__header">
                 <p>PRONÓSTICOS PREVIOS AL PARTIDO</p>
-                <Link className="static-game__block-link" target="_blank" href={prediction.cta_link}>
-                    <Image
-                        
-                        src={`${_SERVER_API}/images/bookies/${prediction.bookie_id}`}
-                        width={70} 
-                        height={32}
-                        alt="bookies"
-                    />
-                </Link>
+                {
+                    prediction?.cta_link && <Link className="static-game__block-link" target="_blank" href={prediction?.cta_link}>
+                        <Image
+                            src={`${_SERVER_API}/images/bookies/${prediction?.bookie_id}`}
+                            width={70} 
+                            height={32}
+                            alt="bookies"
+                        />
+                    </Link>
+                }
+                
             </div>
             <div className="content-block__body">
                 <div className={`static-game__block ${state ? "_active" : null}`}>
@@ -42,11 +60,11 @@ const PredictionBlock = ({
                     <div className="static-game__content static-content">
                         <div className="static-content__top static-block">
                             {  
-                                prediction.options.map(({name, percentage, vote_url}, index) => (
+                                prediction?.options && prediction?.options.map(({name, percentage, vote_url}, index) => (
                                     <div 
                                         key={vote_url} 
                                         style={{width: state ? `${percentage}%` : "auto"}} 
-                                        onClick={() => setState(true)} 
+                                        onClick={() => handleVote(vote_url)} 
                                         className="static-block__item"
                                     >
                                         <span>{name}</span>
@@ -60,7 +78,7 @@ const PredictionBlock = ({
                         </div>
                         <div className="static-content__bottom">
                             {
-                                prediction.odds.map(({name, trend, value}) => (
+                                prediction?.odds && prediction?.odds.map(({name, trend, value}) => (
                                     <div key={value + trend + name} className="static-content__item">
                                         {name}. {value.toFixed(1)}
                                         <GetTrendIcon trend={trend}/>

@@ -1,12 +1,13 @@
 "use client"
 
+import Link from "next/link";
 import CommandImage from "../command/CommandImage";
 import styles from "./tabs-trigger.module.scss";
+import { usePathname } from "next/navigation";
 
 interface Trigger {
     label: string;
     route: string;
-    cb: () => void;
 }
 interface TriggerImages {
     countryId: string;
@@ -17,7 +18,7 @@ interface TriggerImages {
 
 interface TabsTriggerProps {
     dataText?: Trigger[];
-    activeTab:string;
+    activeTab?:string;
     dataImage?: TriggerImages[];
     type?: "image" | "text";
 }
@@ -28,9 +29,16 @@ const TabsTrigger = ({
     dataImage,
     type
 } : TabsTriggerProps) => {
+    const pathname = usePathname();
+
+    if(dataText?.length === 1 || dataImage?.length === 1) {
+        return null
+    }
+
 
     if(type === "text") {
-        const activeIndex = dataText?.findIndex(trigger => trigger.route === activeTab);
+        const activeIndex = dataText?.findIndex(trigger => trigger.route === pathname);
+        
         const styleSpan = {
             width: `calc(100% / ${dataText?.length})`,
             left: `calc(100% / ${dataText?.length} * ${activeIndex})`,
@@ -39,13 +47,13 @@ const TabsTrigger = ({
             <>
                 <div style={{gridTemplateColumns: `repeat(${dataText?.length}, 1fr)`}}  className={styles.triggers}>
                     {
-                        dataText && dataText?.map(({label, route, cb}) => {
-                            const isActive = activeTab === route;
+                        dataText && dataText?.map(({label, route}) => {
+                            const isActive = pathname === route;
                             return (
-                                <button onClick={cb} key={route}
+                                <Link href={route} key={route}
                                     style={{color: isActive ?  "var(--green)" : "var(--white)"}} 
                                     className={styles.button}>{label}
-                                </button>
+                                </Link>
                             )
                         })
                     }

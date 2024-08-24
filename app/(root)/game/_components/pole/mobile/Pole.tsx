@@ -7,7 +7,9 @@ import Formation from "../formation/Formation";
 
 const PoleMobile = ({
     teams,
-    teamsLineups
+    teamsLineups,
+    cb,
+    activeTab
 } : PoleProps) => {
 
     

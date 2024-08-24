@@ -2,9 +2,11 @@
 import { useState } from "react";
 import TabsFirst from "./tabs/TabsFirst";
 import SecondTab from "./tabs/SecondTab";
-import { GameInfo, HeadToHead, Players, RecentForm, Statistic, Team } from "@/types/game-center";
+import { GameInfo, HeadToHead, Players, Prediction, RecentForm, Statistic, Team } from "@/types/game-center";
 import TabsBlock from "@/components/ui/tabs/TabsBlock";
 import PoleBlock from "./pole/pole-block/PoleBlock";
+import PredictionBlock from "./prediction/Prediction";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const TabsBlockConstructor = ({
     headToHead,
@@ -12,7 +14,8 @@ const TabsBlockConstructor = ({
     teams,
     recentForm,
     statistics,
-    players
+    players,
+    prediction
 }: {
     headToHead: HeadToHead;
     gameInfo: GameInfo[];
@@ -20,10 +23,12 @@ const TabsBlockConstructor = ({
     recentForm: RecentForm;
     statistics: Statistic[];
     players:  Players;
+    prediction?:Prediction;
 }) => {
     const [tab, setTabActive] = useState("first");
 
     let data;
+
     if(players?.lineups) {
         data = [
             {
@@ -43,16 +48,25 @@ const TabsBlockConstructor = ({
                 label: "VISTA PREVIA",
                 route: "first",
                 cb: () => setTabActive("first")
-            }
+            },
         ]
     }
     
+    const [block] = useAutoAnimate();
 
     return (
-        <div className="flex-16">
-            <TabsBlock type={"text"} activeTab={tab} data={data}>
+        <div ref={block} className="flex-16">
+            <TabsBlock  childrenTop={
+                tab === "first" ?
+                <>
+                
                 {
-                    players?.lineups?.teams && <PoleBlock teamsLineups={players?.lineups.teams} teams={teams}/>
+                    prediction &&  <PredictionBlock prediction={prediction}/>
+                }
+            </> : null
+            } type={"text"} activeTab={tab} data={data}>
+                {
+                    players?.lineups?.teams && <PoleBlock activeTab={tab} cb={() => setTabActive("second")} teamsLineups={players?.lineups.teams} teams={teams}/>
                 }
                 {
                     tab === "first" 
