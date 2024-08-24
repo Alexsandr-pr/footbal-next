@@ -40,7 +40,7 @@ const EventItem = ({
     );
 };
 
-const Row = ({ 
+const RowBlock = ({ 
     row 
 }: { 
     row: Row
@@ -67,7 +67,7 @@ const Rows = ({
                 data?.show_stage_title ? <Title scores={data.scores} name={data.name}/> : null
             }
             {rows.length > 0 ? rows.map((row, index) => (
-                <Row key={index} row={row} />
+                <RowBlock key={index} row={row} />
             )) : <NoAction />}
         </>
     );

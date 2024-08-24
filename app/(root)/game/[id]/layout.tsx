@@ -1,12 +1,11 @@
 
 import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
-import { GameCenterResponse } from "@/types/response";
 import { ReactNode } from "react";
 import Header from "../_components/header/Header";
 import TabsTrigger from "@/components/ui/tabs/TabsTrigger";
-
 import LayoutContainer from "../_components/LayoutContainer";
 import PredictionContainer from "../_components/prediction/PredictionContainer";
+import { getData } from "@/lib/api";
 
 type Props = {
     children: ReactNode;
@@ -15,17 +14,6 @@ type Props = {
     }
 }
 
-async function getData(id: string): Promise<GameCenterResponse> {
-    const res = await fetch(`https://sports-stats.net/gamecenter/${id}`, { 
-        cache: 'force-cache',
-        next: { revalidate: 60 } 
-    });
-
-    if (!res.ok) {
-        throw new Error('Failed to fetch data');
-    }
-    return res.json();
-}
 const Layout = async ({ children, params }: Props) => {
     const { game, TTL } = await getData(params.id);
 

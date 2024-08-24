@@ -1,22 +1,12 @@
-import { GameCenterResponse } from "@/types/response";
 import SecondTab from "../../_components/tabs/SecondTab";
 import PoleBlock from "../../_components/pole/pole-block/PoleBlock";
+import { getData } from "@/lib/api";
 
 type Props = {
     params: {
         id: string
     }
 }
-
-async function getData(id: string): Promise<GameCenterResponse> {
-    const res = await fetch(`https://sports-stats.net/gamecenter/${id}`, { cache: 'force-cache' });
-
-    if (!res.ok) {
-        throw new Error('Failed to fetch data');
-    }
-    return res.json();
-}
-
 
 const Page = async ({params} : Props) => {
 

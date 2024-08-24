@@ -1,6 +1,3 @@
-
-
-import { GameCenterResponse } from "@/types/response";
 import { Metadata } from "next";
 import PoleBlock from "../_components/pole/pole-block/PoleBlock";
 import Stats from "../_components/stats/Stats";
@@ -8,24 +5,12 @@ import TeamMatchHistory from "../_components/team-match-history/TeamMatchHistory
 import Blockh2h from "../_components/h2h/Blockh2h";
 import InfoList from "@/components/ui/info-list/InfoList";
 import CalendarioEvents from "../_components/calendario-events/CalendarioEvents";
-
+import { getData } from "@/lib/api";
 
 type Props = {
     params: {
         id: string
     }
-}
-
-async function getData(id: string): Promise<GameCenterResponse> {
-    const res = await fetch(`https://sports-stats.net/gamecenter/${id}`, { 
-        cache: 'force-cache',
-        next: { revalidate: 60 } 
-    });
-
-    if (!res.ok) {
-        throw new Error('Failed to fetch data');
-    }
-    return res.json();
 }
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
