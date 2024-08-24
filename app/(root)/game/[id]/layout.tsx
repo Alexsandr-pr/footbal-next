@@ -16,9 +16,7 @@ type Props = {
 }
 
 async function getData(id: string): Promise<GameCenterResponse> {
-    const res = await fetch(`https://sports-stats.net/gamecenter/${id}`, {
-        cache: "no-store",
-    });
+    const res = await fetch(`https://sports-stats.net/gamecenter/${id}`);
 
     if (!res.ok) {
         throw new Error('Failed to fetch data');
