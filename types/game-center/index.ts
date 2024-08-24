@@ -83,7 +83,7 @@ export type Lineup = {
     formation: string;
     team_num: number;
     starting: Player[];
-    bench: Bench;
+    bench: Player[];
 }
 
 export type Bench = {
