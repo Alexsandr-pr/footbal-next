@@ -28,6 +28,9 @@ const PoleDesctop = ({
                 if(element === elementTop.current && i === 0) {
                     div.classList.add("active-1");
                 }
+                if(element === elementBottom.current && i === 9) {
+                    div.classList.add("active-2");
+                }
                 element.appendChild(div);
             }
         }

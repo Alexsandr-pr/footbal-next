@@ -72,6 +72,11 @@
     }
 }
 
+@media(min-width:991.98px){
+    .pole-body__bottom-content .span:last-child {
+        border-radius: 0px 8px 8px 0px !important;
+    }
+}
 
 @media(min-width:991.98px){
     .pole-body__top-content  {
@@ -82,7 +87,7 @@
     .pole-body__bottom-content {
         border-left:  var(--border) 1px solid;
         .span:last-child {
-            border-radius: 0px  8px 8px  0px;
+            border-radius: 0px 8px 8px 0px !important;
         }
     }
     .pole-body__bottom-content,

@@ -2,7 +2,6 @@
 import ContentBlock from "@/components/content-block/ContentBlock"
 import "./calendario-events.scss"
 import { PlayerEvent } from "@/types/game-center";
-import Title from "./ui/Title";
 import PenaltiesRows from "./ui/PenaltiesRows";
 import Rows from "./ui/Rows";
 
@@ -28,19 +27,13 @@ const CalendarioEvents = ({
                 <>
                     {
                         events.map((item) => {
-                            if(item.is_penalties_stage) return <PenaltiesRows data={item}/>
+                            if(item.is_penalties_stage) return <PenaltiesRows key={item.name} data={item}/>
                             return (
-                                <>
-                                    {
-                                        item?.show_stage_title ? <Title scores={item.scores} name={item.name}/> : null
-                                    }
-                                    <Rows data={item}/>
-                                </>
+                                <Rows key={item.name} data={item}/>
                             )
                         })
                     }
                 </>
-            
         </ContentBlock>
     )
 }

@@ -5,7 +5,7 @@ import ContentBlock from "@/components/content-block/ContentBlock";
 import styles from "./stats.module.scss";
 import { Statistic } from "@/types/game-center";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-
+import { normalizePercentages } from "@/lib/utils";
 const Stats = ({
     statistics
 }: {
@@ -31,21 +31,24 @@ const Stats = ({
         >
             <div ref={block} className={styles.items}>
                 {
-                    visibleStatistics?.map((item) => (
-                        <div key={item.name} className={styles.item}>
-                            <div className={styles.title}>
-                                {item.name}
-                            </div>
-                            <div className={styles.flex}>
-                                <div style={{ width: `${item.percentages[0] * 100}%` }} className={styles.block}>
-                                    {item.values[0]}
+                    visibleStatistics?.map((item) => {
+                        const normalizedPercentages = normalizePercentages(item.percentages);
+                        return (
+                            <div key={item.name} className={styles.item}>
+                                <div className={styles.title}>
+                                    {item.name}
                                 </div>
-                                <div style={{ width: `${item.percentages[1] * 100}%` }} className={styles.block}>
-                                    {item.values[1]}
+                                <div className={styles.flex}>
+                                    <div style={{ width: `${normalizedPercentages[0]}%` }} className={styles.block}>
+                                        {item.values[0]}
+                                    </div>
+                                    <div style={{ width: `${normalizedPercentages[1]}%` }} className={styles.block}>
+                                        {item.values[1]}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))
+                        );
+                    })
                 }
             </div>
         </ContentBlock>

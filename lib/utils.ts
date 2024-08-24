@@ -55,3 +55,9 @@ export function abbreviatePlayerName(fullName: string): string {
 
     return `${firstNameInitial} ${lastName}`;
 }
+
+
+export function normalizePercentages(percentages: number[]): number[] {
+    const total = percentages.reduce((acc, val) => acc + val, 0);
+    return percentages.map(p => (p / total) * 100);
+}

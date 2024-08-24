@@ -1,6 +1,7 @@
 import React from 'react';
 import NoAction from './NoAction';
 import { PlayerEvent } from '@/types/game-center';
+import Title from './Title';
 
 const EventItem = ({ 
     event 
@@ -73,6 +74,9 @@ const Rows = ({
 
     return (
         <>
+            {
+                data?.show_stage_title ? <Title scores={data.scores} name={data.name}/> : null
+            }
             {rows.length > 0 ? rows.map((row, index) => (
                 <Row key={index} row={row} />
             )) : <NoAction />}
