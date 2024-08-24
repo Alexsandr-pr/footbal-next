@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { _SERVER_API } from "@/config/consts";
 import "./prediction.scss";
+import Odds from "@/components/odds/Odds";
 
 const PredictionBlock = ({
     prediction
@@ -77,14 +78,7 @@ const PredictionBlock = ({
                             }
                         </div>
                         <div className="static-content__bottom">
-                            {
-                                prediction?.odds && prediction?.odds.map(({name, trend, value}) => (
-                                    <div key={value + trend + name} className="static-content__item">
-                                        {name}. {value.toFixed(1)}
-                                        <GetTrendIcon trend={trend}/>
-                                    </div>
-                                ))
-                            } 
+                            {prediction?.odds && <Odds odds={prediction?.odds}/>}
                         </div>
                     </div>
                     <WhiteButton clazz={"bottom-info__button"} text="Apostar ahora" cb={() => setState(false)} />

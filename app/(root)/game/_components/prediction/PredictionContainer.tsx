@@ -21,7 +21,6 @@ const PredictionContainer = ({
 
     const pathname = usePathname();
     if(pathname === `/game/${id}`) {
-
         return (
             <>
                 <PredictionBlock prediction={prediction}/>

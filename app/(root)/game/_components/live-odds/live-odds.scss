@@ -1,0 +1,42 @@
+
+.live-odds-items {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+.live-odds-container {
+    border-bottom:none !important;
+}
+.live-odds-block {
+    padding: 0px 12px;
+}
+.live-odds-title {
+    padding: 4px 0px;
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 120%; /* 14.4px */
+    &.live {
+        color: var(--live);
+    }
+}
+
+.live-odds-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    @media(max-width:767.98px){
+        gap: 8px;
+    }
+}
+.live-odds-button {
+    @media(max-width:767.98px){
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+.live-odds-buttons {
+    padding: 16px 12px 8px 12px;
+}

@@ -2,8 +2,13 @@ import ContentBlock from "@/components/content-block/ContentBlock"
 import H2hItem from "../h2h/_components/H2hItem"
 import CommandImage from "@/components/ui/command/CommandImage"
 import { LiveOdds, Team } from "@/types/game-center"
-
-
+import Text from "../h2h/_components/Text"
+import Odds from "@/components/odds/Odds"
+import "./live-odds.scss";
+import WhiteButton from "@/components/ui/buttons/button-white/WhiteButton"
+import Image from "next/image"
+import Link from "next/link"
+import { _SERVER_API } from "@/config/consts"
 
 const LiveOddsBlock = ({
     teams,
@@ -15,39 +20,77 @@ const LiveOddsBlock = ({
     liveOdds?: LiveOdds;
 }) => {
     return (
-        <ContentBlock title="Cuotas en vivo">
-                <div className="game-center__h2h">
-                    <H2hItem>
-                        <CommandImage
-                            imagesStyles="h2h"
-                            position="right"
-                            showCountryFlags={showCountryFlags}
-                            teamId={teams[0].id}
-                            countryId={teams[0].country_id}
-                            teamName={teams[0].name}
+        <div  className="content-block">
+            <div className="content-block__header">
+                <p>Cuotas en vivo</p>
+                {
+                    liveOdds?.cta_link && <Link className="static-game__block-link" target="_blank" href={liveOdds?.cta_link}>
+                        <Image
+                            src={`${_SERVER_API}/images/bookies/${liveOdds?.bookie_id}`}
+                            width={70} 
+                            height={32}
+                            alt="bookies"
                         />
-                        {/* <Text><span className="h2h-green">{headToHead.home_wins}</span> Viktoria</Text> */}
-                    </H2hItem>
-                    <H2hItem>
-                        
-                        X
-                        
-                        
-                    </H2hItem>
-                    <H2hItem>
-                        <CommandImage
-                            imagesStyles="h2h"
-                            position="right"
-                            showCountryFlags={showCountryFlags}
-                            teamId={teams[1].id}
-                            countryId={teams[1].country_id}
-                            teamName={teams[1].name}
-                        />
-                        {/* <Text><span className="h2h-green">{headToHead.away_wins}</span> Viktoria</Text> */}
-                    </H2hItem>
+                    </Link>
+                }
+                
                 </div>
-        </ContentBlock>
+                <div className="content-block__body">
+                        <div  className="game-center__h2h live-odds-container">
+                        <H2hItem>
+                            <CommandImage
+                                imagesStyles="h2h"
+                                position="right"
+                                showCountryFlags={showCountryFlags}
+                                teamId={teams[0].id}
+                                countryId={teams[0].country_id}
+                                teamName={teams[0].name}
+                            />
+                            <Text>1</Text>
+                        </H2hItem>
+                        <H2hItem>
+                            X
+                        </H2hItem>
+                        <H2hItem>
+                            <CommandImage
+                                imagesStyles="h2h"
+                                position="right"
+                                showCountryFlags={showCountryFlags}
+                                teamId={teams[1].id}
+                                countryId={teams[1].country_id}
+                                teamName={teams[1].name}
+                            />
+                            <Text>2</Text>
+                        </H2hItem>
+                    </div>
+        
+                    <div className="live-odds-blocks">
+                        <div className="live-odds-block">
+                            <div className="live-odds-title live">
+                                Cuotas en vivo
+                            </div>
+                            <div className="live-odds-items">
+                                <Odds odds={liveOdds?.odds?.original}/>
+                            </div>
+                        </div>
+                        <div className="live-odds-block">
+                            <div className="live-odds-title ">
+                                Cuotas antes de patido
+                            </div>
+                            <div className="live-odds-items">
+                                
+                                <Odds odds={liveOdds?.odds?.live}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="live-odds-buttons">
+                        <WhiteButton clazz="live-odds-button" cb={() => {}} text="Apostar ahora"/>
+                    </div>
+                </div>
+            </div>
+        
     )
 }
+
 
 export default LiveOddsBlock

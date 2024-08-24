@@ -67,7 +67,7 @@ const Layout = async ({ children, params }: Props) => {
                 teamsHeader={game.teams}
                 description={game?.description}
             />
-            <PredictionContainer showCountryFlags={game?.league?.show_country_flags} teams={game.teams} prediction={game?.prediction} id={params.id}/>
+            <PredictionContainer liveOdds={game?.live_odds} showCountryFlags={game?.league?.show_country_flags} teams={game.teams} prediction={game?.prediction} id={params.id}/>
             <TabsTrigger type="text" dataText={data}/>
             {children}
         </LayoutContainer>
