@@ -1,7 +1,7 @@
 "use client";
 
 import { useAutoAnimate } from '@formkit/auto-animate/react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import Link from 'next/link';
 
@@ -9,12 +9,8 @@ import EventTime from '../event-time/EventTime';
 import EventTeam from '../event-team/EventTeam';
 import EventCof from '../event-cof/EventCof';
 import EventGols from '../event-gols/EventGols';
-
 import { EventItemProps } from '@/types/props/match';
-
 import styles from "./item.module.scss";
-import { useRouter } from 'next/navigation';
-import { changeLeagueName } from '@/store/gameCenterSlice';
 
 const EventItem = ({
     country_id,
@@ -25,8 +21,6 @@ const EventItem = ({
     soundLocal
 }: EventItemProps) => {
 
-    const router = useRouter();
-    const dispatch = useDispatch();
 
     const [block] = useAutoAnimate();
     const coefficient = useSelector((state: RootState) => state.filter.coefficient);
@@ -40,14 +34,9 @@ const EventItem = ({
         description,
     } = game;
 
-    const onSetId = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        dispatch(changeLeagueName(name)); 
-        router.push(`/game/${game.id}`);
-    };
 
     return (
-        <Link href={`/game/${game.id}`} onClick={onSetId} className={styles.item}>
+        <Link href={`/game/${game.id}`} className={styles.item}>
             <div ref={block} className={styles.body}>
                 <EventTime tv_networks={game?.tv_networks} gameTimeToDisplay={game_time_to_display} startTime={start_time} status={status} />
                 <div className={styles.content}>
