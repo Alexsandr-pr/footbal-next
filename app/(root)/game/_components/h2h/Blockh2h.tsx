@@ -12,10 +12,11 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 type Blockh2hProps = {
     headToHead: HeadToHead;
-    teams: Team[]
+    teams: Team[];
+    showCountryFlags?:boolean;
 }
 
-const Blockh2h = ({headToHead, teams} : Blockh2hProps) => {
+const Blockh2h = ({headToHead, teams, showCountryFlags} : Blockh2hProps) => {
     const [expanded, setExpanded] = useState(false);
 
     const handleToggle = () => {
@@ -36,7 +37,7 @@ const Blockh2h = ({headToHead, teams} : Blockh2hProps) => {
                         <CommandImage
                             imagesStyles="h2h"
                             position="right"
-                            showCountryFlags={true}
+                            showCountryFlags={showCountryFlags}
                             teamId={teams[0].id}
                             countryId={teams[0].country_id}
                             teamName={teams[0].name}
@@ -53,7 +54,7 @@ const Blockh2h = ({headToHead, teams} : Blockh2hProps) => {
                         <CommandImage
                             imagesStyles="h2h"
                             position="right"
-                            showCountryFlags={true}
+                            showCountryFlags={showCountryFlags}
                             teamId={teams[1].id}
                             countryId={teams[1].country_id}
                             teamName={teams[1].name}

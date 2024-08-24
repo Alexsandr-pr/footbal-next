@@ -6,11 +6,13 @@ import { Team } from "@/types/game-center";
 const PoleCommand = ({
     team,
     distanseOffset,
-    formation
+    formation,
+    showCountryFlags
 } : {
     team: Team;
     distanseOffset?: string;
     formation: string;
+    showCountryFlags?:boolean;
 }) => {
     
     return (
@@ -19,7 +21,7 @@ const PoleCommand = ({
                 distanseOffset={distanseOffset}
                 classes={"pole__comand-name"}
                 reverse={true}
-                show_country_flags={true}
+                show_country_flags={showCountryFlags}
                 position="right"
                 team={team}
                 imagesStyles={"commandGameCenter"}

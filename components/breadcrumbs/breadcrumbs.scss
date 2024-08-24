@@ -4,7 +4,9 @@
     overflow: hidden;
     color: var(--green);
     text-overflow: ellipsis;
-    display: flex;
+    justify-content: start;
+    align-self: flex-start;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
     @media(max-width:767.98px){
@@ -14,7 +16,7 @@
 .breadcrumbs__item {
     position: relative;
     max-width: fit-content;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 4px;
     &:nth-child(1) {
@@ -23,6 +25,7 @@
     &:not(:last-child) {
         &::after {
             content: url("/assets/icons/chevron-2.svg");
+            padding-top: 2px;
         }
     }
 }   

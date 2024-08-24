@@ -9,7 +9,7 @@ const PoleMobile = ({
     teams,
     teamsLineups,
     cb,
-    activeTab
+    showCountryFlags
 } : PoleProps) => {
 
     
@@ -18,6 +18,7 @@ const PoleMobile = ({
             <div className="pole__content">
                 <div className="pole-block-top">
                     <PoleCommand
+                        showCountryFlags={showCountryFlags}
                         formation={teamsLineups[0].formation}
                         team={teams[0]}
                     />
@@ -48,6 +49,7 @@ const PoleMobile = ({
                 </div>
                 <div className="pole-block-bottom">
                     <PoleCommand
+                        showCountryFlags={showCountryFlags}
                         formation={teamsLineups[1].formation}
                         team={teams[1]}
                     />

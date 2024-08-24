@@ -8,7 +8,8 @@ const TabsBlock = ({
     activeTab,
     dataImage,
     type,
-    childrenTop
+    childrenTop,
+    showCountryFlags
 } : {
     children: ReactNode;
     data?: {
@@ -25,12 +26,13 @@ const TabsBlock = ({
     }[];
     type?: "image" | "text";
     childrenTop?: ReactNode;
+    showCountryFlags?:boolean;
 }) => {
 
     return (
         <>  
             {childrenTop}
-            <TabsTrigger type={type} dataImage={dataImage} activeTab={activeTab} dataText={data}/>
+            <TabsTrigger showCountryFlags={showCountryFlags} type={type} dataImage={dataImage} activeTab={activeTab} dataText={data}/>
             {children}
         </>
     )

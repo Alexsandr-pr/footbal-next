@@ -16,7 +16,8 @@ const PoleBlock = ({
     teamsLineups,
     cb,
     activeTab,
-    params
+    params,
+    showCountryFlags
 }: PoleProps) => {
     const [isMobile, setIsMobile] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -50,9 +51,9 @@ const PoleBlock = ({
             {loading ? (
                 <Loading size={32} clazz='loading-pole'/>
             ) : isMobile ? (
-                <PoleMobile teamsLineups={teamsLineups} teams={teams}/>
+                <PoleMobile showCountryFlags={showCountryFlags} teamsLineups={teamsLineups} teams={teams}/>
             ) : (
-                <PoleDesctop  teamsLineups={teamsLineups} teams={teams} />
+                <PoleDesctop showCountryFlags={showCountryFlags} teamsLineups={teamsLineups} teams={teams} />
             )}
         </ContentBlock>
     );

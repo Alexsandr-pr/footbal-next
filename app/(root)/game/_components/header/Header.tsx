@@ -13,7 +13,8 @@ const Header = ({
     startTime,
     gameTime,
     penalties,
-    description
+    description,
+    showCountryFlags
 } : {
     teamsHeader: Team[];
     status: Status,
@@ -22,6 +23,7 @@ const Header = ({
     penalties?: [number, number] | [];
     scores?: [number, number];
     description?: string;
+    showCountryFlags?:boolean;
 }) => {
     
     return (
@@ -32,7 +34,7 @@ const Header = ({
                     textAlign="center"
                     distanseOffset={"-8px"}
                     position="right"
-                    show_country_flags={true}
+                    show_country_flags={showCountryFlags}
                     reverse={true}
                     classes="flex-col"
                     team={teamsHeader[0]}
@@ -58,7 +60,7 @@ const Header = ({
                     textAlign="center"
                     distanseOffset={"-8px"}
                     position="right"
-                    show_country_flags={true}
+                    show_country_flags={showCountryFlags}
                     reverse={true}
                     classes="flex-col"
                     team={teamsHeader[1]}

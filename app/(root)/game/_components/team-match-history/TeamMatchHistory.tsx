@@ -7,10 +7,12 @@ import CommandHistoryResult from "@/components/command-history-result/CommandHis
 
 const TeamMatchHistory = ({
     teams,
-    resentForm
+    resentForm,
+    showCountryFlags
 } : {
     teams: Team[];
     resentForm: RecentForm;
+    showCountryFlags?:boolean;
 }) => {
     return (
         <ContentBlock title={"Recent form"}>
@@ -19,7 +21,7 @@ const TeamMatchHistory = ({
                     <div className="team-match-history__block-item">
                         <Command 
                             classes="team-match-history-column"
-                            show_country_flags 
+                            show_country_flags={showCountryFlags} 
                             imagesStyles="recent-form" 
                             reverse 
                             team={teams[0]}
@@ -32,7 +34,7 @@ const TeamMatchHistory = ({
                     <div className="team-match-history__block-item">
                         <Command 
                             classes="team-match-history-column-reverse"
-                            show_country_flags 
+                            show_country_flags={showCountryFlags}
                             imagesStyles="recent-form" 
                             team={teams[1]}
                             />

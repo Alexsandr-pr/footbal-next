@@ -9,7 +9,8 @@ import Formation from "../formation/Formation";
 
 const PoleDesctop = ({
     teams,
-    teamsLineups
+    teamsLineups,
+    showCountryFlags
 } : PoleProps ) => {
     
     const elementTop = useRef<HTMLDivElement | null>(null);
@@ -65,6 +66,7 @@ const PoleDesctop = ({
             <div className="pole-ds__content pole-ds-content">
                 <div className="pole-ds-content__command pole-ds-content__command-left">
                     <PoleCommand 
+                        showCountryFlags={showCountryFlags}
                         formation={teamsLineups[0].formation}
                         distanseOffset={"-2px"}
                         team={teams[0]}
@@ -72,6 +74,7 @@ const PoleDesctop = ({
                 </div>
                 <div className="pole-ds-content__command pole-ds-content__command-right">
                     <PoleCommand 
+                        showCountryFlags={showCountryFlags}
                         formation={teamsLineups[1].formation}
                         distanseOffset={"-2px"}
                         team={teams[1]}

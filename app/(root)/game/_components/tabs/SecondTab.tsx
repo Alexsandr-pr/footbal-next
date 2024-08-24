@@ -9,11 +9,13 @@ import Bench from "../players/bench/Bench";
 const SecondTab = ({
     missingPlayers,
     teams,
-    teamsLineups
+    teamsLineups,
+    showCountryFlags
 } : {
     missingPlayers?: [MissingPlayer[],MissingPlayer[]];
     teams: Team[];
     teamsLineups: Lineup[];
+    showCountryFlags?:boolean;
 }) => {
     const [tab, setTab] = useState("first");
 
@@ -34,7 +36,7 @@ const SecondTab = ({
 
     return (
         <div className="flex-16">
-            <TabsBlock type="image" activeTab={tab} dataImage={data}>
+            <TabsBlock showCountryFlags={showCountryFlags} type="image" activeTab={tab} dataImage={data}>
 
                 {
                     tab === "first" ? <>
@@ -51,8 +53,6 @@ const SecondTab = ({
                         }
                     </>
                 }
-                
-                
             </TabsBlock>
             
         </div>

@@ -21,7 +21,7 @@ export interface Prediction {
     odds: OddsOption[];
 }
 
-interface PlayerEvent {
+export interface PlayerEvent {
     type: number;
     time: string;
     team: number;
@@ -172,6 +172,14 @@ export interface Game {
             }[];
         }[];
     };
+    league: {
+        name: string;
+        id: string;
+        url_name: string;
+        country_id: string;
+        is_international: boolean;
+        show_country_flags:boolean;
+    }
 }
 
 export interface HeadToHead {
@@ -199,7 +207,8 @@ export interface PoleProps {
     activeTab?:string;
     params?: {
         id: string
-    }
+    };
+    showCountryFlags?:boolean;
 }
 
 

@@ -51,21 +51,23 @@ const Layout = async ({ children, params }: Props) => {
     }
     return (
         <LayoutContainer>
-                <Breadcrumbs 
-                    commandSecond={game.teams[1].name} 
-                    commandFirst={game.teams[0].name}
-                />
-                <Header
-                    scores={game?.scores}
-                    penalties={game?.penalties}
-                    gameTime={game.game_time_to_display} 
-                    startTime={game.start_time} 
-                    status={game.status} 
-                    teamsHeader={game.teams}
-                    description={game?.description}
-                />
-                <PredictionContainer prediction={game?.prediction} id={params.id}/>
-                <TabsTrigger type="text" dataText={data}/>
+            <Breadcrumbs 
+                leagueName={game?.league?.name}
+                commandSecond={game.teams[1].name} 
+                commandFirst={game.teams[0].name}
+            />
+            <Header
+                showCountryFlags={game?.league?.show_country_flags}
+                scores={game?.scores}
+                penalties={game?.penalties}
+                gameTime={game.game_time_to_display} 
+                startTime={game.start_time} 
+                status={game.status} 
+                teamsHeader={game.teams}
+                description={game?.description}
+            />
+            <PredictionContainer prediction={game?.prediction} id={params.id}/>
+            <TabsTrigger type="text" dataText={data}/>
             {children}
         </LayoutContainer>
     );

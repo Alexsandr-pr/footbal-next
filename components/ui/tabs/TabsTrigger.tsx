@@ -21,13 +21,15 @@ interface TabsTriggerProps {
     activeTab?:string;
     dataImage?: TriggerImages[];
     type?: "image" | "text";
+    showCountryFlags?: boolean;
 }
 
 const TabsTrigger = ({ 
     dataText, 
     activeTab, 
     dataImage,
-    type
+    type,
+    showCountryFlags
 } : TabsTriggerProps) => {
     const pathname = usePathname();
 
@@ -79,7 +81,7 @@ const TabsTrigger = ({
                                 className={styles.button}>
                                     <CommandImage
                                         position="right"
-                                        showCountryFlags={true}
+                                        showCountryFlags={showCountryFlags}
                                         imagesStyles="lineupsTab"
                                         teamName="teamId"
                                         teamId={teamId}

@@ -27,9 +27,9 @@ const Page = async ({params} : Props) => {
     return (
         <>
             {
-                game?.players?.lineups?.teams && <PoleBlock  teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
+                game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
             }
-            <SecondTab teamsLineups={game?.players?.lineups.teams} teams={game?.teams} missingPlayers={game?.players?.missing_players}/>
+            <SecondTab showCountryFlags={game?.league?.show_country_flags} teamsLineups={game?.players?.lineups.teams} teams={game?.teams} missingPlayers={game?.players?.missing_players}/>
         </>
     )
 }
