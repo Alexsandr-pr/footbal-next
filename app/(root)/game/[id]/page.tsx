@@ -2,7 +2,6 @@
 
 import { GameCenterResponse } from "@/types/response";
 import { Metadata } from "next";
-import PredictionBlock from "../_components/prediction/Prediction";
 import PoleBlock from "../_components/pole/pole-block/PoleBlock";
 import Stats from "../_components/stats/Stats";
 import TeamMatchHistory from "../_components/team-match-history/TeamMatchHistory";

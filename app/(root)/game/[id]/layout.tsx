@@ -4,8 +4,9 @@ import { GameCenterResponse } from "@/types/response";
 import { ReactNode } from "react";
 import Header from "../_components/header/Header";
 import TabsTrigger from "@/components/ui/tabs/TabsTrigger";
-import PredictionContainer from "../_components/prediction/predictionContainer";
+
 import LayoutContainer from "../_components/LayoutContainer";
+import PredictionContainer from "../_components/prediction/PredictionContainer";
 
 type Props = {
     children: ReactNode;
