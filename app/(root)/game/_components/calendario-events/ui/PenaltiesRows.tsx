@@ -53,7 +53,7 @@ const PenaltiesRows = ({
                 {
                     combinedRows.map(item => {
                         return (
-                            <div style={{borderBottom: "none"}} className="calendario-events__items calendario-events__items-penalties">
+                            <div key={item.time} style={{borderBottom: "none"}} className="calendario-events__items calendario-events__items-penalties">
                                 <div className="calendario-events__item">
                                     <div style={{color:"var(--white)", backgroundColor:"var(--green-hover)"}} className="calendario-events__item-num">
                                         {
