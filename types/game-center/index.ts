@@ -179,7 +179,8 @@ export interface Game {
         country_id: string;
         is_international: boolean;
         show_country_flags:boolean;
-    }
+    };
+    live_odds: LiveOdds;
 }
 
 export interface HeadToHead {
@@ -218,7 +219,22 @@ export interface Statistic {
     percentages: [number, number];
 }
 
-
+export interface LiveOdds {
+    bookie_id?: string;
+    cta_link?:string;
+    odds?: {
+        original: {
+            name:string;
+            value:number;
+            trend:number;
+        }[];
+        live: {
+            name:string;
+            value:number;
+            trend:number;
+        }[];
+    }
+}
 
 
 
