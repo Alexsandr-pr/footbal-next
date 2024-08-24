@@ -9,10 +9,7 @@ type Props = {
 }
 
 async function getData(id: string): Promise<GameCenterResponse> {
-    const res = await fetch(`https://sports-stats.net/gamecenter/${id}`, { 
-        cache: 'force-cache',
-        next: { revalidate: 60 } 
-    });
+    const res = await fetch(`https://sports-stats.net/gamecenter/${id}`, { cache: 'force-cache' });
 
     if (!res.ok) {
         throw new Error('Failed to fetch data');

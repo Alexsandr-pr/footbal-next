@@ -1,6 +1,5 @@
 "use client"
-import { Lineup, MissingPlayer, Player, Team } from "@/types/game-center"
-
+import { SecondTabProps } from "@/types/game-center"
 import { useState } from "react";
 import TabsBlock from "@/components/ui/tabs/TabsBlock";
 import MissingPlayers from "../players/missing-players/MissingPlayers";
@@ -11,12 +10,7 @@ const SecondTab = ({
     teams,
     teamsLineups,
     showCountryFlags
-} : {
-    missingPlayers?: [MissingPlayer[],MissingPlayer[]];
-    teams: Team[];
-    teamsLineups: Lineup[];
-    showCountryFlags?:boolean;
-}) => {
+} : SecondTabProps) => {
     const [tab, setTab] = useState("first");
 
     const data = [

@@ -3,18 +3,12 @@
 import "./block.scss";
 import ContentBlock from "@/components/content-block/ContentBlock"
 import CommandImage from "@/components/ui/command/CommandImage"
-import { HeadToHead, Team } from "@/types/game-center"
+import { Blockh2hProps } from "@/types/game-center"
 import { useState } from "react";
 import H2hItem from "./_components/H2hItem";
 import Text from "./_components/Text";
 import HeadContent from "./_components/HeadContent";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-
-type Blockh2hProps = {
-    headToHead: HeadToHead;
-    teams: Team[];
-    showCountryFlags?:boolean;
-}
 
 const Blockh2h = ({headToHead, teams, showCountryFlags} : Blockh2hProps) => {
     const [expanded, setExpanded] = useState(false);

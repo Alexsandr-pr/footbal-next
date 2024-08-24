@@ -1,16 +1,10 @@
-import React from 'react'
 import H2hItem from './H2hItem';
-import { HeadToHead, Team } from '@/types/game-center';
+import { Blockh2hHeadContentProps} from '@/types/game-center';
 import Text from './Text';
 import { formatDateStringSecond } from '@/lib/utils';
 import Image from 'next/image';
 
-type Blockh2hProps = {
-    headToHead: HeadToHead;
-    teamsTop: Team[];
-}
-
-const HeadContent = ({headToHead, teamsTop} : Blockh2hProps) => {
+const HeadContent = ({headToHead, teamsTop} : Blockh2hHeadContentProps) => {
     return (
         <>
             {

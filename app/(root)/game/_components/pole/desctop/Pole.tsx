@@ -1,11 +1,10 @@
 "use client";
 import PoleCommand from "../pole-block-comand/PoleCommand";
-
-import "./pole.scss";
 import { useEffect, useRef } from "react";
-
 import { PoleProps } from "@/types/game-center";
 import Formation from "../formation/Formation";
+
+import "./pole.scss";
 
 const PoleDesctop = ({
     teams,

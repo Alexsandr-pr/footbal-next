@@ -1,24 +1,21 @@
-import ContentBlock from "@/components/content-block/ContentBlock"
+
 import H2hItem from "../h2h/_components/H2hItem"
 import CommandImage from "@/components/ui/command/CommandImage"
-import { LiveOdds, Team } from "@/types/game-center"
+import { LiveOddsProps } from "@/types/game-center"
 import Text from "../h2h/_components/Text"
 import Odds from "@/components/odds/Odds"
-import "./live-odds.scss";
 import WhiteButton from "@/components/ui/buttons/button-white/WhiteButton"
 import Image from "next/image"
 import Link from "next/link"
 import { _SERVER_API } from "@/config/consts"
 
+import "./live-odds.scss";
+
 const LiveOddsBlock = ({
     teams,
     showCountryFlags,
     liveOdds
-} : {
-    teams:Team[];
-    showCountryFlags?: boolean;
-    liveOdds?: LiveOdds;
-}) => {
+} : LiveOddsProps) => {
     return (
         <div  className="content-block">
             <div className="content-block__header">

@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
 import WhiteButton from "@/components/ui/buttons/button-white/WhiteButton";
-import { Prediction } from "@/types/game-center";
-import GetTrendIcon from "@/components/ui/trend-icon/GetTrendIcon";
+import { PredictionBlockProps } from "@/types/game-center";
 import Link from "next/link";
 import Image from "next/image";
 import { _SERVER_API } from "@/config/consts";
@@ -11,9 +10,7 @@ import Odds from "@/components/odds/Odds";
 
 const PredictionBlock = ({
     prediction
-} : {
-    prediction?: Prediction;
-}) => {
+} : PredictionBlockProps) => {
 
     const [state, setState] = useState(false);
 

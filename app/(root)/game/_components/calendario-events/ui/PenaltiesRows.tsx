@@ -1,27 +1,7 @@
+import { PenaltiesData } from "@/types/game-center";
 import Title from "./Title";
 
-type Event = {
-    type: number;
-    time: string;
-    team: number;
-    texts: string[];
-    player_jersey_num: number;
-};
-
-type Row = {
-    time: string;
-    events: Event[];
-};
-
-type PenaltiesData = {
-    name: string;
-    show_stage_title: boolean;
-    is_penalties_stage: boolean;
-    scores: [number, number];
-    rows: Row[];
-};
-
-function combineTeamEvents(data: PenaltiesData): Row[] {
+function combineTeamEvents(data: PenaltiesData) {
     return data.rows.map((row) => {
         const [team1Event, team2Event] = row.events;
         return {
@@ -37,8 +17,6 @@ function combineTeamEvents(data: PenaltiesData): Row[] {
         };
     });
 }
-
-
 
 const PenaltiesRows = ({
     data

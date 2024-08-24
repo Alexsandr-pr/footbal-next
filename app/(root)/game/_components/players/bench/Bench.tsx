@@ -1,18 +1,14 @@
 import ContentBlock from '@/components/content-block/ContentBlock'
-import React from 'react'
 import styles from "../missing-players/missing-player.module.scss"
 import PlayerBlock from '../player/Player'
 import { _SERVER_API } from '@/config/consts'
-import { Player } from '@/types/game-center'
+import { BenchProps } from '@/types/game-center'
 import LineupsInfo from '@/components/lineups-info/LineupsInfo'
 
 const Bench = ({
     bench,
     title
-} : {
-    bench: Player[];
-    title:string;
-}) => {
+} : BenchProps) => {
     if(bench.length <= 0) {
         return null
     }

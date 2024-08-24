@@ -1,13 +1,13 @@
 import React from 'react';
 import NoAction from './NoAction';
-import { PlayerEvent } from '@/types/game-center';
+import { EventsCalendario, PlayerEvent, Row } from '@/types/game-center';
 import Title from './Title';
 
 const EventItem = ({ 
     event 
 }: { 
     event: PlayerEvent
- }) => {
+}) => {
     const isReverse = event.team === 2;
     const eventText = event.texts.length > 1 ? (
         <div style={{ textAlign: isReverse ? "right" : "left" }} className="calendario-events__item-texts">
@@ -43,10 +43,7 @@ const EventItem = ({
 const Row = ({ 
     row 
 }: { 
-    row: { 
-        time: string; 
-        events: PlayerEvent[] 
-    }
+    row: Row
 }) => {
     return (
         <>
@@ -60,15 +57,7 @@ const Row = ({
 const Rows = ({ 
     data 
 }: { 
-    data: { 
-        name: string; 
-        show_stage_title: boolean; 
-        is_penalties_stage: boolean; 
-        scores: [number, number]; 
-        rows: { time: string; 
-            events: PlayerEvent[] 
-        }[];
-    } 
+    data: EventsCalendario; 
 }) => {
     const { rows } = data;
 

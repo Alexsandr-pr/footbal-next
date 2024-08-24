@@ -2,6 +2,7 @@
 import Image from "next/image"
 import "./player.scss"
 import { _SERVER_API } from "@/config/consts"
+import { LineupsPlayerProps } from "@/types/game-center"
 
 const Player = ({
     number,
@@ -9,13 +10,7 @@ const Player = ({
     name,
     willPlayColor,
     size
-} : {
-    name: string;
-    willPlay?:string;
-    number:number;
-    willPlayColor:string;
-    size?: "max"
-}) => {
+} : LineupsPlayerProps) => {
     return (
         <div className={`lineups-player-item ${size}`}>
             <div className={`lineups-player-block`}>

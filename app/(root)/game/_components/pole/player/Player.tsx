@@ -1,8 +1,9 @@
-import React from 'react'
-import "./player.scss"
+
 import { abbreviatePlayerName } from '@/lib/utils';
 import Image from 'next/image';
-import { Events, Subctitution } from '@/types/game-center';
+import { PolePlayerProps } from '@/types/game-center';
+
+import "./player.scss"
 
 const Player = ({
     player_short_name,
@@ -12,15 +13,7 @@ const Player = ({
     substitution,
     events,
     position
-}: {
-    jersey_num: number;
-    player_short_name: string;
-    styles: React.CSSProperties;
-    top?: boolean;
-    substitution?: Subctitution;
-    events?: Events;
-    position?: string;
-}) => {
+}: PolePlayerProps) => {
 
     return (
         <div style={styles} className='player'>  

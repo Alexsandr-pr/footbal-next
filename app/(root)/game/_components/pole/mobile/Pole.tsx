@@ -1,9 +1,9 @@
 
 import PoleCommand from "../pole-block-comand/PoleCommand"
-
-import "./pole.scss"
 import { PoleProps } from "@/types/game-center";
 import Formation from "../formation/Formation";
+
+import "./pole.scss"
 
 const PoleMobile = ({
     teams,

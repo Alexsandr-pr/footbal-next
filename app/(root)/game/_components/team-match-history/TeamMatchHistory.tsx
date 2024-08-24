@@ -2,18 +2,14 @@
 import ContentBlock from "@/components/content-block/ContentBlock"
 import "./team-match-history.scss"
 import Command from "@/components/ui/command/Command"
-import { RecentForm, Team } from "@/types/game-center"
+import { TeamMatchHistoryProps } from "@/types/game-center"
 import CommandHistoryResult from "@/components/command-history-result/CommandHistoryResult"
 
 const TeamMatchHistory = ({
     teams,
     resentForm,
     showCountryFlags
-} : {
-    teams: Team[];
-    resentForm: RecentForm;
-    showCountryFlags?:boolean;
-}) => {
+} : TeamMatchHistoryProps) => {
     return (
         <ContentBlock title={"Recent form"}>
             <div className="team-match-history">

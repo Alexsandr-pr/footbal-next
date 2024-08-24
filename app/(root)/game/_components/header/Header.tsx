@@ -1,9 +1,7 @@
 import EventResult from "@/components/MatchInfo/components/event-result/EventResult";
 import "./header.scss";
 import Command from "@/components/ui/command/Command";
-import { Team } from "@/types/game-center";
-import { Status } from "@/types";
-
+import { HeaderGCProps } from "@/types/game-center";
 
 
 const Header = ({
@@ -15,17 +13,8 @@ const Header = ({
     penalties,
     description,
     showCountryFlags
-} : {
-    teamsHeader: Team[];
-    status: Status,
-    startTime?: string;
-    gameTime?: string;
-    penalties?: [number, number] | [];
-    scores?: [number, number];
-    description?: string;
-    showCountryFlags?:boolean;
-}) => {
-    
+} : HeaderGCProps) => {
+
     return (
         <div className="pole-header-grid">
             

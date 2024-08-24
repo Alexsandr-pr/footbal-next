@@ -1,16 +1,12 @@
 import ContentBlock from '@/components/content-block/ContentBlock'
-import { MissingPlayer } from '@/types/game-center'
-import React from 'react'
+import {  MissingPlayersProps } from '@/types/game-center'
 import styles from "./missing-player.module.scss";
-
 import { _SERVER_API } from '@/config/consts';
 import Player from '../player/Player';
 
 const MissingPlayers = ({
     missingPlayers
-} : {
-    missingPlayers: MissingPlayer[];
-}) => {
+} : MissingPlayersProps) => {
     
     if(missingPlayers.length === 0) {
         return null

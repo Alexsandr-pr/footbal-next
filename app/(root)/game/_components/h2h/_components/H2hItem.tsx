@@ -1,12 +1,9 @@
-import React, { ReactNode } from 'react'
+import { H2HItem } from '@/types/game-center';
 
 const H2hItem = ({
     clazz,
     children
-} : {
-    clazz?: string;
-    children: ReactNode;
-}) => {
+} : H2HItem) => {
     return (
         <div className={`game-center__h2h-item h2h-item ${clazz}`}>
             {children}

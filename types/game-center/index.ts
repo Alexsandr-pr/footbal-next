@@ -1,19 +1,19 @@
 import { Goal, MainOdds, OddsOption, Status, TVNetwork } from "..";
 
 
-export interface GameInfo {
+export type GameInfo = {
     name: string;
     value:string;
 }
 
-interface Option {
+type Option = {
     name: string;
     votes: number;
     percentage: number;
     vote_url: string;
 }
 
-export interface Prediction {
+export type Prediction = {
     bookie_id: string,
     cta_link: string,
     options: Option[],
@@ -21,7 +21,7 @@ export interface Prediction {
     odds: OddsOption[];
 }
 
-export interface PlayerEvent {
+export type PlayerEvent = {
     type: number;
     time: string;
     team: number;
@@ -29,7 +29,7 @@ export interface PlayerEvent {
     player_jersey_num: number;
 }
 
-export interface Events {
+export type Events = {
     goals?: {
         goals: number;
         own_goals: number;
@@ -45,13 +45,14 @@ export interface Events {
     };
 }
 
-export interface Subctitution {
+export type Subctitution = {
     time: number;
     player: number;
     type: number;
 }
 
-export interface Player {
+
+export type Player = {
     jersey_num: number;
     name: string;
     team: string;
@@ -67,7 +68,7 @@ export interface Player {
     events?: Events;
 }
 
-export interface Team {
+export type Team = {
     name: string;
     url_name: string;
     id: string;
@@ -77,31 +78,31 @@ export interface Team {
     status: Status;
 }
 
-export interface Lineup {
+export type Lineup = {
     status: string;
     formation: string;
     team_num: number;
     starting: Player[];
+    bench: Bench;
+}
+
+export type Bench = {
     bench: Player[];
 }
 
-export interface Bench {
-    bench: Player[];
-}
-
-export interface Players {
+export type Players = {
     lineups: {
         teams: Lineup[];
     };
     missing_players?: [MissingPlayer[], MissingPlayer[]];
 }
 
-export interface RecentForm {
+export type RecentForm = {
     home: number[];
     away: number[];
 }
 
-export interface MissingPlayerDetails {
+export type MissingPlayerDetails = {
     type: number,
     reason: string,
     will_play_status: number,
@@ -109,7 +110,7 @@ export interface MissingPlayerDetails {
 }
 
 
-export interface MissingPlayer {
+export type MissingPlayer = {
     jersey_num: number,
     name: string,
     player_short_name: string,
@@ -119,7 +120,9 @@ export interface MissingPlayer {
 }
 
 
-export interface Game {
+
+
+export type Game = {
     id: string;
     winner: number;
     teams: Team[];
@@ -136,16 +139,7 @@ export interface Game {
     tv_networks?: TVNetwork[];
     main_odds?: MainOdds;
     penalties?: [number, number];
-    events: {
-        name: string;
-        show_stage_title: boolean;
-        is_penalties_stage: boolean;
-        scores: [number, number];
-        rows: {
-            time: string;
-            events: PlayerEvent[];
-        }[];
-    }[];
+    events: EventsCalendario[];
     statistics: Statistic[];
     head_to_head: HeadToHead;
     recent_form: RecentForm;
@@ -183,7 +177,7 @@ export interface Game {
     live_odds: LiveOdds;
 }
 
-export interface HeadToHead {
+export type HeadToHead = {
     home_wins: number;
     away_wins: number;
     draws: number;
@@ -201,7 +195,7 @@ export interface HeadToHead {
 }
 
 
-export interface PoleProps {
+export type PoleProps = {
     teamsLineups: Lineup[];
     teams: Team[];
     cb?:() => void;
@@ -213,28 +207,170 @@ export interface PoleProps {
 }
 
 
-export interface Statistic {
+export type Statistic = {
     name: string;
     values: [string, string];
     percentages: [number, number];
 }
 
-export interface LiveOdds {
+export type LiveOdds = {
     bookie_id?: string;
     cta_link?:string;
     odds?: {
-        original: {
-            name:string;
-            value:number;
-            trend:number;
-        }[];
-        live: {
-            name:string;
-            value:number;
-            trend:number;
-        }[];
+        original: OddsOption[];
+        live: OddsOption[];
     }
 }
 
 
 
+
+
+export type Row = {
+    time: string;
+    events: PlayerEvent[];
+};
+
+export type PenaltiesData = {
+    name: string;
+    show_stage_title: boolean;
+    is_penalties_stage: boolean;
+    scores: [number, number];
+    rows: Row[];
+};
+
+export type EventsCalendario = {
+    name: string;
+    show_stage_title: boolean;
+    is_penalties_stage: boolean;
+    scores: [number, number];
+    rows: {
+        time: string;
+        events: PlayerEvent[];
+    }[];
+}
+
+export type CalendarioEventsProps = {
+    events?: EventsCalendario[];
+}
+
+
+
+
+
+
+//head to head 
+export type Blockh2hProps = {
+    headToHead: HeadToHead;
+    teams: Team[];
+    showCountryFlags?:boolean;
+    teamsTop?: Team[];
+}
+
+export type Blockh2hHeadContentProps = {
+    headToHead: HeadToHead;
+    teamsTop: Team[];
+}
+
+export type H2HItem = {
+    clazz?: string;
+    children: React.ReactNode;
+}
+
+//header game center 
+export type HeaderGCProps = {
+    teamsHeader: Team[];
+    status: Status,
+    startTime?: string;
+    gameTime?: string;
+    penalties?: [number, number] | [];
+    scores?: [number, number];
+    description?: string;
+    showCountryFlags?:boolean;
+}
+
+//live odds
+export type LiveOddsProps = {
+    teams:Team[];
+    showCountryFlags?: boolean;
+    liveOdds?: LiveOdds;
+}
+
+
+
+//lineups player 
+
+export type LineupsPlayerProps = {
+    name: string;
+    willPlay?:string;
+    number:number;
+    willPlayColor:string;
+    size?: "max"
+}
+
+export type MissingPlayersProps = {
+    missingPlayers: MissingPlayer[];
+}
+
+export type BenchProps = {
+    bench: Player[];
+    title:string;
+}
+
+
+//pole 
+export type FormationProps = {
+    type?: number;
+    startingPlayers: Player[];
+    stylesOption: number;
+}
+
+export type PolePlayerProps = {
+    jersey_num: number;
+    player_short_name: string;
+    styles: React.CSSProperties;
+    top?: boolean;
+    substitution?: Subctitution;
+    events?: Events;
+    position?: string;
+}
+export type PoleCommandProps = {
+    team: Team;
+    distanseOffset?: string;
+    formation: string;
+    showCountryFlags?:boolean;
+}
+
+//prediction 
+
+export type PredictionBlockProps = {
+    prediction?: Prediction;
+}
+
+export type PredictionContainerProps = {
+    id:string;
+    prediction?:Prediction;
+    showCountryFlags?:boolean;
+    teams:Team[];
+    liveOdds?: LiveOdds;
+}
+
+//statistic 
+export type StatsProps = {
+    statistics: Statistic[];
+}
+
+//TeamMatchHistory
+
+export type TeamMatchHistoryProps = {
+    teams: Team[];
+    resentForm: RecentForm;
+    showCountryFlags?:boolean;
+}
+
+export type SecondTabProps = {
+    missingPlayers?: [MissingPlayer[],MissingPlayer[]];
+    teams: Team[];
+    teamsLineups: Lineup[];
+    showCountryFlags?:boolean;
+}

@@ -3,14 +3,13 @@
 import React, { useState } from "react";
 import ContentBlock from "@/components/content-block/ContentBlock";
 import styles from "./stats.module.scss";
-import { Statistic } from "@/types/game-center";
+import { StatsProps } from "@/types/game-center";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { normalizePercentages } from "@/lib/utils";
+
 const Stats = ({
     statistics
-}: {
-    statistics: Statistic[];
-}) => {
+}: StatsProps) => {
     const displayQuantity = 4;
     const [expanded, setExpanded] = useState(false);
 

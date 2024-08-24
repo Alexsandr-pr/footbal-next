@@ -1,17 +1,12 @@
-import React from 'react'
 import PlayerBlock from '../player/Player';
-import { Player } from '@/types/game-center';
+import { FormationProps } from '@/types/game-center';
 
 
 const Formation = ({
     startingPlayers,
     type,
     stylesOption
-} : {
-    type?: number;
-    startingPlayers: Player[];
-    stylesOption: number;
-}) => {
+} : FormationProps) => {
 
     const getStyles = (pitch_location: { x: number, y: number }, type?: number) => {
         switch (type) {

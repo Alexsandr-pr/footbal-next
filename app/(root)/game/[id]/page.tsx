@@ -53,10 +53,10 @@ async function GameCenter({params} : Props) {
     return (
         <>
             {
-                <CalendarioEvents events={game?.events}/>
+                game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} activeTab="first" params={params} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
             }
             {
-                game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} activeTab="first" params={params} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
+                <CalendarioEvents events={game?.events}/> 
             }
 
             {
