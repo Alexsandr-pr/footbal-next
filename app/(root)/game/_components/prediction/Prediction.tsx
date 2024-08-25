@@ -67,7 +67,7 @@ const PredictionBlock = ({
                                     >
                                         <span>{name}</span>
                                         <span className={`${index === 0 && "static-block__item-span"}`}>
-                                            {index === 0 ? <img src="/assets/icons/check.svg" alt="" /> : null}
+                                            {index === 0 ? <Image width={8.5} height={8.5} src="/assets/icons/check.svg" alt="Check" /> : null}
                                             <p>{percentage.toFixed(1)}%</p>
                                         </span>
                                     </div>

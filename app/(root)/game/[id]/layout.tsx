@@ -3,7 +3,6 @@ import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
 import { ReactNode } from "react";
 import Header from "../_components/header/Header";
 import TabsTrigger from "@/components/ui/tabs/TabsTrigger";
-import LayoutContainer from "../_components/LayoutContainer";
 import { getData } from "@/lib/api";
 
 type Props = {
@@ -38,7 +37,7 @@ const Layout = async ({ children, params }: Props) => {
         ]
     }
     return (
-        <LayoutContainer>
+        <div className="flex-16">
             <Breadcrumbs 
                 leagueName={game?.league?.name}
                 commandSecond={game.teams[1].name} 
@@ -54,10 +53,9 @@ const Layout = async ({ children, params }: Props) => {
                 teamsHeader={game.teams}
                 description={game?.description}
             />
-            
             <TabsTrigger type="text" dataText={data}/>
             {children}
-        </LayoutContainer>
+        </div>
     );
 };
 

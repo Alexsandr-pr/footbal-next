@@ -3,6 +3,7 @@ import {  MissingPlayersProps } from '@/types/game-center'
 import styles from "./missing-player.module.scss";
 import { _SERVER_API } from '@/config/consts';
 import Player from '../player/Player';
+import Image from 'next/image';
 
 const MissingPlayers = ({
     missingPlayers
@@ -27,7 +28,12 @@ const MissingPlayers = ({
                                 />
                                 <div className={styles.right}>
                                     <p className={styles.text}>{missing_details?.reason}</p>
-                                    <img width={14} height={14} src={`${_SERVER_API}/images/games/lineups/missing/${missing_details.type}`}  alt="missing_details" />
+                                    <Image
+                                        width={14} 
+                                        height={14} 
+                                        src={`${_SERVER_API}/images/games/lineups/missing/${missing_details.type}`}  
+                                        alt="missing_details"
+                                    />
                                 </div>
                             </li>
                         )
