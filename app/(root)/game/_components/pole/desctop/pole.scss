@@ -10,7 +10,7 @@
 .pole-ds-content {
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    margin: 0px 12px 12px 12px;
+    padding: 0px 12px 12px 12px;
     .pole__block-comand {
         width: 70%;
         height: 30px;

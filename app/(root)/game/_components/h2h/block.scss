@@ -11,6 +11,9 @@
 }
 .game-center__h2h-top {
     padding: 16px 8px;
+    @media(max-width:767.98px){
+        padding: 8px;
+    }
 }
 
 .h2h-item {

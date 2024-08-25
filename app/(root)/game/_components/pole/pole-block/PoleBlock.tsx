@@ -45,7 +45,7 @@ const PoleBlock = ({
         <ContentBlock
             size='average'
             cb={() => pushLineups(params?.id)}
-            buttonText={activeTab === "first" ? "see full lineup" : ""}
+            buttonText={(activeTab === "first" && !isMobile) ? "see full lineup" : ""}
             title={isMobile ? "" : "LINEUPs"} 
         >
             {loading ? (

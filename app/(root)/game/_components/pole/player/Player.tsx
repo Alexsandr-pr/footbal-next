@@ -33,23 +33,30 @@ const Player = ({
                 {
                     substitution?.player ?  <span className="player__minute">{substitution.player}</span> : null
                 }   
+                
                 {
-                    events?.goals?.goals ? 
-                    <>
-                        {
-                            events?.goals?.goals > 1  ?
-                                <div className="player__gol">
-                                    {events?.goals?.goals}
-                                        <Image
-                                            width={14}
-                                            height={14}
-                                            src="/assets/icons/ball-white.svg"
-                                            alt="ball-white"
-                                        />
-                                </div> : null
-                        }
-                    </> : null
-                }
+                events?.goals?.own_goals && events?.goals?.own_goals > 0 ? (
+                    <div className="player__gol">
+                        {events?.goals?.own_goals > 1 ? events?.goals?.own_goals : null}
+                        <Image
+                            width={14}
+                            height={14}
+                            src="/assets/icons/ball-red.svg"
+                            alt="ball-red"
+                        />
+                    </div>
+                ) : events?.goals?.goals && events?.goals?.goals > 0 ? (
+                    <div className="player__gol">
+                        {events?.goals?.goals > 1 ? events?.goals?.goals : null}
+                        <Image
+                            width={14}
+                            height={14}
+                            src="/assets/icons/ball-white.svg"
+                            alt="ball-white"
+                        />
+                    </div>
+                ) : null}
+
                 
             </div>
         </div>
