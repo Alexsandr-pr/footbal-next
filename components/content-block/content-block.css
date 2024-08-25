@@ -6,6 +6,15 @@
 .content-block {
   background: #0A2B1D;
 }
+.content-block.max .content-block__header {
+  height: 40px;
+}
+.content-block.min .content-block__header {
+  height: 32px;
+}
+.content-block.average .content-block__header {
+  height: 35px;
+}
 .content-block__header {
   display: flex;
   align-items: center;
@@ -27,5 +36,11 @@
   border-top: 1px solid #60756C;
   display: flex;
   justify-content: center;
-  padding: 11.5px 12px;
+  padding: 7px 12px;
+}
+@media (max-width: 767.98px) {
+  .content-block__bottom {
+    height: 26px;
+    padding: 6px 12px;
+  }
 }/*# sourceMappingURL=content-block.css.map */

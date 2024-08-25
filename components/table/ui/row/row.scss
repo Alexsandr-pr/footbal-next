@@ -1,0 +1,11 @@
+.table-row {
+    height: 24px;
+    padding: 0px 8px;
+}
+
+.table-row td:last-child {
+    padding-right: 8px;
+}
+.table-row td:first-child {
+    padding-left: 8px;
+}

@@ -13,4 +13,7 @@
   .button {
     font-size: 12px;
   }
+}
+.button.white {
+  color: var(--white);
 }/*# sourceMappingURL=button.css.map */

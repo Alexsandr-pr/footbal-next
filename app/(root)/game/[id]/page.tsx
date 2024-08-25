@@ -7,6 +7,7 @@ import InfoList from "@/components/ui/info-list/InfoList";
 import CalendarioEvents from "../_components/calendario-events/CalendarioEvents";
 import { getData } from "@/lib/api";
 import PredictionContainer from "../_components/prediction/PredictionContainer";
+import Table from "@/components/table/Table";
 
 type Props = {
     params: {
@@ -42,6 +43,7 @@ async function GameCenter({params} : Props) {
             {
                 game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} activeTab="first" params={params} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
             }
+            <Table standings={game?.standings} title={"standings"}/>
             {
                 <CalendarioEvents events={game?.events}/> 
             }

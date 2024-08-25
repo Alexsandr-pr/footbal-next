@@ -1,0 +1,173 @@
+.game-center__h2h {
+  display: grid;
+  padding: 8px;
+  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+}
+@media (max-width: 487.98px) {
+  .game-center__h2h {
+    padding: 8px;
+  }
+}
+
+.game-center__h2h-top {
+  padding: 16px 8px;
+}
+@media (max-width: 767.98px) {
+  .game-center__h2h-top {
+    padding: 8px;
+  }
+}
+
+.h2h-item {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-direction: column;
+}
+.h2h-item.opacity {
+  font-weight: 400 !important;
+  color: var(--border);
+}
+.h2h-item.opacity .h2h-item__text {
+  font-weight: 400 !important;
+}
+
+.h2h-item__text {
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}
+@media (max-width: 767.98px) {
+  .h2h-item__text {
+    font-size: 11px;
+  }
+}
+
+.h2h-green {
+  color: var(--green);
+}
+
+.h2h-yellow {
+  color: var(--yellow);
+}
+
+.h2h-opacity {
+  opacity: 0.4;
+}
+
+.h2h-item-right {
+  align-items: end;
+  padding-right: 57px;
+  text-align: right;
+}
+@media (max-width: 767.98px) {
+  .h2h-item-right {
+    padding-right: 12px;
+  }
+}
+
+.h2h-item-left {
+  padding-left: 57px;
+  align-items: start;
+  text-align: left;
+}
+@media (max-width: 767.98px) {
+  .h2h-item-left {
+    padding-left: 12px;
+  }
+}
+
+.h2h-item-number {
+  gap: 10px !important;
+}
+
+.game-center__h2h:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+}
+
+.h2h-item-block {
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 21.25px;
+  color: var(--background);
+}
+@media (max-width: 767.98px) {
+  .h2h-item-block {
+    width: 24px;
+    height: 24px;
+    font-size: 15px;
+  }
+}
+
+.h2h-gc-block-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.h2h-league-name {
+  color: var(--white);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 120%; /* 16.8px */
+}
+@media (max-width: 767.98px) {
+  .h2h-league-name {
+    font-size: 11px;
+  }
+}
+
+.h2h-numbers {
+  display: flex;
+  gap: 9px;
+}
+
+.h2h-number {
+  color: var(--white);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%; /* 19.2px */
+}
+@media (max-width: 767.98px) {
+  .h2h-number {
+    font-size: 14px;
+  }
+}
+.h2h-number.opacity {
+  font-weight: 400;
+  color: var(--border);
+}
+
+.h2h-date {
+  color: var(--border);
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 14.4px */
+}
+@media (max-width: 767.98px) {
+  .h2h-date {
+    font-size: 10px;
+  }
+}
+
+.h2h-image.opacity {
+  opacity: 0.5;
+}/*# sourceMappingURL=block.css.map */

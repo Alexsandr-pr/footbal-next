@@ -18,9 +18,14 @@
 .pole-header-grid {
   gap: 10px;
   display: flex;
-  padding: 16px 12px;
+  padding: 12px;
   background-color: var(--background);
   border-radius: 8px;
+}
+@media (max-width: 767.98px) {
+  .pole-header-grid {
+    min-height: 92px;
+  }
 }
 
 .pole-header-block {

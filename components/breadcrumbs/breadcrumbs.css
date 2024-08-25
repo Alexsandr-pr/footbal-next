@@ -1,10 +1,33 @@
 .breadcrumbs {
+  padding: 6.5px 0px;
   overflow: hidden;
   color: var(--green);
   text-overflow: ellipsis;
+  justify-content: start;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
 }
 @media (max-width: 767.98px) {
   .breadcrumbs {
     font-size: 11px;
   }
+}
+
+.breadcrumbs__item {
+  position: relative;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.breadcrumbs__item:nth-child(1) {
+  color: var(--white);
+}
+.breadcrumbs__item:not(:last-child)::after {
+  content: url("/assets/icons/chevron-2.svg");
+  padding-top: 2px;
 }/*# sourceMappingURL=breadcrumbs.css.map */

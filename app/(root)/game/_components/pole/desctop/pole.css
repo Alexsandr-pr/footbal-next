@@ -12,7 +12,7 @@
 .pole-ds-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin: 0px 12px 12px 12px;
+  padding: 0px 12px 12px 12px;
 }
 .pole-ds-content .pole__block-comand {
   width: 70%;
@@ -49,7 +49,7 @@
   .pole__body {
     display: flex;
     border-radius: 8px;
-    margin: 14px;
+    margin: 12px;
     border: 2px solid var(--border);
     position: relative;
     height: 320px;
@@ -73,6 +73,11 @@
   }
 }
 @media (min-width: 991.98px) {
+  .pole-body__bottom-content .span:last-child {
+    border-radius: 0px 8px 8px 0px !important;
+  }
+}
+@media (min-width: 991.98px) {
   .pole-body__top-content .span.active-1 {
     border-radius: 8px 0px 0px 8px;
   }
@@ -80,7 +85,7 @@
     border-left: var(--border) 1px solid;
   }
   .pole-body__bottom-content .span:last-child {
-    border-radius: 0px 8px 8px 0px;
+    border-radius: 0px 8px 8px 0px !important;
   }
   .pole-body__bottom-content,
   .pole-body__top-content {

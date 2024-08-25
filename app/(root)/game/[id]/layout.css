@@ -1,0 +1,45 @@
+.flex-24-breadcrumbs-gc {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media (max-width: 767.98px) {
+  .flex-24-breadcrumbs-gc {
+    gap: 8px;
+  }
+}
+
+.gc-flex-16 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (max-width: 767.98px) {
+  .gc-flex-16 {
+    gap: 8px;
+    margin-top: -8px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .lineups-pole-gc {
+    margin-top: -8px;
+  }
+}
+
+.flex-16-lineups-gc {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (max-width: 767.98px) {
+  .flex-16-lineups-gc {
+    gap: 8px;
+  }
+}
+
+.flex-16-lineups-gc-button-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}/*# sourceMappingURL=layout.css.map */
