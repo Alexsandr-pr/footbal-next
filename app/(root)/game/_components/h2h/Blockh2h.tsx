@@ -20,13 +20,14 @@ const Blockh2h = ({headToHead, teams, showCountryFlags} : Blockh2hProps) => {
 
     return (
         <ContentBlock
+            size="min"
             cb={() => handleToggle()}
             rotate={expanded ? "-90deg" : "90deg"}
             title="h2h"
             buttonText={expanded ? "Show less" : "Show more"}
         >
             <div ref={block} className="">
-                <div className="game-center__h2h">
+                <div className="game-center__h2h game-center__h2h-top">
                     <ItemChild
                         wins={headToHead.home_wins}
                         showCountryFlags={showCountryFlags}

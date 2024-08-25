@@ -14,7 +14,7 @@ const MissingPlayers = ({
     }
 
     return (
-        <ContentBlock title='LESIONES Y SUSPENSIONES'>
+        <ContentBlock size='max' title='LESIONES Y SUSPENSIONES'>
             <ul className={styles.list}>
                 {
                     missingPlayers.map(({name, missing_details, jersey_num}) => {

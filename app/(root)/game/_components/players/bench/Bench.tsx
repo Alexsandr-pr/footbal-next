@@ -13,7 +13,7 @@ const Bench = ({
         return null
     }
     return (
-        <ContentBlock title={title}>
+        <ContentBlock size='max' title={title}>
             <ul className={styles.list}>
                 {
                     bench.map(({name, jersey_num, position, events, substitution}) => {

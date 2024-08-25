@@ -33,7 +33,7 @@ const LiveOddsBlock = ({
                 
                 </div>
                 <div className="content-block__body">
-                        <div  className="game-center__h2h live-odds-container">
+                    <div  className="game-center__h2h live-odds-container">
                         <H2hItem>
                             <CommandImage
                                 imagesStyles="h2h"

@@ -37,7 +37,7 @@ async function GameCenter({params} : Props) {
     // penalties events id 
     // ebebacj
     return (
-        <>
+        <div className="gc-flex-16">
             <PredictionContainer liveOdds={game?.live_odds} showCountryFlags={game?.league?.show_country_flags} teams={game.teams} prediction={game?.prediction} id={params.id}/>
             {
                 game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} activeTab="first" params={params} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
@@ -56,7 +56,7 @@ async function GameCenter({params} : Props) {
             {
                 game?.game_info && <InfoList gameInfo={game?.game_info}/>
             }
-        </>
+        </div>
     );
 }
 

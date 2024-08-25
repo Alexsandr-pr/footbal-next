@@ -22,6 +22,7 @@ interface TabsTriggerProps {
     dataImage?: TriggerImages[];
     type?: "image" | "text";
     showCountryFlags?: boolean;
+    clazz?: string;
 }
 
 const TabsTrigger = ({ 
@@ -29,6 +30,7 @@ const TabsTrigger = ({
     activeTab, 
     dataImage,
     type,
+    clazz,
     showCountryFlags
 } : TabsTriggerProps) => {
     const pathname = usePathname();
@@ -47,7 +49,7 @@ const TabsTrigger = ({
         }
         return (
             <>
-                <div style={{gridTemplateColumns: `repeat(${dataText?.length}, 1fr)`}}  className={styles.triggers}>
+                <div style={{gridTemplateColumns: `repeat(${dataText?.length}, 1fr)`}}  className={`${styles.triggers} ${clazz}`}>
                     {
                         dataText && dataText?.map(({label, route}) => {
                             const isActive = pathname === route;

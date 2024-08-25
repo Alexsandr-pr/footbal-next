@@ -40,21 +40,20 @@ const LineupsInfo = ({
             <li className={styles.item}>
                 {events?.goals?.own_goals && events?.goals?.own_goals > 0 ? (
                     <Image
-                        width={16}
-                        height={16}
+                        width={24}
+                        height={24}
                         src="/assets/icons/ball-red.svg"
                         alt="ball-red"
                     />
                 ) : events?.goals?.goals && events?.goals?.goals > 0 ? (
                     <Image
-                        width={16}
-                        height={16}
+                        width={24}
+                        height={24}
                         src="/assets/icons/ball-white.svg"
                         alt="ball-white"
                     />
                 ) : null}
             </li>
-
         </ul>
     )
 }

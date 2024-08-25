@@ -30,11 +30,11 @@ const TabsBlock = ({
 }) => {
 
     return (
-        <>  
+        <div className="flex-16-lineups-gc-button-gap">  
             {childrenTop}
             <TabsTrigger showCountryFlags={showCountryFlags} type={type} dataImage={dataImage} activeTab={activeTab} dataText={data}/>
             {children}
-        </>
+        </div>
     )
 }
 

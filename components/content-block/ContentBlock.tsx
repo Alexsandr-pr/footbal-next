@@ -11,14 +11,17 @@ const ContentBlock = ({
     children, 
     cb,
     rotate,
-    buttonColor
+    buttonColor,
+    size
 } : ContentBlockProps) => {
 
     return (
-        <div  className={`content-block`}>
-            <div className="content-block__header">
-                {title}
-            </div>
+        <div  className={`content-block ${size}`}>
+            {
+                title && <div className="content-block__header ">
+                    {title}
+                </div>
+            }
             <div className="content-block__body">
                 {
                     children

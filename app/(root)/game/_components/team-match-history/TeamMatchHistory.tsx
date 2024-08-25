@@ -11,7 +11,7 @@ const TeamMatchHistory = ({
     showCountryFlags
 } : TeamMatchHistoryProps) => {
     return (
-        <ContentBlock title={"Recent form"}>
+        <ContentBlock size="average" title={"Recent form"}>
             <div className="team-match-history">
                 <div className="team-match-history__block">
                     <div className="team-match-history__block-item">

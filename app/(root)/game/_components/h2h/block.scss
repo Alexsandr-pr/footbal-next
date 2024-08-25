@@ -1,13 +1,16 @@
 
 .game-center__h2h {
     display: grid;
-    padding: 16px 8px;
+    padding: 8px;
     gap: 8px;
     grid-template-columns: repeat(3,1fr);
     justify-content: center;
     @media(max-width:487.98px){
         padding: 8px;
     }
+}
+.game-center__h2h-top {
+    padding: 16px 8px;
 }
 
 .h2h-item {

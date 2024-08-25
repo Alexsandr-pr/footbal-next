@@ -17,6 +17,7 @@
 }
 
 .button {
+    height: 40px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -31,6 +32,7 @@
     @media(max-width:767.98px){
         padding: 9.5px;
         font-size: 12px;
+        height: 32px;
     }
     @media(max-width:487.98px){
         font-size: 11px;

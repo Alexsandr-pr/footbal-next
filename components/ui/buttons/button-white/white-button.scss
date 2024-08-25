@@ -10,4 +10,10 @@
     padding: 8px 12px;
     border-radius: 4px;
     background:  var(--white);
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    @media(max-width:767.98px){
+        height: 32px;
+    }
 }

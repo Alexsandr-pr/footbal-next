@@ -1,6 +1,7 @@
 
 
 .breadcrumbs {
+    padding: 6.5px 0px;
     overflow: hidden;
     color: var(--green);
     text-overflow: ellipsis;
@@ -9,6 +10,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    font-size: 14px;
     @media(max-width:767.98px){
         font-size: 11px;
     }

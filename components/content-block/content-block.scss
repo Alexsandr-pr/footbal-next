@@ -5,9 +5,24 @@
 
 .content-block {
 
+    
     // .content-block__header
     background: #0A2B1D;
-
+    &.max {
+        .content-block__header {
+            height: 40px;
+        }
+    }
+    &.min {
+        .content-block__header {
+            height: 32px;
+        }
+    }
+    &.average {
+        .content-block__header {
+            height: 35px;
+        }
+    }
     &__header {
         display: flex;
         align-items: center;
@@ -22,6 +37,7 @@
         @media(max-width:767.98px){
             font-size: 14px;
         }
+        
     }
 
     // .content-block__bottom
@@ -30,6 +46,10 @@
         border-top: 1px solid #60756C;
         display: flex;
         justify-content: center;
-        padding: 11.5px 12px;
+        padding: 7px 12px;
+        @media(max-width:767.98px){
+            height: 26px;
+            padding: 6px 12px;
+        }
     }
 }

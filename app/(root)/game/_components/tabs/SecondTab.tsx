@@ -29,28 +29,29 @@ const SecondTab = ({
     ]
 
     return (
-        <div className="flex-16">
+        <>
             <TabsBlock showCountryFlags={showCountryFlags} type="image" activeTab={tab} dataImage={data}>
-
-                {
-                    tab === "first" ? <>
-                        { teamsLineups[0].bench ?  <Bench title={"SUPLENTES"}  bench={teamsLineups[0].bench}/> : null}
-                        {
-                            missingPlayers?.[0] && <MissingPlayers missingPlayers={missingPlayers[0]}/>
-                        }
-                        {!missingPlayers?.[0] && "Ningún jugador lesionado"}
-                    </> : <>
-                        
-                        {   teamsLineups[1].bench ? <Bench title={"SUPLENTES"}  bench={teamsLineups[1].bench}/> : null}
-                        
-                        {
-                            missingPlayers?.[1] && <MissingPlayers missingPlayers={missingPlayers[1]}/>
-                        }
-                    </>
-                }
+                <div className="flex-16-lineups-gc">
+                    {
+                        tab === "first" ? <>
+                            { teamsLineups[0].bench ?  <Bench title={"SUPLENTES"}  bench={teamsLineups[0].bench}/> : null}
+                            {
+                                missingPlayers?.[0] && <MissingPlayers missingPlayers={missingPlayers[0]}/>
+                            }
+                        </> : <>
+                            
+                            {   teamsLineups[1].bench ? <Bench title={"SUPLENTES"}  bench={teamsLineups[1].bench}/> : null}
+                            
+                            {
+                                missingPlayers?.[1] && <MissingPlayers missingPlayers={missingPlayers[1]}/>
+                            }
+                        </>
+                    }
+                </div>
+                
             </TabsBlock>
             
-        </div>
+        </>
     )
 }
 

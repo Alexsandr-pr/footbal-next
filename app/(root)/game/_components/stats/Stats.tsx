@@ -22,6 +22,7 @@ const Stats = ({
 
     return (
         <ContentBlock 
+            size='min'
             rotate={expanded ? "-90deg" : "90deg"}
             cb={statistics && statistics.length > displayQuantity ? handleToggle : undefined} 
             title="ESTADÍSTICAS DEL PARTIDO" 

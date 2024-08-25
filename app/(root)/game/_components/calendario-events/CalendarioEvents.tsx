@@ -11,7 +11,7 @@ const CalendarioEvents = ({
 } : CalendarioEventsProps) => {
     if(!events) return null
     return (
-        <ContentBlock title="CALENDARIO DE EVENTOS">
+        <ContentBlock  size='min' title="CALENDARIO DE EVENTOS">
             <>
                 {
                     events && events?.map((item) => {

@@ -78,7 +78,8 @@ const PredictionBlock = ({
                             {prediction?.odds && <Odds odds={prediction?.odds}/>}
                         </div>
                     </div>
-                    <WhiteButton clazz={"bottom-info__button"} text="Apostar ahora" cb={() => setState(false)} />
+                    { false && <WhiteButton clazz={"bottom-info__button"} text="Apostar ahora" cb={() => setState(false)} />}
+                    
                 </div>
             </div>
         </div>
