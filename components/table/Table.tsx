@@ -62,7 +62,7 @@ const Table = ({
                     {
                         standings.rows.map(row => {
                             return (
-                                <Row>
+                                <Row key={row.num}>
                                     <Td type="start" border="right">{row.num}</Td>
                                     <Td type={"team"} border="right">
                                         <Image
