@@ -31,7 +31,7 @@ const MissingPlayers = ({
                                 </div>
                             </li>
                         )
-                    })
+                    }) 
                 }
                 
             </ul>

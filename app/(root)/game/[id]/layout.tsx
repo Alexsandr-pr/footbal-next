@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 import Header from "../_components/header/Header";
 import TabsTrigger from "@/components/ui/tabs/TabsTrigger";
 import LayoutContainer from "../_components/LayoutContainer";
-import PredictionContainer from "../_components/prediction/PredictionContainer";
 import { getData } from "@/lib/api";
 
 type Props = {
@@ -55,7 +54,7 @@ const Layout = async ({ children, params }: Props) => {
                 teamsHeader={game.teams}
                 description={game?.description}
             />
-            <PredictionContainer liveOdds={game?.live_odds} showCountryFlags={game?.league?.show_country_flags} teams={game.teams} prediction={game?.prediction} id={params.id}/>
+            
             <TabsTrigger type="text" dataText={data}/>
             {children}
         </LayoutContainer>

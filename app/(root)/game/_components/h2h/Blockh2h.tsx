@@ -27,34 +27,26 @@ const Blockh2h = ({headToHead, teams, showCountryFlags} : Blockh2hProps) => {
         >
             <div ref={block} className="">
                 <div className="game-center__h2h">
-                    <H2hItem>
-                        <CommandImage
-                            imagesStyles="h2h"
-                            position="right"
-                            showCountryFlags={showCountryFlags}
-                            teamId={teams[0].id}
+                    <ItemChild
+                        wins={headToHead.home_wins}
+                        showCountryFlags={showCountryFlags}
+                        teamId={teams[0].id}
                             countryId={teams[0].country_id}
                             teamName={teams[0].name}
-                        />
-                        <Text><span className="h2h-green">{headToHead.home_wins}</span> Viktoria</Text>
-                    </H2hItem>
+                    />
                     <H2hItem>
                         <div className="h2h-item-block">
                             E
                         </div>
                         <Text><span className="h2h-yellow">{headToHead.draws}</span> Empates</Text>
                     </H2hItem>
-                    <H2hItem>
-                        <CommandImage
-                            imagesStyles="h2h"
-                            position="right"
-                            showCountryFlags={showCountryFlags}
-                            teamId={teams[1].id}
-                            countryId={teams[1].country_id}
-                            teamName={teams[1].name}
-                        />
-                        <Text><span className="h2h-green">{headToHead.away_wins}</span> Viktoria</Text>
-                    </H2hItem>
+                    <ItemChild
+                        wins={headToHead.away_wins}
+                        showCountryFlags={showCountryFlags}
+                        teamId={teams[1].id}
+                        countryId={teams[1].country_id}
+                        teamName={teams[1].name}
+                    />
                 </div>
                 {
                     expanded && <HeadContent teamsTop={teams} headToHead={headToHead}/>
@@ -63,7 +55,33 @@ const Blockh2h = ({headToHead, teams, showCountryFlags} : Blockh2hProps) => {
         </ContentBlock>
     )
 }
-
+const ItemChild = ({
+    teamId,
+    countryId,
+    teamName,
+    wins,
+    showCountryFlags
+} : {
+    teamId:string;
+    countryId:string;
+    teamName:string;
+    wins?:number;
+    showCountryFlags?:boolean;
+}) => {
+    return (
+        <H2hItem>
+            <CommandImage
+                imagesStyles="h2h"
+                position="right"
+                showCountryFlags={showCountryFlags}
+                teamId={teamId}
+                countryId={countryId}
+                teamName={teamName}
+            />
+            <Text><span className="h2h-green">{wins}</span> Viktoria</Text>
+        </H2hItem>
+    )
+}
 
 
 

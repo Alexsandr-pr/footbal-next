@@ -62,23 +62,32 @@ const LiveOddsBlock = ({
                     </div>
         
                     <div className="live-odds-blocks">
-                        <div className="live-odds-block">
-                            <div className="live-odds-title live">
-                                Cuotas en vivo
-                            </div>
-                            <div className="live-odds-items">
-                                <Odds odds={liveOdds?.odds?.original}/>
-                            </div>
-                        </div>
-                        <div className="live-odds-block">
-                            <div className="live-odds-title ">
-                                Cuotas antes de patido
-                            </div>
-                            <div className="live-odds-items">
-                                
-                                <Odds odds={liveOdds?.odds?.live}/>
-                            </div>
-                        </div>
+                        {
+                            liveOdds?.odds?.original && (
+                                <div className="live-odds-block">
+                                    <div className="live-odds-title live">
+                                        Cuotas en vivo
+                                    </div>
+                                    <div className="live-odds-items">
+                                        <Odds odds={liveOdds?.odds?.original}/>
+                                    </div>
+                                </div>
+                            )
+                        }
+                        {
+                            liveOdds?.odds?.live && (
+                                <div className="live-odds-block">
+                                    <div className="live-odds-title ">
+                                        Cuotas antes de patido
+                                    </div>
+                                    <div className="live-odds-items">
+                                        
+                                        <Odds odds={liveOdds?.odds?.live}/>
+                                    </div>
+                                </div>
+                            )
+                        }
+                        
                     </div>
                     <div className="live-odds-buttons">
                         <WhiteButton clazz="live-odds-button" cb={() => {}} text="Apostar ahora"/>

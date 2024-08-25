@@ -2,11 +2,14 @@ import React from 'react';
 import NoAction from './NoAction';
 import { EventsCalendario, PlayerEvent, Row } from '@/types/game-center';
 import Title from './Title';
+import CalendarioItemsContainer from './CalendarioItemsContainer';
+import Images from './Images';
+import CalendarioItem from './CalendarioItem';
 
 const EventItem = ({ 
     event 
 }: { 
-    event: PlayerEvent
+    event: PlayerEvent;
 }) => {
     const isReverse = event.team === 2;
     const eventText = event.texts.length > 1 ? (
@@ -22,21 +25,15 @@ const EventItem = ({
     );
 
     return (
-        <div key={event.time} style={{ flexDirection: isReverse ? "row-reverse" : "row" }} className="calendario-events__items">
-            <div style={{ flexDirection: isReverse ? "row-reverse" : "row" }} className="calendario-events__item">
-                <img
-                    className="calendario-events__item-image"
-                    width={24}
-                    height={24}
-                    src={`https://sports-stats.net/images/games/event/${event.type}`}
-                    alt=""
-                />
+        <CalendarioItemsContainer styles={{ flexDirection: isReverse ? "row-reverse" : "row" }}>
+            <CalendarioItem styles={{ flexDirection: isReverse ? "row-reverse" : "row" }}>
+                <Images type={event.type}/>
                 {eventText}
-            </div>
-            <div className="calendario-events__item calendario-events__item-span">
+            </CalendarioItem>
+            <CalendarioItem clazz='calendario-events__item-span'>
                 {event.time}
-            </div>
-        </div>
+            </CalendarioItem>
+        </CalendarioItemsContainer>
     );
 };
 

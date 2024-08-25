@@ -309,7 +309,7 @@ export type LineupsPlayerProps = {
 }
 
 export type MissingPlayersProps = {
-    missingPlayers: MissingPlayer[];
+    missingPlayers: MissingPlayer[] | [];
 }
 
 export type BenchProps = {

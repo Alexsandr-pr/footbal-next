@@ -1,6 +1,7 @@
-import { OddsOption } from '@/types'
+
 import React from 'react'
 import GetTrendIcon from '../ui/trend-icon/GetTrendIcon';
+import "./odds.scss";
 
 const Odds = ({
     odds

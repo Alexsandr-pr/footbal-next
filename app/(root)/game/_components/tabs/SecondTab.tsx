@@ -38,6 +38,7 @@ const SecondTab = ({
                         {
                             missingPlayers?.[0] && <MissingPlayers missingPlayers={missingPlayers[0]}/>
                         }
+                        {!missingPlayers?.[0] && "Ningún jugador lesionado"}
                     </> : <>
                         
                         {   teamsLineups[1].bench ? <Bench title={"SUPLENTES"}  bench={teamsLineups[1].bench}/> : null}

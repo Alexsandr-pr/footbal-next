@@ -1,5 +1,9 @@
 import { PenaltiesData } from "@/types/game-center";
 import Title from "./Title";
+import CalendarioItemsContainer from "./CalendarioItemsContainer";
+import CalendarioItem from "./CalendarioItem";
+import Images from "./Images";
+
 
 function combineTeamEvents(data: PenaltiesData) {
     return data.rows.map((row) => {
@@ -31,41 +35,51 @@ const PenaltiesRows = ({
                 {
                     combinedRows.map(item => {
                         return (
-                            <div key={item.time} style={{borderBottom: "none"}} className="calendario-events__items calendario-events__items-penalties">
-                                <div className="calendario-events__item">
-                                    <div style={{color:"var(--white)", backgroundColor:"var(--green-hover)"}} className="calendario-events__item-num">
-                                        {
-                                            item.events[0].player_jersey_num
-                                        }
-                                    </div>
+                            <CalendarioItemsContainer key={item.time} clazz="calendario-events__items-penalties" styles={{borderBottom: "none"}}>
+                                <CalendarioItem>
+                                    <BlockJersey jerseyNum={item.events[0].player_jersey_num}/>
                                     {
                                         item.events[0].texts[0].split(" ").pop()
-                                    }
-                                    
-                                </div>
-                                <div className="calendario-events__item calendario-events__item-span">
-                                    <img className="calendario-events__item-image" width={24} height={24} src={`https://sports-stats.net/images/games/event/${item.events[0].type}`} alt="" />
+                                    }   
+                                </CalendarioItem>
+                                <CalendarioItem clazz="calendario-events__item-span">
+                                    <Images type={item.events[0].type}/>
                                     {item.time}
-                                    <img  className="calendario-events__item-image" width={24} height={24} src={`https://sports-stats.net/images/games/event/${item.events[1].type}`} alt="" />
-                                </div>
-                                <div style={{justifyContent: "end"}} className="calendario-events__item">
+                                    <Images type={item.events[1].type}/>
+                                </CalendarioItem>
+                                <CalendarioItem styles={{justifyContent: "end"}}>
                                     {
                                         item.events[1].texts[0].split(" ").pop()
                                     }
-                                    
-                                    <div  style={{color:"var(--background)", backgroundColor:"#EEFFA5"}}  className="calendario-events__item-num">
-                                        {
-                                            item.events[1].player_jersey_num
-                                        }
-                                    </div>
-                                </div>
-                            </div>
+                                    <BlockJersey jerseyNum={item.events[1].player_jersey_num} type="right"/>
+                                </CalendarioItem>
+                            </CalendarioItemsContainer>
+                            
                         )
                     })
                 }
             </div>
-            
         </>
+    )
+}
+
+const BlockJersey = ({
+    jerseyNum,
+    type
+} : {
+    jerseyNum?: number;
+    type?: "right"
+}) => {
+    let styles = {color:"var(--background)", backgroundColor:"#EEFFA5"};
+    if(type === "right") {
+        styles = {color:"var(--white)", backgroundColor:"var(--green-hover)"};
+    }
+    return (
+        <div  style={styles}  className="calendario-events__item-num">
+            {
+                jerseyNum
+            }
+        </div>
     )
 }
 
