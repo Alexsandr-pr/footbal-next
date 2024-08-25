@@ -144,6 +144,7 @@ export type Game = {
     head_to_head: HeadToHead;
     recent_form: RecentForm;
     standings: {
+        title:string;
         columns: {
             key: string;
             display_name: string;

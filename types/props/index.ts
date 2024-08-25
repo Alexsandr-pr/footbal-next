@@ -2,7 +2,7 @@
 
 
 export interface ContentBlockProps {
-    title: string; 
+    title?: string; 
     buttonText?: string;
     children: React.ReactNode;
     cb?:() => void;

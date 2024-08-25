@@ -8,11 +8,10 @@ import Thead from "./ui/thead/Thead";
 import { _SERVER_API } from "@/config/consts";
 
 const Table = ({
-    title,
     standings
 } : {
-    title:string;
-    standings: {
+    standings?: {
+        title:string;
         columns: {
             key: string;
             display_name: string;
@@ -36,22 +35,40 @@ const Table = ({
         }[];
     };
 }) => {
+
     return (
         <ContentBlock 
             buttonText="FULL LEAGUE STANDING"
             size="min" 
-            title={title}
+            title={standings?.title}
         >
             <table className="table">
                 <Thead>
                     <Row>
                         <>
-                            <Td isBold={true} border="right">#</Td>
-                            <Td  border="right">Team</Td>
+                            <Td 
+                                isBold={"bold"} 
+                                border="right"
+                            >
+                                #
+                            </Td>
+                            <Td 
+                                team="team team-center" 
+                                border="right"
+                            >
+                                Team
+                            </Td>
                             {
-                                standings.columns.map(item => {
+                                standings?.columns.map((item, index) => {
                                     return (
-                                        <Td maxW={"content"} isBold={item.is_bold} key={item.key}>{item.display_name}</Td>    
+                                        <Td 
+                                            border={index === 0 ? "right" : undefined} 
+                                            maxW={"content"} 
+                                            isBold={item.is_bold && "bold"} 
+                                            key={item.key}
+                                        >
+                                            {item.display_name}
+                                        </Td>    
                                     )
                                 })
                             }
@@ -60,11 +77,20 @@ const Table = ({
                 </Thead>
                 <Tbody>
                     {
-                        standings.rows.map(row => {
+                        standings?.rows.map(row => {
                             return (
                                 <Row key={row.num}>
-                                    <Td type="start" border="right">{row.num}</Td>
-                                    <Td type={"team"} border="right">
+                                    <Td 
+                                        isBold={"bold"} 
+                                        type="start" 
+                                        border="right"
+                                    >
+                                        {row.num}
+                                    </Td>
+                                    <Td 
+                                        team={"team"} 
+                                        border="right"
+                                    >
                                         <Image
                                             height={16}
                                             width={16}
@@ -74,9 +100,15 @@ const Table = ({
                                         {row.entity.object.name}
                                     </Td>
                                     {
-                                        row.values.map((td) => {
+                                        row.values.map((td, index) => {
                                             return (
-                                                <Td maxW={"content"} key={td.key}>{td.value}</Td>
+                                                <Td 
+                                                    border={index === 0 ? "right" : undefined} 
+                                                    maxW={"content"} 
+                                                    key={td.key}
+                                                >
+                                                    {td.value}
+                                                </Td>
                                             )
                                         })
                                     }

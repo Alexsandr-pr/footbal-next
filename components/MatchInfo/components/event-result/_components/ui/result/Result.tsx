@@ -37,7 +37,8 @@ const Result = ({
                 {penalties && penalties.length > 0 && penalties[0] !== undefined && <Penalties penalties={penalties[0]} />}
                 {scores && scores.length > 0 && <Scores type={type} soundLocal={soundLocal} scores={scores[0]} statusEnum={status?.enum} />}
             </div>
-            {(type === "gc" && status?.enum === 2) 
+            {
+            (type === "gc" && status?.enum === 2) 
                 ? <div className="live-minute-result-event">{gameTime}</div> 
                 : <div style={colorStyle} className={styles.tire}>-</div>
             }

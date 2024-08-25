@@ -6,16 +6,19 @@ const Td = ({
     isBold,
     border,
     type,
-    maxW
+    maxW,
+    team
 } : {
-    isBold?:boolean;
+    isBold?: string | boolean;
     children:ReactNode;
     border?:string;
-    type?: "team" | "start";
+    type?: string;
     maxW?: string;
+    team?: string;
+
 }) => {
     return (
-        <td className={`table-td-col ${isBold ? "bold" : null} ${border ? border : ""} ${type === "team" ? type: null} ${type === "start" ? type : null} ${maxW}`}>
+        <td className={`table-td-col ${isBold} ${border} ${team} ${type} ${maxW}`}>
             {children}
         </td>
     )

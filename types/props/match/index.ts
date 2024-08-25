@@ -24,7 +24,7 @@ export interface EventResultProps {
     penalties?: [number, number] | [];
     description?: string ;
     soundLocal?: boolean;
-    type?: "gamecenter";
+    type?: "gamecenter" ;
     startTime?: string;
     gameTime?: string;
 }

@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import "./tbody.scss"
 
 const Tbody =  ({
     children
@@ -6,7 +7,7 @@ const Tbody =  ({
     children:ReactNode;
 }) => {
     return (
-        <tbody>
+        <tbody className='table-tbody'>
             {children}
         </tbody>
     )

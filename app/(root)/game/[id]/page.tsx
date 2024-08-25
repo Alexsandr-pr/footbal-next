@@ -5,9 +5,10 @@ import TeamMatchHistory from "../_components/team-match-history/TeamMatchHistory
 import Blockh2h from "../_components/h2h/Blockh2h";
 import InfoList from "@/components/ui/info-list/InfoList";
 import CalendarioEvents from "../_components/calendario-events/CalendarioEvents";
-import { getData } from "@/lib/api";
 import PredictionContainer from "../_components/prediction/PredictionContainer";
 import Table from "@/components/table/Table";
+import { getData } from "@/lib/api";
+import { _SERVER_API } from "@/config/consts";
 
 type Props = {
     params: {
@@ -16,12 +17,9 @@ type Props = {
 }
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
-    
     const { game } = await getData(params.id);
-
     const title = `${game?.league?.name} - ${game.teams[0].name} vs ${game.teams[1].name} - Match Details`;
     const description = `Details about the match between ${game.teams[0].name} and ${game.teams[1].name}.`;
-
     return {
         title,
         description,
@@ -29,21 +27,25 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
     };
 };
 
-
-/******************************************** */
-
-async function GameCenter({params} : Props) {
+export default async function GameCenter({ params }: Props) {
     const { game, TTL } = await getData(params.id);
 
-    // penalties events id 
-    // ebebacj
+    await fetch(`${_SERVER_API}/gamecenter/${params.id}`, {
+        cache: 'force-cache',
+        next: { revalidate: TTL } 
+    });
+
     return (
+        
         <div className="gc-flex-16">
             <PredictionContainer liveOdds={game?.live_odds} showCountryFlags={game?.league?.show_country_flags} teams={game.teams} prediction={game?.prediction} id={params.id}/>
             {
                 game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} activeTab="first" params={params} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
             }
-            <Table standings={game?.standings} title={"standings"}/>
+            {
+                game?.standings && <Table standings={game.standings}/>
+            }
+            
             {
                 <CalendarioEvents events={game?.events}/> 
             }
@@ -61,5 +63,3 @@ async function GameCenter({params} : Props) {
         </div>
     );
 }
-
-export default GameCenter;

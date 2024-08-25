@@ -5,7 +5,9 @@ import { ReactNode, useEffect } from "react";
 
 const Refresh = ({
     children,
+    ttl
 } : {
+    ttl:number;
     children: ReactNode
 }) => {
     const router = useRouter();
@@ -13,7 +15,7 @@ const Refresh = ({
     useEffect(() => {
         const interval = setInterval(() => {
             router.refresh();
-        }, 10000); 
+        }, ttl * 1000); 
 
         return () => clearInterval(interval);
     }, [router]);

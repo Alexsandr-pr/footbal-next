@@ -18,7 +18,7 @@ const ResultGameCenter = (props: {
 
     const { status } = props;
     if(status.enum === 1) return <PreGameGC  statusName={status?.name} {...props} />
-    if(status.enum === 2) return <LiveGameResult {...props}/>
+    if(status.enum === 2) return <LiveGameResult  {...props}/>
     if(status.enum === 3) return <PostGCResult {...props}/>
 }
 

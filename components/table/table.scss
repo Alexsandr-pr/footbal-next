@@ -2,3 +2,7 @@
 .table {
     width: 100%;
 }
+table, td, th, tr {
+    border:none;
+    border-collapse:collapse;
+}
