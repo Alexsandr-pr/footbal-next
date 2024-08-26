@@ -10,7 +10,7 @@ const CommandHistoryResult = ({
             {
                 data.map((item, index) => {
                     return (
-                        <li key={item + index} className={`command-history-result__block 
+                        <li key={index} className={`command-history-result__block 
                             ${ item === 0 ? "draw" : null}
                             ${ item === 1 ? "win" : null}
                             ${ item === 2 ? "loss" : null}

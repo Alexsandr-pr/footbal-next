@@ -18,6 +18,7 @@ async function Yesterday() {
     const { leagues, calendar }: LeaguesResponse = await getData();
     
     return (
+        
         <Home calendar={calendar} leagues={leagues}/>
     );
 }

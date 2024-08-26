@@ -1,10 +1,11 @@
 import { _SERVER_API } from "@/config/consts";
 import { LeaguesResponse } from "@/types/response";
 import Today from "./_components/home/Today";
+import Refresh from "./_components/Refresh";
 
 async function getData(): Promise<LeaguesResponse> {
     const res = await fetch(`${_SERVER_API}/games/today`, {
-        cache: 'force-cache'
+        next: { revalidate: 10 } 
     });
 
     if (!res.ok) {
@@ -22,9 +23,13 @@ export default async function Page() {
     const { leagues, calendar, ttl } = await getData();
 
     await fetch(`${_SERVER_API}/games/today`, {
-        cache: 'force-cache',
         next: { revalidate: ttl } 
     });
 
-    return <Today calendar={calendar} leagues={leagues} />;
+    return (
+        <Refresh>
+            <Today calendar={calendar} leagues={leagues} />;
+        </Refresh>
+    )
+    
 }

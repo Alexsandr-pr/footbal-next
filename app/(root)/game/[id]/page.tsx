@@ -9,6 +9,7 @@ import PredictionContainer from "../_components/prediction/PredictionContainer";
 import Table from "@/components/table/Table";
 import { getData } from "@/lib/api";
 import { _SERVER_API } from "@/config/consts";
+import Refresh from "../_components/Refresh";
 
 type Props = {
     params: {
@@ -31,35 +32,36 @@ export default async function GameCenter({ params }: Props) {
     const { game, TTL } = await getData(params.id);
 
     await fetch(`${_SERVER_API}/gamecenter/${params.id}`, {
-        cache: 'force-cache',
         next: { revalidate: TTL } 
     });
 
     return (
-        
-        <div className="gc-flex-16">
-            <PredictionContainer liveOdds={game?.live_odds} showCountryFlags={game?.league?.show_country_flags} teams={game.teams} prediction={game?.prediction} id={params.id}/>
-            {
-                game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} activeTab="first" params={params} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
-            }
-            {
-                game?.standings && <Table standings={game.standings}/>
-            }
-            
-            {
-                <CalendarioEvents events={game?.events}/> 
-            }
+        <Refresh ttl={TTL}>
+            <div className="gc-flex-16">
+                <PredictionContainer liveOdds={game?.live_odds} showCountryFlags={game?.league?.show_country_flags} teams={game.teams} prediction={game?.prediction} id={params.id}/>
+                {
+                    game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} activeTab="first" params={params} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
+                }
+                {
+                    game?.standings && <Table standings={game.standings}/>
+                }
+                
+                {
+                    <CalendarioEvents events={game?.events}/> 
+                }
 
-            {
-                game?.statistics && <Stats statistics={game?.statistics}/>
-            }
-            <TeamMatchHistory showCountryFlags={game?.league?.show_country_flags} resentForm={game?.recent_form} teams={game?.teams}/>
-            {
-                game?.head_to_head && <Blockh2h showCountryFlags={game?.league?.show_country_flags} teams={game?.teams} headToHead={game?.head_to_head}/>
-            }
-            {
-                game?.game_info && <InfoList gameInfo={game?.game_info}/>
-            }
-        </div>
+                {
+                    game?.statistics && <Stats statistics={game?.statistics}/>
+                }
+                <TeamMatchHistory showCountryFlags={game?.league?.show_country_flags} resentForm={game?.recent_form} teams={game?.teams}/>
+                {
+                    game?.head_to_head && <Blockh2h showCountryFlags={game?.league?.show_country_flags} teams={game?.teams} headToHead={game?.head_to_head}/>
+                }
+                {
+                    game?.game_info && <InfoList gameInfo={game?.game_info}/>
+                }
+            </div>
+        </Refresh>
+
     );
 }

@@ -19,7 +19,6 @@ const Layout = async ({ children, params }: Props) => {
     const { game, TTL } = await getData(params.id);
 
     await fetch(`${_SERVER_API}/gamecenter/${params.id}`, {
-        cache: 'force-cache',
         next: { revalidate: TTL } 
     });
 
@@ -44,11 +43,12 @@ const Layout = async ({ children, params }: Props) => {
             },
         ]
     }
-    
+    console.log("Data timestamp:", TTL);
     return (
         <Refresh ttl={TTL}>
             <>
                 <div className="flex-24-breadcrumbs-gc">
+                    <p>Last updated at: {new Date().toLocaleTimeString()}</p>
                     <Breadcrumbs 
                         leagueName={game?.league?.name}
                         commandSecond={game.teams[1].name} 

@@ -3,7 +3,7 @@ import { GameCenterResponse } from "@/types/response";
 
 export async function getData(id: string): Promise<GameCenterResponse & { TTL: number }> {
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-        cache: 'force-cache'
+        next: {revalidate: 1}
     });
 
     if (!res.ok) {
@@ -11,7 +11,7 @@ export async function getData(id: string): Promise<GameCenterResponse & { TTL: n
     }
     
     const data = await res.json();
-    const ttl = data.TTL || 10;  // TTL по умолчанию 10 секунд
+    const ttl = data.TTL || 10; 
 
     return { ...data, TTL: ttl };
 }

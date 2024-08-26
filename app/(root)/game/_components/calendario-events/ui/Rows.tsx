@@ -21,7 +21,9 @@ const EventItem = ({
             ))}
         </div>
     ) : (
-        <>{event.texts[0].split(" ").pop()}</>
+        <>{
+            event.texts[0] && event.texts[0].split(" ").pop()
+        }</>
     );
 
     return (

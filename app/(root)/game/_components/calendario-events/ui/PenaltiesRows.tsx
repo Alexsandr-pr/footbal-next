@@ -38,8 +38,9 @@ const PenaltiesRows = ({
                             <CalendarioItemsContainer key={item.time} clazz="calendario-events__items-penalties" styles={{borderBottom: "none"}}>
                                 <CalendarioItem>
                                     <BlockJersey jerseyNum={item.events[0].player_jersey_num}/>
+                                    
                                     {
-                                        item.events[0].texts[0].split(" ").pop()
+                                        item.events[0].texts[0] && item.events[0].texts[0].split(" ").pop()
                                     }   
                                 </CalendarioItem>
                                 <CalendarioItem clazz="calendario-events__item-span">
@@ -49,7 +50,7 @@ const PenaltiesRows = ({
                                 </CalendarioItem>
                                 <CalendarioItem styles={{justifyContent: "end"}}>
                                     {
-                                        item.events[1].texts[0].split(" ").pop()
+                                        item.events[1].texts[0] && item.events[1].texts[0].split(" ").pop()
                                     }
                                     <BlockJersey jerseyNum={item.events[1].player_jersey_num} type="right"/>
                                 </CalendarioItem>
