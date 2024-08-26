@@ -2,9 +2,11 @@ import { ReactNode } from "react";
 import styles from "./block.module.scss";
 
 const Block = ({
-    children
+    children,
+    time
 }: {
-    children:ReactNode
+    children:ReactNode;
+    time?:string;
 }) => {
     return (
         <div className={styles.block}>

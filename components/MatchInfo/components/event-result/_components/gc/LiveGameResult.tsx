@@ -20,9 +20,10 @@ const LiveGameResult = (props: {
     gameTime?:string;
 }) => {
     const maxRedCards = Math.max(props?.redCards1, props?.redCards2);
+    
     return (
         <Parent type="gc">
-            <Block>
+            <Block time={new Date().toLocaleTimeString()}>
                 <div className={styles.block}>
                 <div className={styles.number}>
                     <RedCards position="left" redCards={props?.redCards1} maxRedCards={maxRedCards}/>

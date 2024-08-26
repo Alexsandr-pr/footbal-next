@@ -3,7 +3,7 @@ import { GameCenterResponse } from "@/types/response";
 
 export async function getData(id: string): Promise<GameCenterResponse & { TTL: number }> {
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-        next: {revalidate: 1}
+        next: {revalidate: 10}
     });
 
     if (!res.ok) {

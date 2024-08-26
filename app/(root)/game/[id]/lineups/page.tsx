@@ -17,7 +17,6 @@ const Page = async ({params} : Props) => {
     await fetch(`${_SERVER_API}/gamecenter/${params.id}`, {
         next: { revalidate: TTL } 
     });
-    
     return (
         <Refresh ttl={TTL}>  
             <div className="lineups-pole-gc">

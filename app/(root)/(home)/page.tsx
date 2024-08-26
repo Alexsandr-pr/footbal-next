@@ -25,7 +25,7 @@ export default async function Page() {
     await fetch(`${_SERVER_API}/games/today`, {
         next: { revalidate: ttl } 
     });
-
+    
     return (
         <Refresh>
             <Today calendar={calendar} leagues={leagues} />;

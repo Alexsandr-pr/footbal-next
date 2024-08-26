@@ -52,27 +52,27 @@ const EventResult = (props: EventResultProps) => {
     );
 };
 
-const arePropsEqual = (
-    prevProps: EventResultProps,
-    nextProps: EventResultProps
-): boolean => {
-    const scoresEqual = (prevProps.scores || []).every(
-        (score, index) => score === (nextProps.scores || [])[index]
-    );
-    const penaltiesEqual = (prevProps.penalties || []).every(
-        (penalty, index) => penalty === (nextProps.penalties || [])[index]
-    );
+// const arePropsEqual = (
+//     prevProps: EventResultProps,
+//     nextProps: EventResultProps
+// ): boolean => {
+//     const scoresEqual = (prevProps.scores || []).every(
+//         (score, index) => score === (nextProps.scores || [])[index]
+//     );
+//     const penaltiesEqual = (prevProps.penalties || []).every(
+//         (penalty, index) => penalty === (nextProps.penalties || [])[index]
+//     );
 
-    return (
-        scoresEqual &&
-        penaltiesEqual &&
-        prevProps.redCards1 === nextProps.redCards1 &&
-        prevProps.redCards2 === nextProps.redCards2 &&
-        prevProps.status.enum === nextProps.status.enum &&
-        prevProps.description === nextProps.description &&
-        prevProps.soundLocal === nextProps.soundLocal && 
-        prevProps.type === nextProps.type 
-    );
-};
+//     return (
+//         scoresEqual &&
+//         penaltiesEqual &&
+//         prevProps.redCards1 === nextProps.redCards1 &&
+//         prevProps.redCards2 === nextProps.redCards2 &&
+//         prevProps.status.enum === nextProps.status.enum &&
+//         prevProps.description === nextProps.description &&
+//         prevProps.soundLocal === nextProps.soundLocal && 
+//         prevProps.type === nextProps.type 
+//     );
+// };
 
-export default React.memo(EventResult, arePropsEqual);
+export default EventResult;

@@ -21,7 +21,7 @@ const Layout = async ({ children, params }: Props) => {
     await fetch(`${_SERVER_API}/gamecenter/${params.id}`, {
         next: { revalidate: TTL } 
     });
-
+    console.log(`layout: ${game.game_time_to_display}`)
     let data;
 
     if(game?.players?.lineups) {
@@ -43,12 +43,12 @@ const Layout = async ({ children, params }: Props) => {
             },
         ]
     }
-    console.log("Data timestamp:", TTL);
+
     return (
         <Refresh ttl={TTL}>
             <>
                 <div className="flex-24-breadcrumbs-gc">
-                    <p>Last updated at: {new Date().toLocaleTimeString()}</p>
+                    
                     <Breadcrumbs 
                         leagueName={game?.league?.name}
                         commandSecond={game.teams[1].name} 
