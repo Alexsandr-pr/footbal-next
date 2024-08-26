@@ -1,8 +1,8 @@
+import React from "react";
 import EventResult from "@/components/MatchInfo/components/event-result/EventResult";
 import "./header.scss";
 import Command from "@/components/ui/command/Command";
 import { HeaderGCProps } from "@/types/game-center";
-
 
 const Header = ({
     scores,
@@ -13,11 +13,10 @@ const Header = ({
     penalties,
     description,
     showCountryFlags
-} : HeaderGCProps) => {
+}: HeaderGCProps) => {
 
     return (
         <div className="pole-header-grid">
-            
             <div className="pole-header-block">
                 <Command
                     textAlign="center"
@@ -44,6 +43,7 @@ const Header = ({
                     description={description}
                 /> 
             </div>
+            
             <div className="pole-header-block">
                 <Command
                     textAlign="center"
@@ -57,7 +57,37 @@ const Header = ({
                 />
             </div>
         </div>
-    )
+    );
 }
 
-export default Header
+const arePropsEqual = (
+    prevProps: HeaderGCProps,
+    nextProps: HeaderGCProps
+): boolean => {
+    
+    const scoresEqual = (prevProps.scores || []).every(
+        (score, index) => score === (nextProps.scores || [])[index]
+    );
+
+    const penaltiesEqual = (prevProps.penalties || []).every(
+        (penalty, index) => penalty === (nextProps.penalties || [])[index]
+    );
+
+    const teamsHeaderEqual = prevProps.teamsHeader.every((team, index) => (
+        team.id === nextProps.teamsHeader[index].id &&
+        team.red_cards === nextProps.teamsHeader[index].red_cards
+    ));
+
+    return (
+        scoresEqual &&
+        penaltiesEqual &&
+        teamsHeaderEqual &&
+        prevProps.status.enum === nextProps.status.enum &&
+        prevProps.description === nextProps.description &&
+        prevProps.showCountryFlags === nextProps.showCountryFlags &&
+        prevProps.startTime === nextProps.startTime &&
+        prevProps.gameTime === nextProps.gameTime
+    );
+};
+
+export default React.memo(Header, arePropsEqual);
