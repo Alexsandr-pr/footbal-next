@@ -20,10 +20,7 @@ async function getData(): Promise<LeaguesResponse> {
 export default async function Page() {
     const { leagues, calendar, ttl } = await getData();
 
-    await fetch(`${_SERVER_API}/games/today`, {
-        next: { revalidate: ttl } 
-    });
-    
+
     return (
         <Refresh>
             <Today calendar={calendar} leagues={leagues} />;
