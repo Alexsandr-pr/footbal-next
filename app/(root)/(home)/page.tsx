@@ -2,29 +2,11 @@
 
 import { useState, useEffect, useRef } from "react";
 import Home from "./_components/home/Home";
-
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store/store";
 import { setLiveGamesCount, setLoadingOnLiveGame } from "@/store/filterSlice";
-import { _SERVER_API } from "@/config/consts";
-
 import { LeaguesResponse } from "@/types/response";
 import { Calendar, League } from "@/types/home";
-
-async function getData(): Promise<LeaguesResponse> {
-    const res = await fetch(`${_SERVER_API}/games/today`, {
-        cache: "no-store",
-    });
-
-    if (!res.ok) {
-        throw new Error("Failed to fetch data");
-    }
-    const data = await res.json();
-
-    const ttl = data.TTL || 10; 
-
-    return { leagues: data.leagues, calendar: data.calendar, ttl };
-}
 
 export default function Page() {
     const dispatch = useDispatch();
@@ -41,11 +23,14 @@ export default function Page() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { leagues, calendar, ttl } = await getData();
-                setLeagues(leagues);
-                setCalendar(calendar);
-                setFilteredLeagues(leagues);
-                setTTL(ttl);
+                const res = await fetch('/api/revalidate');
+                if (!res.ok) throw new Error('Failed to fetch data');
+
+                const data: LeaguesResponse = await res.json();
+                setLeagues(data.leagues);
+                setCalendar(data.calendar);
+                setFilteredLeagues(data.leagues);
+                setTTL(data.ttl);
             } catch (error) {
                 console.error(error);
             }
@@ -68,7 +53,7 @@ export default function Page() {
     }, [ttl]);
 
     useEffect(() => {
-        dispatch(setLoadingOnLiveGame())
+        dispatch(setLoadingOnLiveGame());
         const countLiveGames = (leagues: League[]) =>
             leagues.reduce(
                 (count, league) =>
@@ -85,7 +70,6 @@ export default function Page() {
                 .filter((league) => league.games.length > 0);
 
             dispatch(setLiveGamesCount(countLiveGames(filtered)));
-            
             setFilteredLeagues(filtered);
         } else {
             dispatch(setLiveGamesCount(countLiveGames(leagues)));
