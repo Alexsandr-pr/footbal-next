@@ -11,6 +11,7 @@ const Refresh = ({
     const router = useRouter();
 
     useEffect(() => {
+        router.refresh();
         const interval = setInterval(() => {
             router.refresh();
         }, 10000); 

@@ -71,7 +71,7 @@ const Layout = async ({ children, params }: Props) => {
             </>
         </Refresh>
         
-    );
+    )
 };
 
 export default Layout;

@@ -16,6 +16,7 @@ const Home = ({
             <div className="flex-12">
                 {
                     leagues.map(games => {
+                        console.log(games.games[0].game_time_to_display)
                         return <MatchInfo key={games.id} games={games} />
                     })
                 }

@@ -11,9 +11,7 @@ async function getData(): Promise<LeaguesResponse> {
     if (!res.ok) {
         throw new Error("Failed to fetch data");
     }
-    
     const data = await res.json();
-
     const ttl = data.TTL || 10; 
 
     return { leagues: data.leagues, calendar: data.calendar, ttl };
