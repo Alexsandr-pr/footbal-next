@@ -21,7 +21,7 @@ const Home = ({
                     })
                 }
             </div>
-            {calendar && <CalendarioBottom calendar={calendar} />}
+            {/* {calendar && <CalendarioBottom calendar={calendar} />} */}
         </>
     );
 }
