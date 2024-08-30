@@ -17,7 +17,7 @@ const PredictionBlock = ({
 
     const [hasVoted, setHasVoted] = useState(false);
     const [state, setState] = useState(false);
-    const [isLoading, setIsLoading] = useState(true); // Состояние загрузки
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = () => {
@@ -26,7 +26,7 @@ const PredictionBlock = ({
                 setState(true); 
                 setHasVoted(true);
             }
-            setIsLoading(false); // Остановка загрузки после получения данных
+            setIsLoading(false); 
         };
         fetchData();
     }, [id, status?.enum]);
@@ -58,15 +58,15 @@ const PredictionBlock = ({
                 {
                     isLoading ? <Loading clazz="loading-prediction-bookie" size={16}/> : <>
                         {
-                                prediction?.cta_link && <Link className="static-game__block-link" target="_blank" href={prediction?.cta_link}>
-                                    <Image
-                                        src={`${_SERVER_API}/images/bookies/${prediction?.bookie_id}`}
-                                        width={70} 
-                                        height={32}
-                                        alt="bookies"
-                                    />
-                                </Link>
-                            }
+                            prediction?.cta_link && <Link className="static-game__block-link" target="_blank" href={prediction?.cta_link}>
+                                <Image
+                                    src={`${_SERVER_API}/images/bookies/${prediction?.bookie_id}`}
+                                    width={70} 
+                                    height={32}
+                                    alt="bookies"
+                                />
+                            </Link>
+                        }
                     </>
                 }
             </div>
@@ -79,7 +79,7 @@ const PredictionBlock = ({
                         {
                             status?.enum === 1 && (
                                 <div className="static-game__label">
-                                    {state ? "Your voice for 1 was accepted!" : "Seleccione una de las opciones para comprobar su predicción."}
+                                    {state ? "Your vote was accepted!" : "Seleccione una de las opciones para comprobar su predicción."}
                                 </div>
                             )
                         }
@@ -116,11 +116,11 @@ const PredictionBlock = ({
                             <Loading size={16}/>
                         </div>
                     }
-                    <WhiteButton 
-                        clazz={"bottom-info__button"} 
-                        text="Apostar ahora" 
-                        cb={state ? () => {} : () => setState(false)} 
-                    />
+                    {
+                        prediction?.cta_link && <Link target="_blank" href={prediction?.cta_link} className="bottom-info__button white-button">
+                                                    Apostar ahora
+                                                </Link>
+                    }
                 </div>
             </div>
         </div>

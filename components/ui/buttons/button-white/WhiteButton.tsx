@@ -1,4 +1,4 @@
-import "./white-button.scss"
+
 
 const WhiteButton = ({
     text,

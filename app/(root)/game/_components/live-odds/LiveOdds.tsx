@@ -90,7 +90,11 @@ const LiveOddsBlock = ({
                             }
                         </div>
                         <div className="live-odds-buttons">
-                            <WhiteButton clazz="live-odds-button" cb={() => {}} text="Apostar ahora"/>
+                            {
+                                liveOdds?.cta_link && <Link target="_blank" className="live-odds-button white-button" href={liveOdds?.cta_link}>
+                                                            Apostar ahora
+                                                        </Link>
+                            }
                         </div>
                     </div>
                 </div>
