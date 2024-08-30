@@ -1,10 +1,10 @@
 import { Video } from '@/types/game-center'
 import "./video.scss";
-import Image from 'next/image';
+
 import Link from 'next/link';
 
 
-const Video = ({
+const VideoBlock = ({
     videos
 } : {
     videos: Video[];
@@ -39,4 +39,4 @@ const Video = ({
     )
 }
 
-export default Video
+export default VideoBlock
