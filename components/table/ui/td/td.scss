@@ -10,6 +10,7 @@
     }
     &.bold {
         font-weight: 700;
+        color:var(--white);
     }
     &.right {
         border-right: 1px solid var(--border);
@@ -21,6 +22,7 @@
         min-height: 24px;
         min-width: 100%;
         justify-content: start;
+        text-align: left;
     }
     &.start {
         width: 32px;
@@ -30,5 +32,8 @@
     }
     &.team-center {
         justify-content: center;
+    }
+    &.grey-70 {
+    color:var(--grey-70);
     }
 }

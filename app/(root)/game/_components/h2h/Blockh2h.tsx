@@ -17,14 +17,14 @@ const Blockh2h = ({headToHead, teams, showCountryFlags} : Blockh2hProps) => {
         setExpanded(!expanded);
     };
     const [block] = useAutoAnimate();
-
+    
     return (
         <ContentBlock
             size="min"
             cb={() => handleToggle()}
             rotate={expanded ? "-90deg" : "90deg"}
             title="h2h"
-            buttonText={expanded ? "Show less" : "Show more"}
+            buttonText={(expanded && headToHead.games.length > 0) ? "Show less" : "Show more"}
         >
             <div ref={block} className="">
                 <div className="game-center__h2h game-center__h2h-top">
@@ -79,7 +79,7 @@ const ItemChild = ({
                 countryId={countryId}
                 teamName={teamName}
             />
-            <Text><span className="h2h-green">{wins}</span> Viktoria</Text>
+            <Text><span className="h2h-green">{ wins}</span> Viktoria</Text>
         </H2hItem>
     )
 }

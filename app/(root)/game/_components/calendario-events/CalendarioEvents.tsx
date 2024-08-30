@@ -9,19 +9,21 @@ import {  CalendarioEventsProps } from "@/types/game-center";
 const CalendarioEvents = ({
     events
 } : CalendarioEventsProps) => {
+    
     if(!events) return null
     return (
-        <ContentBlock  size='min' title="CALENDARIO DE EVENTOS">
-            <>
+        <ContentBlock styles={{borderBottom:"none"}} size='min' title="CALENDARIO DE EVENTOS">
+            <div className="events-items">
                 {
                     events && events?.map((item) => {
                         if(item.is_penalties_stage) return <PenaltiesRows key={item.name} data={item}/>
+                        
                         return (
                             <Rows key={item.name} data={item}/>
                         )
                     })
                 }
-            </>
+            </div>
         </ContentBlock>
     )
 }

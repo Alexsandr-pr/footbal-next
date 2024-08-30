@@ -45,8 +45,8 @@ const PoleBlock = ({
         <ContentBlock
             size='average'
             cb={() => pushLineups(params?.id)}
-            buttonText={(activeTab === "first" && !isMobile) ? "see full lineup" : ""}
-            title={isMobile ? "" : "LINEUPs"} 
+            buttonText={(activeTab === "first") ? "see full lineup" : ""}
+            title={"LINEUPs"} 
         >
             {loading ? (
                 <Loading size={32} clazz='loading-pole'/>

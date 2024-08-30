@@ -8,15 +8,15 @@ let CACHE_DURATION = 5 * 1000;
 
 async function fetchData(): Promise<LeaguesResponse> {
     const now = Date.now();
-
+    console.log(`1 CACHE_DURATION: ${CACHE_DURATION}`);
     if (cachedData && now - lastFetchTime < CACHE_DURATION) {
         return cachedData;
     }
-    
-    const res = await fetch(`${_SERVER_API}/games/today`, {
+    console.log(`2 CACHE_DURATION: ${CACHE_DURATION}`);
+    const res = await fetch(`${_SERVER_API}/games/tomorrow`, {
         cache: "no-store",
     });
-
+    
     if (!res.ok) {
         throw new Error("Failed to fetch data");
     }

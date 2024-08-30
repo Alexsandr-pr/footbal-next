@@ -36,6 +36,14 @@ const Table = ({
     };
 }) => {
 
+    // Определение индексов колонок, для которых is_bold равно true
+    const boldColumns = standings?.columns.reduce((acc, column, index) => {
+        if (column.is_bold) {
+            acc.push(index);
+        }
+        return acc;
+    }, [] as number[]);
+
     return (
         <ContentBlock 
             buttonText="FULL LEAGUE STANDING"
@@ -65,6 +73,7 @@ const Table = ({
                                             border={index === 0 ? "right" : undefined} 
                                             maxW={"content"} 
                                             isBold={item.is_bold && "bold"} 
+                                            className={!item.is_bold ? "grey-70" : undefined}
                                             key={item.key}
                                         >
                                             {item.display_name}
@@ -101,11 +110,14 @@ const Table = ({
                                     </Td>
                                     {
                                         row.values.map((td, index) => {
+                                            const isBold = boldColumns?.includes(index);
                                             return (
                                                 <Td 
                                                     border={index === 0 ? "right" : undefined} 
                                                     maxW={"content"} 
                                                     key={td.key}
+                                                    isBold={isBold ? "bold" : undefined}
+                                                    className={!isBold ? "grey-70" : undefined}
                                                 >
                                                     {td.value}
                                                 </Td>
@@ -122,4 +134,4 @@ const Table = ({
     )
 }
 
-export default Table
+export default Table;

@@ -9,18 +9,19 @@ const Player = ({
     willPlay,
     name,
     willPlayColor,
-    size
+    size,
+    countryId
 } : LineupsPlayerProps) => {
     return (
         <div className={`lineups-player-item ${size}`}>
             <div className={`lineups-player-block`}>
-                <Image
+                {/* <Image
                     width={14}
                     height={14}
-                    src={`${_SERVER_API}/images/country/${"cb"}/1`}
+                    src={`${_SERVER_API}/images/country/${countryId}/1`}
                     alt="flag" 
                     className={'lineups-player-flag'}
-                />
+                /> */}
                 <div className={'lineups-player-number'}>{number}</div>
             </div>
             <div className={`lineups-player-team`}>

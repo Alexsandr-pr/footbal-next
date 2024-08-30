@@ -119,7 +119,13 @@ export type MissingPlayer = {
     missing_details: MissingPlayerDetails
 }
 
-
+export type Video = {
+    source: string;
+    url: string;
+    video_id: string;
+    thumbnail_url:string;
+    embedding_allowed: false;
+}
 
 
 export type Game = {
@@ -176,7 +182,10 @@ export type Game = {
         show_country_flags:boolean;
     };
     live_odds: LiveOdds;
+    videos?: Video[];
 }
+
+
 
 export type HeadToHead = {
     home_wins: number;
@@ -306,7 +315,8 @@ export type LineupsPlayerProps = {
     willPlay?:string;
     number:number;
     willPlayColor:string;
-    size?: "max"
+    size?: "max";
+    countryId?:string;
 }
 
 export type MissingPlayersProps = {
@@ -346,15 +356,10 @@ export type PoleCommandProps = {
 
 export type PredictionBlockProps = {
     prediction?: Prediction;
+    id:string;
+    status?: Status;
 }
 
-export type PredictionContainerProps = {
-    id:string;
-    prediction?:Prediction;
-    showCountryFlags?:boolean;
-    teams:Team[];
-    liveOdds?: LiveOdds;
-}
 
 //statistic 
 export type StatsProps = {

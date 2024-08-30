@@ -8,5 +8,6 @@ export interface ContentBlockProps {
     cb?:() => void;
     rotate?:string;
     buttonColor?:string;
-    size?:"max" | "min" | "average"
+    size?:"max" | "min" | "average";
+    styles?:React.CSSProperties;
 }

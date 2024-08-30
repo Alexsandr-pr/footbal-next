@@ -13,10 +13,10 @@ async function fetchData(): Promise<LeaguesResponse> {
         return cachedData;
     }
     
-    const res = await fetch(`${_SERVER_API}/games/today`, {
+    const res = await fetch(`${_SERVER_API}/games/yesterday`, {
         cache: "no-store",
     });
-
+    console.log(CACHE_DURATION);
     if (!res.ok) {
         throw new Error("Failed to fetch data");
     }

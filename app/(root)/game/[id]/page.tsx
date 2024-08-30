@@ -5,11 +5,13 @@ import TeamMatchHistory from "../_components/team-match-history/TeamMatchHistory
 import Blockh2h from "../_components/h2h/Blockh2h";
 import InfoList from "@/components/ui/info-list/InfoList";
 import CalendarioEvents from "../_components/calendario-events/CalendarioEvents";
-import PredictionContainer from "../_components/prediction/PredictionContainer";
 import Table from "@/components/table/Table";
 import { getData } from "@/lib/api";
 import { _SERVER_API } from "@/config/consts";
 import Refresh from "../_components/Refresh";
+import LiveOddsBlock from "../_components/live-odds/LiveOdds";
+import PredictionBlock from "../_components/prediction/Prediction";
+import Video from "../_components/video/Video";
 
 type Props = {
     params: {
@@ -38,7 +40,15 @@ export default async function GameCenter({ params }: Props) {
     return (
         <Refresh ttl={TTL}>
             <div className="gc-flex-16">
-                <PredictionContainer liveOdds={game?.live_odds} showCountryFlags={game?.league?.show_country_flags} teams={game.teams} prediction={game?.prediction} id={params.id}/>
+                {
+                    game?.videos && <Video videos={game?.videos}/>
+                }
+                {
+                    game?.prediction && <PredictionBlock status={game?.status} id={game.id} prediction={game?.prediction}/>
+                }
+                {
+                    game?.status?.enum === 2 && <LiveOddsBlock liveOdds={game?.live_odds} teams={game?.teams} showCountryFlags={game?.league?.show_country_flags}/>
+                }
                 {
                     game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} activeTab="first" params={params} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
                 }
@@ -49,7 +59,6 @@ export default async function GameCenter({ params }: Props) {
                 {
                     <CalendarioEvents events={game?.events}/> 
                 }
-
                 {
                     game?.statistics && <Stats statistics={game?.statistics}/>
                 }

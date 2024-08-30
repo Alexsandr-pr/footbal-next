@@ -5,54 +5,36 @@ import CalendarioItem from "./CalendarioItem";
 import Images from "./Images";
 
 
-function combineTeamEvents(data: PenaltiesData) {
-    return data.rows.map((row) => {
-        const [team1Event, team2Event] = row.events;
-        return {
-            time: row.time,
-            events: [
-                {
-                    ...team1Event,
-                },
-                {
-                    ...team2Event,
-                },
-            ],
-        };
-    });
-}
+
 
 const PenaltiesRows = ({
     data
 } : {
     data: PenaltiesData;
 }) => {
-    const combinedRows = combineTeamEvents(data);
     return (
         <>
-            <Title scores={data.scores} name={data.name}/>
+            
             <div className="calendario-events__items-penalties-rows">
                 {
-                    combinedRows.map(item => {
+                    data?.rows?.map(row => {
+                        const eventLeft = row.events[0];
+                        const eventRight = row.events[1]; 
+                        
                         return (
-                            <CalendarioItemsContainer key={item.time} clazz="calendario-events__items-penalties" styles={{borderBottom: "none"}}>
+                            <CalendarioItemsContainer key={row.time} clazz="calendario-events__items-penalties" styles={{borderBottom: "none"}}>
                                 <CalendarioItem>
-                                    <BlockJersey type="right" jerseyNum={item.events[0].player_jersey_num}/>
-                                    
-                                    {
-                                        item.events[0].texts && item.events[0].texts[0].split(" ").pop()
-                                    }   
+                                    <BlockJersey type="right" jerseyNum={eventLeft?.player_jersey_num}/>
+                                    {eventLeft?.texts?.[0]?.split(" ").pop()}   
                                 </CalendarioItem>
                                 <CalendarioItem clazz="calendario-events__item-span">
-                                    <Images type={item.events[0].type}/>
-                                    {item.time}
-                                    <Images type={item.events[1].type}/>
+                                    <Images type={eventLeft?.type}/>
+                                    {row.time}
+                                    {eventRight ? <Images type={eventRight.type}/> : <div style={{width:"24px", height:"24px"}} className="calendario-events__item-image"></div>}
                                 </CalendarioItem>
                                 <CalendarioItem styles={{justifyContent: "end"}}>
-                                    {
-                                        item.events[1].texts && item.events[1].texts[0].split(" ").pop()
-                                    }
-                                    <BlockJersey jerseyNum={item.events[1].player_jersey_num} />
+                                    {eventRight?.texts?.[0]?.split(" ").pop()}
+                                    {eventRight && <BlockJersey jerseyNum={eventRight.player_jersey_num} />}
                                 </CalendarioItem>
                             </CalendarioItemsContainer>
                             
@@ -60,6 +42,7 @@ const PenaltiesRows = ({
                     })
                 }
             </div>
+            <Title scores={data.scores} name={data.name}/>
         </>
     )
 }

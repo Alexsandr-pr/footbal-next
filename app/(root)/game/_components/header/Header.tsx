@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect } from "react";
+
+import React from "react";
 import EventResult from "@/components/MatchInfo/components/event-result/EventResult";
 import "./header.scss";
 import Command from "@/components/ui/command/Command";
@@ -16,9 +16,6 @@ const Header = ({
     showCountryFlags
 }: HeaderGCProps) => {
 
-    useEffect(() => {
-        console.log(gameTime)
-    }, [gameTime])
     return (
         <div className="pole-header-grid">
             <div className="pole-header-block">

@@ -26,7 +26,7 @@ const EventGols = ({
             <div className={styles.itemRight}>
                 <div className={`${styles.item}`}>
                     {goalsTeam2?.map((item, index) => (
-                        <span className={styles.block} key={item.id}>
+                        <span className={styles.block} key={item.id + index + item.player_sname}>
                             <span className="green">
                                 {item.time_to_display}
                             </span>

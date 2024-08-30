@@ -9,7 +9,7 @@ const CalendarioItemsContainer = ({
     clazz?: string;
 }) => {
     return (
-        <div style={styles} className={`calendario-events__items ${clazz}`}>
+        <div style={styles} className={`calendario-events__items ${clazz ? ` ${clazz}` : ''}`}>
             {children}
         </div>
     )
