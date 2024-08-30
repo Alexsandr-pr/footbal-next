@@ -6,3 +6,15 @@ table, td, th, tr {
     border:none;
     border-collapse:collapse;
 }
+.table-team-image-block {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table-team-image {
+    max-height: 16px;
+    height: auto;
+    width: auto;
+}

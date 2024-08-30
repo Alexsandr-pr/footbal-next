@@ -36,7 +36,7 @@ const EventItem = ({
 
 
     return (
-        <Link href={`/game/${game.id}`} className={styles.item}>
+        <Link prefetch={false} href={`/game/${game.id}`} className={styles.item}>
             <div ref={block} className={styles.body}>
                 <EventTime tv_networks={game?.tv_networks} gameTimeToDisplay={game_time_to_display} startTime={start_time} status={status} />
                 <div className={styles.content}>

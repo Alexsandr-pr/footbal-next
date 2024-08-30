@@ -100,12 +100,15 @@ const Table = ({
                                         team={"team"} 
                                         border="right"
                                     >
-                                        <Image
-                                            height={16}
-                                            width={16}
-                                            src={`${_SERVER_API}/images/team/${row.entity.object.id}/4`} 
-                                            alt={row.entity.object.name}
-                                        />
+                                        <div className="table-team-image-block">
+                                            <Image
+                                                className="table-team-image"
+                                                height={16}
+                                                width={16}
+                                                src={`${_SERVER_API}/images/team/${row.entity.object.id}/4`} 
+                                                alt={row.entity.object.name}
+                                            />
+                                        </div>
                                         {row.entity.object.name}
                                     </Td>
                                     {
