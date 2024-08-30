@@ -1,3 +1,4 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
@@ -13,3 +14,4 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
