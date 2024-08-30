@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+"use client"
 import PoleBlock from "../_components/pole/pole-block/PoleBlock";
 import Stats from "../_components/stats/Stats";
 import TeamMatchHistory from "../_components/team-match-history/TeamMatchHistory";
@@ -6,12 +6,12 @@ import Blockh2h from "../_components/h2h/Blockh2h";
 import InfoList from "@/components/ui/info-list/InfoList";
 import CalendarioEvents from "../_components/calendario-events/CalendarioEvents";
 import Table from "@/components/table/Table";
-import { getData } from "@/lib/api";
 import { _SERVER_API } from "@/config/consts";
 
 import LiveOddsBlock from "../_components/live-odds/LiveOdds";
 import PredictionBlock from "../_components/prediction/Prediction";
 import Video from "../_components/video/Video";
+import useSWR from 'swr'
 
 type Props = {
     params: {
@@ -19,24 +19,19 @@ type Props = {
     }
 }
 
-export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
-    const { game } = await getData(params.id);
-    const title = `${game?.league?.name} - ${game.teams[0].name} vs ${game.teams[1].name} - Match Details`;
-    const description = `Details about the match between ${game.teams[0].name} and ${game.teams[1].name}.`;
-    return {
-        title,
-        description,
-        icons: '/favicon.png',
-    };
-};
+const fetcher = (url: string) => fetch(url).then(res => res.json());
 
-export default async function GameCenter({ params }: Props) {
-    const { game, TTL } = await getData(params.id);
-
-    await fetch(`${_SERVER_API}/gamecenter/${params.id}`, {
-        next: { revalidate: TTL } 
+export default function GameCenter({ params }: Props) {
+    const { data, error } = useSWR(`https://www.sports-stats.net/gamecenter/${params.id}`,fetcher, {
+        revalidateOnFocus: true,
+        dedupingInterval: 1000,
     });
-    
+
+    if (error) return <div>Failed to load data</div>;
+    if (!data) return <div>Loading...</div>;
+
+    const { game } = data;
+
     return (
         <>
             <div className="gc-flex-16">
@@ -46,7 +41,6 @@ export default async function GameCenter({ params }: Props) {
                 {
                     game?.prediction && <PredictionBlock status={game?.status} id={game.id} prediction={game?.prediction}/>
                 }
-                
                 {
                     game?.live_odds && <LiveOddsBlock liveOdds={game?.live_odds} teams={game?.teams} showCountryFlags={game?.league?.show_country_flags}/>
                 }
@@ -73,6 +67,5 @@ export default async function GameCenter({ params }: Props) {
                 }
             </div>
         </>
-
     );
 }

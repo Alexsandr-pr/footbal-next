@@ -1,11 +1,10 @@
-
+"use client"
 import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Header from "../_components/header/Header";
 import TabsTrigger from "@/components/ui/tabs/TabsTrigger";
-import { getData } from "@/lib/api";
+import useSWR from 'swr'
 import "./layout.scss";
-import { _SERVER_API } from "@/config/consts";
 
 type Props = {
     children: ReactNode;
@@ -14,17 +13,35 @@ type Props = {
     }
 }
 
-const Layout = async ({ children, params }: Props) => {
-    const { game, TTL } = await getData(params.id);
+const fetcher = (url: string) => fetch(url).then(res => res.json());
 
-    await fetch(`${_SERVER_API}/gamecenter/${params.id}`, {
-        next: { revalidate: TTL } 
+const Layout = ({ children, params }: Props) => {
+    const [dedupingInterval, setDedupingInterval] = useState(0); 
+
+    const { data, error, mutate } = useSWR(`https://www.sports-stats.net/gamecenter/${params.id}`, fetcher, {
+        revalidateOnFocus: true,
+        dedupingInterval: dedupingInterval,
     });
-    
-    let data;
+
+    useEffect(() => {
+        mutate(); // Вызов ручной перезагрузки данных сразу после монтирования
+    }, [mutate]);
+
+    useEffect(() => {
+        if (data) {
+            setDedupingInterval(data.TTL * 1000); 
+        }
+    }, [data]);
+
+    if (error) return <div>Failed to load data</div>;
+    if (!data) return <div>Loading...</div>;
+
+    const { game } = data;
+
+    let dataTrigger;
 
     if(game?.players?.lineups) {
-        data = [
+        dataTrigger = [
             {
                 label: "VISTA PREVIA",
                 route: `/game/${params.id}`,
@@ -35,7 +52,7 @@ const Layout = async ({ children, params }: Props) => {
             }
         ]
     } else {
-        data = [
+        dataTrigger = [
             {
                 label: "VISTA PREVIA",
                 route: `/game/${params.id}`,
@@ -44,32 +61,29 @@ const Layout = async ({ children, params }: Props) => {
     }
 
     return (
-        
-            <>
-                <div className="flex-24-breadcrumbs-gc">
-                    
-                    <Breadcrumbs 
-                        leagueName={game?.league?.name}
-                        commandSecond={game.teams[1].name} 
-                        commandFirst={game.teams[0].name}
-                    />
-                    <Header
-                        showCountryFlags={game?.league?.show_country_flags}
-                        scores={game?.scores}
-                        penalties={game?.penalties}
-                        gameTime={game.game_time_to_display} 
-                        startTime={game.start_time} 
-                        status={game.status} 
-                        teamsHeader={game.teams}
-                        description={game?.description}
-                    />
-                </div>
-                
-                <TabsTrigger clazz={""} type="text" dataText={data}/>
-                {children}
-            </>
+        <>
+            <div className="flex-24-breadcrumbs-gc">
+                <Breadcrumbs 
+                    leagueName={game?.league?.name}
+                    commandSecond={game.teams[1].name} 
+                    commandFirst={game.teams[0].name}
+                />
+                <Header
+                    showCountryFlags={game?.league?.show_country_flags}
+                    scores={game?.scores}
+                    penalties={game?.penalties}
+                    gameTime={game.game_time_to_display} 
+                    startTime={game.start_time} 
+                    status={game.status} 
+                    teamsHeader={game.teams}
+                    description={game?.description}
+                />
+            </div>
+            
+            <TabsTrigger clazz={""} type="text" dataText={dataTrigger}/>
+            {children}
+        </>
     )
 };
 
 export default Layout;
-
