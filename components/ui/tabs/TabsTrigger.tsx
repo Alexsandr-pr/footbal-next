@@ -54,7 +54,7 @@ const TabsTrigger = ({
                         dataText && dataText?.map(({label, route}) => {
                             const isActive = pathname === route;
                             return (
-                                <Link href={route} key={route}
+                                <Link prefetch={false} href={route} key={route}
                                     style={{color: isActive ?  "var(--green)" : "var(--white)"}} 
                                     className={styles.button}>{label}
                                 </Link>

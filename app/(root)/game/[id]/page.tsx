@@ -8,7 +8,7 @@ import CalendarioEvents from "../_components/calendario-events/CalendarioEvents"
 import Table from "@/components/table/Table";
 import { getData } from "@/lib/api";
 import { _SERVER_API } from "@/config/consts";
-import Refresh from "../_components/Refresh";
+
 import LiveOddsBlock from "../_components/live-odds/LiveOdds";
 import PredictionBlock from "../_components/prediction/Prediction";
 import Video from "../_components/video/Video";
@@ -38,7 +38,7 @@ export default async function GameCenter({ params }: Props) {
     });
     
     return (
-        <Refresh ttl={TTL}>
+        <>
             <div className="gc-flex-16">
                 {
                     game?.videos && <Video videos={game?.videos}/>
@@ -72,7 +72,7 @@ export default async function GameCenter({ params }: Props) {
                     game?.game_info && <InfoList gameInfo={game?.game_info}/>
                 }
             </div>
-        </Refresh>
+        </>
 
     );
 }

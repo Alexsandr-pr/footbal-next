@@ -6,7 +6,6 @@ import TabsTrigger from "@/components/ui/tabs/TabsTrigger";
 import { getData } from "@/lib/api";
 import "./layout.scss";
 import { _SERVER_API } from "@/config/consts";
-import Refresh from "../_components/Refresh";
 
 type Props = {
     children: ReactNode;
@@ -45,7 +44,7 @@ const Layout = async ({ children, params }: Props) => {
     }
 
     return (
-        <Refresh ttl={TTL}>
+        
             <>
                 <div className="flex-24-breadcrumbs-gc">
                     
@@ -69,8 +68,6 @@ const Layout = async ({ children, params }: Props) => {
                 <TabsTrigger clazz={""} type="text" dataText={data}/>
                 {children}
             </>
-        </Refresh>
-        
     )
 };
 
