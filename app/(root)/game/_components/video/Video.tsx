@@ -14,7 +14,7 @@ const Video = ({
             {
                 videos.map(video => {
                     return (
-                        <div className="game-video">
+                        <div key={video.url} className="game-video">
                             {video.embedding_allowed 
                             ? 
                             <iframe 
