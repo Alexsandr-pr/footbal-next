@@ -5,9 +5,8 @@
     overflow: hidden;
     color: var(--green);
     text-overflow: ellipsis;
-    justify-content: start;
-    align-self: flex-start;
-    display: inline-flex;
+    display: flex;
+    text-align: left;
     align-items: center;
     gap: 8px;
     font-size: 14px;
@@ -15,11 +14,14 @@
         font-size: 11px;
     }
 }
+.breadcrumbs__item-first {
+    white-space: nowrap;
+}
 .breadcrumbs__item {
     position: relative;
-    max-width: fit-content;
     display: inline-flex;
     align-items: center;
+    max-width: max-content;
     gap: 4px;
     &:nth-child(1) {
         color: var(--white);

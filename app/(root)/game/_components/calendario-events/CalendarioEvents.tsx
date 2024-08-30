@@ -13,7 +13,11 @@ const CalendarioEvents = ({
     if(!events) return null
     return (
         <ContentBlock styles={{borderBottom:"none"}} size='min' title="CALENDARIO DE EVENTOS">
+            
             <div className="events-items">
+                <div className="calendario-events-title calendario-events-title-bottom">
+                    <span>INICIO DEL JUEGO</span>
+                </div>
                 {
                     events && events?.map((item) => {
                         if(item.is_penalties_stage) return <PenaltiesRows key={item.name} data={item}/>
@@ -23,6 +27,7 @@ const CalendarioEvents = ({
                         )
                     })
                 }
+                
             </div>
         </ContentBlock>
     )

@@ -27,3 +27,13 @@
         object-position: top left;
     }
 }
+.game-video-preview-image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+}
+.game-video-preview {
+    position: relative;
+}

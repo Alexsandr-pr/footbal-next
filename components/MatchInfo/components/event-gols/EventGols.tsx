@@ -1,9 +1,6 @@
 import React from "react";
-
 import { EventGolsProps } from "@/types/props/match";
-
 import styles from "./gols.module.scss";
-
 
 const EventGols = ({
     goalsTeam1,
@@ -12,9 +9,9 @@ const EventGols = ({
     return (
         <div className={styles.foot}>
             <div className={styles.itemLeft}>
-                <div  className={`${styles.item} `}>
+                <div className={`${styles.item}`}>
                     {goalsTeam1?.map((item, index) => (
-                        <span className={styles.block} key={item.id + index + item.player_sname}>
+                        <span className={styles.block} key={`${item.id}-${item.time_to_display}-${item.player_name}-${index}`}>
                             <span className="green">
                                 {item.time_to_display}
                             </span>
@@ -26,7 +23,7 @@ const EventGols = ({
             <div className={styles.itemRight}>
                 <div className={`${styles.item}`}>
                     {goalsTeam2?.map((item, index) => (
-                        <span className={styles.block} key={item.id + index + item.player_sname}>
+                        <span className={styles.block} key={`${item.id}-${item.time_to_display}-${item.player_name}-${index}`}>
                             <span className="green">
                                 {item.time_to_display}
                             </span>
@@ -54,7 +51,7 @@ const arePropsEqual = (prevProps: EventGolsProps, nextProps: EventGolsProps): bo
     const goalsTeam1Equal = prevGoalsTeam1?.every((goal, index) => {
         const nextGoal = nextGoalsTeam1?.[index];
         return goal.id === nextGoal?.id && goal.time_to_display === nextGoal?.time_to_display && goal.player_sname === nextGoal?.player_sname;
-    }) ?? true; 
+    }) ?? true;
 
     const goalsTeam2Equal = prevGoalsTeam2?.every((goal, index) => {
         const nextGoal = nextGoalsTeam2?.[index];

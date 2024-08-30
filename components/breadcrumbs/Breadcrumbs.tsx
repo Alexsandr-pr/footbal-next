@@ -13,14 +13,14 @@ const Breadcrumbs = ({
 }) => {
     
     return (
-        <div className="breadcrumbs">
-            <div className="breadcrumbs__item">
+        <ul className="breadcrumbs">
+            <li className="breadcrumbs__item breadcrumbs__item-first">
                 {leagueName}
-            </div>
-            <div className="breadcrumbs__item">
+            </li>
+            <li className="breadcrumbs__item">
                 {commandFirst} vs. {commandSecond} 
-            </div>
-        </div>
+            </li>
+        </ul>
     )
 }
 

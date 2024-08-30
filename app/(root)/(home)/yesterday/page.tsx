@@ -6,7 +6,7 @@ import { _SERVER_API } from '@/config/consts';
 import { useEffect, useRef, useState } from 'react';
 import { Calendar, League } from '@/types/home';
 
- function Yesterday() {
+function Yesterday() {
     const [leagues, setLeagues] = useState<League[]>([]);
     const [calendar, setCalendar] = useState<Calendar | null>(null);
     const [ttl, setTTL] = useState<number>(10);

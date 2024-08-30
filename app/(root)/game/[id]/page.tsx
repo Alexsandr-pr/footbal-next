@@ -46,9 +46,11 @@ export default async function GameCenter({ params }: Props) {
                 {
                     game?.prediction && <PredictionBlock status={game?.status} id={game.id} prediction={game?.prediction}/>
                 }
+                
                 {
-                    game?.status?.enum === 2 && <LiveOddsBlock liveOdds={game?.live_odds} teams={game?.teams} showCountryFlags={game?.league?.show_country_flags}/>
+                    game?.live_odds && <LiveOddsBlock liveOdds={game?.live_odds} teams={game?.teams} showCountryFlags={game?.league?.show_country_flags}/>
                 }
+                
                 {
                     game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} activeTab="first" params={params} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
                 }
