@@ -18,7 +18,7 @@ const AsideLinks = ({
                     } else {
                         return (
                             <li key={name} className="links-aside__item">
-                                <Link href={link} className="links-aside__button">
+                                <Link  prefetch={false}  href={link} className="links-aside__button">
                                     {name}
                                 </Link>
                             </li>

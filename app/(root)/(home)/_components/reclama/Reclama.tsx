@@ -1,4 +1,3 @@
-import Image from "next/image"
 import  "./reclama.scss"
 
 const Reclama = () => {
@@ -7,7 +6,7 @@ const Reclama = () => {
             <div className="reclama-block-1__body">
                 <div className="reclama-block-1__label">
                     <p>Las probabilidades se calculan</p>
-                    <Image 
+                    <img 
                         height={16}
                         width={43}
                         src="/assets/reclama/lv-bet.webp" 

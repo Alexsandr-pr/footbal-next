@@ -1,5 +1,4 @@
 import { _SERVER_API } from '@/config/consts';
-import Image from 'next/image';
 
 const Images = ({
     type
@@ -8,7 +7,7 @@ const Images = ({
 }) => {
     
     return (
-        <Image 
+        <img 
             className="calendario-events__item-image" 
             width={24} 
             height={24} 

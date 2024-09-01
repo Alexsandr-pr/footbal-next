@@ -1,6 +1,6 @@
 
 import { abbreviatePlayerName } from '@/lib/utils';
-import Image from 'next/image';
+
 import { PolePlayerProps } from '@/types/game-center';
 
 import "./player.scss"
@@ -38,7 +38,7 @@ const Player = ({
                 events?.goals?.own_goals && events?.goals?.own_goals > 0 ? (
                     <div className="player__gol">
                         {events?.goals?.own_goals > 1 ? events?.goals?.own_goals : null}
-                        <Image
+                        <img
                             width={14}
                             height={14}
                             src="/assets/icons/ball-red.svg"
@@ -48,7 +48,7 @@ const Player = ({
                 ) : events?.goals?.goals && events?.goals?.goals > 0 ? (
                     <div className="player__gol">
                         {events?.goals?.goals > 1 ? events?.goals?.goals : null}
-                        <Image
+                        <img
                             width={14}
                             height={14}
                             src="/assets/icons/ball-white.svg"
@@ -69,7 +69,7 @@ const Card = ({
     type?: "red" 
 }) => {
     return (
-        <Image 
+        <img 
             height={10}
             width={7.5} 
             className="player__card" 

@@ -2,12 +2,12 @@
 import { useState, useEffect } from "react";
 import { PredictionBlockProps } from "@/types/game-center";
 import Link from "next/link";
-import Image from "next/image";
 import { _SERVER_API } from "@/config/consts";
 import "./prediction.scss";
 import Odds from "@/components/odds/Odds";
 import Loading from "@/components/ui/loading/Loading";
 import ImageWithCheck from "@/components/ImageWithCheck";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const PredictionBlock = ({
     prediction,
@@ -32,6 +32,10 @@ const PredictionBlock = ({
     }, [id, status?.enum]);
 
     const handleVote = async (vote_url: string) => {
+
+        if(status?.enum === 2 || status?.enum === 3) {
+            return null
+        }
         try {
             const response = await fetch(vote_url, {
                 method: 'GET',
@@ -50,15 +54,15 @@ const PredictionBlock = ({
         }
     };
 
-
+    const [block] = useAutoAnimate();
     return (
         <div className="content-block">
-            <div className="content-block__header">
+            <div className={`content-block__header ${prediction?.cta_link ? "content-block__header-prediction" : ""}`}>
                 <p>PRONÓSTICOS PREVIOS AL PARTIDO</p>
                 {
                     isLoading ? <Loading clazz="loading-prediction-bookie" size={16}/> : <>
                         {
-                            prediction?.cta_link && <Link className="static-game__block-link" target="_blank" href={prediction?.cta_link}>
+                            prediction?.cta_link && <a className="static-game__block-link" target="_blank" href={prediction?.cta_link}>
                                 <ImageWithCheck 
                                     src={`${_SERVER_API}/images/bookies/${prediction?.bookie_id}`} 
                                     width={70} 
@@ -66,7 +70,7 @@ const PredictionBlock = ({
                                     alt="bookies" 
                                     className="" 
                                 />
-                            </Link>
+                            </a>
                         }
                     </>
                 }
@@ -90,7 +94,7 @@ const PredictionBlock = ({
                     </div>
                     {
                         !isLoading ? <>
-                        <div  className="static-game__content static-content">
+                        <div  ref={block} className="static-game__content static-content">
                             {
                                 (state && hasVoted || status?.enum !== 1) && <div className="static-content__top-percentage">
                                             {  
@@ -102,7 +106,7 @@ const PredictionBlock = ({
                                                         className="static-block__item-percentage"
                                                     >
                                                         <span className={`${index === 0 && "static-block__item-span"}`}>
-                                                            {index === 0 ? <Image width={8.5} height={8.5} src="/assets/icons/check.svg" alt="Check" /> : null}
+                                                            {index === 0 ? <img width={8.5} height={8.5} src="/assets/icons/check.svg" alt="Check" /> : null}
                                                             <p>{percentage.toFixed(1)}%</p>
                                                         </span>
                                                     </div>
@@ -136,9 +140,9 @@ const PredictionBlock = ({
                         </div>
                     }
                     {
-                        (prediction?.cta_link && (state && hasVoted || status?.enum !== 1)) &&  <Link target="_blank" href={prediction?.cta_link} className="bottom-info__button white-button">
+                        (prediction?.cta_link && (state && hasVoted || status?.enum !== 1)) &&  <a target="_blank" href={prediction?.cta_link} className="bottom-info__button white-button">
                                                     Apostar ahora
-                                                </Link>
+                                                </a>
                     }
                 </div>
             </div>

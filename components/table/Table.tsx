@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import ContentBlock from "../content-block/ContentBlock";
 import "./table.scss";
 import Row from "./ui/row/Row";
@@ -36,7 +36,6 @@ const Table = ({
     };
 }) => {
 
-    // Определение индексов колонок, для которых is_bold равно true
     const boldColumns = standings?.columns.reduce((acc, column, index) => {
         if (column.is_bold) {
             acc.push(index);
@@ -101,7 +100,7 @@ const Table = ({
                                         border="right"
                                     >
                                         <div className="table-team-image-block">
-                                            <Image
+                                            <img
                                                 className="table-team-image"
                                                 height={16}
                                                 width={16}

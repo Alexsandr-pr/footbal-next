@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import styles from "./lineups-info.module.scss";
 import { Events, Subctitution } from "@/types/game-center";
 
@@ -26,7 +26,7 @@ const LineupsInfo = ({
             </li>
             <li className={styles.item}>
                 {
-                    events?.substitution?.has_substitution && <Image
+                    events?.substitution?.has_substitution && <img
                     height={24}
                     width={24}
                     alt="replace"
@@ -39,14 +39,14 @@ const LineupsInfo = ({
             </li>
             <li className={styles.item}>
                 {events?.goals?.own_goals && events?.goals?.own_goals > 0 ? (
-                    <Image
+                    <img
                         width={24}
                         height={24}
                         src="/assets/icons/ball-red.svg"
                         alt="ball-red"
                     />
                 ) : events?.goals?.goals && events?.goals?.goals > 0 ? (
-                    <Image
+                    <img
                         width={24}
                         height={24}
                         src="/assets/icons/ball-white.svg"
@@ -65,7 +65,7 @@ const Card = ({
 }) => {
     if(type === "twos") {
         return (
-            <Image 
+            <img 
                 height={18}
                 width={15} 
                 src={`/assets/icons/actions-red-and-yellow-card.svg`}
@@ -75,7 +75,7 @@ const Card = ({
     } 
     if(type === "yellow") {
         return (
-            <Image 
+            <img 
                 height={18}
                 width={15} 
                 src={`/assets/icons/yellow-card-min.svg`}
@@ -84,7 +84,7 @@ const Card = ({
         )
     } 
     return (
-        <Image 
+        <img 
             height={18}
             width={15} 
             src={`/assets/icons/red-card-min.svg`}

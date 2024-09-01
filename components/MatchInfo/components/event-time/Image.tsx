@@ -1,6 +1,5 @@
 
 "use client"
-import Image from 'next/image';
 import React, { useState } from 'react';
 import { _SERVER_API } from '@/config/consts';
 
@@ -16,7 +15,6 @@ const ImageBlock = ({
     const [isLoading, setIsLoading] = useState(true);
 
     const handleError = () => {
-        console.log('Image load error');
         if (currentIndex < tv_networks.length - 1) {
             setCurrentIndex(prevIndex => prevIndex + 1);
             setErrorCount(prevCount => prevCount + 1);
@@ -36,14 +34,14 @@ const ImageBlock = ({
 
     return (
         <>
-            {isLoading && <Image
+            {isLoading && <img
                 src="/assets/loading/loading.gif" 
                 height={10}
                 width={10}
                 alt="Loading"
             />} 
             {tv_networks.length > 0 && (
-                <Image
+                <img
                     height={24}
                     width={24}
                     src={`${_SERVER_API}/images/tvnetworks/${tv_networks[currentIndex].id}`}

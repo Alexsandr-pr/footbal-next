@@ -26,7 +26,7 @@ const AsideSpoller = ({
                 {
                     items.map(({name, link}, index) => (
                         <li  key={index + name + link} className="select__item">
-                            <Link href={link}>{name}</Link>
+                            <Link prefetch={false} href={link}>{name}</Link>
                         </li>
                     ))
                 }

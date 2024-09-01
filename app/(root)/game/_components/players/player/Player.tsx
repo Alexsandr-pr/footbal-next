@@ -1,5 +1,5 @@
 
-import Image from "next/image"
+
 import "./player.scss"
 import { _SERVER_API } from "@/config/consts"
 import { LineupsPlayerProps } from "@/types/game-center"

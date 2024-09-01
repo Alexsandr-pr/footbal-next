@@ -12,6 +12,8 @@ import LiveOddsBlock from "../_components/live-odds/LiveOdds";
 import PredictionBlock from "../_components/prediction/Prediction";
 import Video from "../_components/video/Video";
 import useSWR from 'swr'
+import { useEffect, useState } from "react";
+import Loading from "@/components/ui/loading/Loading";
 
 type Props = {
     params: {
@@ -22,13 +24,17 @@ type Props = {
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
 export default function GameCenter({ params }: Props) {
+    const [dedupingInterval, setDedupingInterval] = useState(5000); 
     const { data, error } = useSWR(`https://www.sports-stats.net/gamecenter/${params.id}`,fetcher, {
-        revalidateOnFocus: true,
-        dedupingInterval: 1000,
+        dedupingInterval: dedupingInterval,
     });
-
+    useEffect(() => {
+        if (data) {
+            setDedupingInterval(data.TTL * 1000); 
+        }
+    }, [data]);
     if (error) return <div>Failed to load data</div>;
-    if (!data) return <div>Loading...</div>;
+    if (!data) return <Loading size={32} clazz="loading" />;
 
     const { game } = data;
 

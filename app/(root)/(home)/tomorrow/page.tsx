@@ -1,52 +1,38 @@
-"use client"
-import { LeaguesResponse } from '@/types/response';
-import Home from '../_components/home/Home';
-import { _SERVER_API } from '@/config/consts';
-import { useEffect, useRef, useState } from 'react';
-import { Calendar, League } from '@/types/home';
+"use client";
+
+import useSWR from "swr";
+import { LeaguesResponse } from "@/types/response";
+import { Calendar, League } from "@/types/home";
+
+import { _SERVER_API } from "@/config/consts";
+import { useEffect, useState } from "react";
+import Home from "../_components/home/Home";
 
 
-function Tomorrow() {
-    const [leagues, setLeagues] = useState<League[]>([]);
-    const [calendar, setCalendar] = useState<Calendar | null>(null);
-    const [ttl, setTTL] = useState<number>(600);
+const fetcher = async (url: string): Promise<LeaguesResponse> => {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Failed to fetch data');
+    return res.json();
+};
 
-    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+export default function Tomorrow() {
+    const [dedupingInterval, setDedupingInterval] = useState(10000); 
+
+    const { data, error } = useSWR<LeaguesResponse>(`${_SERVER_API}/games/tomorrow`, fetcher, {
+        refreshInterval: dedupingInterval, 
+    });
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await fetch('/api/tomorrow');
-                if (!res.ok) throw new Error('Failed to fetch data');
-
-                const data: LeaguesResponse = await res.json();
-                setLeagues(data.leagues);
-                setCalendar(data.calendar);
-                setTTL(data.ttl);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchData();
-
-        if (intervalRef.current) {
-            clearInterval(intervalRef.current);
+        if (data) {
+            setDedupingInterval(data.ttl * 1000); 
         }
+    }, [data]);
 
-        intervalRef.current = setInterval(fetchData, ttl * 1000);
+    if (error) return <div>Failed to load data</div>;
+    if (!data) return <div>Loading...</div>;
 
-        return () => {
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-            }
-        };
-    }, [ttl]);
+    const leagues: League[] = data.leagues;
+    const calendar: Calendar | null = data.calendar;
 
-    return (
-        
-        <Home calendar={calendar} leagues={leagues}/>
-    );
+    return <Home calendar={calendar} leagues={leagues} />;
 }
-
-export default Tomorrow

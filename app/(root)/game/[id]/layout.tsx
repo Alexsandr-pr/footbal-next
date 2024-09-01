@@ -5,6 +5,7 @@ import Header from "../_components/header/Header";
 import TabsTrigger from "@/components/ui/tabs/TabsTrigger";
 import useSWR from 'swr'
 import "./layout.scss";
+import Loading from "@/components/ui/loading/Loading";
 
 type Props = {
     children: ReactNode;
@@ -16,7 +17,7 @@ type Props = {
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
 const Layout = ({ children, params }: Props) => {
-    const [dedupingInterval, setDedupingInterval] = useState(0); 
+    const [dedupingInterval, setDedupingInterval] = useState(10000); 
 
     const { data, error, mutate } = useSWR(`https://www.sports-stats.net/gamecenter/${params.id}`, fetcher, {
         revalidateOnFocus: true,
@@ -24,7 +25,7 @@ const Layout = ({ children, params }: Props) => {
     });
 
     useEffect(() => {
-        mutate(); // Вызов ручной перезагрузки данных сразу после монтирования
+        mutate(); 
     }, [mutate]);
 
     useEffect(() => {
@@ -34,7 +35,7 @@ const Layout = ({ children, params }: Props) => {
     }, [data]);
 
     if (error) return <div>Failed to load data</div>;
-    if (!data) return <div>Loading...</div>;
+    if (!data) return <Loading size={32} clazz="loading" />;
 
     const { game } = data;
 

@@ -4,9 +4,6 @@ import CommandImage from "@/components/ui/command/CommandImage"
 import { LiveOddsProps } from "@/types/game-center"
 import Text from "../h2h/_components/Text"
 import Odds from "@/components/odds/Odds"
-import WhiteButton from "@/components/ui/buttons/button-white/WhiteButton"
-import Image from "next/image"
-import Link from "next/link"
 import { _SERVER_API } from "@/config/consts"
 
 import "./live-odds.scss";
@@ -21,17 +18,17 @@ const LiveOddsBlock = ({
             {
                 liveOdds?.odds?.original && liveOdds?.odds?.live &&
                 <div  className="content-block">
-                    <div className="content-block__header">
+                    <div className={`content-block__header ${liveOdds?.cta_link ? "content-block__header-prediction" : ""}`}>
                         <p>Cuotas en vivo</p>
                         {
-                            liveOdds?.cta_link && <Link className="static-game__block-link" target="_blank" href={liveOdds?.cta_link}>
-                                <Image
+                            liveOdds?.cta_link && <a className="static-game__block-link" target="_blank" href={liveOdds?.cta_link}>
+                                <img
                                     src={`${_SERVER_API}/images/bookies/${liveOdds?.bookie_id}`}
                                     width={70} 
                                     height={32}
                                     alt="bookies"
                                 />
-                            </Link>
+                            </a>
                         }
                     </div>
                     <div className="content-block__body">
@@ -89,13 +86,15 @@ const LiveOddsBlock = ({
                                 )
                             }
                         </div>
-                        <div className="live-odds-buttons">
-                            {
-                                liveOdds?.cta_link && <Link target="_blank" className="live-odds-button white-button" href={liveOdds?.cta_link}>
-                                                            Apostar ahora
-                                                        </Link>
-                            }
-                        </div>
+                        {
+                            liveOdds?.cta_link &&  <div className="live-odds-buttons">
+                                                        {
+                                                            liveOdds?.cta_link && <a target="_blank" className="live-odds-button white-button" href={liveOdds?.cta_link}>
+                                                                                        Apostar ahora
+                                                                                    </a>
+                                                        }
+                                                    </div>
+                        }
                     </div>
                 </div>
             }

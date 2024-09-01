@@ -2,7 +2,6 @@ import React from 'react'
 import styles from "./command.module.scss";
 import "./command.scss";
 import { _SERVER_API } from '@/config/consts';
-import Image from 'next/image';
 
 interface CommandImageProps {
     imagesStyles?: "command-home" | "commandGameCenter" | "commandGameCenterHeader" | "recent-form" | "h2h" | "lineupsTab";
@@ -28,7 +27,7 @@ const CommandImage = ({
     return (
         <div className={`${imagesStyles} ${styles.command}`}>
             {showCountryFlags && (
-                <Image
+                <img
                     src={`${_SERVER_API}/images/country/${countryId}/1`}
                     height={32}
                     width={32}
@@ -38,7 +37,7 @@ const CommandImage = ({
                 />
             )}
             <div className="comand-imageteam">
-                <Image
+                <img
                     height={64}
                     width={64}
                     src={`${_SERVER_API}/images/team/${teamId}/4`} 

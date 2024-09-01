@@ -1,4 +1,3 @@
-import Image from 'next/image';
 
 const Loading = ({
     clazz,
@@ -23,8 +22,7 @@ const Loading = ({
 
 const Spinner = ({ size } : { size: number;}) => {
     return (
-        <Image 
-            unoptimized
+        <img
             width={size} 
             height={size} 
             src="/assets/loading/loading.gif" 

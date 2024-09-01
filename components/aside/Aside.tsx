@@ -3,7 +3,6 @@ import Link from "next/link";
 import AsideSpoller from "./spoller/AsideSpoller";
 import Parent from "./Parent";
 import AsideLinks from "./AsideLinks";
-import Image from "next/image";
 
 import { MenuResponse } from "@/types/response";
 
@@ -24,7 +23,7 @@ async function Aside() {
     return (
         <Parent>
             <div className="aside__image-top">
-                <Image
+                <img
                     width={247}
                     height={254}
                     alt={"Image"}
@@ -41,7 +40,7 @@ async function Aside() {
                 </div>
                 <AsideLinks general={general}/> 
                 <div className="aside__bottom">
-                    <Link href="/">Legal - Privacidad</Link>
+                    <Link prefetch={false} href="/">Legal - Privacidad</Link>
                 </div>
             </div>
         </Parent>
