@@ -19,14 +19,10 @@ const fetcher = (url: string) => fetch(url).then(res => res.json());
 const Layout = ({ children, params }: Props) => {
     const [dedupingInterval, setDedupingInterval] = useState(10000); 
 
-    const { data, error, mutate } = useSWR(`https://www.sports-stats.net/gamecenter/${params.id}`, fetcher, {
+    const { data, error } = useSWR(`https://www.sports-stats.net/gamecenter/${params.id}`, fetcher, {
         revalidateOnFocus: true,
         dedupingInterval: dedupingInterval,
     });
-
-    useEffect(() => {
-        mutate(); 
-    }, [mutate]);
 
     useEffect(() => {
         if (data) {

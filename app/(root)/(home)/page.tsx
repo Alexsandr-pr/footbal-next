@@ -8,7 +8,6 @@ import { _SERVER_API } from "@/config/consts";
 import { useEffect, useState } from "react";
 import Loading from "@/components/ui/loading/Loading";
 
-
 const fetcher = async (url: string): Promise<LeaguesResponse> => {
     const res = await fetch(url);
     if (!res.ok) throw new Error('Failed to fetch data');
@@ -18,14 +17,10 @@ const fetcher = async (url: string): Promise<LeaguesResponse> => {
 export default function Page() {
     const [dedupingInterval, setDedupingInterval] = useState(5000); 
 
-    const { data, error, mutate } = useSWR<LeaguesResponse>(`${_SERVER_API}/games/today`, fetcher, {
-        revalidateOnFocus:true,
+    const { data, error } = useSWR<LeaguesResponse>(`${_SERVER_API}/games/today`, fetcher, {
+        revalidateOnFocus: true,
         refreshInterval: dedupingInterval, 
     });
-
-    useEffect(() => {
-        mutate(); 
-    }, [mutate]);
 
     useEffect(() => {
         if (data) {
