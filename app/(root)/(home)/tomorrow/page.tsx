@@ -1,38 +1,64 @@
 "use client";
 
-import useSWR from "swr";
+import { useState, useEffect, useRef } from "react";
+import { _SERVER_API } from "@/config/consts";
 import { LeaguesResponse } from "@/types/response";
 import { Calendar, League } from "@/types/home";
-
-import { _SERVER_API } from "@/config/consts";
-import { useEffect, useState } from "react";
 import Home from "../_components/home/Home";
 
+const minimumTTL = 10;
 
-const fetcher = async (url: string): Promise<LeaguesResponse> => {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('Failed to fetch data');
-    return res.json();
-};
-
-export default function Tomorrow() {
-    const [dedupingInterval, setDedupingInterval] = useState(10000); 
-
-    const { data, error } = useSWR<LeaguesResponse>(`${_SERVER_API}/games/tomorrow`, fetcher, {
-        refreshInterval: dedupingInterval, 
+async function getData(): Promise<LeaguesResponse> {
+    const res = await fetch(`${_SERVER_API}/games/tomorrow`, {
+        cache: "no-store",
     });
 
-    useEffect(() => {
-        if (data) {
-            setDedupingInterval(data.ttl * 1000); 
+    if (!res.ok) {
+        throw new Error("Failed to fetch data");
+    }
+    const data = await res.json();
+
+    const ttl = data.TTL || minimumTTL; 
+
+    return { leagues: data.leagues, calendar: data.calendar, ttl };
+}
+
+export default function Page() {
+    const [leagues, setLeagues] = useState<League[]>([]);
+    const [calendar, setCalendar] = useState<Calendar | null>(null);
+    const [ttl, setTTL] = useState<number>(minimumTTL);
+
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+    const fetchData = async () => {
+        try {
+            const { leagues, calendar, ttl } = await getData();
+            setLeagues(leagues);
+            setCalendar(calendar);
+            setTTL(ttl);  
+            console.log(`Data fetched at: ${new Date().toLocaleTimeString()}`); 
+        } catch (error) {
+            console.error(error);
         }
-    }, [data]);
+    };
 
-    if (error) return <div>Failed to load data</div>;
-    if (!data) return <div>Loading...</div>;
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-    const leagues: League[] = data.leagues;
-    const calendar: Calendar | null = data.calendar;
+    useEffect(() => {
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+        }
+
+        intervalRef.current = setInterval(fetchData, Math.max(ttl, minimumTTL) * 1000);
+
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+        };
+    }, [ttl]);
 
     return <Home calendar={calendar} leagues={leagues} />;
 }
