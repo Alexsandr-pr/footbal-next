@@ -6,7 +6,7 @@ import { LeaguesResponse } from "@/types/response";
 import { Calendar, League } from "@/types/home";
 import Today from "./_components/home/Today";
 
-const minimumTTL = 10; // Минимальный интервал обновления в секундах
+const minimumTTL = 10; 
 
 async function getData(): Promise<LeaguesResponse> {
     const res = await fetch(`${_SERVER_API}/games/today`, {
@@ -30,25 +30,24 @@ export default function Page() {
 
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-    // Функция для получения данных
     const fetchData = async () => {
         try {
             const { leagues, calendar, ttl } = await getData();
             setLeagues(leagues);
             setCalendar(calendar);
-            setTTL(ttl);  // Обновляем TTL после получения данных
-            console.log(`Data fetched at: ${new Date().toLocaleTimeString()}`); // Вывод времени запроса
+            setTTL(ttl);  
+
         } catch (error) {
             console.error(error);
         }
     };
 
-    // Эффект для первоначального получения данных
+
     useEffect(() => {
         fetchData();
     }, []);
 
-    // Эффект для управления интервалом обновления данных на основе TTL
+    
     useEffect(() => {
         if (intervalRef.current) {
             clearInterval(intervalRef.current);

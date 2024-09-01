@@ -1,11 +1,13 @@
 "use client"
 import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import Header from "../_components/header/Header";
 import TabsTrigger from "@/components/ui/tabs/TabsTrigger";
-import useSWR from 'swr'
 import "./layout.scss";
 import Loading from "@/components/ui/loading/Loading";
+import { GameCenterResponse } from "@/types/response";
+import { _SERVER_API } from "@/config/consts";
+import { Game } from "@/types/game-center";
 
 type Props = {
     children: ReactNode;
@@ -14,30 +16,59 @@ type Props = {
     }
 }
 
-const fetcher = (url: string) => fetch(url).then(res => res.json());
+
+const minimumTTL = 10; 
+
+async function getData(id: string): Promise<GameCenterResponse> {
+    const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
+        cache: "no-store",
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch data");
+    }
+    const data = await res.json();
+
+    return data;
+}
 
 const Layout = ({ children, params }: Props) => {
-    const [dedupingInterval, setDedupingInterval] = useState(10000); 
+    const [game, setLeagues] = useState<Game>();
+    const [ttl, setTTL] = useState<number>(minimumTTL);
 
-    const { data, error, mutate } = useSWR(`https://www.sports-stats.net/gamecenter/${params.id}`, fetcher, {
-        revalidateOnFocus: true,
-        dedupingInterval: dedupingInterval,
-    });
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+    const fetchData = async () => {
+        try {
+            const {TTL, game} = await getData(params.id);
+            setLeagues(game);
+            setTTL(TTL);  
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
     
     useEffect(() => {
-        mutate()
-    },[mutate])
-
-    useEffect(() => {
-        if (data) {
-            setDedupingInterval(data.TTL * 1000); 
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
         }
-    }, [data]);
 
-    if (error) return <div>Failed to load data</div>;
-    if (!data) return <Loading size={32} clazz="loading" />;
+        intervalRef.current = setInterval(fetchData, Math.max(ttl, minimumTTL) * 1000);
 
-    const { game } = data;
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+        };
+    }, [ttl]);
+    
+    if (!game) return <Loading size={32} clazz="loading" />;
 
     let dataTrigger;
 

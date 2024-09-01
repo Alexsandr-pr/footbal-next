@@ -23,17 +23,11 @@ interface PageProps {
 
 const GamePage = ({ params }: PageProps) => {
     const { paramsId } = params;
-    const [dedupingInterval, setDedupingInterval] = useState(10000); 
     const { data, error } = useSWR<LeaguesResponse>(`${_SERVER_API}/games/${paramsId}`, fetcher, {
         revalidateOnFocus: true,
-        dedupingInterval: dedupingInterval,
+        dedupingInterval: 600000,
     });
 
-    useEffect(() => {
-        if (data) {
-            setDedupingInterval(data.ttl * 1000); 
-        }
-    }, [data]);
 
     if (error) return <div>Failed to load data</div>;
     if (!data) return <Loading size={32} clazz="loading" />;
