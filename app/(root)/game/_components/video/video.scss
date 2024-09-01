@@ -13,7 +13,15 @@
         height: 200px;
     }
     video,
-    iframe,
+    iframe {
+        top: 0px;
+        left: 0;
+        position: absolute;
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
     .game-video-image {
         top: 0px;
         left: 0;
