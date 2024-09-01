@@ -16,7 +16,7 @@ type Props = {
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
 const Page =  ({params} : Props) => {
-    const [dedupingInterval, setDedupingInterval] = useState(5000); 
+    const [dedupingInterval, setDedupingInterval] = useState(10000); 
     const { data, error } = useSWR(`https://www.sports-stats.net/gamecenter/${params.id}`,fetcher, {
         dedupingInterval: dedupingInterval,
     });

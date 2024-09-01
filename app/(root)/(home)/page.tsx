@@ -15,9 +15,9 @@ const fetcher = async (url: string): Promise<LeaguesResponse> => {
 };
 
 export default function Page() {
-    const [dedupingInterval, setDedupingInterval] = useState(5000); 
-
-    const { data, error } = useSWR<LeaguesResponse>(`${_SERVER_API}/games/today`, fetcher, {
+    const [dedupingInterval, setDedupingInterval] = useState(10000); 
+    
+    const { data, error, mutate } = useSWR<LeaguesResponse>(`${_SERVER_API}/games/today`, fetcher, {
         revalidateOnFocus: true,
         refreshInterval: dedupingInterval, 
     });
