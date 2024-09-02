@@ -20,12 +20,12 @@ const Page =  ({params} : Props) => {
 
     return (
         <>
-            <div className="lineups-pole-gc">
+            {/* <div className="lineups-pole-gc">
                 {
                     game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
                 }
             </div>
-            <SecondTab showCountryFlags={game?.league?.show_country_flags} teamsLineups={game?.players?.lineups.teams} teams={game?.teams} missingPlayers={game?.players?.missing_players}/>
+            <SecondTab showCountryFlags={game?.league?.show_country_flags} teamsLineups={game?.players?.lineups.teams} teams={game?.teams} missingPlayers={game?.players?.missing_players}/> */}
         </>
     )
 }

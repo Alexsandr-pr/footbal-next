@@ -17,10 +17,10 @@ type Props = {
 }
 
 const Layout = ({ children, params }: Props) => {
-    const { game} = useSelector((state:RootState) => state.gameCenter);
+    const { game } = useSelector((state:RootState) => state.gameCenter);
 
     
-    if (!game) return <Loading size={32} clazz="loading" />;
+    
 
     let dataTrigger;
 
@@ -47,12 +47,14 @@ const Layout = ({ children, params }: Props) => {
     return (
         <>
             <div className="flex-24-breadcrumbs-gc">
-                <Breadcrumbs 
-                    leagueName={game?.league?.name}
-                    commandSecond={game.teams[1].name} 
-                    commandFirst={game.teams[0].name}
-                />
-                <Header
+                {
+                    game?.teams && <Breadcrumbs 
+                            leagueName={game?.league?.name}
+                            commandSecond={game.teams[1].name} 
+                            commandFirst={game.teams[0].name}
+                        />
+                }
+                {game?.teams &&  <Header
                     showCountryFlags={game?.league?.show_country_flags}
                     scores={game?.scores}
                     penalties={game?.penalties}
@@ -61,7 +63,7 @@ const Layout = ({ children, params }: Props) => {
                     status={game.status} 
                     teamsHeader={game.teams}
                     description={game?.description}
-                />
+                />}
             </div>
             
             <TabsTrigger clazz={""} type="text" dataText={dataTrigger}/>

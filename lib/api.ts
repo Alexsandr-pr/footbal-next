@@ -15,7 +15,7 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse 
 
 export async function getDataMain(path: string): Promise<LeaguesResponse> {
     const res = await fetch(`${_SERVER_API}/games${path}`, {
-        cache: "no-store",
+        next: { revalidate: 60 }, 
     });
 
     if (!res.ok) {
@@ -23,7 +23,7 @@ export async function getDataMain(path: string): Promise<LeaguesResponse> {
     }
     const data = await res.json();
 
-    const ttl = data.TTL; 
+    const ttl = data.TTL;
 
     return { leagues: data.leagues, calendar: data.calendar, ttl };
 }

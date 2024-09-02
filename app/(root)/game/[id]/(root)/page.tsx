@@ -23,7 +23,7 @@ type Props = {
 
 
 const Layout = ({params }: Props) => {
-    const { game} = useSelector((state:RootState) => state.gameCenter)
+    const game = useSelector((state:RootState) => state.gameCenter.game)
 
     if (!game) return <Loading size={32} clazz="loading" />;
 
@@ -51,7 +51,7 @@ const Layout = ({params }: Props) => {
 
     return (
         <>
-            <div className="gc-flex-16">
+            {/* <div className="gc-flex-16">
                 {game?.videos && <Video videos={game?.videos}/>}
                 {game?.prediction && <PredictionBlock status={game?.status} id={game.id} prediction={game?.prediction}/>}
                 {game?.live_odds && <LiveOddsBlock liveOdds={game?.live_odds} teams={game?.teams} showCountryFlags={game?.league?.show_country_flags}/>}
@@ -62,7 +62,7 @@ const Layout = ({params }: Props) => {
                 <TeamMatchHistory showCountryFlags={game?.league?.show_country_flags} resentForm={game?.recent_form} teams={game?.teams}/>
                 {game?.head_to_head && <Blockh2h/> }
                 {game?.game_info && <InfoList gameInfo={game?.game_info}/>}
-            </div>
+            </div> */}
         </>
     )
 };

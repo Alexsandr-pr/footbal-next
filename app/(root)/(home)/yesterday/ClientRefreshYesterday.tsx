@@ -1,20 +1,21 @@
 "use client"
 import { _SERVER_API } from "@/config/consts";
 import { useEffect, useState } from "react";
-import Today from "./home/Today";
+
 import { LeaguesResponse } from "@/types/response";
+import Home from "../_components/home/Home";
 
 
 
 
-function ClientRefresh({ initialData } : {
+function ClientRefreshYesterday({ initialData } : {
     initialData: LeaguesResponse;
 }) {
     const [data, setData] = useState(initialData);
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`${_SERVER_API}/games/today`);
+            const response = await fetch(`${_SERVER_API}/games/yesterday`);
             const result = await response.json();
             setData(result);
         };
@@ -25,8 +26,8 @@ function ClientRefresh({ initialData } : {
     }, []);
 
     return (
-        <Today calendar={data?.calendar} leagues={data?.leagues} />
+        <Home calendar={data?.calendar} leagues={data?.leagues} />
     );
 }
 
-export default ClientRefresh;
+export default ClientRefreshYesterday;

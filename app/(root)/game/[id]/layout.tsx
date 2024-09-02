@@ -5,6 +5,7 @@ import ClientComponent from '../_components/ClientComponent';
 import { Metadata } from 'next';
 import RefreshWrapper from '../../../../components/RefreshWrapper';
 import { getDataGameCenter } from '@/lib/api';
+import { useFetchGameData } from '@/hooks/useFetchGameData';
 
 type Props = {
     params: {
@@ -36,15 +37,12 @@ const Layout = async ({
         id: string;
     }
 }) => {
-    const { game, TTL } = await getDataGameCenter(params.id);
+    const data = await getDataGameCenter(params.id);
 
     return (
-        <RefreshWrapper interval={TTL * 1000}>
-            <ClientComponent game={game}>
-                {children}
-            </ClientComponent>
-        </RefreshWrapper>
-        
+        <ClientComponent id={params.id} initialData={data}>
+            {children}
+        </ClientComponent>
     );
 }
 export default Layout;
