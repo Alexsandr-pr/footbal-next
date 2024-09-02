@@ -18,7 +18,7 @@ const LiveOddsBlock = ({
             {
                 liveOdds?.odds?.original && liveOdds?.odds?.live &&
                 <div  className="content-block">
-                    <div className={`content-block__header ${liveOdds?.cta_link ? "content-block__header-prediction" : ""}`}>
+                    <div className={`content-block__header ${liveOdds?.cta_link && liveOdds?.bookie_id ? "content-block__header-prediction" : ""}`}>
                         <p>Cuotas en vivo</p>
                         {
                             liveOdds?.cta_link && <a className="static-game__block-link" target="_blank" href={liveOdds?.cta_link}>
@@ -78,7 +78,7 @@ const LiveOddsBlock = ({
                                         <div className="live-odds-title ">
                                             Cuotas antes de patido
                                         </div>
-                                        <div className="live-odds-items">
+                                        <div className="live-odds-items live-odds-items-2">
                                             
                                             <Odds odds={liveOdds?.odds?.live}/>
                                         </div>

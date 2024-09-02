@@ -1,5 +1,5 @@
+"use client"
 import MatchInfo from '@/components/MatchInfo/MatchInfo';
-
 import CalendarioBottom from '../bottom/CalendarioBottom';
 import { Calendar, League } from '@/types/home';
 

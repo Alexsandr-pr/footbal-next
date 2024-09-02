@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { PredictionBlockProps } from "@/types/game-center";
-import Link from "next/link";
 import { _SERVER_API } from "@/config/consts";
 import "./prediction.scss";
 import Odds from "@/components/odds/Odds";
@@ -57,18 +56,17 @@ const PredictionBlock = ({
     const [block] = useAutoAnimate();
     return (
         <div className="content-block">
-            <div className={`content-block__header ${prediction?.cta_link ? "content-block__header-prediction" : ""}`}>
+            <div className={`content-block__header ${prediction?.cta_link && prediction?.bookie_id ? "content-block__header-prediction" : ""}`}>
                 <p>PRONÓSTICOS PREVIOS AL PARTIDO</p>
                 {
                     isLoading ? <Loading clazz="loading-prediction-bookie" size={16}/> : <>
                         {
-                            prediction?.cta_link && <a className="static-game__block-link" target="_blank" href={prediction?.cta_link}>
+                            prediction?.cta_link && prediction?.bookie_id &&  <a className="static-game__block-link" target="_blank" href={prediction?.cta_link}>
                                 <ImageWithCheck 
                                     src={`${_SERVER_API}/images/bookies/${prediction?.bookie_id}`} 
                                     width={70} 
                                     height={32} 
                                     alt="bookies" 
-                                    className="" 
                                 />
                             </a>
                         }

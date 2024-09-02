@@ -1,8 +1,9 @@
+import { Game } from "@/types/game-center";
 import { GameCenterResponse } from "@/types/response";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface GameCenter {
-    game: GameCenterResponse | null; 
+    game: Game | null; 
 }
 
 const initialState: GameCenter = {
@@ -13,7 +14,7 @@ export const gameCenterSlice = createSlice({
     name: "gameCenter",
     initialState,
     reducers: {
-        setGameData: (state, action: PayloadAction<GameCenterResponse>) => {
+        setGameData: (state, action: PayloadAction<Game>) => {
             state.game = action.payload;
         },
     }

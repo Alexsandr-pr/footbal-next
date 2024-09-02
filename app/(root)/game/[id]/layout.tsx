@@ -1,121 +1,65 @@
-"use client"
-import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
-import { ReactNode, useEffect, useRef, useState } from "react";
-import Header from "../_components/header/Header";
-import TabsTrigger from "@/components/ui/tabs/TabsTrigger";
-import "./layout.scss";
-import Loading from "@/components/ui/loading/Loading";
-import { GameCenterResponse } from "@/types/response";
+import React, { ReactNode } from 'react'
 import { _SERVER_API } from "@/config/consts";
-import { Game } from "@/types/game-center";
+import { GameCenterResponse } from "@/types/response";
+import ClientComponent from '../_components/ClientComponent';
+
+import { Metadata } from 'next';
+import RefreshWrapper from '../_components/RefreshWrapper';
 
 type Props = {
-    children: ReactNode;
     params: {
         id: string
     }
 }
 
-
-const minimumTTL = 10; 
-
 async function getData(id: string): Promise<GameCenterResponse> {
-    const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-        cache: "no-store",
-    });
+    const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {cache: 'no-store'});
 
     if (!res.ok) {
-        throw new Error("Failed to fetch data");
+        throw new Error('Failed to fetch data');
     }
-    const data = await res.json();
 
+    const data: GameCenterResponse = await res.json();
     return data;
 }
 
-const Layout = ({ children, params }: Props) => {
-    const [game, setLeagues] = useState<Game>();
-    const [ttl, setTTL] = useState<number>(minimumTTL);
-
-    const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-    const fetchData = async () => {
-        try {
-            const {TTL, game} = await getData(params.id);
-            setLeagues(game);
-            setTTL(TTL);  
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-
+// export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
     
-    useEffect(() => {
-        if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-        }
+//     const { game } = await getData(params.id);
 
-        intervalRef.current = setInterval(fetchData, Math.max(ttl, minimumTTL) * 1000);
+//     const title = `${game?.league?.name} - ${game.teams[0].name} vs ${game.teams[1].name} - Match Details`;
+//     const description = `Details about the match between ${game.teams[0].name} and ${game.teams[1].name}.`;
 
-        return () => {
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-            }
-        };
-    }, [ttl]);
-    
-    if (!game) return <Loading size={32} clazz="loading" />;
+//     return {
+//         title,
+//         description,
+//         icons: '/favicon.png',
+//     };
+// };
 
-    let dataTrigger;
 
-    if(game?.players?.lineups) {
-        dataTrigger = [
-            {
-                label: "VISTA PREVIA",
-                route: `/game/${params.id}`,
-            },
-            {
-                label: "LINAUPS",
-                route: `/game/${params.id}/lineups`,
-            }
-        ]
-    } else {
-        dataTrigger = [
-            {
-                label: "VISTA PREVIA",
-                route: `/game/${params.id}`,
-            },
-        ]
+const Layout = async ({
+    children,
+    params
+}: {
+    children: ReactNode;
+    params: {
+        id: string;
     }
+}) => {
+    const { game, TTL } = await getData(params.id);
+
+    await fetch(`${_SERVER_API}/gamecenter/${params.id}`, {
+        next: { revalidate: TTL }
+    });
 
     return (
-        <>
-            <div className="flex-24-breadcrumbs-gc">
-                <Breadcrumbs 
-                    leagueName={game?.league?.name}
-                    commandSecond={game.teams[1].name} 
-                    commandFirst={game.teams[0].name}
-                />
-                <Header
-                    showCountryFlags={game?.league?.show_country_flags}
-                    scores={game?.scores}
-                    penalties={game?.penalties}
-                    gameTime={game.game_time_to_display} 
-                    startTime={game.start_time} 
-                    status={game.status} 
-                    teamsHeader={game.teams}
-                    description={game?.description}
-                />
-            </div>
-            
-            <TabsTrigger clazz={""} type="text" dataText={dataTrigger}/>
-            {children}
-        </>
-    )
-};
-
+        <RefreshWrapper interval={TTL * 1000}>
+            <ClientComponent game={game}>
+                {children}
+            </ClientComponent>
+        </RefreshWrapper>
+        
+    );
+}
 export default Layout;
