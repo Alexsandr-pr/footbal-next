@@ -14,18 +14,19 @@ type Props = {
 }
 
 const Page =  ({params} : Props) => {
-    const { game} = useSelector((state:RootState) => state.gameCenter);
+    const data = useSelector((state:RootState) => state.gameCenter.data);
+    const game = data?.game
     
     if (!game) return <Loading size={32} clazz="loading" />;
 
     return (
         <>
-            {/* <div className="lineups-pole-gc">
+            <div className="lineups-pole-gc">
                 {
                     game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>
                 }
             </div>
-            <SecondTab showCountryFlags={game?.league?.show_country_flags} teamsLineups={game?.players?.lineups.teams} teams={game?.teams} missingPlayers={game?.players?.missing_players}/> */}
+            <SecondTab showCountryFlags={game?.league?.show_country_flags} teamsLineups={game?.players?.lineups.teams} teams={game?.teams} missingPlayers={game?.players?.missing_players}/>
         </>
     )
 }

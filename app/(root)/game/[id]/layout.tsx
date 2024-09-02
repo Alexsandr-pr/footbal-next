@@ -3,9 +3,9 @@ import { _SERVER_API } from "@/config/consts";
 import ClientComponent from '../_components/ClientComponent';
 
 import { Metadata } from 'next';
-import RefreshWrapper from '../../../../components/RefreshWrapper';
+
 import { getDataGameCenter } from '@/lib/api';
-import { useFetchGameData } from '@/hooks/useFetchGameData';
+
 
 type Props = {
     params: {
