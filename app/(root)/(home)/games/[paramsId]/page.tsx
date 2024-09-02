@@ -1,19 +1,8 @@
-"use client";
-
-import useSWR from "swr";
-import { Suspense, useEffect, useState } from "react";
-import Home from "../../_components/home/Home";
 import { _SERVER_API } from "@/config/consts";
-import { LeaguesResponse } from "@/types/response";
+import { getDataMain } from "@/lib/api";
+import ClientRefreshDate from "../ClientRefreshDate";
 import Loading from "@/components/ui/loading/Loading";
-
-const fetcher = async (url: string): Promise<LeaguesResponse> => {
-    const res = await fetch(url, { cache: "no-cache" });
-    if (!res.ok) {
-        throw new Error('Failed to fetch data');
-    }
-    return res.json();
-};
+import { Suspense } from "react";
 
 interface PageProps {
     params: {
@@ -21,24 +10,15 @@ interface PageProps {
     };
 }
 
-const GamePage = ({ params }: PageProps) => {
+export default async function GamePage({ params }: PageProps) {
     const { paramsId } = params;
-    const { data, error } = useSWR<LeaguesResponse>(`${_SERVER_API}/games/${paramsId}`, fetcher, {
-        revalidateOnFocus: true,
-        dedupingInterval: 600000,
-    });
+    const data = await getDataMain(`/${paramsId}`);
 
-
-    if (error) return <div>Failed to load data</div>;
-    if (!data) return <Loading size={32} clazz="loading" />;
-
-    const { leagues, calendar } = data;
-
+    
     return (
-        <Suspense fallback={<Loading size={32} clazz="loading" />}>
-            <Home calendar={calendar} leagues={leagues} />
+        <Suspense fallback={<Loading size={32}/>}>
+            <ClientRefreshDate id={paramsId} initialData={data}/>
         </Suspense>
     );
 };
 
-export default GamePage;
