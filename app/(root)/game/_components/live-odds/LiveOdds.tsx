@@ -21,7 +21,7 @@ const LiveOddsBlock = ({
                     <div className={`content-block__header ${liveOdds?.cta_link && liveOdds?.bookie_id ? "content-block__header-prediction" : ""}`}>
                         <p>Cuotas en vivo</p>
                         {
-                            liveOdds?.cta_link && <a className="static-game__block-link" target="_blank" href={liveOdds?.cta_link}>
+                            liveOdds?.cta_link &&  liveOdds?.bookie_id &&  <a className="static-game__block-link" target="_blank" href={liveOdds?.cta_link}>
                                 <img
                                     src={`${_SERVER_API}/images/bookies/${liveOdds?.bookie_id}`}
                                     width={70} 

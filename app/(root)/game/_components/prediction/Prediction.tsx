@@ -4,9 +4,10 @@ import { PredictionBlockProps } from "@/types/game-center";
 import { _SERVER_API } from "@/config/consts";
 import "./prediction.scss";
 import Odds from "@/components/odds/Odds";
-import Loading from "@/components/ui/loading/Loading";
-import ImageWithCheck from "@/components/ImageWithCheck";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import Top from "./_components/Top";
+import Body from "./_components/Body";
+import Loading from "@/components/ui/loading/Loading";
 
 const PredictionBlock = ({
     prediction,
@@ -56,93 +57,41 @@ const PredictionBlock = ({
     const [block] = useAutoAnimate();
     return (
         <div className="content-block">
-            <div className={`content-block__header ${prediction?.cta_link && prediction?.bookie_id ? "content-block__header-prediction" : ""}`}>
-                <p>PRONÓSTICOS PREVIOS AL PARTIDO</p>
-                {
-                    isLoading ? <Loading clazz="loading-prediction-bookie" size={16}/> : <>
-                        {
-                            prediction?.cta_link && prediction?.bookie_id &&  <a className="static-game__block-link" target="_blank" href={prediction?.cta_link}>
-                                <ImageWithCheck 
-                                    src={`${_SERVER_API}/images/bookies/${prediction?.bookie_id}`} 
-                                    width={70} 
-                                    height={32} 
-                                    alt="bookies" 
-                                />
-                            </a>
-                        }
-                    </>
-                }
-            </div>
-            <div className="content-block__body">
-                <div className={`static-game__block`}>
-                    <div className="static-game__body">
-                        <h2 className="static-game__title">
-                            {state ? `Total de voces ${prediction?.total_votes}` : "Quién ganará el partido?"}
-                        </h2>
-                        {
-                            status?.enum === 1 && (
-                                <div className="static-game__label">
-                                    {state ? "Your vote was accepted!" : "Seleccione una de las opciones para comprobar su predicción."}
-                                </div>
-                            )
-                        }
-                        {
-                            (status?.enum === 2 && hasVoted) ? <div className="static-game__label">Your vote was accepted!</div> : null
-                        }
-                    </div>
+            <Top isLoading={isLoading} prediction={prediction}/>
+            <div className="content-block__body-prediction">
+                <div  className={`static-game__block`}>
                     {
-                        !isLoading ? <>
-                        <div  ref={block} className="static-game__content static-content">
-                            {
-                                (state && hasVoted || status?.enum !== 1) && <div className="static-content__top-percentage">
-                                            {  
-                                                prediction?.options && prediction?.options.map(({name, percentage, vote_url}, index) => (
-                                                    <div 
-                                                        key={vote_url} 
-                                                        style={{width:`${percentage}%`}} 
-                                                        onClick={() => !hasVoted && handleVote(vote_url)} 
-                                                        className="static-block__item-percentage"
-                                                    >
-                                                        <span className={`${index === 0 && "static-block__item-span"}`}>
-                                                            {index === 0 ? <img width={8.5} height={8.5} src="/assets/icons/check.svg" alt="Check" /> : null}
-                                                            <p>{percentage.toFixed(1)}%</p>
-                                                        </span>
-                                                    </div>
-                                                ))
-                                            }
+                        !isLoading ?
+                        <>
+                            <Body state={state} hasVoted={hasVoted} status={status} prediction={prediction}/>
+                            <div ref={block} className={`prediction-state-false ${((state && hasVoted) || status?.enum === 2 || status?.enum === 3) ? "active" : null}`}>
+                                {  
+                                    prediction?.options && prediction?.options.map(({name, percentage, vote_url}, index) => (
+                                        <div 
+                                            key={vote_url} 
+                                            style={{ width: ((state && hasVoted) || status?.enum === 2 || status?.enum === 3) ? `calc(${percentage}%)` : "auto"}} 
+                                            onClick={() => !hasVoted && handleVote(vote_url)} 
+                                            className="prediction-state-false__item"
+                                        >
+                                            <span className="prediction-state-false__item-1">{name}</span>
+                                            <span className="prediction-state-false__item-2">{percentage.toFixed(0)}%</span>
                                         </div>
-                            }
-                            {
-                                (!state  && status?.enum === 1) && <div className="static-content__top static-block">
-                                    {  
-                                        prediction?.options && prediction?.options.map(({name, percentage, vote_url}, index) => (
-                                            <div 
-                                                key={vote_url} 
-                                                style={{width: "auto"}} 
-                                                onClick={() => !hasVoted && handleVote(vote_url)} 
-                                                className="static-block__item"
-                                            >
-                                                <span>{name}</span>
-                                                
-                                            </div>
-                                        ))
-                                    }
-                                </div>
-                            }
-                            <div className="static-content__bottom">
-                                {prediction?.odds && <Odds odds={prediction?.odds}/>}
+                                    ))
+                                }
                             </div>
-                        </div>
-                        </> : <div className="prediction-content-loading">
-                            <Loading size={16}/>
-                        </div>
+                        </> : <Loading size={24} clazz="loading-prediction"/>
                     }
                     {
-                        (prediction?.cta_link && (state && hasVoted || status?.enum !== 1)) &&  <a target="_blank" href={prediction?.cta_link} className="bottom-info__button white-button">
+                        prediction?.odds && <div className="static-content__odds">
+                                                <Odds odds={prediction?.odds}/>
+                                            </div>
+                    }
+                </div>
+                {
+                        (prediction?.cta_link && (state && hasVoted || status?.enum !== 1)) &&  <a target="_blank" href={prediction?.cta_link} className="static-info__button white-button">
                                                     Apostar ahora
                                                 </a>
                     }
-                </div>
             </div>
         </div>
     );
