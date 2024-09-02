@@ -15,7 +15,7 @@ type Props = {
 
 const Page =  ({params} : Props) => {
     const data = useSelector((state:RootState) => state.gameCenter.data);
-    const game = data?.game
+    const game = data?.game;
     
     if (!game) return <Loading size={32} clazz="loading" />;
 

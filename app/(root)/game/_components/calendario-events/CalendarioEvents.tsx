@@ -8,7 +8,8 @@ import { useSelector } from "react-redux";
 import "./calendario-events.scss"
 
 const CalendarioEvents = () => {
-    const { game } = useSelector((state:RootState) => state.gameCenter)
+    const data = useSelector((state:RootState) => state.gameCenter.data);
+    const game = data?.game;
 
     if(!game?.events) return null
     return (

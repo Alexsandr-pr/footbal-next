@@ -19,7 +19,8 @@ const Blockh2h = () => {
     };
     const [block] = useAutoAnimate();
     
-    const { game } = useSelector((state:RootState) => state.gameCenter);
+    const data = useSelector((state:RootState) => state.gameCenter.data);
+    const game = data?.game;
 
     if(!game) return null;
 
