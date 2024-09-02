@@ -17,7 +17,7 @@ const Top = ({
             {
                 isLoading ? <Loading clazz="loading-prediction-bookie" size={16}/> : <>
                     {
-                        prediction?.cta_link && prediction?.bookie_id &&    <a className="static-game__block-link" target="_blank" href={prediction?.cta_link}>
+                        (prediction?.cta_link && prediction?.bookie_id) &&    <a className="static-game__block-link" target="_blank" href={prediction?.cta_link}>
                                                                                 <ImageWithCheck
                                                                                     src={`${_SERVER_API}/images/bookies/${prediction?.bookie_id}`} 
                                                                                     width={70} 
