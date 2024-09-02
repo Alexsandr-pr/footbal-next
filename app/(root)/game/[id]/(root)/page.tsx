@@ -57,10 +57,10 @@ const Layout = ({params }: Props) => {
                 {game?.live_odds && <LiveOddsBlock liveOdds={game?.live_odds} teams={game?.teams} showCountryFlags={game?.league?.show_country_flags}/>}
                 {game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} activeTab="first" params={params} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>}
                 {game?.standings && <Table standings={game.standings}/>}
-                <CalendarioEvents events={game?.events}/> 
+                <CalendarioEvents/> 
                 {game?.statistics && <Stats statistics={game?.statistics}/>}
                 <TeamMatchHistory showCountryFlags={game?.league?.show_country_flags} resentForm={game?.recent_form} teams={game?.teams}/>
-                {game?.head_to_head && <Blockh2h showCountryFlags={game?.league?.show_country_flags} teams={game?.teams} headToHead={game?.head_to_head}/>}
+                {game?.head_to_head && <Blockh2h/> }
                 {game?.game_info && <InfoList gameInfo={game?.game_info}/>}
             </div>
         </>

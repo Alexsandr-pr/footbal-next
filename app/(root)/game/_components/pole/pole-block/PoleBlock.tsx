@@ -6,12 +6,12 @@ import PoleMobile from '../mobile/Pole'
 import { PoleProps } from '@/types/game-center';
 import Loading from '@/components/ui/loading/Loading'
 import { useRouter } from 'next/navigation'
-
+import { useSelector } from "react-redux";
 import "./loading-pole.scss"
+import { RootState } from '@/store/store'
 
 
 const PoleBlock = ({ 
-    teams,
     teamsLineups,
     cb,
     activeTab,
@@ -20,6 +20,7 @@ const PoleBlock = ({
 }: PoleProps) => {
     const [isMobile, setIsMobile] = useState(false);
     const [loading, setLoading] = useState(true);
+    const { game } = useSelector((state:RootState) => state.gameCenter);
 
     useEffect(() => {
         const handleResize = () => {
@@ -51,9 +52,18 @@ const PoleBlock = ({
             {loading ? (
                 <Loading size={32} clazz='loading-pole'/>
             ) : isMobile ? (
-                <PoleMobile showCountryFlags={showCountryFlags} teamsLineups={teamsLineups} teams={teams}/>
+                <>
+                {
+                        game?.teams && <PoleMobile showCountryFlags={showCountryFlags} teamsLineups={teamsLineups} teams={game.teams}/>
+                }
+                </>
             ) : (
-                <PoleDesctop showCountryFlags={showCountryFlags} teamsLineups={teamsLineups} teams={teams} />
+                <>
+                {
+                        game?.teams && <PoleDesctop showCountryFlags={showCountryFlags} teamsLineups={teamsLineups} teams={game.teams} />
+                }
+                </>
+                
             )}
         </ContentBlock>
     );

@@ -16,6 +16,7 @@ const Header = ({
     showCountryFlags
 }: HeaderGCProps) => {
 
+    
     return (
         <div className="pole-header-grid">
             <div className="pole-header-block">

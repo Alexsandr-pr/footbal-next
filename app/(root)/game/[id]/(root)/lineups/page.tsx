@@ -13,8 +13,6 @@ type Props = {
     }
 }
 
-
-
 const Page =  ({params} : Props) => {
     const { game} = useSelector((state:RootState) => state.gameCenter);
     

@@ -1,16 +1,16 @@
-
+"use client";
 import ContentBlock from "@/components/content-block/ContentBlock"
-import "./calendario-events.scss"
-
 import PenaltiesRows from "./ui/PenaltiesRows";
 import Rows from "./ui/Rows";
-import {  CalendarioEventsProps } from "@/types/game-center";
+import { RootState } from "@/store/store";
+import { useSelector } from "react-redux";
 
-const CalendarioEvents = ({
-    events
-} : CalendarioEventsProps) => {
-    
-    if(!events) return null
+import "./calendario-events.scss"
+
+const CalendarioEvents = () => {
+    const { game } = useSelector((state:RootState) => state.gameCenter)
+
+    if(!game?.events) return null
     return (
         <ContentBlock styles={{borderBottom:"none"}} size='min' title="CALENDARIO DE EVENTOS">
             
@@ -19,7 +19,7 @@ const CalendarioEvents = ({
                     <span>INICIO DEL JUEGO</span>
                 </div>
                 {
-                    events && events?.map((item) => {
+                    game?.events && game?.events?.map((item) => {
                         if(item.is_penalties_stage) return <PenaltiesRows key={item.name} data={item}/>
                         
                         return (
