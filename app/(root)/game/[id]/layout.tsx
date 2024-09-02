@@ -49,10 +49,6 @@ const Layout = async ({
 }) => {
     const { game, TTL } = await getData(params.id);
 
-    await fetch(`${_SERVER_API}/gamecenter/${params.id}`, {
-        next: { revalidate: TTL }
-    });
-
     return (
         <RefreshWrapper interval={TTL * 1000}>
             <ClientComponent game={game}>
