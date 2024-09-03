@@ -32,15 +32,19 @@
         gap: 10px;
         justify-content: space-between;
         padding: 8px 12px;
-        font-family: "Roboto Condensed";
-        text-transform: uppercase;
+        
         border-radius:8px 8px 0px 0px;
         border-bottom: 1px solid #60756C;
         background: #0A2B1D;
+        p {
+            text-transform: uppercase;
+            font-family: "Roboto Condensed";
+            line-height: 1.2;
+            height: 19px;
+        }
         @media(max-width:767.98px){
             font-size: 14px;
         }
-        
     }
 
     // .content-block__bottom

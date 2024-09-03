@@ -11,7 +11,8 @@ const Table = ({
     standings,
     showNumber,
     showBorder,
-    buttonText
+    buttonText,
+    nameMainTable
 } : {
     standings?: {
         title:string;
@@ -40,6 +41,7 @@ const Table = ({
     showNumber?: boolean;
     showBorder?:boolean;
     buttonText?:string;
+    nameMainTable:string;
 }) => {
 
     const boldColumns = standings?.columns.reduce((acc, column, index) => {
@@ -75,10 +77,11 @@ const Table = ({
                                 team="team team-center" 
                                 border="right"
                             >
-                                Team
+                                {nameMainTable}
                             </Td>
                             {
                                 standings?.columns.map((item, index) => {
+                                    
                                     return (
                                         <Td 
                                         
@@ -107,13 +110,15 @@ const Table = ({
                         standings?.rows.map(row => {
                             return (
                                 <Row key={row.num}>
-                                    <Td 
-                                        isBold={"bold"} 
-                                        type="start" 
-                                        border="right"
-                                    >
-                                        {row.num}
-                                    </Td>
+                                    {!showNumber ? null :  <>
+                                        <Td 
+                                            isBold={"bold"} 
+                                            type="start" 
+                                            border="right"
+                                        >
+                                            {row.num}
+                                        </Td>
+                                    </>}
                                     <Td 
                                         team={"team"} 
                                         border="right"

@@ -21,7 +21,7 @@ const ContentBlock = ({
         <div  className={`content-block ${size} ${border ? "border" : ""}`}>
             {
                 title && <div style={styles} className="content-block__header ">
-                    {title}
+                    <p>{title}</p>
                 </div>
             }
             <div className="content-block__body">

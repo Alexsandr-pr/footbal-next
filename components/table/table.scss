@@ -1,6 +1,8 @@
 
 .table {
     width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
 }
 table, td, th, tr {
     border:none;
@@ -18,3 +20,10 @@ table, td, th, tr {
     height: auto;
     width: auto;
 }
+.table tbody .table-row:last-child td:last-child {
+    border-radius: 0px 0px 8px 0px;
+}
+.table tbody .table-row:last-child td:first-child {
+    border-radius: 0px 0px 0px 8px !important;
+}
+    

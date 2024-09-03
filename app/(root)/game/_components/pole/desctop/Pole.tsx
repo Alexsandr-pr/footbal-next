@@ -12,6 +12,7 @@ const PoleDesctop = ({
     showCountryFlags
 } : PoleProps ) => {
     
+    
     const elementTop = useRef<HTMLDivElement | null>(null);
     const elementBottom = useRef<HTMLDivElement | null>(null);
 
@@ -19,8 +20,10 @@ const PoleDesctop = ({
         function createLine(element: HTMLElement | null) {
             if (!element) return;
 
-            const lenght = 10;
-            for(let i = 0; i < lenght; i++){
+            if (element.querySelectorAll('.span').length > 0) return;
+
+            const length = 10;
+            for(let i = 0; i < length; i++){
                 const div = document.createElement("div");
                 div.classList.add("span");
                 div.style.left = `${i * 10}%`;
@@ -37,34 +40,33 @@ const PoleDesctop = ({
         createLine(elementTop.current);
         createLine(elementBottom.current);
     }, []);
+    
     return (
         <>
-            <>
-                <div className="pole__body pole-body">
-                    <div ref={elementTop} className="pole-body__top-content">
-                        <div data-pole className="pole-body__top">
-                            <Formation
-                                stylesOption={1}
-                                type={teamsLineups[0].team_num}
-                                startingPlayers={teamsLineups[0].starting}
-                            />
-                            <div className="pole-ds-left__block-1"></div>
-                            <div className="pole-ds-left__block-2"></div>
-                        </div>
-                    </div>
-                    <div ref={elementBottom} className="pole-body__bottom-content">
-                        <div data-pole className="pole-body__bottom">
-                            <Formation
-                                stylesOption={2}
-                                type={teamsLineups[1].team_num}
-                                startingPlayers={teamsLineups[1].starting}
-                            />
-                            <div className="pole-ds-right__block-1"></div>
-                            <div className="pole-ds-right__block-2"></div>
-                        </div>
+            <div className="pole__body pole-body">
+                <div ref={elementTop} className="pole-body__top-content">
+                    <div data-pole className="pole-body__top">
+                        <Formation
+                            stylesOption={1}
+                            type={teamsLineups[0].team_num}
+                            startingPlayers={teamsLineups[0].starting}
+                        />
+                        <div className="pole-ds-left__block-1"></div>
+                        <div className="pole-ds-left__block-2"></div>
                     </div>
                 </div>
-            </>
+                <div ref={elementBottom} className="pole-body__bottom-content">
+                    <div data-pole className="pole-body__bottom">
+                        <Formation
+                            stylesOption={2}
+                            type={teamsLineups[1].team_num}
+                            startingPlayers={teamsLineups[1].starting}
+                        />
+                        <div className="pole-ds-right__block-1"></div>
+                        <div className="pole-ds-right__block-2"></div>
+                    </div>
+                </div>
+            </div>
             <div className="pole-ds__content pole-ds-content">
                 <div className="pole-ds-content__command pole-ds-content__command-left">
                     <PoleCommand 

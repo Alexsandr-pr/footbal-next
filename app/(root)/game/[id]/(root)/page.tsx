@@ -58,7 +58,7 @@ const Layout = ({params }: Props) => {
                 {game?.prediction && <PredictionBlock status={game?.status} id={game.id} prediction={game?.prediction}/>}
                 {game?.live_odds && <LiveOddsBlock liveOdds={game?.live_odds} teams={game?.teams} showCountryFlags={game?.league?.show_country_flags}/>}
                 {game?.players?.lineups?.teams && <PoleBlock showCountryFlags={game?.league?.show_country_flags} activeTab="first" params={params} teamsLineups={game?.players?.lineups.teams} teams={game?.teams}/>}
-                {game?.standings && <Table buttonText={"FULL LEAGUE STANDING"} showNumber={true} standings={game.standings}/>}
+                {game?.standings && <Table nameMainTable={"Team"} buttonText={"FULL LEAGUE STANDING"} showNumber={true} standings={game.standings}/>}
                 <CalendarioEvents/> 
                 {game?.statistics && <Stats statistics={game?.statistics}/>}
                 <TeamMatchHistory showCountryFlags={game?.league?.show_country_flags} resentForm={game?.recent_form} teams={game?.teams}/>
