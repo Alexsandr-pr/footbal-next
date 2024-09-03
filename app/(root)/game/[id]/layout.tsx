@@ -5,7 +5,7 @@ import ClientComponent from '../_components/ClientComponent';
 import { Metadata } from 'next';
 import { GameCenterResponse } from '@/types/response';
 
-
+export const revalidate = 5;
 type Props = {
     params: {
         id: string
