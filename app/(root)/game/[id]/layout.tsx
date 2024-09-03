@@ -18,7 +18,6 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse>
 
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
         cache: "no-store", 
-        next:{tags:["gamecenter-tag"]}
     });
 
     if (!res.ok) {
@@ -26,8 +25,6 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse>
     }
 
     const data: GameCenterResponse = await res.json();
-
-    revalidateTag('gamecenter-tag');
 
     return data;
 }

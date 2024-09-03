@@ -10,6 +10,7 @@ function ClientRefreshDate({ initialData, id } : {
     initialData: LeaguesResponse;
     id:string;
 }) {
+
     const [data, setData] = useState(initialData);
 
     useEffect(() => {

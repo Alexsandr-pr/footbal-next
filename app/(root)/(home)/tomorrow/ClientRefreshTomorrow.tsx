@@ -11,6 +11,7 @@ import Home from "../_components/home/Home";
 function ClientRefreshTomorrow({ initialData } : {
     initialData: LeaguesResponse;
 }) {
+   
     const [data, setData] = useState(initialData);
 
     useEffect(() => {
