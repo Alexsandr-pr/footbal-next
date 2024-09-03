@@ -39,9 +39,6 @@ const ClientComponent = ({
             intervalIdRef.current = setInterval(fetchData, ttl * 1000);
         };
 
-        
-        fetchData();
-
         return () => {
             if (intervalIdRef.current) {
                 clearInterval(intervalIdRef.current);
