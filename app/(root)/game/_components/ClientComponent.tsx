@@ -24,23 +24,23 @@ const ClientComponent = ({
             dispatch(setGameData(initialData));
         }
 
+        const fetchData = async () => {
+            const action = await dispatch(fetchGameData(id));
+            if (fetchGameData.fulfilled.match(action)) {
+                const updatedTTL = action.payload.TTL;
+                setFetchInterval(updatedTTL);
+            }
+        };
+
         const setFetchInterval = (ttl: number) => {
             if (intervalIdRef.current) {
                 clearInterval(intervalIdRef.current); 
             }
-
-            const fetchData = async () => {
-                const action = await dispatch(fetchGameData(id));
-                if (fetchGameData.fulfilled.match(action)) {
-                    const updatedTTL = action.payload.TTL;
-                    setFetchInterval(updatedTTL);
-                }
-            };
-
             intervalIdRef.current = setInterval(fetchData, ttl * 1000);
         };
 
-        setFetchInterval(initialData.TTL);
+        
+        fetchData();
 
         return () => {
             if (intervalIdRef.current) {
@@ -48,6 +48,7 @@ const ClientComponent = ({
             }
         };
     }, [dispatch, initialData, id]);
+
     return (
         <>
             {children}

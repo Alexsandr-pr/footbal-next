@@ -1,6 +1,6 @@
 import { GameCenterResponse } from "@/types/response";
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { getDataGameCenter, getDataGameCenterThunk } from '@/lib/api';
+import { getDataGameCenterThunk } from '@/lib/api';
 
 interface GameCenterState {
     data: GameCenterResponse | null; 
