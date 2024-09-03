@@ -2,7 +2,7 @@ import { _SERVER_API } from "@/config/consts";
 import ClientRefresh from "./_components/ClientRefresh";
 import { LeaguesResponse } from "@/types/response";
 
-export const revalidate = 5;
+export const revalidate = 8;
 async function getDataMain(
     path: string,
 ): Promise<LeaguesResponse> {

@@ -4,7 +4,7 @@ import { getDataMain } from "@/lib/api";
 import ClientRefreshTomorrow from "./ClientRefreshTomorrow";
 
 
-export const revalidate = 5;
+export const revalidate = 11;
 export default async function Page() {
     const data = await getDataMain("/tomorrow", "tomorrow");
 
