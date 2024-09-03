@@ -8,11 +8,11 @@
 }
 
 .content-block__header-prediction {
-    padding: 3.5px 12px;
-    min-height: 40px;
+    padding: 3.5px 12px !important;
+    height: 40px;
     @media(max-width:767.98px){
         padding: 7.5px 12px;
-        min-height: 32px;
+        height: 32px;
     }
     
 }
@@ -164,8 +164,15 @@
         }
     }
 }
-
+.static-game__block-link {
+    display: flex;
+    padding-top: 1px;
+    justify-content: center;
+    max-height: 26px;
+    align-items: center;
+}
 .static-game__block-link img{
+    
     max-height: 26px;
     width: auto;
     @media(max-width:767.98px){
