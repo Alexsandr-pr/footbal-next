@@ -5,7 +5,7 @@ import { getRevalidate, setRevalidate } from "./revalidateState";
 export async function getDataGameCenter(id: string): Promise<GameCenterResponse & { TTL: number }> {
 
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-        cache:"no-cache", 
+        cache: "no-store", 
         next: { revalidate: getRevalidate("gameCenter") }, 
     });
     
@@ -30,7 +30,7 @@ export async function getDataMain(
 ): Promise<LeaguesResponse> {
 
     const res = await fetch(`${_SERVER_API}/games${path}`, {
-        cache:"no-cache", 
+        cache: "no-store", 
     });
 
     // const res = await fetch(`${_SERVER_API}/games${path}`, {
