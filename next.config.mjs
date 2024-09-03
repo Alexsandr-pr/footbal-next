@@ -11,19 +11,19 @@ const nextConfig = {
             },
         ],
     },
-    async headers() {
-        return [
-            {
-                source: '/(.*)',
-                headers: [
-                    {
-                        key: 'Cache-Control',
-                        value: 'public, max-age=5, must-revalidate'
-                    }
-                ],
-            },
-        ]
-    },
+    // async headers() {
+    //     return [
+    //         {
+    //             source: '/(.*)',
+    //             headers: [
+    //                 {
+    //                     key: 'Cache-Control',
+    //                     value: 'public, max-age=5, must-revalidate'
+    //                 }
+    //             ],
+    //         },
+    //     ]
+    // },
 };
 
 export default nextConfig;
