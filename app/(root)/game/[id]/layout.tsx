@@ -16,7 +16,7 @@ type Props = {
 export async function getDataGameCenter(id: string): Promise<GameCenterResponse> {
     
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-        next: { revalidate: 40 }
+        next: { revalidate: 5 }
     });
 
     if (!res.ok) {
