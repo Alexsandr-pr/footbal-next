@@ -5,7 +5,7 @@ import ClientRefresh from "./_components/ClientRefresh";
 
 
 export default async function Page() {
-    const data = await getDataMain("/today");
+    const data = await getDataMain("/today", "today");
 
     return (
         <ClientRefresh initialData={data}/>

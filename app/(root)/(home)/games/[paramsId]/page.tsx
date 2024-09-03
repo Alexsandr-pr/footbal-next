@@ -12,7 +12,7 @@ interface PageProps {
 
 export default async function GamePage({ params }: PageProps) {
     const { paramsId } = params;
-    const data = await getDataMain(`/${paramsId}`);
+    const data = await getDataMain(`/${paramsId}`, "dataDay");
 
     return (
         <Suspense fallback={<Loading size={32}/>}>
