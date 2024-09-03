@@ -24,16 +24,16 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse 
 
     return data;
 }
+
+
+
+
 export async function getDataGameCenterThunk(id: string): Promise<GameCenterResponse & { TTL: number }> {
 
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-        method: 'GET',
         cache: 'no-cache',
-        headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': `max-age=${getRevalidate("gameCenter")}`, 
-        }
-    })
+    }
+    )
     
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -46,6 +46,15 @@ export async function getDataGameCenterThunk(id: string): Promise<GameCenterResp
 
     return data;
 }
+
+
+
+
+
+
+
+
+
 export async function getDataMain(
     path: string,
     pageKey: "today" | "yesterday" | "tomorrow" | "dataDay"
@@ -53,10 +62,9 @@ export async function getDataMain(
 
     const res = await fetch(`${_SERVER_API}/games${path}`, {
         method: 'GET',
-        cache: 'no-cache',
         headers: {
             'Content-Type': 'application/json',
-            'Cache-Control': `max-age=${getRevalidate(pageKey)}`, 
+            //'Cache-Control': 'public, max-age=3600',
         }
     })
 

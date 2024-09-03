@@ -6,7 +6,6 @@ import { LeaguesResponse } from "@/types/response";
 
 
 
-
 function ClientRefresh({ initialData } : {
     initialData: LeaguesResponse;
 }) {
@@ -14,7 +13,7 @@ function ClientRefresh({ initialData } : {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`${_SERVER_API}/games/today`);
+            const response = await  fetch(`${_SERVER_API}/games/today`);
             const result = await response.json();
             setData(result);
         };
@@ -29,4 +28,4 @@ function ClientRefresh({ initialData } : {
     );
 }
 
-export default ClientRefresh;
+export default ClientRefresh; 
