@@ -12,6 +12,7 @@ import EventGols from '../event-gols/EventGols';
 import { EventItemProps } from '@/types/props/match';
 import styles from "./item.module.scss";
 
+
 const EventItem = ({
     country_id,
     name,
@@ -33,7 +34,6 @@ const EventItem = ({
         penalties,
         description,
     } = game;
-
 
     return (
         <Link prefetch={false} href={`/game/${game.id}`} className={styles.item}>

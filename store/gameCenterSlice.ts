@@ -3,7 +3,7 @@ import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { getDataGameCenter } from '@/lib/api';
 
 interface GameCenterState {
-    data: GameCenterResponse | null; // Храним весь ответ
+    data: GameCenterResponse | null; 
     loading: boolean;
     error: string | null;
 }
@@ -39,7 +39,7 @@ export const gameCenterSlice = createSlice({
             })
             .addCase(fetchGameData.fulfilled, (state, action: PayloadAction<GameCenterResponse>) => {
                 state.loading = false;
-                state.data = action.payload; // Сохраняем весь ответ
+                state.data = action.payload;
             })
             .addCase(fetchGameData.rejected, (state, action) => {
                 state.loading = false;
