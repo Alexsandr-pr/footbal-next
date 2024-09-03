@@ -6,7 +6,7 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse 
 
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
         cache: "no-store", 
-        next: { revalidate: getRevalidate("gameCenter") }, 
+        
     });
     
     // const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
