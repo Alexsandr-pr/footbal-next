@@ -1,6 +1,7 @@
 import { _SERVER_API } from "@/config/consts";
 import { GameCenterResponse, LeaguesResponse } from "@/types/response";
 import { getRevalidate, setRevalidate } from "./revalidateState";
+import { revalidateTag } from "next/cache";
 
 export async function getDataGameCenter(id: string): Promise<GameCenterResponse & { TTL: number }> {
 
@@ -41,7 +42,7 @@ export async function getDataMain(
         throw new Error("Failed to fetch data");
     }
     const data = await res.json();
-
+    revalidateTag("home");
     const ttl = data.TTL;
     // if (data.TTL) {
     //     setRevalidate(pageKey, ttl);

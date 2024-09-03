@@ -42,10 +42,10 @@ const Layout = ({ children, params }: Props) => {
             },
         ]
     }
-    const router = useRouter()
-    useEffect(() => {
-        router.refresh()
-    },[])
+    // const router = useRouter()
+    // useEffect(() => {
+    //     router.refresh()
+    // },[])
     return (
         <>
             <div className="flex-24-breadcrumbs-gc">

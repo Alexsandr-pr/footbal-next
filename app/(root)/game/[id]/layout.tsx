@@ -4,6 +4,7 @@ import ClientComponent from '../_components/ClientComponent';
 
 import { Metadata } from 'next';
 import { GameCenterResponse } from '@/types/response';
+import { revalidateTag } from 'next/cache';
 
 
 type Props = {
@@ -18,10 +19,6 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse>
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
         cache: "no-store", 
     });
-    
-    // const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-    //     next: { revalidate: getRevalidate("gameCenter") }, 
-    // });
 
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -29,9 +26,10 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse>
 
     const data: GameCenterResponse = await res.json();
 
+    revalidateTag('gamecenter-tag');
+
     return data;
 }
-
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
     
