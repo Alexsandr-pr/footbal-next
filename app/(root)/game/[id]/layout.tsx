@@ -15,10 +15,22 @@ type Props = {
 
 
 export async function getDataGameCenter(id: string): Promise<GameCenterResponse> {
-
+    // fetch(`${_SERVER_API}/gamecenter/${id}`, {
+    //     method: 'GET',
+    //     cache: 'no-cache',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //       // Add other headers if needed
+    //     }
+    // })
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-        cache: "no-store", 
-    });
+        method: 'GET',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+          // Add other headers if needed
+        }
+    })
 
     if (!res.ok) {
         throw new Error("Failed to fetch data");

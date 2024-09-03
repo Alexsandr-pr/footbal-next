@@ -6,9 +6,12 @@ import { revalidateTag } from "next/cache";
 export async function getDataGameCenter(id: string): Promise<GameCenterResponse & { TTL: number }> {
 
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-        cache: "no-store", 
-        
-    });
+        method: 'GET',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
     
     // const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
     //     next: { revalidate: getRevalidate("gameCenter") }, 
@@ -31,9 +34,12 @@ export async function getDataMain(
 ): Promise<LeaguesResponse> {
 
     const res = await fetch(`${_SERVER_API}/games${path}`, {
-        cache: "no-store", 
-    });
-
+        method: 'GET',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
     // const res = await fetch(`${_SERVER_API}/games${path}`, {
     //     next: { revalidate: getRevalidate(pageKey) }, 
     // });
