@@ -22,10 +22,10 @@ const Layout = ({ children, params }: Props) => {
     const data = useSelector((state:RootState) => state.gameCenter.data);
     const game = data?.game;
     
-    const router = useRouter();
-    useEffect(() => {
-        router.refresh();
-    },[]);
+    // const router = useRouter();
+    // useEffect(() => {
+    //     router.refresh();
+    // },[]);
 
     let dataTrigger;
 
