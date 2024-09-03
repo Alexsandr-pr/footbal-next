@@ -7,6 +7,9 @@ import "./layout.scss";
 import { _SERVER_API } from "@/config/consts";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 
 type Props = {
     children: ReactNode;
@@ -17,9 +20,12 @@ type Props = {
 
 const Layout = ({ children, params }: Props) => {
     const data = useSelector((state:RootState) => state.gameCenter.data);
-    const game = data?.game
+    const game = data?.game;
     
-    
+    const router = useRouter();
+    useEffect(() => {
+        router.refresh();
+    },[]);
 
     let dataTrigger;
 

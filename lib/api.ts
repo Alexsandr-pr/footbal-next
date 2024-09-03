@@ -3,10 +3,11 @@ import { GameCenterResponse, LeaguesResponse } from "@/types/response";
 import { getRevalidate, setRevalidate } from "./revalidateState";
 
 export async function getDataGameCenter(id: string): Promise<GameCenterResponse & { TTL: number }> {
-    console.log(getRevalidate("gameCenter"));
+
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
         cache:"no-cache", 
     });
+    
     // const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
     //     next: { revalidate: getRevalidate("gameCenter") }, 
     // });
@@ -16,22 +17,21 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse 
     }
 
     const data: GameCenterResponse = await res.json();
-    if (data.TTL) {
-        setRevalidate('gameCenter', data.TTL);
-    }
+    // if (data.TTL) {
+    //     setRevalidate('gameCenter', data.TTL);
+    // }
 
     return data;
 }
 
 export async function getDataMain(
     path: string,
-    pageKey: "gameCenter" | "today" | "yesterday" | "tomorrow" | "dataDay",
 ): Promise<LeaguesResponse> {
 
-    console.log(getRevalidate(pageKey));
     const res = await fetch(`${_SERVER_API}/games${path}`, {
         cache:"no-cache", 
     });
+
     // const res = await fetch(`${_SERVER_API}/games${path}`, {
     //     next: { revalidate: getRevalidate(pageKey) }, 
     // });
@@ -42,8 +42,8 @@ export async function getDataMain(
     const data = await res.json();
 
     const ttl = data.TTL;
-    if (data.TTL) {
-        setRevalidate(pageKey, ttl);
-    }
+    // if (data.TTL) {
+    //     setRevalidate(pageKey, ttl);
+    // }
     return { leagues: data.leagues, calendar: data.calendar, ttl };
 }
