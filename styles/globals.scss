@@ -231,9 +231,9 @@ table, td, th, tr {
     font-style: normal;
     display: inline-flex;
     font-weight: 700;
-    line-height: 120%; /* 16.8px */
+    line-height: 1; /* 16.8px */
     text-transform: uppercase;
-    padding: 8px 12px;
+    padding: 11.5px 12px;
     border-radius: 4px;
     background:  var(--white);
     height: 40px;
@@ -241,5 +241,6 @@ table, td, th, tr {
     align-items: center;
     @media(max-width:767.98px){
         height: 32px;
+        padding: 9.5px 12px;
     }
 }
