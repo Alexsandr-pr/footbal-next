@@ -14,12 +14,12 @@ const initialState: GameCenterState = {
     error: null,
 };
 
-// Асинхронный thunk для получения данных игры
+
 export const fetchGameData = createAsyncThunk(
     'gameCenter/fetchGameData',
     async (gameId: string) => {
         const response = await getDataGameCenter(gameId);
-        return response; // Возвращаем весь ответ, а не только game
+        return response; 
     }
 );
 
