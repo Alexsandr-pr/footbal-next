@@ -28,7 +28,23 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse 
 
     return data;
 }
+export async function getDataGameCenterThunk(id: string): Promise<GameCenterResponse & { TTL: number }> {
 
+    const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
+        cache:"no-store"
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch data");
+    }
+
+    const data: GameCenterResponse = await res.json();
+    if (data.TTL) {
+        setRevalidate('gameCenter', data.TTL);
+    }
+
+    return data;
+}
 export async function getDataMain(
     path: string,
 ): Promise<LeaguesResponse> {

@@ -1,6 +1,6 @@
 import { GameCenterResponse } from "@/types/response";
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { getDataGameCenter } from '@/lib/api';
+import { getDataGameCenter, getDataGameCenterThunk } from '@/lib/api';
 
 interface GameCenterState {
     data: GameCenterResponse | null; 
@@ -18,7 +18,7 @@ const initialState: GameCenterState = {
 export const fetchGameData = createAsyncThunk(
     'gameCenter/fetchGameData',
     async (gameId: string) => {
-        const response = await getDataGameCenter(gameId);
+        const response = await getDataGameCenterThunk(gameId);
         return response; 
     }
 );
