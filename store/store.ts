@@ -3,12 +3,14 @@ import counterReducer from "./slise";
 import filterReducer from "./filterSlice";
 import gameCenterSlice  from './gameCenterSlice';
 import { useDispatch } from 'react-redux';
+import soundSlice from './soundSlice';
 export const makeStore = () => {
     return configureStore({
         reducer: {
             counter: counterReducer,
             filter:filterReducer,
-            gameCenter: gameCenterSlice
+            gameCenter: gameCenterSlice,
+            sound: soundSlice
         }
     })
 }

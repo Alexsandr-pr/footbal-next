@@ -4,15 +4,15 @@ import { EventResultProps } from "@/types/props/match";
 import Parent from "./_components/ui/parent/Parent";
 import ResultHome from "./_components/home/ResultHome";
 import ResultGameCenter from "./_components/gc/ResultGameCenter";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store';
-import SoundPlayer from "./_components/SoundPlayer"; 
+import { enableSound } from "@/store/soundSlice";
 
 const EventResult = (props: EventResultProps) => { 
     const { type, status, scores, soundLocal } = props;
 
     const previousScoresRef = useRef<number[]>(scores || []);
-
+    const dispatch = useDispatch();
     const sound = useSelector((state: RootState) => state.filter.sound);
 
     const shouldPlaySound = () => {
@@ -25,8 +25,11 @@ const EventResult = (props: EventResultProps) => {
     };
 
     useEffect(() => {
+        if (shouldPlaySound() && sound && soundLocal) {
+            dispatch(enableSound());
+        }
         previousScoresRef.current = scores || [];
-    }, [scores]);
+    }, [scores, sound, soundLocal, dispatch]);
 
     if (type === "gamecenter") {
         return (
@@ -39,10 +42,7 @@ const EventResult = (props: EventResultProps) => {
     }
 
     return (
-        <>
-            <ResultHome {...props} />
-            <SoundPlayer play={shouldPlaySound() && sound && soundLocal || false} />
-        </>
+        <ResultHome {...props} />
     );
 };
 

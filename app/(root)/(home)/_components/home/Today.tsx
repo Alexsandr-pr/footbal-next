@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store/store";
 import { setLiveGamesCount, setLoadingOnLiveGame } from "@/store/filterSlice";
 import { Calendar, League } from "@/types/home";
+import SoundPlayer from "@/components/SoundPlayer";
 
 const Today = ({
     leagues,
@@ -39,7 +40,12 @@ const Today = ({
 
     }, [showLiveGames, leagues, dispatch]);
 
-    return <Home calendar={calendar} leagues={filteredLeagues} />;
+    return (
+        <>
+            <Home calendar={calendar} leagues={filteredLeagues} />;
+            <SoundPlayer/>
+        </>
+    )
 }
 
 export default Today;

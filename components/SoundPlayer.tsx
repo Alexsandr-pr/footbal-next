@@ -1,11 +1,12 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { disableSound } from '@/store/soundSlice';
+import { RootState } from "@/store/store";
 
-interface SoundPlayerProps {
-    play: boolean;
-}
-
-const SoundPlayer: React.FC<SoundPlayerProps> = ({ play }) => {
+const SoundPlayer: React.FC = () => {
+    const play = useSelector((state: RootState) => state.sound.play);
+    const dispatch = useDispatch();
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
@@ -20,9 +21,11 @@ const SoundPlayer: React.FC<SoundPlayerProps> = ({ play }) => {
 
     useEffect(() => {
         if (play && audioRef.current) {
-            audioRef.current.play();
+            audioRef.current.play().then(() => {
+                dispatch(disableSound());
+            });
         }
-    }, [play]);
+    }, [play, dispatch]);
 
     return null; 
 };
