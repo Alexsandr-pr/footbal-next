@@ -4,7 +4,7 @@ import { getDataMain } from "@/lib/api";
 import ClientRefreshTomorrow from "./ClientRefreshTomorrow";
 
 export default async function Page() {
-    const data = await getDataMain("/tomorrow");
+    const data = await getDataMain("/tomorrow", "tomorrow");
 
     return (
         <ClientRefreshTomorrow initialData={data}/>

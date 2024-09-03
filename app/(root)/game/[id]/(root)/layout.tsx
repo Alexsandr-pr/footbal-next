@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 import Header from "../../_components/header/Header";
 import TabsTrigger from "@/components/ui/tabs/TabsTrigger";
 import "./layout.scss";
-import Loading from "@/components/ui/loading/Loading";
 import { _SERVER_API } from "@/config/consts";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";

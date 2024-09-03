@@ -5,7 +5,7 @@ import ClientRefreshYesterday from "./ClientRefreshYesterday";
 
 
 export default async function Page() {
-    const data = await getDataMain("/yesterday");
+    const data = await getDataMain("/yesterday", "yesterday");
 
     return (
         <ClientRefreshYesterday initialData={data}/>
