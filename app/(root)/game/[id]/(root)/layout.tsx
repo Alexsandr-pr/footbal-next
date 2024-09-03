@@ -7,7 +7,8 @@ import "./layout.scss";
 import { _SERVER_API } from "@/config/consts";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-
+import { useRouter } from "next/navigation";
+import { useEffect } from "react"
 
 type Props = {
     children: ReactNode;
@@ -41,7 +42,10 @@ const Layout = ({ children, params }: Props) => {
             },
         ]
     }
-
+    const router = useRouter()
+    useEffect(() => {
+        router.refresh()
+    },[])
     return (
         <>
             <div className="flex-24-breadcrumbs-gc">

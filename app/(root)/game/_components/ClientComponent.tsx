@@ -4,6 +4,7 @@ import { setGameData, fetchGameData } from '@/store/gameCenterSlice';
 import { GameCenterResponse } from '@/types/response';
 import React, { ReactNode, useEffect, useRef } from 'react';
 import { useAppDispatch } from '@/store/store'; 
+import { useRouter } from 'next/navigation';
 
 const ClientComponent = ({
     children,
@@ -47,7 +48,6 @@ const ClientComponent = ({
             }
         };
     }, [dispatch, initialData, id]);
-
     return (
         <>
             {children}
