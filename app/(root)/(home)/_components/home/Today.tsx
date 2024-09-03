@@ -42,7 +42,7 @@ const Today = ({
 
     return (
         <>
-            <Home calendar={calendar} leagues={filteredLeagues} />;
+            <Home calendar={calendar} leagues={filteredLeagues} />
             <SoundPlayer/>
         </>
     )

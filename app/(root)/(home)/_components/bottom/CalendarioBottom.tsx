@@ -25,25 +25,25 @@ const CalendarioBottom: React.FC<CalendarioBottomProps> = ({ calendar }) => {
                         <p className={styles.label}>Anniversaries</p>
                         {
                             calendar.clubs &&  <div className={styles.blockitems}>
-                                {
-                                    calendar.clubs.map(club => (
-                                        <div key={club.id + club.text} className={styles.block}>
-                                                <FallbackImage
-                                                    spinnerSize={24}
-                                                    height={36}
-                                                    width={36}
-                                                    src={`https://www.sports-stats.net/images/team/${club?.id}/4`} 
-                                                    alt={club.name} 
-                                                />
-                                            
-                                            <div className={styles.blockbody}>
-                                                <p className={styles.name}>{club.name}</p>
-                                                <div className={styles.text}>{club.text}</div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            }
+                                                {
+                                                    calendar.clubs.map(club => (
+                                                        <div key={club.id + club.text} className={styles.block}>
+                                                                <FallbackImage
+                                                                    spinnerSize={24}
+                                                                    height={36}
+                                                                    width={36}
+                                                                    src={`https://www.sports-stats.net/images/team/${club?.id}/4`} 
+                                                                    alt={club.name} 
+                                                                />
+                                                            
+                                                            <div className={styles.blockbody}>
+                                                                <p className={styles.name}>{club.name}</p>
+                                                                <div className={styles.text}>{club.text}</div>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                        }
                     </div>
                 }
                 <div className={styles.item}>
