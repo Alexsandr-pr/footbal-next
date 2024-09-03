@@ -6,7 +6,7 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse 
 
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
         method: 'GET',
-        cache: 'no-cache',
+        
         headers: {
             'Content-Type': 'application/json',
             'Cache-Control': `max-age=${getRevalidate("gameCenter")}`, 
@@ -48,7 +48,7 @@ export async function getDataMain(
 
     const res = await fetch(`${_SERVER_API}/games${path}`, {
         method: 'GET',
-        cache: 'no-cache',
+        
         headers: {
             'Content-Type': 'application/json',
             'Cache-Control': `max-age=${getRevalidate(pageKey)}`, 
