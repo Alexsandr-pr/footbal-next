@@ -244,3 +244,8 @@ table, td, th, tr {
         padding: 9.5px 12px;
     }
 }
+.flex-24 {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

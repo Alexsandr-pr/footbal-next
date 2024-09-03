@@ -10,4 +10,5 @@ export interface ContentBlockProps {
     buttonColor?:string;
     size?:"max" | "min" | "average";
     styles?:React.CSSProperties;
+    border?:boolean;
 }

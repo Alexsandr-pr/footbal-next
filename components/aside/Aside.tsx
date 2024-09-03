@@ -42,6 +42,9 @@ async function Aside() {
                 <div className="aside__bottom">
                     <Link prefetch={false} href="/">Legal - Privacidad</Link>
                 </div>
+                {/* <div className="aside__bottom">
+                    <Link prefetch={false} href="/title-ranking-history">Title Ranking History</Link>
+                </div> */}
             </div>
         </Parent>
     );

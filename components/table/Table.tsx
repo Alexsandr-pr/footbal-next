@@ -8,7 +8,10 @@ import Thead from "./ui/thead/Thead";
 import { _SERVER_API } from "@/config/consts";
 
 const Table = ({
-    standings
+    standings,
+    showNumber,
+    showBorder,
+    buttonText
 } : {
     standings?: {
         title:string;
@@ -34,6 +37,9 @@ const Table = ({
             }[];
         }[];
     };
+    showNumber?: boolean;
+    showBorder?:boolean;
+    buttonText?:string;
 }) => {
 
     const boldColumns = standings?.columns.reduce((acc, column, index) => {
@@ -45,7 +51,8 @@ const Table = ({
 
     return (
         <ContentBlock 
-            buttonText="FULL LEAGUE STANDING"
+            border={showBorder}
+            buttonText={buttonText ? buttonText : ""}
             size="min" 
             title={standings?.title}
         >
@@ -53,13 +60,18 @@ const Table = ({
                 <Thead>
                     <Row>
                         <>
+                            {
+                                !showNumber ? null : <>
+                                    <Td 
+                                        isBold={"bold"} 
+                                        border="right"
+                                    >
+                                        #
+                                    </Td>
+                                </>
+                            }
                             <Td 
-                                isBold={"bold"} 
-                                border="right"
-                            >
-                                #
-                            </Td>
-                            <Td 
+                                
                                 team="team team-center" 
                                 border="right"
                             >
@@ -69,6 +81,7 @@ const Table = ({
                                 standings?.columns.map((item, index) => {
                                     return (
                                         <Td 
+                                        
                                             border={index === 0 ? "right" : undefined} 
                                             maxW={"content"} 
                                             isBold={item.is_bold && "bold"} 
@@ -79,11 +92,17 @@ const Table = ({
                                         </Td>    
                                     )
                                 })
+
                             }
                         </>
                     </Row>
                 </Thead>
                 <Tbody>
+                    {/* <Row>
+                        <Td type="green" colSpan={5}>
+                        DECADA 2020
+                        </Td>
+                    </Row> */}
                     {
                         standings?.rows.map(row => {
                             return (
@@ -132,6 +151,7 @@ const Table = ({
                     }
                 </Tbody>
             </table>
+            
         </ContentBlock>
     )
 }

@@ -8,7 +8,7 @@ const Row = ({
     children:ReactNode;
 }) => {
     return (
-        <tr className="table-row">
+        <tr  className="table-row">
             {children}
         </tr>
     )

@@ -13,11 +13,12 @@ const ContentBlock = ({
     rotate,
     buttonColor,
     size,
-    styles
+    styles,
+    border
 } : ContentBlockProps) => {
 
     return (
-        <div  className={`content-block ${size}`}>
+        <div  className={`content-block ${size} ${border ? "border" : ""}`}>
             {
                 title && <div style={styles} className="content-block__header ">
                     {title}

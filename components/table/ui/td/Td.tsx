@@ -8,7 +8,8 @@ const Td = ({
     type,
     maxW,
     team,
-    className
+    className,
+    colSpan
 } : {
     isBold?: string | boolean;
     children:ReactNode;
@@ -17,9 +18,17 @@ const Td = ({
     maxW?: string;
     team?: string;
     className?:string;
+    colSpan?:number;
 }) => {
     return (
-        <td className={`table-td-col ${isBold} ${border} ${team} ${type} ${maxW} ${className}`}>
+        <td  colSpan={colSpan ?? colSpan} className={`table-td-col 
+            ${isBold ? isBold : ""} 
+            ${border ? border : ""} 
+            ${team ? team : ""} 
+            ${type ? type : ""} 
+            ${maxW ? maxW : ""} 
+            ${className ? className : ""}`}
+        >
             {children}
         </td>
     )

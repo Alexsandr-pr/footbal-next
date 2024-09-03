@@ -39,6 +39,7 @@
         min-height: 100%;
         position: relative;
         display: flex;
+
     }
     
     .game-video-preview-image {
@@ -47,6 +48,10 @@
         top: 50%;
         z-index: 5;
         transform: translate(-50%, -50%);
+        @media(max-width:767.98px){
+            max-width: 60px;
+            height: auto;
+        }
     }
 }
 

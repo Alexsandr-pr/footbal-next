@@ -23,6 +23,9 @@
             height: 35px;
         }
     }
+    &.border {
+        border:var(--border) 1px solid;
+    }
     &__header {
         display: flex;
         align-items: center;

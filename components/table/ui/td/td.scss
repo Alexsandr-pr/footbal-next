@@ -33,6 +33,19 @@
     &.team-center {
         justify-content: center;
     }
+    &.green {
+        height: 24px;
+        padding: 4px 12px;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        background: var(--green-dark);
+        color: var(--white);
+        text-align: center;
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 120%;
+    }
     &.grey-70 {
     color:var(--grey-70);
     }
