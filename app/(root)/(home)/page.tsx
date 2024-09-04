@@ -1,15 +1,16 @@
 import { _SERVER_API } from "@/config/consts";
 import ClientRefresh from "./_components/ClientRefresh";
 import { LeaguesResponse } from "@/types/response";
+import { revalidateTag } from "next/cache";
 
 export const revalidate = 8; 
 
 async function getDataMain(): Promise<LeaguesResponse> {
     const res = await fetch(`${_SERVER_API}/games/today`, {
-        headers: {
-            'Cache-Control': 'public, max-age=60, must-revalidate', 
-        },
-        next: { revalidate }, 
+        next: { 
+            revalidate:23,
+            tags:["home"]
+        }, 
     });
 
     if (!res.ok) {
@@ -17,7 +18,7 @@ async function getDataMain(): Promise<LeaguesResponse> {
     }
 
     const data = await res.json();
-
+    revalidateTag("home");
     return {
         leagues: data.leagues,
         calendar: data.calendar,
