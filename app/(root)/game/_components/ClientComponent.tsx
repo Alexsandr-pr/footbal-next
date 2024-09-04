@@ -17,9 +17,7 @@ const ClientComponent = ({
 }) => {
     const dispatch = useAppDispatch();
     const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
-    const router = useRouter();
     
-
     useEffect(() => {
         
         if (initialData?.game) {
@@ -36,7 +34,6 @@ const ClientComponent = ({
                 if (fetchGameData.fulfilled.match(action)) {
                     const updatedTTL = action.payload.TTL;
                     setFetchInterval(updatedTTL);
-                    router.refresh();
                 }
             };
 
