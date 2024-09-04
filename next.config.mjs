@@ -13,39 +13,35 @@ const nextConfig = {
         ],
     },
     async headers() {
-        const response = await fetch('https://footbal-next.vercel.app/api/revalidate');
-        const revalidateValues = await response.json();
-
-        const createHeaders = (pageKey) => {
-            const ttl = revalidateValues[pageKey] || 3600; 
-            return [
-                {
-                    key: 'Cache-Control',
-                    value: `public, max-age=${ttl}, must-revalidate`,
-                },
-            ];
-        };
         return [
             {
-                source: '/gamecenter',
-                headers: createHeaders('gameCenter'),
-            },
-            {
-                source: '/today',
-                headers: createHeaders('today'),
+                source: '/',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: `public, max-age=5, must-revalidate`
+                    }
+                ],
             },
             {
                 source: '/yesterday',
-                headers: createHeaders('yesterday'),
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: `public, max-age=5, must-revalidate`
+                    }
+                ],
             },
             {
                 source: '/tomorrow',
-                headers: createHeaders('tomorrow'),
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: `public, max-age=5, must-revalidate`
+                    }
+                ],
             },
-            {
-                source: '/dataDay',
-                headers: createHeaders('dataDay'),
-            },
+            
         ]
     },
 };
