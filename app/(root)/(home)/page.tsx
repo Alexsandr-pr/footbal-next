@@ -6,6 +6,9 @@ export const revalidate = 8;
 
 async function getDataMain(): Promise<LeaguesResponse> {
     const res = await fetch(`${_SERVER_API}/games/today`, {
+        headers: {
+            'Cache-Control': 'public, max-age=60, must-revalidate', 
+        },
         next: { revalidate }, 
     });
 
