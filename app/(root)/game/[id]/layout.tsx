@@ -4,7 +4,8 @@ import ClientComponent from '../_components/ClientComponent';
 import { Metadata } from 'next';
 import { GameCenterResponse } from '@/types/response';
 
-
+export const revalidate = 56;
+export const dynamic = "force-static";
 type Props = {
     params: {
         id: string
@@ -12,7 +13,7 @@ type Props = {
 }
 async function getDataGameCenter(id: string): Promise<GameCenterResponse & { TTL: number }> {
 
-    const res = await fetch(`${process.env._SERVER_API}/api/games/${id}`)
+    const res = await fetch(`${_SERVER_API}/gamecenter/${id}`)
 
     if (!res.ok) {
         throw new Error("Failed to fetch data");
