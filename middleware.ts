@@ -15,7 +15,7 @@ export async function middleware(req: NextRequest) {
             if (url.startsWith('/tomorrow')) {
                 const data = await getDataMain('/tomorrow', 'tomorrow');
                 ttl = data.ttl || ttl;
-            } else if (url.startsWith('/today')) {
+            } else if (url.startsWith('/')) {
                 const data = await getDataMain('/today', 'today');
                 ttl = data.ttl || ttl;
             } else if (url.startsWith('/yesterday')) {
