@@ -5,7 +5,7 @@ const ttlCache: Record<string, number> = {};
 
 export async function middleware(req: NextRequest) {
     const url = req.nextUrl.pathname;
-    let ttl = ttlCache[url] || 10;  // TTL по умолчанию
+    let ttl = ttlCache[url] || 10;  
 
     const gamesPattern = /^\/games\/([^\/]+)$/;
     const gamePattern = /^\/game\/([^\/]+)$/;
@@ -46,7 +46,6 @@ export async function middleware(req: NextRequest) {
     } catch (error) {
         console.error(`Ошибка при обработке URL ${url}:`, error);
     } finally {
-        // Заголовок устанавливается в любом случае
         const response = NextResponse.next();
         response.headers.set('Cache-Control', `public, max-age=${ttl}, must-revalidate`);
         return response;

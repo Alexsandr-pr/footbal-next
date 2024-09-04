@@ -14,7 +14,7 @@ function ClientRefreshYesterday({ initialData } : {
 }) {
     
 
-   
+    const router = useRouter()
     const [data, setData] = useState(initialData);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ function ClientRefreshYesterday({ initialData } : {
             const response = await fetch(`${_SERVER_API}/games/yesterday`);
             const result = await response.json();
             setData(result);
-            
+            router.refresh()
         };
 
         const intervalId = setInterval(fetchData, initialData.ttl * 1000);
