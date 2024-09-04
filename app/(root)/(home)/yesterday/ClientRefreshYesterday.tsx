@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { LeaguesResponse } from "@/types/response";
 import Home from "../_components/home/Home";
-
+import { useRouter} from "next/navigation"
 
 
 
@@ -14,13 +14,14 @@ function ClientRefreshYesterday({ initialData } : {
 }) {
     
 
-
+    const router = useRouter()
     const [data, setData] = useState(initialData);
 
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(`${_SERVER_API}/games/yesterday`);
             const result = await response.json();
+            router.refresh();
             setData(result);
         };
 

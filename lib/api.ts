@@ -30,14 +30,15 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse 
 export async function getDataGameCenterThunk(id: string): Promise<GameCenterResponse & { TTL: number }> {
 
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-        cache: 'no-cache',
-    }
-    )
+        next: {
+            revalidate: getRevalidate("gameCenter")
+        }
+    })
     
     if (!res.ok) {
         throw new Error("Failed to fetch data");
     }
-
+    console.log(getRevalidate("gameCenter"));
     const data: GameCenterResponse = await res.json();
     if (data.TTL) {
         setRevalidate('gameCenter', data.TTL);
@@ -60,10 +61,8 @@ export async function getDataMain(
 ): Promise<LeaguesResponse> {
 
     const res = await fetch(`${_SERVER_API}/games${path}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            //'Cache-Control': 'public, max-age=3600',
+        next: {
+            revalidate: getRevalidate(pageKey)
         }
     })
 
@@ -71,7 +70,7 @@ export async function getDataMain(
         throw new Error("Failed to fetch data");
     }
     const data = await res.json();
-
+    console.log(`${getRevalidate(pageKey)}   ${new Date().toLocaleTimeString()}`);
     const ttl = data.TTL;
     if (data.TTL) {
         setRevalidate(pageKey, ttl);
