@@ -21,7 +21,6 @@ function ClientRefreshYesterday({ initialData } : {
         const fetchData = async () => {
             const response = await fetch(`${_SERVER_API}/games/yesterday`);
             const result = await response.json();
-            router.refresh();
             setData(result);
         };
 
