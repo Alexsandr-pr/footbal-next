@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getDataMain } from "./lib/api";
+import { getDataGameCenter, getDataMain } from "./lib/api";
 
 const ttlCache: Record<string, number> = {};
 
@@ -7,7 +7,9 @@ export async function middleware(req: NextRequest) {
     const url = req.nextUrl.pathname;
     let ttl = ttlCache[url] || 10;
 
-    const gamesPattern = /^\/games\/([^\/]+)$/;
+   
+    const gamesPattern = /^\/games\/([^\/]+)$/; 
+    const gamePattern = /^\/game\/([^\/]+)$/;
 
     if (!ttlCache[url]) {
         if (url.includes('tomorrow')) {
@@ -27,6 +29,15 @@ export async function middleware(req: NextRequest) {
             if (paramsId) {
                 const data = await getDataMain(`/games/${paramsId}`, 'dataDay');
                 ttl = data.ttl || ttl;
+            }
+        } else if (gamePattern.test(url)) {
+            
+            const match = url.match(gamePattern);
+            const gameId = match ? match[1] : null;
+
+            if (gameId) {
+                const data = await getDataGameCenter(`/game/${gameId}`);
+                ttl = data.TTL || ttl;
             }
         }
 

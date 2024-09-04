@@ -1,15 +1,13 @@
 import { _SERVER_API } from "@/config/consts";
 import { GameCenterResponse, LeaguesResponse } from "@/types/response";
 import { getRevalidate, setRevalidate } from "./revalidateState";
-import { NextResponse } from 'next/server';
+
 
 export async function getDataGameCenter(id: string): Promise<GameCenterResponse & { TTL: number }> {
 
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': `max-age=${getRevalidate("gameCenter")}`, 
+        next: {
+            revalidate: getRevalidate("gameCenter")
         }
     })
 
