@@ -77,10 +77,6 @@ export async function getDataMain(
         setRevalidate(pageKey, ttl); 
     }
 
-    
-    const response = NextResponse.next();
-    response.headers.set('Cache-Control', `must-revalidate`);
-
     return { leagues: data.leagues, calendar: data.calendar, ttl };
 }
 
