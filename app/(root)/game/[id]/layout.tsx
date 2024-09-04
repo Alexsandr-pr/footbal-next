@@ -12,7 +12,7 @@ type Props = {
 }
 async function getDataGameCenter(id: string): Promise<GameCenterResponse & { TTL: number }> {
 
-    const res = await fetch(`http://localhost:3000/api/games/${id}`)
+    const res = await fetch(`${process.env._SERVER_API}/api/games/${id}`)
 
     if (!res.ok) {
         throw new Error("Failed to fetch data");
