@@ -8,7 +8,7 @@ const Header = () => {
         <header className="header">
             <div className="header__container">
                 <div className="header__logo">
-                    <Link  prefetch={false}  href="/today">
+                    <Link  prefetch={false}  href="/">
                         <img
                             width={184}
                             src="/assets/header/logo_white.webp"
