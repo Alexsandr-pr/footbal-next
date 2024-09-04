@@ -9,7 +9,7 @@ export async function middleware(req: NextRequest) {
 
     const gamesPattern = /^\/games\/([^\/]+)$/;
     const gamePattern = /^\/game\/([^\/]+)$/;
-    
+
     if (!ttlCache[url] && !gamesPattern.test(url) && !gamePattern.test(url)) {
         if (url.startsWith('/tomorrow')) {
             const data = await getDataMain('/tomorrow', 'tomorrow');
@@ -27,9 +27,9 @@ export async function middleware(req: NextRequest) {
         if (gamesPattern.test(url)) {
             const match = url.match(gamesPattern);
             const paramsId = match ? match[1] : null;
-
+            
             if (paramsId) {
-                const data = await getDataMain(`/games/${paramsId}`, 'dataDay');
+                const data = await getDataMain(`/${paramsId}`, 'dataDay');
                 ttl = data.ttl || ttl;
             }
         } else if (gamePattern.test(url)) {
@@ -37,6 +37,7 @@ export async function middleware(req: NextRequest) {
             const gameId = match ? match[1] : null;
 
             if (gameId) {
+                
                 const data = await getDataGameCenter(gameId);
                 ttl = data.TTL || ttl;
             }

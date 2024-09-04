@@ -68,7 +68,7 @@ export async function getDataMain(
 
     const data = await res.json();
 
-    console.log(`${getRevalidate(pageKey)}   ${new Date().toLocaleTimeString()}`);
+    //console.log(`${getRevalidate(pageKey)}   ${new Date().toLocaleTimeString()}`);
 
     const ttl = data.TTL;
     if (ttl) {
