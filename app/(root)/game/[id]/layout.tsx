@@ -2,12 +2,25 @@ import React, { ReactNode } from 'react'
 import { _SERVER_API } from "@/config/consts";
 import ClientComponent from '../_components/ClientComponent';
 import { Metadata } from 'next';
-import { getDataGameCenter } from '@/lib/api';
+import { GameCenterResponse } from '@/types/response';
+
 
 type Props = {
     params: {
         id: string
     }
+}
+async function getDataGameCenter(id: string): Promise<GameCenterResponse & { TTL: number }> {
+
+    const res = await fetch(`http://localhost:3000/api/games/${id}`)
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch data");
+    }
+
+    const data: GameCenterResponse = await res.json();
+    const TTL = data.TTL;
+    return { game: data.game, TTL};
 }
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
