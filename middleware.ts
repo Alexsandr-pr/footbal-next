@@ -16,7 +16,7 @@ export async function middleware(req: NextRequest) {
     const response = NextResponse.next();
 
     
-    response.headers.set('Cache-Control', `public, max-age=${ttl * 1000}, must-revalidate`);
+    response.headers.set('Cache-Control', `public, max-age=${ttl}, must-revalidate`);
 
     return response;
 }

@@ -1,8 +1,8 @@
 const revalidateValues = {
     gameCenter: 5,
-    today: 5,
-    yesterday: 5,
-    tomorrow: 5,
+    today: 522,
+    yesterday:11,
+    tomorrow: 5654654,
     dataDay: 5,
 };
 
