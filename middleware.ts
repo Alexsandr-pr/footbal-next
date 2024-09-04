@@ -15,7 +15,7 @@ export async function middleware(req: NextRequest) {
         if (url.includes('tomorrow')) {
             const data = await getDataMain('/tomorrow', 'tomorrow');
             ttl = data.ttl || ttl;
-        } else if (url.includes('today')) {
+        } else if (url.includes('/')) {
             const data = await getDataMain('/today', 'today');
             ttl = data.ttl || ttl;
         } else if (url.includes('yesterday')) {
