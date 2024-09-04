@@ -10,7 +10,7 @@ export async function middleware(req: NextRequest) {
     const gamesPattern = /^\/games\/([^\/]+)$/;
     const gamePattern = /^\/game\/([^\/]+)$/;
 
-    try {
+    
         if (!ttlCache[url] && !gamesPattern.test(url) && !gamePattern.test(url)) {
             if (url.startsWith('/tomorrow')) {
                 const data = await getDataMain('/tomorrow', 'tomorrow');
@@ -43,11 +43,9 @@ export async function middleware(req: NextRequest) {
                 }
             }
         }
-    } catch (error) {
-        console.error(`Ошибка при обработке URL ${url}:`, error);
-    } finally {
+        
             const response = NextResponse.next();
         response.headers.set('Cache-Control', `public, max-age=${ttl}`);
         return response;
-    }
+    
 }
