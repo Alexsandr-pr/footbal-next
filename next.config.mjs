@@ -13,37 +13,20 @@ const nextConfig = {
             },
         ],
     },
-    // async headers() {
-    //     return [
-    //         {
-    //             source: '/',
-    //             headers: [
-    //                 {
-    //                     key: 'Cache-Control',
-    //                     value: `public, max-age=${getRevalidate("today")}, must-revalidate`
-    //                 }
-    //             ],
-    //         },
-    //         {
-    //             source: '/yesterday',
-    //             headers: [
-    //                 {
-    //                     key: 'Cache-Control',
-    //                     value: `public, max-age=${getRevalidate("yesterday")}, must-revalidate`
-    //                 }
-    //             ],
-    //         },
-    //         {
-    //             source: '/tomorrow',
-    //             headers: [
-    //                 {
-    //                     key: 'Cache-Control',
-    //                     value: `public, max-age=${getRevalidate("tomorrow")}, must-revalidate`
-    //                 }
-    //             ],
-    //         },
-    //     ];
-    // },
+    async headers() {
+        return [
+            {
+                source: '/:path*',  
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: `public, max-age=5, must-revalidate`
+                    }
+                ],
+            }
+            
+        ];
+    },
 };
 
 export default nextConfig;
