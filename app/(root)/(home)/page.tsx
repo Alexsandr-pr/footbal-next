@@ -1,23 +1,23 @@
+import axios from "axios";
 import { _SERVER_API } from "@/config/consts";
 import ClientRefresh from "./_components/ClientRefresh";
 import { LeaguesResponse } from "@/types/response";
 import { revalidateTag } from "next/cache";
 
-export const revalidate = 8; 
+export const revalidate = 8;
 
 async function getDataMain(): Promise<LeaguesResponse> {
-    const res = await fetch(`${_SERVER_API}/games/today`, {
-        next: { 
-            revalidate:23,
-            tags:["home"]
-        }, 
+    const res = await axios.get(`${_SERVER_API}/games/today`, {
+        headers: {
+            
+        },
     });
 
-    if (!res.ok) {
+    if (res.status !== 200) {
         throw new Error("Failed to fetch data");
     }
 
-    const data = await res.json();
+    const data = res.data;
     revalidateTag("home");
     return {
         leagues: data.leagues,
@@ -27,7 +27,6 @@ async function getDataMain(): Promise<LeaguesResponse> {
 }
 
 export default async function Page() {
-
     const data = await getDataMain();
 
     return (
