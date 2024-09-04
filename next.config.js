@@ -1,5 +1,6 @@
-
 /** @type {import('next').NextConfig} */
+const { getRevalidate } = require("./lib/revalidateState.js");
+
 const nextConfig = {
     images: {
         remotePatterns: [
@@ -14,11 +15,11 @@ const nextConfig = {
     async headers() {
         return [
             {
-                source: '/(.*)',
+                source: '/today',
                 headers: [
                     {
                         key: 'Cache-Control',
-                        value: 'public, max-age=8, must-revalidate'
+                        value: `public, max-age=${getRevalidate("today")}, must-revalidate`
                     }
                 ],
             },
@@ -26,5 +27,4 @@ const nextConfig = {
     },
 };
 
-export default nextConfig;
-
+module.exports = nextConfig;
