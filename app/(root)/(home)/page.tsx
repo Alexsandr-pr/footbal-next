@@ -15,6 +15,7 @@ async function getDataMain(): Promise<LeaguesResponse> {
     }
 
     const data = res.data;
+    
     return {
         leagues: data.leagues,
         calendar: data.calendar,
