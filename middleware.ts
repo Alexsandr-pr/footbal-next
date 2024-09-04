@@ -36,7 +36,7 @@ export async function middleware(req: NextRequest) {
             const gameId = match ? match[1] : null;
 
             if (gameId) {
-                const data = await getDataGameCenter(`/game/${gameId}`);
+                const data = await getDataGameCenter(`/gamecenter/${gameId}`);
                 ttl = data.TTL || ttl;
             }
         }
