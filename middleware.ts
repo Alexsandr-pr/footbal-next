@@ -10,12 +10,15 @@ export async function middleware(req: NextRequest) {
     try {
         if (!gamesPattern.test(url) && !gamePattern.test(url)) {
             if (url.startsWith('/tomorrow')) {
+                console.log(url)
                 const data = await getDataMain('/tomorrow', 'tomorrow');
                 ttl = data.ttl || ttl;
             } else if (url.startsWith('/')) {
+                console.log(url)
                 const data = await getDataMain('/today', 'today');
                 ttl = data.ttl || ttl;
             } else if (url.startsWith('/yesterday')) {
+                console.log(url)
                 const data = await getDataMain('/yesterday', 'yesterday');
                 ttl = data.ttl || ttl;
             }
@@ -26,19 +29,23 @@ export async function middleware(req: NextRequest) {
                 const paramsId = match ? match[1] : null;
 
                 if (paramsId) {
-                    const data = await getDataMain(`/games/${paramsId}`, 'dataDay');
+                    console.log(url)
+                    const data = await getDataMain(`/${paramsId}`, 'dataDay');
                     ttl = data.ttl || ttl;
                 }
             } else if (gamePattern.test(url)) {
+                console.log(url)
                 const match = url.match(gamePattern);
                 const gameId = match ? match[1] : null;
 
                 if (gameId) {
+                    
                     const data = await getDataGameCenter(gameId);
                     ttl = data.TTL || ttl;
                 }
             }
         }
+
     } catch (error) {
         console.error(`Ошибка при обработке URL ${url}:`, error);
     } finally {

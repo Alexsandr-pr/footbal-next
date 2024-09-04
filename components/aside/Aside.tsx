@@ -7,9 +7,10 @@ import AsideLinks from "./AsideLinks";
 import { MenuResponse } from "@/types/response";
 
 import "./aside.scss";
+import { _SERVER_API } from "@/config/consts";
 
 async function getData(): Promise<MenuResponse> {
-    const res = await fetch('https://sports-stats.net/menu/');
+    const res = await fetch(`${_SERVER_API}/menu/`);
 
     if (!res.ok) {
         throw new Error('Failed to fetch data');

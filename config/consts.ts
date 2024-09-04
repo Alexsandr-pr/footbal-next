@@ -1,1 +1,1 @@
-export const _SERVER_API = "https://www.sports-stats.net";
+export const _SERVER_API = "https://api.promiedos.com.ar";
