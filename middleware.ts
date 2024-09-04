@@ -7,41 +7,40 @@ export async function middleware(req: NextRequest) {
     const url = req.nextUrl.pathname;
     let ttl = ttlCache[url] || 10;
 
-    const gamesPattern = /^\/games\/([^\/]+)$/; 
+    const gamesPattern = /^\/games\/([^\/]+)$/;
     const gamePattern = /^\/game\/([^\/]+)$/;
-
-    if (!ttlCache[url]) {
-        if (url.includes('tomorrow')) {
+    
+    if (!ttlCache[url] && !gamesPattern.test(url) && !gamePattern.test(url)) {
+        if (url.startsWith('/tomorrow')) {
             const data = await getDataMain('/tomorrow', 'tomorrow');
             ttl = data.ttl || ttl;
-        } else if (url.includes('/')) {
+        } else if (url.startsWith('/today')) {
             const data = await getDataMain('/today', 'today');
             ttl = data.ttl || ttl;
-        } else if (url.includes('yesterday')) {
+        } else if (url.startsWith('/yesterday')) {
             const data = await getDataMain('/yesterday', 'yesterday');
             ttl = data.ttl || ttl;
-        } else if (gamesPattern.test(url)) {
-            
+        }
+
+        ttlCache[url] = ttl; 
+    } else {
+        if (gamesPattern.test(url)) {
             const match = url.match(gamesPattern);
-            const paramsId = match ? match[1] : null; 
+            const paramsId = match ? match[1] : null;
 
             if (paramsId) {
                 const data = await getDataMain(`/games/${paramsId}`, 'dataDay');
                 ttl = data.ttl || ttl;
             }
         } else if (gamePattern.test(url)) {
-            
             const match = url.match(gamePattern);
             const gameId = match ? match[1] : null;
 
             if (gameId) {
                 const data = await getDataGameCenter(gameId);
-                console.log(data)
                 ttl = data.TTL || ttl;
             }
         }
-
-        ttlCache[url] = ttl;
     }
 
     const response = NextResponse.next();

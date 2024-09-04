@@ -19,8 +19,8 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse 
     if (data.TTL) {
         setRevalidate('gameCenter', data.TTL);
     }
-
-    return data;
+    const TTL = data.TTL;
+    return { game: data.game, TTL};
 }
 
 

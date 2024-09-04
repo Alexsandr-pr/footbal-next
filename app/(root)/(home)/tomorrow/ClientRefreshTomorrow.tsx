@@ -13,13 +13,12 @@ function ClientRefreshTomorrow({ initialData } : {
     initialData: LeaguesResponse;
 }) {
     const [data, setData] = useState(initialData);
-    const router = useRouter();
+    
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(`${_SERVER_API}/games/tomorrow`);
             const result = await response.json();
             setData(result);
-            router.refresh()
         };
 
         const intervalId = setInterval(fetchData, initialData.ttl * 1000);
