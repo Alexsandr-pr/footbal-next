@@ -18,7 +18,7 @@ export async function getDataGameCenter(id: string): Promise<GameCenterResponse 
 
     const data: GameCenterResponse = await res.json();
     if (data.TTL) {
-        //setRevalidate('gameCenter', data.TTL);
+        setRevalidate('gameCenter', data.TTL);
     }
 
     return data;
@@ -41,7 +41,7 @@ export async function getDataGameCenterThunk(id: string): Promise<GameCenterResp
     console.log(getRevalidate("gameCenter"));
     const data: GameCenterResponse = await res.json();
     if (data.TTL) {
-       // setRevalidate('gameCenter', data.TTL);
+       setRevalidate('gameCenter', data.TTL);
     }
 
     return data;
@@ -73,7 +73,7 @@ export async function getDataMain(
     console.log(`${getRevalidate(pageKey)}   ${new Date().toLocaleTimeString()}`);
     const ttl = data.TTL;
     if (data.TTL) {
-        //setRevalidate(pageKey, ttl);
+        setRevalidate(pageKey, ttl);
     }
     return { leagues: data.leagues, calendar: data.calendar, ttl };
 }
