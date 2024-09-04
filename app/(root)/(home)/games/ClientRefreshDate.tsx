@@ -12,7 +12,7 @@ function ClientRefreshDate({ initialData, id } : {
 }) {
 
     const [data, setData] = useState(initialData);
-
+    
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(`${_SERVER_API}/games/${id}`);

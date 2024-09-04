@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { LeaguesResponse } from "@/types/response";
 import Home from "../_components/home/Home";
+import { useRouter } from "next/navigation";
 
 
 
@@ -12,12 +13,13 @@ function ClientRefreshTomorrow({ initialData } : {
     initialData: LeaguesResponse;
 }) {
     const [data, setData] = useState(initialData);
-
+    const router = useRouter();
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(`${_SERVER_API}/games/tomorrow`);
             const result = await response.json();
             setData(result);
+            router.refresh()
         };
 
         const intervalId = setInterval(fetchData, initialData.ttl * 1000);

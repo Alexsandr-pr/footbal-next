@@ -15,11 +15,7 @@ async function getDataMain(
     if (!res.ok) {
         throw new Error("Failed to fetch data");
     }
-
-    console.log('Cache-Control:', res.headers.get('Cache-Control'));
-
     const data = await res.json();
-
     const ttl = data.TTL;
     return { leagues: data.leagues, calendar: data.calendar, ttl };
 }
@@ -30,7 +26,6 @@ export default async function Page() {
     
     return (
         <>  
-            <p>Last update: {new Date().toLocaleTimeString()}</p>
             <ClientRefresh initialData={data} />
         </>
     );

@@ -5,10 +5,11 @@ const ttlCache: Record<string, number> = {};
 
 export async function middleware(req: NextRequest) {
     const url = req.nextUrl.pathname;
-    let ttl = ttlCache[url] || 10; 
+    let ttl = ttlCache[url] || 10;
+
+    const gamesPattern = /^\/games\/([^\/]+)$/;
 
     if (!ttlCache[url]) {
-        
         if (url.includes('tomorrow')) {
             const data = await getDataMain('/tomorrow', 'tomorrow');
             ttl = data.ttl || ttl;
@@ -18,7 +19,17 @@ export async function middleware(req: NextRequest) {
         } else if (url.includes('yesterday')) {
             const data = await getDataMain('/yesterday', 'yesterday');
             ttl = data.ttl || ttl;
+        } else if (gamesPattern.test(url)) {
+            
+            const match = url.match(gamesPattern);
+            const paramsId = match ? match[1] : null; 
+
+            if (paramsId) {
+                const data = await getDataMain(`/games/${paramsId}`, 'dataDay');
+                ttl = data.ttl || ttl;
+            }
         }
+
         ttlCache[url] = ttl;
     }
 
