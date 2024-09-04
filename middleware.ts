@@ -7,7 +7,6 @@ export async function middleware(req: NextRequest) {
     const url = req.nextUrl.pathname;
     let ttl = ttlCache[url] || 10;
 
-   
     const gamesPattern = /^\/games\/([^\/]+)$/; 
     const gamePattern = /^\/game\/([^\/]+)$/;
 

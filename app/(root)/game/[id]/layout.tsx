@@ -1,31 +1,14 @@
 import React, { ReactNode } from 'react'
 import { _SERVER_API } from "@/config/consts";
 import ClientComponent from '../_components/ClientComponent';
-
 import { Metadata } from 'next';
-import { GameCenterResponse } from '@/types/response';
+import { getDataGameCenter } from '@/lib/api';
 
 export const revalidate = 5;
 type Props = {
     params: {
         id: string
     }
-}
-
-
-export async function getDataGameCenter(id: string): Promise<GameCenterResponse> {
-    
-    const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
-        next: { revalidate: 5 }
-    });
-
-    if (!res.ok) {
-        throw new Error("Failed to fetch data");
-    }
-
-    const data: GameCenterResponse = await res.json();
-
-    return data;
 }
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
