@@ -4,6 +4,7 @@ import { setGameData, fetchGameData } from '@/store/gameCenterSlice';
 import { GameCenterResponse } from '@/types/response';
 import React, { ReactNode, useEffect, useRef } from 'react';
 import { useAppDispatch } from '@/store/store'; 
+import { useRouter } from 'next/navigation';
 
 const ClientComponent = ({
     children,
@@ -16,6 +17,8 @@ const ClientComponent = ({
 }) => {
     const dispatch = useAppDispatch();
     const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
+    const router = useRouter();
+    
 
     useEffect(() => {
         
@@ -33,6 +36,7 @@ const ClientComponent = ({
                 if (fetchGameData.fulfilled.match(action)) {
                     const updatedTTL = action.payload.TTL;
                     setFetchInterval(updatedTTL);
+                    router.refresh();
                 }
             };
 

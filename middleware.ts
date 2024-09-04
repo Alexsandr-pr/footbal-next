@@ -36,6 +36,7 @@ export async function middleware(req: NextRequest) {
 
             if (gameId) {
                 const data = await getDataGameCenter(gameId);
+                console.log(data)
                 ttl = data.TTL || ttl;
             }
         }

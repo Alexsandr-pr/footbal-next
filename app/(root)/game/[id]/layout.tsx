@@ -4,7 +4,6 @@ import ClientComponent from '../_components/ClientComponent';
 import { Metadata } from 'next';
 import { getDataGameCenter } from '@/lib/api';
 
-export const revalidate = 5;
 type Props = {
     params: {
         id: string
