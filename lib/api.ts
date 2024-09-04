@@ -41,15 +41,11 @@ export async function getDataGameCenterThunk(id: string): Promise<GameCenterResp
     console.log(getRevalidate("gameCenter"));
     const data: GameCenterResponse = await res.json();
     if (data.TTL) {
-       setRevalidate('gameCenter', data.TTL);
+        setRevalidate('gameCenter', data.TTL);
     }
 
     return data;
 }
-
-
-
-
 
 
 
