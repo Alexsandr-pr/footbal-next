@@ -3,7 +3,7 @@ import { getDataGameCenter, getDataMain } from "./lib/api";
 
 export async function middleware(req: NextRequest) {
     const url = req.nextUrl.pathname;
-    let ttl = 10; 
+    let ttl = 12; 
     const gamesPattern = /^\/games\/([^\/]+)$/;
     const gamePattern = /^\/game\/([^\/]+)$/;
 
