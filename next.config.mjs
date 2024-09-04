@@ -1,3 +1,4 @@
+import getRevalidate from './lib/revalidate.js';
 
 /** @type {import('next').NextConfig} */
 
@@ -19,7 +20,7 @@ const nextConfig = {
                 headers: [
                     {
                         key: 'Cache-Control',
-                        value: `public, max-age=5, must-revalidate`
+                        value: `public, max-age=${getRevalidate("today")}, must-revalidate`
                     }
                 ],
             },
@@ -28,7 +29,7 @@ const nextConfig = {
                 headers: [
                     {
                         key: 'Cache-Control',
-                        value: `public, max-age=5, must-revalidate`
+                        value: `public, max-age=${getRevalidate("yesterday")}, must-revalidate`
                     }
                 ],
             },
@@ -37,14 +38,12 @@ const nextConfig = {
                 headers: [
                     {
                         key: 'Cache-Control',
-                        value: `public, max-age=5, must-revalidate`
+                        value: `public, max-age=${getRevalidate("tomorrow")}, must-revalidate`
                     }
                 ],
             },
-            
-        ]
+        ];
     },
 };
 
 export default nextConfig;
-

@@ -6,7 +6,7 @@ const revalidateValues = {
     dataDay: 5,
 };
 
-export const getRevalidate = (page: keyof typeof revalidateValues) => revalidateValues[page];
+export  const getRevalidate = (page: keyof typeof revalidateValues) => revalidateValues[page];
 
 export const setRevalidate = (page: keyof typeof revalidateValues, value: number) => {
     revalidateValues[page] = value;
