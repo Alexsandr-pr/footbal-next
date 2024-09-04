@@ -79,7 +79,7 @@ export async function getDataMain(
 
     
     const response = NextResponse.next();
-    response.headers.set('Cache-Control', `public, max-age=${ttl}, must-revalidate`);
+    response.headers.set('Cache-Control', `must-revalidate`);
 
     return { leagues: data.leagues, calendar: data.calendar, ttl };
 }
