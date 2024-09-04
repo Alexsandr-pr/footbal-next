@@ -1,8 +1,9 @@
 import { _SERVER_API } from "@/config/consts";
 import ClientRefresh from "./_components/ClientRefresh";
 import { LeaguesResponse } from "@/types/response";
+import { getRevalidate, setRevalidate } from "@/lib/revalidateState";
 
-export const revalidate = 8;
+
 async function getDataMain(
     path: string,
 ): Promise<LeaguesResponse> {
@@ -10,8 +11,8 @@ async function getDataMain(
     console.log(`Fetching data from ${_SERVER_API}/games${path} at ${new Date().toISOString()}`);
 
     const res = await fetch(`${_SERVER_API}/games${path}`, {
-        next: {
-            revalidate: 5
+        headers: {
+            'Cache-Control': `max-age=${getRevalidate("today")}`, 
         }
     });
 
@@ -22,7 +23,9 @@ async function getDataMain(
     console.log('Cache-Control:', res.headers.get('Cache-Control'));
 
     const data = await res.json();
-
+    if (data.TTL) {
+        setRevalidate('today', data.TTL);
+    }
     const ttl = data.TTL;
     return { leagues: data.leagues, calendar: data.calendar, ttl };
 }
