@@ -43,7 +43,7 @@ export async function middleware(req: NextRequest) {
         console.error(`Ошибка при обработке URL ${url}:`, error);
     } finally {
         const response = NextResponse.next();
-        response.headers.set('Cache-Control', `public, max-age=${ttl}, stale-while-revalidate=${ttl}`);
+        response.headers.set('Cache-Control', `public, max-age=${ttl}`);
         return response;
     }
 }
