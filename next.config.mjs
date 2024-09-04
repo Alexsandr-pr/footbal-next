@@ -13,20 +13,20 @@ const nextConfig = {
             },
         ],
     },
-    // async headers() {
-    //     return [
-    //         {
-    //             source: '/:path*',  
-    //             headers: [
-    //                 {
-    //                     key: 'Cache-Control',
-    //                     value: `public, max-age=15, must-revalidate`
-    //                 }
-    //             ],
-    //         }
+    async headers() {
+        return [
+            {
+                source: '/:path*',  
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: `public, max-age=15, must-revalidate`
+                    }
+                ],
+            }
             
-    //     ];
-    // },
+        ];
+    },
 };
 
 export default nextConfig;

@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDataGameCenter, getDataMain } from "./lib/api";
 
+
 const ttlCache: Record<string, number> = {};
 
 export async function middleware(req: NextRequest) {
     const url = req.nextUrl.pathname;
     let ttl = ttlCache[url] || 10;  
-
     const gamesPattern = /^\/games\/([^\/]+)$/;
     const gamePattern = /^\/game\/([^\/]+)$/;
 
@@ -46,7 +46,7 @@ export async function middleware(req: NextRequest) {
     } catch (error) {
         console.error(`Ошибка при обработке URL ${url}:`, error);
     } finally {
-        const response = NextResponse.next();
+            const response = NextResponse.next();
         response.headers.set('Cache-Control', `public, max-age=${ttl}, must-revalidate`);
         return response;
     }

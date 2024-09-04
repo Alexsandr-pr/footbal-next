@@ -6,6 +6,7 @@ import { getRevalidate, setRevalidate } from "./revalidateState";
 export async function getDataGameCenter(id: string): Promise<GameCenterResponse & { TTL: number }> {
 
     const res = await fetch(`${_SERVER_API}/gamecenter/${id}`, {
+        cache:"force-cache",
         next: {
             revalidate: getRevalidate("gameCenter")
         }
