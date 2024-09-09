@@ -7,12 +7,13 @@ import { GetServerSideProps } from "next";
 interface PageProps {
     menuData: MenuResponse;
     data: LeaguesResponse;
+    id: string;
 }
 
-const Page = ({ data, menuData }: PageProps) => {
+const Page = ({ data, menuData, id }: PageProps) => {
     return (
         <MainLayout menuData={menuData}>
-            <ClientRefreshPages path="yesterday" initialData={data} />
+            <ClientRefreshPages path={id} initialData={data} />
         </MainLayout>
     );
 };
@@ -39,6 +40,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: {
             menuData,
             data,
+            id
         },
     };
 };

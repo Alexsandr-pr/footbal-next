@@ -9,7 +9,7 @@ const HeadContent = ({headToHead, teamsTop} : Blockh2hHeadContentProps) => {
     return (
         <>
             {
-                headToHead.games.map(({teams,winner,id,scores, start_time}) => {
+                headToHead.games.map(({teams,winner,id,scores, start_time, league}) => {
                     const indexTeam1 = teamsTop.findIndex(team => team.id === teams[0].id);
                     const indexTeam2 = teamsTop.findIndex(team => team.id === teams[1].id);
 
@@ -19,14 +19,14 @@ const HeadContent = ({headToHead, teamsTop} : Blockh2hHeadContentProps) => {
                     const secondScore = indexTeam1 < indexTeam2 ? scores[1] : scores[0];
 
                     return (
-                        <div className="game-center__h2h" key={start_time}>
+                        <div className="game-center__h2h" key={`${start_time}-${id}-${teams}`}>
                             <H2hItem clazz={`h2h-item-left ${firstScore < secondScore || winner === -1 ? 'opacity' : null}`}>
                                 <Text>{firstTeam.name}</Text>
                             </H2hItem>
                             <H2hItem>
                                 <div className="h2h-gc-block-result">
                                     <div className="h2h-league-name">
-                                        Copa de la Liga
+                                        {league?.name}
                                     </div>
                                     <div className="h2h-numbers">
                                         <div className={`h2h-number ${firstScore < secondScore || winner === -1 ? 'opacity' : null}`}>

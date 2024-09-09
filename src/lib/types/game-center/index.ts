@@ -174,19 +174,20 @@ export type Game = {
             }[];
         }[];
     };
-    league: {
-        name: string;
-        id: string;
-        url_name: string;
-        country_id: string;
-        is_international: boolean;
-        show_country_flags:boolean;
-    };
+    league: LeagueGame;
     live_odds: LiveOdds;
     videos?: Video[];
 }
 
-
+export type LeagueGame = {
+    name: string;
+    id: string;
+    url_name: string;
+    country_id: string;
+    country_name?:string;
+    is_international: boolean;
+    show_country_flags:boolean;
+}
 
 export type HeadToHead = {
     home_wins: number;
@@ -194,6 +195,7 @@ export type HeadToHead = {
     draws: number;
     games: {
         id: string;
+        league: LeagueGame;
         winner: number;
         teams: Team[];
         scores: [number, number];
