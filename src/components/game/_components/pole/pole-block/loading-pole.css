@@ -1,0 +1,11 @@
+.loading-pole {
+  min-height: 376px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 991.98px) {
+  .loading-pole {
+    min-height: 700px;
+  }
+}/*# sourceMappingURL=loading-pole.css.map */

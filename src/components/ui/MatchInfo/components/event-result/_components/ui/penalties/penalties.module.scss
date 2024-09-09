@@ -1,0 +1,12 @@
+.score {
+    display: inline-flex;
+    text-align: center;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 400;
+
+    @media(max-width: 767.98px) {
+        font-size: 11px;
+        line-height: 1;
+    }
+}

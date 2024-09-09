@@ -1,0 +1,55 @@
+.teammatchhistory {
+    display: grid;
+    padding: 16px 12px;
+    grid-template-columns: repeat(2,1fr);
+}
+.teammatchhistorycolumn {
+    @media(max-width:991.98px){
+        display: flex;
+        flex-direction: column !important;
+    }
+}
+.teammatchhistorycolumnreverse {
+    @media(max-width:991.98px){
+        display: flex;
+        flex-direction: column-reverse !important;
+    }
+}
+.teammatchhistoryblock {
+    gap: 10px;
+    align-items: center;
+    @media(min-width:991.98px){
+        &:nth-child(1) {
+            display: flex;
+            
+            justify-content: start;
+            text-align: left;
+        }
+        &:nth-child(2) {
+            display: flex;
+            justify-content: end;
+            text-align: right;
+        }
+    }
+    @media(max-width:991.98px){
+        display: flex; 
+        align-items: center;
+        flex-direction: column;
+        &:nth-child(2) {
+            flex-direction: column-reverse;
+        }
+    }
+}
+.teammatchhistoryblockitem {
+    &:nth-child(2) {
+        display: flex;
+        justify-content: end;
+        text-align: right;
+    }
+}
+@media(min-width:991.98px){
+    .teammatchhistoryblockitem {
+        max-width: 160px;
+        width: 160px;
+    }
+}

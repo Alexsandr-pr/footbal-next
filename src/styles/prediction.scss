@@ -1,0 +1,181 @@
+
+/************static-game*****************/
+
+.static-content__odds {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.content-block__header-prediction {
+    padding: 3.5px 12px !important;
+    height: 40px;
+    @media(max-width:767.98px){
+        padding: 7.5px 12px;
+        height: 32px;
+    }
+    
+}
+.content-block__body-prediction {
+    padding: 8px 12px;
+}
+.static-game__block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.static-info__button {
+    margin-top: 16px;
+    @media(max-width:767.98px){
+        width: 100%;
+    }
+}
+
+.static-game__body-text {
+    padding: 4px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.static-game__title {
+    color: var(--white);
+    height: 24px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 19.2px */
+    @media(max-width:767.98px){
+        height: 14px;
+        font-size: 14px;
+    }
+}
+.static-game__label {
+    color: var(--white);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 16.8px */
+    @media(max-width:767.98px){
+        font-size: 11px;
+    }
+}
+
+.loading-prediction {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.prediction-state-false {
+    display: grid;
+    gap: 8px;
+    transition: width 0.3s ease 0s;
+    grid-template-columns: repeat(3,1fr);
+    .prediction-state-false__item {
+        color: var(--white);
+        font-family: Roboto;
+        font-size: 11px;
+        transition: width 0.6s ease 0s;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%; /* 13.2px */
+        display: flex;
+        height: 32px;
+        padding: var(--spacing_xxs, 4px) var(--spacing_sm, 12px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1px;
+        &:nth-child(1) {
+            border-radius: 4px;
+            background:  #6FAA54;
+        }
+        &:nth-child(2) {
+            border-radius:  4px;
+            background: #115E2A;
+        }
+        &:nth-child(3) {
+            border-radius:  4px;
+            background:  #018000;
+        }
+        @media(hover:hover) {
+        &:hover {
+         cursor: pointer;
+        }
+        }
+    }
+
+    .prediction-state-false__item-2 {
+        display: none;
+    }
+    &.active {
+        display: flex;
+        gap: 0px;
+        .prediction-state-false__item {
+            transition: all 0.3s ease 0s;
+            color: var(--white);
+            font-family: "Roboto Condensed";
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: flex;
+            height: 32px;
+            padding: 4px 12px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            gap: 1px;
+            &:nth-child(1) {
+                border-radius: 4px 0px 0px 4px;
+                background:  #6FAA54;
+                .prediction-state-false__item-2 {
+                    color:  #EEFFA5;
+                    font-family: "Roboto Condensed";
+                    font-size: 14px;
+                    display: flex;
+                    align-items: center;
+                    gap: 2px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 120%; /* 16.8px */
+                    text-transform: uppercase;
+                    &::before {
+                        content: url("/assets/icons/check.svg");
+                    }
+                }
+            }
+            &:nth-child(2) {
+                border-radius:  0px;
+                background: #115E2A;
+            }
+            &:nth-child(3) {
+                border-radius:  0px 4px 4px 0px;
+                background:  #018000;
+            }
+        }
+        .prediction-state-false__item-1 {
+            display: none;
+        }
+        .prediction-state-false__item-2 {
+            display: block;
+        }
+    }
+}
+.static-game__block-link {
+    display: flex;
+    padding-top: 1px;
+    justify-content: center;
+    max-height: 26px;
+    align-items: center;
+}
+.static-game__block-link img{
+    
+    max-height: 26px;
+    width: auto;
+    @media(max-width:767.98px){
+        max-height: 16px;
+    }
+}

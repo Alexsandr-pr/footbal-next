@@ -1,0 +1,126 @@
+
+// .item-event__button {
+//     .chevron {
+//         transition: all 0.3s ease 0s;
+//     }
+// }
+
+// .item-event.active {
+//     .chevron {
+//         transform: rotateX(180deg);
+//     }
+//     .item-event__button{
+//         border-bottom:1px solid #60756C;
+//     }
+// }
+
+.itemevent {
+
+    border-radius:  8px;
+    background:  #0A2B1D;
+    transition: all 0.3s ease 0s;
+    @media(hover:hover) {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+.itemeventbottom {
+        height: 32px;
+        padding: 7px 10px;
+        align-items: center;
+        display: flex;
+        justify-content:center;
+        @media(max-width:767.98px){
+            height: 26px;
+            padding: 3px 10px;
+        }
+    }
+
+
+
+
+/*****************Button On Off and trigger Chevron**********************/
+
+
+
+
+/***********Border bloks**************************/
+// .main-content__item.border {
+//     .item-event__left {
+//         font-size: 16px;
+//     }
+//     border: #60756C 1px solid;
+//     border-radius: 8px;
+//     .item-event__button {
+//         height: 32px;
+//     }
+//     .match-comand__text {
+//         font-size: 12px;
+//     }
+//     .match-block__team {
+//         padding: 4px 2px;
+//     }
+//     .team-span__number {
+//         span {
+//             font-size: 14px;
+//         }
+//     }
+// }
+
+
+/*************************************/
+
+
+
+
+
+.match-comand {
+
+    // .match-comand__text
+    //display: flex;
+    align-items: center;
+    gap: 4px;
+    &__text {
+        font-size: 14px;
+        @media(max-width:567.98px){
+            font-size: 11px;
+        }
+    }
+
+    // .match-comand__image
+
+    &__image {
+        width: 34px;
+        height: 34px;
+        @media(max-width:767.98px){
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+}
+
+
+/*******************************/
+
+/*******************************/
+
+
+
+
+
+.team-span-red {
+    .team-span__number {
+        color:#fff !important;
+        span {
+            color:var(--live) !important;
+        }
+    }
+    .team-span__block {
+        color:var(--live) !important;
+    }
+}
+
+/**********************/
+

@@ -1,0 +1,13 @@
+.scores-event-result {
+  display: flex;
+  color: var(--white);
+  font-size: 18px;
+}
+@media (max-width: 767.98px) {
+  .scores-event-result {
+    font-size: 16px;
+  }
+}
+.scores-event-result.size-24 {
+  font-size: 24px;
+}/*# sourceMappingURL=scores.css.map */

@@ -1,0 +1,61 @@
+.wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    padding-top: 32px;
+    flex: 1 1 auto;
+    padding-bottom: 50px;
+    @media(max-width:767.98px){
+        padding-top: 0px;
+        padding-bottom: 24px;
+    }
+}
+.mainBlockBody  {
+    display: flex;
+    justify-content: space-between;
+}
+.mainBlockAside {
+    position: sticky;
+    @media(min-width:991.98px){
+        padding-right: 24px;
+    }
+    @media(min-width:767.98px){
+        flex: 0 1 23.442907%; /* 271/1156 */
+    }
+    @media(max-width:767.98px){
+        position: fixed;
+        transition: all 0.3s ease 0s;
+        width: 100%;
+        padding: 24px;
+        background: url("/assets/main/bg-mobile.webp");
+        height: 100%;
+        top: 0px;
+        right: -120%;
+        z-index: 50;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            width: 0px;
+            display: none;
+        }
+    }
+    @media(max-width:487.98px){
+        padding: 16px;
+    }
+}
+
+.mainBlockContent {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    @media(min-width:767.98px){
+        flex: 0 1 74.394464%; /* 860/1156 */
+    }
+    @media(max-width:767.98px){
+        width: 100%;
+    }
+}
+

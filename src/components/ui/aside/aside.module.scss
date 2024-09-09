@@ -1,0 +1,187 @@
+// components/aside/aside.module.scss
+.mainBlockAside {
+    
+    @media(min-width:991.98px){
+        padding-right: 24px;
+    }
+    @media(min-width:767.98px){
+        flex: 0 1 23.442907%; /* 271/1156 */
+    }
+    @media(max-width:767.98px){
+        position: fixed;
+        transition: all 0.3s ease 0s;
+        width: 100%;
+        padding: 24px;
+        background: url("/assets/main/bg-mobile.webp");
+        height: 100%;
+        top: 0px;
+        right: -120%;
+        z-index: 50;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            width: 0px;
+            display: none;
+        }
+    }
+    @media(max-width:487.98px){
+        padding: 16px;
+    }
+}
+
+// Ранее: .aside-block__top
+.asideBlockTOP {
+    img {
+        display: inline-flex;
+        max-height: 100%;
+        max-width: 100%;
+        height: auto;
+        width: auto;
+        object-fit: contain; 
+    }
+    @media(max-width:767.98px) {
+        display: none;
+    }
+}
+
+// Ранее: .aside-block__select
+.asideBlockSelect {
+    padding: 16px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    @media(max-width:767.98px) {
+        border-top: 1px solid var(--grey-20);
+    }
+}
+
+// Ранее: .aside-block__links
+.asideBlockLinks {
+    padding: 16px 0px;
+}
+
+// Ранее: .aside-block__bottom
+.asideBlockBottom {
+    font-size: 14px;
+    padding: 16px 0px;
+}
+
+// Ранее: .aside-block__select, .aside-block__links
+.asideBlockSelect, .asideBlockLinks {
+    border-bottom: 1px solid var(--white);
+}
+
+// Ранее: .aside-block__bottom, .select-button, .links-aside__button
+.asideBlockBottom, .selectButton, .linksAsideButton {
+    font-family: "Roboto Condensed";
+    text-transform: uppercase;
+}
+
+// Ранее: .select-block__button
+.selectBlockButton {
+    font-size: 14px;
+    text-transform: uppercase;
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    @media(hover:hover) {
+        &:hover {
+            color: var(--green) !important;
+            path {
+                stroke: var(--green);
+            }
+        }
+    }
+    @media(max-width:767.98px) {
+        border-bottom: 1px dashed var(--grey-20);
+    }
+}
+
+// Ранее: .select-block__list
+.selectList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+// Ранее: .select-item
+.selectItem {
+    transition: all 0.3s ease 0s;
+    font-size: 14px;
+    font-weight: 400;
+    @media(hover:hover) {
+        &:hover {
+            cursor: pointer;
+            color: var(--green);
+        }
+    }
+}
+
+@media(max-width:767.98px) {
+    // Ранее: .aside-block__menu
+    .asideBlockMenu {
+        padding-top: 65px;
+    }
+}
+
+// Ранее: .select-block__list
+.selectList {
+    padding: 0px 12px;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: height 0.3s ease 0s, padding 0.3s ease 0s;
+    
+    &.active {
+        visibility: visible;
+        padding: 16px 12px 0px 12px;
+        height: auto;
+        opacity: 1;
+    }
+}
+
+// Ранее: .select-block--active
+.selectBlockActive.active {
+    .selectBlockButton {
+        color: var(--green);
+        svg {
+            transform: rotateX(180deg);
+        }
+        path {
+            stroke: var(--green);
+        }
+        @media(max-width:767.98px) {
+            border-bottom: 1px dashed var(--green);
+        }
+    }
+}
+
+// Ранее: .links-aside__button
+.linksAsideButton {
+    display: flex;
+    padding: 8px 0px;
+    color: var(--white);
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+    
+    @media(hover:hover) {
+        &:hover {
+            cursor: pointer;
+            color: var(--green-hover);
+        }
+    }
+    
+    &.active {
+        color: var(--green-hover);
+    }
+}
+
+
+.selectNameCategory {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

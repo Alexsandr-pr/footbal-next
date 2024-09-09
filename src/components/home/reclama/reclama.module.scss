@@ -1,0 +1,58 @@
+
+.reclamabody {
+        display: flex;
+    flex-direction: column;
+    align-items: center;
+        border-radius: 8px;
+        background:  #0A2B1D;
+        line-height: 1.2; /* 12px */
+        padding: 9px 12px;
+    }
+
+    // .reclama-block-1__label
+
+    .reclamalabel {
+        gap: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        font-weight: 400;
+        &:not(:last-child){
+        margin-bottom:6px;
+        }
+    }
+
+    // .reclama-block-1__title
+
+    .reclamatitle {
+        text-align: center;
+        font-weight: 500;
+        &:not(:last-child){
+            margin-bottom:8px;
+        }
+    }
+
+
+.reclamabutton,
+.reclamatitle {
+    
+    text-transform: uppercase;
+    font-family: "Roboto Condensed";
+}
+.reclamabutton {
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 7.5px 12px;
+    width: 100%;
+    line-height: 1;
+    background: #115E2A;
+    @media(hover:hover) {
+        &:hover {
+            cursor: pointer;
+            color:#fff;
+            background-color:#018000;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+.text {
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 400;
+    @media(max-width:991.98px){
+        font-size: 11px;
+    }
+}

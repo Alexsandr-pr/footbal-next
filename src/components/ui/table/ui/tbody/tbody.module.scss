@@ -1,0 +1,8 @@
+.tablebody tr{
+    &:nth-child(even){
+        background: #163629;
+    }
+    &:nth-child(odd){
+        background: #234134;
+    }
+}

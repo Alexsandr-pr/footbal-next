@@ -1,0 +1,29 @@
+.pole__block-comand {
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #115E2A;
+}
+
+.pole__comand-name .comand-name__title {
+  display: block !important;
+  font-size: 12px !important;
+  text-align: left !important;
+}
+@media (max-width: 991.98px) {
+  .pole__comand-name .comand-name__title {
+    font-size: 14px !important;
+  }
+}
+
+.pole__disposition {
+  white-space: nowrap;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+}/*# sourceMappingURL=pole-block-comand.css.map */

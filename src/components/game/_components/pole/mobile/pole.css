@@ -1,0 +1,96 @@
+/**************pole**********/
+.pole-block-bottom {
+  padding: 32px 12px 12px 12px;
+}
+@media (min-width: 991.98px) {
+  .pole-block-bottom {
+    display: none;
+  }
+}
+
+.pole-block-top {
+  padding: 12px 12px 32px 12px;
+}
+@media (min-width: 991.98px) {
+  .pole-block-top {
+    display: none;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .pole-body__top,
+  .pole-body__bottom {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    margin: 0px auto;
+  }
+  .pole-body__top-content,
+  .pole-body__bottom-content {
+    height: 50%;
+  }
+}
+.pole__rectangle-center,
+.pole__rectangle-circle {
+  position: absolute;
+  z-index: 2;
+}
+
+.pole__rectangle-center {
+  height: 2px;
+  top: calc(50% - 1px);
+  width: 100%;
+  background-color: #115E2A;
+}
+@media (min-width: 991.98px) {
+  .pole__rectangle-center {
+    display: none;
+  }
+}
+
+.pole__rectangle-circle {
+  height: 2px;
+  top: calc(50% - 35px);
+  width: 70px;
+  height: 70px;
+  left: calc(50% - 35px);
+  border-radius: 50%;
+  border: 2px solid #115E2A;
+}
+@media (min-width: 991.98px) {
+  .pole__rectangle-circle {
+    display: none;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .pole__body {
+    width: 100%;
+    height: 558px;
+    border-bottom: 2px solid #115E2A;
+    border-top: 2px solid #115E2A;
+  }
+}
+
+.pole__rectanle-top {
+  top: -2px;
+}
+.pole__rectanle-top, .pole__rectanle-bottom {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+@media (max-width: 991.98px) {
+  .pole__rectanle-top, .pole__rectanle-bottom {
+    display: block;
+  }
+}
+@media (min-width: 991.98px) {
+  .pole__rectanle-top, .pole__rectanle-bottom {
+    display: none;
+  }
+}
+.pole__rectanle-bottom {
+  bottom: -2px;
+}/*# sourceMappingURL=pole.css.map */

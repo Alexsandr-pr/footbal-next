@@ -1,0 +1,22 @@
+.span {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 0 1 14.342105%; /* 109/760 */
+    
+    @media(max-width: 767.98px) {
+      flex: 0 1 27.272727%; /* 72/264 */
+    }
+}
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    @media(max-width:991.98px){
+        gap: 4px;
+    }
+}
